@@ -27,4 +27,4 @@ function build(pattern) {
   }
 }
 
-build("src/index.{tsx.jsx}");
+build("src/index.{tsx,jsx}");
