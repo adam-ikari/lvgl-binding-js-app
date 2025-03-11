@@ -1,0 +1,40 @@
+{
+  "name": "lvgljs-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bundle": "node ./build.js",
+    "bundle:watch": "nodemon --watch 'demo/**/*.jsx' --watch 'demo/**/*.tsx' --watch 'test/**/*.jsx' --watch 'test/**/*.tsx' --ext 'jsx' --ext 'tsx' --exec 'npm run bundle'"
+  },
+  "dependencies": {
+    "buffer": "^6.0.3",
+    "core-js": "^3.23.2",
+    "esbuild": "^0.14.43",
+    "fetch-blob": "^3.2.0",
+    "nodemon": "^3.1.4",
+    "lvgljs-ui": "file:deps/lvgljs-ui",
+    "react": "^16.13.1",
+    "react-proxy": "^2.0.8",
+    "react-reconciler": "^0.25.1",
+    "react-router": "^6.3.0",
+    "text-encoding": "^0.7.0",
+    "urlpattern-polyfill": "^5.0.3",
+    "util": "^0.12.4",
+    "web-streams-polyfill": "^3.2.1",
+    "webpack": "^5.73.0",
+    "webpack-dev-server": "^4.9.2",
+    "whatwg-fetch": "^3.6.2"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.2.0",
+    "@txikijs/types": "^24.6.0",
+    "@types/react": "^16.3.1",
+    "@types/react-reconciler": "^0.18.0",
+    "esbuild-plugin-alias": "^0.2.1",
+    "glob": "^10.3.15",
+    "prettier": "^3.0.1"
+  }
+}
