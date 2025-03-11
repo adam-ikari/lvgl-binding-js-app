@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bundle": "node ./build.js",
+    "build": "node ./build.js",
     "preview": "deps/lvgljs/lvgljs run /home/zhaodi-chen/project/lvgl_app/build/index.js",
-    "dev": "nodemon --watch 'src/**/*.jsx' --watch 'src/**/*.tsx' --ext 'jsx' --ext 'tsx' --exec 'npm run bundle && npm run preview'"
+    "dev": "nodemon --watch 'src/**/*.jsx' --watch 'src/**/*.tsx' --ext 'jsx' --ext 'tsx' --exec 'npm run build && npm run preview'"
   },
   "dependencies": {
     "buffer": "^6.0.3",

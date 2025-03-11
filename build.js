@@ -1,8 +1,7 @@
 const path = require("path");
 const alias = require("esbuild-plugin-alias");
 const glob = require("glob");
-
-const buildDir = path.resolve(__dirname, "build");
+const outDir = "build";
 
 function build(pattern) {
   const jsxfiles = new glob.Glob(pattern, {});
@@ -16,7 +15,7 @@ function build(pattern) {
         bundle: true,
         platform: "neutral",
         external: ["tjs:path"],
-        outfile: path.resolve(buildDir, "index.js"),
+        outfile: path.resolve(outDir, "index.js"),
         define: {
           "process.env.NODE_ENV": '"development"',
         },
@@ -28,4 +27,4 @@ function build(pattern) {
   }
 }
 
-build("src/**/*.{jsx,tsx}");
+build("src/index.{tsx.jsx}");
