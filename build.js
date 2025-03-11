@@ -28,4 +28,4 @@ function build(pattern) {
   }
 }
 
-build("src/**.{jsx,tsx}");
+build("src/**/*.{jsx,tsx}");
