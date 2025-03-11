@@ -1,6 +1,6 @@
 import { COMMON_STYLE } from "../common_style";
-import { StyleProps } from "lvgljs-ui/core/style";
 import { View } from "lvgljs-ui";
+import { StyleProps } from "lvgljs-ui/core/style";
 import React from "react";
 
 interface ZRowProps {

@@ -1,4 +1,4 @@
-import { COLORS, COMMON_STYLE } from "./common_style";
+import { COLORS, COMMON_STYLE } from "@/common_style";
 import {
   ZButton,
   ZButtonSize,
@@ -6,7 +6,7 @@ import {
   ZCard,
   ZColumn,
   ZRow,
-} from "./components";
+} from "@/components";
 import { Render, Text, View } from "lvgljs-ui";
 import React from "react";
 

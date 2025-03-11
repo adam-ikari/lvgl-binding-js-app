@@ -1,6 +1,6 @@
 import { COMMON_STYLE } from "../common_style";
-import { StyleProps } from "lvgljs-ui/core/style";
 import { View } from "lvgljs-ui";
+import { StyleProps } from "lvgljs-ui/core/style";
 import React from "react";
 
 interface ZColumnProps {
@@ -19,7 +19,7 @@ const baseStyle: StyleProps = {
 const ZColumn = (props: ZColumnProps) => {
   const { children, style: propStyle = {} } = props;
 
-  return <View style={{...baseStyle, ...propStyle}}>{children}</View>;
+  return <View style={{ ...baseStyle, ...propStyle }}>{children}</View>;
 };
 
 export type { ZColumnProps };

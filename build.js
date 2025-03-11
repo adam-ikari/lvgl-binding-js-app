@@ -19,6 +19,11 @@ function build(pattern) {
         define: {
           "process.env.NODE_ENV": '"development"',
         },
+        plugins: [
+          alias({
+            "@": path.resolve(__dirname, "src"),
+          }),
+        ],
       })
       .then(() => console.log("Build %s complete", file))
       .catch(() => {
