@@ -1,4 +1,6 @@
 {
+  "name": "app1",
+  "package_name": "com.demo.app1", 
   "entry": {
     "main": "./src/main.jsx"
   }
