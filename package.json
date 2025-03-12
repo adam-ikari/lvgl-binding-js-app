@@ -8,7 +8,9 @@
     "build:dev": "cross-env NODE_ENV=development node ./build.js",
     "build:prod": "cross-env NODE_ENV=production node ./build.js",
     "preview": "deps/lvgljs/lvgljs run ./build/uncompressed/main.view.js",
-    "dev": "nodemon --watch 'src/**/*.jsx' --watch 'src/**/*.tsx' --ext 'jsx' --ext 'tsx' --exec 'npm run build && npm run preview'"
+    "preview:dev": "deps/lvgljs/lvgljs run ./build/uncompressed/main.view.js",
+    "preview:prod": "deps/lvgljs/lvgljs run ./build/compressed/main.view.js",
+    "dev": "nodemon --watch 'src/**/*.jsx' --watch 'src/**/*.tsx' --ext 'jsx' --ext 'tsx' --exec 'npm run build:dev && npm run preview:dev'"
   },
   "dependencies": {
     "buffer": "^6.0.3",
