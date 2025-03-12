@@ -2,14 +2,15 @@ const path = require("path");
 const esbuild = require("esbuild");
 const alias = require("esbuild-plugin-alias");
 const fs = require("fs");
-const outDir = "build";
+
+const buildDir = "build";
 
 async function build() {
   const manifest = JSON.parse(fs.readFileSync("manifest.json", "utf-8"));
-  const entries = manifest.entry;
+  const entries = manifest.entries;
 
-  for (const [name, entryPath] of Object.entries(entries)) {
-    const entry = path.resolve(__dirname, entryPath);
+  for (const item of entries) {
+    const entry = path.resolve(__dirname, item.entry);
 
     esbuild
       .build({
@@ -17,7 +18,10 @@ async function build() {
         bundle: true,
         platform: "neutral",
         external: ["tjs:path"],
-        outfile: path.resolve(outDir, `${name}.js`),
+        outfile: path.resolve(
+          path.join(buildDir, manifest.package_name),
+          `${item.name}.${item.type}.js`,
+        ),
         define: {
           "process.env.NODE_ENV": '"development"',
         },
@@ -27,7 +31,7 @@ async function build() {
           }),
         ],
       })
-      .then(() => console.log("Build %s complete", entryPath))
+      .then(() => console.log("Build %s complete", item))
       .catch(() => {
         process.exit(1);
       });
