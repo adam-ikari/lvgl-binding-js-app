@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node ./build.js",
-    "preview": "deps/lvgljs/lvgljs run ./build/uncompressed/main.view.js",
+    "preview": "deps/lvgljs/lvgljs run ./build/compressed/main.view.js",
     "dev": "nodemon --watch 'src/**/*.jsx' --watch 'src/**/*.tsx' --ext 'jsx' --ext 'tsx' --exec 'npm run build && npm run preview'"
   },
   "dependencies": {
@@ -13,8 +13,8 @@
     "core-js": "^3.23.2",
     "esbuild": "^0.14.43",
     "fetch-blob": "^3.2.0",
-    "nodemon": "^3.1.4",
     "lvgljs-ui": "file:deps/lvgljs-ui",
+    "nodemon": "^3.1.4",
     "react": "^16.13.1",
     "react-proxy": "^2.0.8",
     "react-reconciler": "^0.25.1",
@@ -36,6 +36,7 @@
     "@types/react-reconciler": "^0.18.0",
     "esbuild-plugin-alias": "^0.2.1",
     "glob": "^10.3.15",
-    "prettier": "^3.0.1"
+    "prettier": "^3.0.1",
+    "terser": "^5.39.0"
   }
 }
