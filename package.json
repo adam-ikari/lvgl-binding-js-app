@@ -7,7 +7,7 @@
     "build": "node ./build.js",
     "build:dev": "cross-env NODE_ENV=development node ./build.js",
     "build:prod": "cross-env NODE_ENV=production node ./build.js",
-    "preview": "deps/lvgljs/lvgljs run ./build/compressed/main.view.js",
+    "preview": "deps/lvgljs/lvgljs run ./build/uncompressed/main.view.js",
     "dev": "nodemon --watch 'src/**/*.jsx' --watch 'src/**/*.tsx' --ext 'jsx' --ext 'tsx' --exec 'npm run build && npm run preview'"
   },
   "dependencies": {
