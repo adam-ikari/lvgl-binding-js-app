@@ -1,21 +1,23 @@
 const path = require("path");
+const esbuild = require("esbuild");
 const alias = require("esbuild-plugin-alias");
-const glob = require("glob");
+const fs = require("fs");
 const outDir = "build";
 
-function build(pattern) {
-  const jsxfiles = new glob.Glob(pattern, {});
+async function build() {
+  const manifest = JSON.parse(fs.readFileSync("manifest.json", "utf-8"));
+  const entries = manifest.entry;
 
-  for (const file of jsxfiles) {
-    const entry = path.resolve(__dirname, file);
+  for (const [name, entryPath] of Object.entries(entries)) {
+    const entry = path.resolve(__dirname, entryPath);
 
-    require("esbuild")
+    esbuild
       .build({
         entryPoints: [entry],
         bundle: true,
         platform: "neutral",
         external: ["tjs:path"],
-        outfile: path.resolve(outDir, "index.js"),
+        outfile: path.resolve(outDir, `${name}.js`),
         define: {
           "process.env.NODE_ENV": '"development"',
         },
@@ -25,11 +27,11 @@ function build(pattern) {
           }),
         ],
       })
-      .then(() => console.log("Build %s complete", file))
+      .then(() => console.log("Build %s complete", entryPath))
       .catch(() => {
         process.exit(1);
       });
   }
 }
 
-build("src/index.{tsx,jsx}");
+build();

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node ./build.js",
-    "preview": "deps/lvgljs/lvgljs run /home/zhaodi-chen/project/lvgl_app/build/index.js",
+    "preview": "deps/lvgljs/lvgljs run /home/zhaodi-chen/project/lvgl_app/build/main.js",
     "dev": "nodemon --watch 'src/**/*.jsx' --watch 'src/**/*.tsx' --ext 'jsx' --ext 'tsx' --exec 'npm run build && npm run preview'"
   },
   "dependencies": {
