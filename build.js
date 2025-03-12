@@ -73,9 +73,9 @@ async function build() {
         platform: "neutral",
         external: ["tjs:path"],
         outfile: outputFile,
-        // define: {
-        //   "process.env.NODE_ENV": '"production"',
-        // },
+        define: {
+          "process.env.NODE_ENV": `"${process.env.NODE_ENV || "production"}"`,
+        },
         plugins: [
           alias({
             "@": path.resolve(__dirname, "src"),
