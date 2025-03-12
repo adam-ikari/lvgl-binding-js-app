@@ -3,7 +3,7 @@ const esbuild = require("esbuild");
 const alias = require("esbuild-plugin-alias");
 const fs = require("fs");
 
-const buildDir = "build";
+const buildDir = path.join("build", "uncompressed");
 
 async function build() {
   const manifest = JSON.parse(fs.readFileSync("manifest.json", "utf-8"));
@@ -18,10 +18,7 @@ async function build() {
         bundle: true,
         platform: "neutral",
         external: ["tjs:path"],
-        outfile: path.resolve(
-          path.join(buildDir, manifest.package_name),
-          `${item.name}.${item.type}.js`,
-        ),
+        outfile: path.resolve(buildDir, `${item.name}.${item.type}.js`),
         define: {
           "process.env.NODE_ENV": '"development"',
         },
