@@ -2,6 +2,7 @@ import { COLORS, COMMON_STYLE } from "../common_style";
 import { Button, Text } from "lvgljs-ui";
 import { StyleProps } from "lvgljs-ui/core/style";
 import React, { useMemo } from "react";
+import { ZSizeEnum } from ".";
 
 enum ZButtonType {
   Default = "default",
@@ -12,17 +13,11 @@ enum ZButtonType {
   Warning = "warning",
 }
 
-enum ZButtonSize {
-  Small = "small",
-  Default = "default",
-  Large = "large",
-}
-
 interface ZButtonProps {
   text?: string;
   style?: StyleProps;
   type?: ZButtonType;
-  size?: ZButtonSize;
+  size?: ZSizeEnum;
   onClick?: (e: any) => void;
 }
 
@@ -88,7 +83,7 @@ const ZButton = (props: ZButtonProps) => {
     text = "",
     style: propStyle = {},
     type = ZButtonType.Default,
-    size = ZButtonSize.Default,
+    size = ZSizeEnum.Default,
     onClick = (e) => {},
   } = props;
 

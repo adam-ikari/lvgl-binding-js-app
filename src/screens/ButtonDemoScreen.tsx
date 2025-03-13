@@ -1,15 +1,15 @@
-import { COLORS, COMMON_STYLE } from "@/common_style";
+import { COLORS } from "@/common_style";
 import {
   ZButton,
-  ZButtonSize,
   ZButtonType,
-  ZCard,
   ZColumn,
+  ZHeightEnum,
+  ZNavHeader,
   ZRow,
+  ZSizeEnum,
+  ZWidthEnum,
 } from "@/components";
-import { Text, View } from "lvgljs-ui";
 import React from "react";
-import { useNavigate } from "react-router-native";
 
 const buttonsData = [
   { text: "Default", type: ZButtonType.Default },
@@ -21,60 +21,43 @@ const buttonsData = [
 ];
 
 const ButtonDemoScreen = () => {
-  const navigate = useNavigate();
   return (
-    <View
+    <ZColumn
+      width={ZWidthEnum.Full}
+      height={ZHeightEnum.Full}
       style={{
-        ...COMMON_STYLE.noBorder,
-        ...COMMON_STYLE.fullHeight,
-        ...COMMON_STYLE.fullWidth,
         "background-color": COLORS.PAGE_BACKGROUND,
       }}
     >
-      <ZRow
-        style={{
-          ...COMMON_STYLE.padding20,
-          "background-color": COLORS.PAGE_BACKGROUND,
-        }}
-      >
-        <ZCard header={<Text>Button</Text>}>
-          <ZColumn>
-            <ZRow>
-              {buttonsData.map((item, index) => (
-                <ZButton
-                  key={index}
-                  size={ZButtonSize.Small}
-                  type={item.type}
-                  text={item.text}
-                />
-              ))}
-            </ZRow>
-            <ZRow>
-              {buttonsData.map((item, index) => (
-                <ZButton key={index} type={item.type} text={item.text} />
-              ))}
-            </ZRow>
-            <ZRow>
-              {buttonsData.map((item, index) => (
-                <ZButton
-                  key={index}
-                  size={ZButtonSize.Large}
-                  type={item.type}
-                  text={item.text}
-                />
-              ))}
-            </ZRow>
-          </ZColumn>
-        </ZCard>
-        <ZCard>
-          <ZColumn>
-            <ZRow>
-              <ZButton onClick={() => navigate(-1)} text="Back"></ZButton>
-            </ZRow>
-          </ZColumn>
-        </ZCard>
-      </ZRow>
-    </View>
+      <ZNavHeader withBack={true} title={"Button Demo"}></ZNavHeader>
+      <ZColumn>
+        <ZRow>
+          {buttonsData.map((item, index) => (
+            <ZButton
+              key={index}
+              size={ZSizeEnum.Small}
+              type={item.type}
+              text={item.text}
+            />
+          ))}
+        </ZRow>
+        <ZRow>
+          {buttonsData.map((item, index) => (
+            <ZButton key={index} type={item.type} text={item.text} />
+          ))}
+        </ZRow>
+        <ZRow>
+          {buttonsData.map((item, index) => (
+            <ZButton
+              key={index}
+              size={ZSizeEnum.Large}
+              type={item.type}
+              text={item.text}
+            />
+          ))}
+        </ZRow>
+      </ZColumn>
+    </ZColumn>
   );
 };
 

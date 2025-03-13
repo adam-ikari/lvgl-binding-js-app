@@ -4,7 +4,7 @@ import { View } from "lvgljs-ui";
 import React from "react";
 import { useNavigate } from "react-router-native";
 
-function HomeScreen() {
+const HomeScreen = () => {
   const navigate = useNavigate();
   return (
     <View
@@ -12,6 +12,7 @@ function HomeScreen() {
         ...COMMON_STYLE.noBorder,
         ...COMMON_STYLE.fullHeight,
         ...COMMON_STYLE.fullWidth,
+        ...COMMON_STYLE.radius0,
         "background-color": COLORS.PAGE_BACKGROUND,
       }}
     >
@@ -22,6 +23,6 @@ function HomeScreen() {
       </ZColumn>
     </View>
   );
-}
+};
 
 export default HomeScreen;
