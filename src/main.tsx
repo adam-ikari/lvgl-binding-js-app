@@ -7,12 +7,9 @@ import {
   ZColumn,
   ZRow,
 } from "@/components";
-import { createMemoryHistory } from "history";
-import { Render, Text, View } from "lvgljs-ui";
+import { Button, Render, Text, View } from "lvgljs-ui";
 import React from "react";
-
-// 创建内存历史对象
-const memoryHistory = createMemoryHistory();
+import { MemoryRouter, Route, Routes, useNavigate } from "react-router-native";
 
 const buttonsData = [
   { text: "Default", type: ZButtonType.Default },
@@ -23,7 +20,8 @@ const buttonsData = [
   { text: "Warning", type: ZButtonType.Warning },
 ];
 
-function App() {
+function HomeScreen() {
+  const navigate = useNavigate();
   return (
     <View
       style={{
@@ -71,7 +69,10 @@ function App() {
         <ZCard>
           <ZColumn>
             <ZRow>
-              <Text>Input</Text>
+              <ZButton
+                onClick={() => navigate("/detail")}
+                text="Detail"
+              ></ZButton>
             </ZRow>
           </ZColumn>
         </ZCard>
@@ -79,5 +80,26 @@ function App() {
     </View>
   );
 }
+
+const DetailScreen = () => {
+  const navigate  = useNavigate();
+  return (
+    <ZColumn>
+      <Text>Detail</Text>
+      <ZButton onClick={() => navigate(-1)} text="Detail"></ZButton>
+    </ZColumn>
+  );
+};
+
+const App = () => {
+  return (
+    <MemoryRouter initialEntries={["/"]} initialIndex={0}>
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/detail" element={<DetailScreen />} />
+      </Routes>
+    </MemoryRouter>
+  );
+};
 
 Render.render(<App />);
