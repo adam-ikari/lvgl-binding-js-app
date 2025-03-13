@@ -1,29 +1,21 @@
 import { ZButton, ZRow, ZSizeEnum, ZText, ZWidthEnum } from ".";
-import { COLORS } from "@/common_style";
 import React from "react";
 import { useNavigate } from "react-router-native";
 
-interface NavHeaderProps {
+interface ZNavHeaderProps {
   withBack?: boolean;
   title?: string;
 }
 
-const NavHeader = (props: NavHeaderProps) => {
+const ZNavHeader = (props: ZNavHeaderProps) => {
   const { withBack = false, title } = props;
   const navigate = useNavigate();
   return (
-    <ZRow
-      width={ZWidthEnum.Full}
-      style={{
-        "background-color": COLORS.PRIMARY,
-      }}
-    >
+    <ZRow width={ZWidthEnum.Full}>
       {withBack && (
-        <ZButton
-          text="back"
-          size={ZSizeEnum.Small}
-          onClick={() => navigate(-1)}
-        ></ZButton>
+        <ZButton size={ZSizeEnum.Small} text onClick={() => navigate(-1)}>
+          back
+        </ZButton>
       )}
       {title && (
         <ZText
@@ -38,4 +30,5 @@ const NavHeader = (props: NavHeaderProps) => {
   );
 };
 
-export default NavHeader;
+export type { ZNavHeaderProps };
+export { ZNavHeader };

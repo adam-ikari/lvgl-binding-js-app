@@ -54,5 +54,4 @@ const ZCard = (props: ZCardProps) => {
 };
 
 export type { ZCardProps };
-
-export default ZCard;
+export { ZCard };

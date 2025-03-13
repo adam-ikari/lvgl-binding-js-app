@@ -1,17 +1,12 @@
+import { ZSizeEnum } from ".";
 import { Text } from "lvgljs-ui";
 import { StyleProps } from "lvgljs-ui/core/style";
 import React from "react";
 
-enum ZTextSize {
-  Small = "small",
-  Default = "default",
-  Large = "large",
-}
-
 interface ZTextProps {
   children?: string;
   style?: StyleProps;
-  size?: number | ZTextSize;
+  size?: number | ZSizeEnum;
 }
 
 const ZText = (props: ZTextProps) => {
@@ -31,4 +26,4 @@ const ZText = (props: ZTextProps) => {
   }
 };
 
-export default ZText;
+export { ZText, ZTextProps };

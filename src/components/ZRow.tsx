@@ -35,7 +35,7 @@ const ZRow = (props: ZRowProps) => {
     height = ZHeightEnum.Auto,
     style: propStyle = {},
   } = props;
-  console.log(props)
+  console.log(props);
 
   const computedStyle = useMemo(() => {
     return {
@@ -49,4 +49,5 @@ const ZRow = (props: ZRowProps) => {
   return <View style={computedStyle}>{children}</View>;
 };
 
-export default ZRow;
+export type { ZRowProps };
+export { ZRow };

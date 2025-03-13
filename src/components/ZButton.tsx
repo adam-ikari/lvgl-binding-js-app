@@ -1,8 +1,8 @@
+import { ZSizeEnum } from ".";
 import { COLORS, COMMON_STYLE } from "../common_style";
 import { Button, Text } from "lvgljs-ui";
 import { StyleProps } from "lvgljs-ui/core/style";
 import React, { useMemo } from "react";
-import { ZSizeEnum } from ".";
 
 enum ZButtonType {
   Default = "default",
@@ -14,15 +14,16 @@ enum ZButtonType {
 }
 
 interface ZButtonProps {
-  text?: string;
+  children?: string;
   style?: StyleProps;
   type?: ZButtonType;
   size?: ZSizeEnum;
+  text?: boolean;
+  disable?: boolean;
   onClick?: (e: any) => void;
 }
 
 const baseStyle: StyleProps = {
-  "border-width": 1,
   "border-radius": 4,
   "border-color": "#dedfe2",
   "shadow-width": 0,
@@ -80,19 +81,27 @@ const sizeStyleMap: Record<string, StyleProps> = {
 
 const ZButton = (props: ZButtonProps) => {
   const {
-    text = "",
+    children = "",
     style: propStyle = {},
     type = ZButtonType.Default,
     size = ZSizeEnum.Default,
+    text = false,
+    disable = false,
     onClick = (e) => {},
   } = props;
 
   const computedStyle = useMemo(() => {
-    return {
+    const style = {
       ...baseStyle,
       ...typeStyleMap[type],
       ...sizeStyleMap[size],
     };
+    if (text) {
+      style["border-width"] = 0;
+    } else {
+      style["border-width"] = 1;
+    }
+    return style;
   }, [type, size]);
 
   return (
@@ -103,11 +112,10 @@ const ZButton = (props: ZButtonProps) => {
       }}
       onClick={onClick}
     >
-      <Text>{text}</Text>
+      <Text>{children}</Text>
     </Button>
   );
 };
 
 export type { ZButtonProps };
-export { ZButtonSize, ZButtonType };
-export default ZButton;
+export { ZButton, ZButtonType };

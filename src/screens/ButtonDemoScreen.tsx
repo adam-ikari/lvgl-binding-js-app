@@ -33,27 +33,23 @@ const ButtonDemoScreen = () => {
       <ZColumn>
         <ZRow>
           {buttonsData.map((item, index) => (
-            <ZButton
-              key={index}
-              size={ZSizeEnum.Small}
-              type={item.type}
-              text={item.text}
-            />
+            <ZButton key={index} size={ZSizeEnum.Small} type={item.type}>
+              {item.text}
+            </ZButton>
           ))}
         </ZRow>
         <ZRow>
           {buttonsData.map((item, index) => (
-            <ZButton key={index} type={item.type} text={item.text} />
+            <ZButton key={index} type={item.type}>
+              {item.text}
+            </ZButton>
           ))}
         </ZRow>
         <ZRow>
           {buttonsData.map((item, index) => (
-            <ZButton
-              key={index}
-              size={ZSizeEnum.Large}
-              type={item.type}
-              text={item.text}
-            />
+            <ZButton key={index} size={ZSizeEnum.Large} type={item.type}>
+              {item.text}
+            </ZButton>
           ))}
         </ZRow>
       </ZColumn>

@@ -18,7 +18,7 @@ const HomeScreen = () => {
     >
       <ZColumn>
         <ZRow>
-          <ZButton onClick={() => navigate("/button")} text="Button"></ZButton>
+          <ZButton onClick={() => navigate("/button")}>Button Demo</ZButton>
         </ZRow>
       </ZColumn>
     </View>

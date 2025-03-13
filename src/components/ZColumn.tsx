@@ -49,4 +49,4 @@ const ZColumn = (props: ZColumnProps) => {
 };
 
 export type { ZColumnProps };
-export default ZColumn;
+export { ZColumn };
