@@ -7,8 +7,12 @@ import {
   ZColumn,
   ZRow,
 } from "@/components";
+import { createMemoryHistory } from "history";
 import { Render, Text, View } from "lvgljs-ui";
 import React from "react";
+
+// 创建内存历史对象
+const memoryHistory = createMemoryHistory();
 
 const buttonsData = [
   { text: "Default", type: ZButtonType.Default },
