@@ -34,28 +34,67 @@ const baseStyle: StyleProps = {
   ...COMMON_STYLE.alignItemsCenter,
 };
 
-const typeStyleMap: Record<string, StyleProps> = {
+const normalStyleMap: Record<string, StyleProps> = {
   primary: {
+    "border-width": 1,
     "background-color": COLORS.PRIMARY,
     "text-color": COLORS.WHITE,
   },
   success: {
+    "border-width": 1,
     "background-color": COLORS.SUCCESS,
     "text-color": COLORS.WHITE,
   },
   info: {
+    "border-width": 1,
     "background-color": COLORS.INFO,
     "text-color": COLORS.WHITE,
   },
   danger: {
+    "border-width": 1,
     "background-color": COLORS.DANGER,
     "text-color": COLORS.WHITE,
   },
   warning: {
+    "border-width": 1,
     "background-color": COLORS.WARNING,
     "text-color": COLORS.WHITE,
   },
   default: {
+    "border-width": 1,
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.REGULAR_TEXT,
+  },
+};
+
+const textStyleMap: Record<string, StyleProps> = {
+  primary: {
+    "border-width": 0,
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.PRIMARY,
+  },
+  success: {
+    "border-width": 0,
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.SUCCESS,
+  },
+  info: {
+    "border-width": 0,
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.INFO,
+  },
+  danger: {
+    "border-width": 0,
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.DANGER,
+  },
+  warning: {
+    "border-width": 0,
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.WARNING,
+  },
+  default: {
+    "border-width": 0,
     "background-color": COLORS.WHITE,
     "text-color": COLORS.REGULAR_TEXT,
   },
@@ -91,17 +130,19 @@ const ZButton = (props: ZButtonProps) => {
   } = props;
 
   const computedStyle = useMemo(() => {
-    const style = {
-      ...baseStyle,
-      ...typeStyleMap[type],
-      ...sizeStyleMap[size],
-    };
     if (text) {
-      style["border-width"] = 0;
+      return {
+        ...baseStyle,
+        ...textStyleMap[type],
+        ...sizeStyleMap[size],
+      };
     } else {
-      style["border-width"] = 1;
+      return {
+        ...baseStyle,
+        ...normalStyleMap[type],
+        ...sizeStyleMap[size],
+      };
     }
-    return style;
   }, [type, size]);
 
   return (

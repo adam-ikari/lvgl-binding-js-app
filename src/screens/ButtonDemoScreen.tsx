@@ -7,6 +7,7 @@ import {
   ZNavHeader,
   ZRow,
   ZSizeEnum,
+  ZText,
   ZWidthEnum,
 } from "@/components";
 import React from "react";
@@ -31,6 +32,7 @@ const ButtonDemoScreen = () => {
     >
       <ZNavHeader withBack={true} title={"Button Demo"}></ZNavHeader>
       <ZColumn>
+        <ZText size={ZSizeEnum.Large}>Size</ZText>
         <ZRow>
           {buttonsData.map((item, index) => (
             <ZButton key={index} size={ZSizeEnum.Small} type={item.type}>
@@ -48,6 +50,14 @@ const ButtonDemoScreen = () => {
         <ZRow>
           {buttonsData.map((item, index) => (
             <ZButton key={index} size={ZSizeEnum.Large} type={item.type}>
+              {item.text}
+            </ZButton>
+          ))}
+        </ZRow>
+        <ZText size={ZSizeEnum.Large}>Text Button</ZText>
+        <ZRow>
+          {buttonsData.map((item, index) => (
+            <ZButton key={index} type={item.type} text>
               {item.text}
             </ZButton>
           ))}
