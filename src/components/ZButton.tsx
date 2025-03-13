@@ -23,6 +23,7 @@ interface ZButtonProps {
   style?: StyleProps;
   type?: ZButtonType;
   size?: ZButtonSize;
+  onClick?: (e: any) => void;
 }
 
 const baseStyle: StyleProps = {
@@ -88,6 +89,7 @@ const ZButton = (props: ZButtonProps) => {
     style: propStyle = {},
     type = ZButtonType.Default,
     size = ZButtonSize.Default,
+    onClick = (e) => {},
   } = props;
 
   const computedStyle = useMemo(() => {
@@ -104,6 +106,7 @@ const ZButton = (props: ZButtonProps) => {
         ...computedStyle,
         ...propStyle,
       }}
+      onClick={onClick}
     >
       <Text>{text}</Text>
     </Button>

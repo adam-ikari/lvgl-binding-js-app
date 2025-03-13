@@ -1,11 +1,29 @@
 const path = require("path");
-const esbuild = require("esbuild");
-const alias = require("esbuild-plugin-alias");
 const fs = require("fs");
 const { minify } = require("terser");
 
+const esbuild = require("esbuild");
+const alias = require("esbuild-plugin-alias");
+
 const buildDir = path.join("build", "uncompressed");
 const compressedDir = path.join("build", "compressed");
+
+const excludeReactNativeModules = {
+  name: "exclude-react-native-modules",
+  setup(build) {
+    build.onResolve({ filter: new RegExp(`^.*react-native.*$`) }, (args) => {
+      return {
+        path: args.path,
+        namespace: "excluded-modules",
+      };
+    });
+
+    build.onLoad({ filter: /.*/, namespace: "excluded-modules" }, () => ({
+      contents: "module.exports = {};",
+      loader: "js",
+    }));
+  },
+};
 
 async function compressFile(inputPath, outputPath) {
   const code = fs.readFileSync(inputPath, "utf8");
@@ -71,8 +89,9 @@ async function build() {
         entryPoints: [entry],
         bundle: true,
         platform: "neutral",
-        external: ["tjs:path"],
+        external: ["tjs:path", "react-native"],
         outfile: outputFile,
+        mainFields: ["module", "main"],
         define: {
           "process.env.NODE_ENV": `"${process.env.NODE_ENV || "development"}"`,
         },
@@ -80,6 +99,7 @@ async function build() {
           alias({
             "@": path.resolve(__dirname, "src"),
           }),
+          excludeReactNativeModules,
         ],
       })
       .then(async () => {
