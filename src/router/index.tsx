@@ -1,5 +1,6 @@
 import ButtonDemoScreen from "@/screens/ButtonDemoScreen";
 import HomeScreen from "@/screens/HomeScreen";
+import StateDemoScreen from "@/screens/StateDemoScreen";
 import React from "react";
 import { MemoryRouter, Route, Routes } from "react-router-native";
 
@@ -9,6 +10,7 @@ const AppRouter = () => {
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/button" element={<ButtonDemoScreen />} />
+        <Route path="/state" element={<StateDemoScreen />} />
       </Routes>
     </MemoryRouter>
   );
