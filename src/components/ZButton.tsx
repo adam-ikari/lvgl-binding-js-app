@@ -1,3 +1,4 @@
+import { ZSizeEnum } from ".";
 import { COLORS, COMMON_STYLE } from "../common_style";
 import { Button, Text } from "lvgljs-ui";
 import { StyleProps } from "lvgljs-ui/core/style";
@@ -12,22 +13,17 @@ enum ZButtonType {
   Warning = "warning",
 }
 
-enum ZButtonSize {
-  Small = "small",
-  Default = "default",
-  Large = "large",
-}
-
 interface ZButtonProps {
-  text?: string;
+  children?: string;
   style?: StyleProps;
   type?: ZButtonType;
-  size?: ZButtonSize;
+  size?: ZSizeEnum;
+  text?: boolean;
+  disable?: boolean;
   onClick?: (e: any) => void;
 }
 
 const baseStyle: StyleProps = {
-  "border-width": 1,
   "border-radius": 4,
   "border-color": "#dedfe2",
   "shadow-width": 0,
@@ -38,28 +34,67 @@ const baseStyle: StyleProps = {
   ...COMMON_STYLE.alignItemsCenter,
 };
 
-const typeStyleMap: Record<string, StyleProps> = {
+const normalStyleMap: Record<string, StyleProps> = {
   primary: {
+    "border-width": 1,
     "background-color": COLORS.PRIMARY,
     "text-color": COLORS.WHITE,
   },
   success: {
+    "border-width": 1,
     "background-color": COLORS.SUCCESS,
     "text-color": COLORS.WHITE,
   },
   info: {
+    "border-width": 1,
     "background-color": COLORS.INFO,
     "text-color": COLORS.WHITE,
   },
   danger: {
+    "border-width": 1,
     "background-color": COLORS.DANGER,
     "text-color": COLORS.WHITE,
   },
   warning: {
+    "border-width": 1,
     "background-color": COLORS.WARNING,
     "text-color": COLORS.WHITE,
   },
   default: {
+    "border-width": 1,
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.REGULAR_TEXT,
+  },
+};
+
+const textStyleMap: Record<string, StyleProps> = {
+  primary: {
+    "border-width": 0,
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.PRIMARY,
+  },
+  success: {
+    "border-width": 0,
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.SUCCESS,
+  },
+  info: {
+    "border-width": 0,
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.INFO,
+  },
+  danger: {
+    "border-width": 0,
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.DANGER,
+  },
+  warning: {
+    "border-width": 0,
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.WARNING,
+  },
+  default: {
+    "border-width": 0,
     "background-color": COLORS.WHITE,
     "text-color": COLORS.REGULAR_TEXT,
   },
@@ -85,19 +120,29 @@ const sizeStyleMap: Record<string, StyleProps> = {
 
 const ZButton = (props: ZButtonProps) => {
   const {
-    text = "",
+    children = "",
     style: propStyle = {},
     type = ZButtonType.Default,
-    size = ZButtonSize.Default,
+    size = ZSizeEnum.Default,
+    text = false,
+    disable = false,
     onClick = (e) => {},
   } = props;
 
   const computedStyle = useMemo(() => {
-    return {
-      ...baseStyle,
-      ...typeStyleMap[type],
-      ...sizeStyleMap[size],
-    };
+    if (text) {
+      return {
+        ...baseStyle,
+        ...textStyleMap[type],
+        ...sizeStyleMap[size],
+      };
+    } else {
+      return {
+        ...baseStyle,
+        ...normalStyleMap[type],
+        ...sizeStyleMap[size],
+      };
+    }
   }, [type, size]);
 
   return (
@@ -108,11 +153,10 @@ const ZButton = (props: ZButtonProps) => {
       }}
       onClick={onClick}
     >
-      <Text>{text}</Text>
+      <Text>{children}</Text>
     </Button>
   );
 };
 
 export type { ZButtonProps };
-export { ZButtonSize, ZButtonType };
-export default ZButton;
+export { ZButton, ZButtonType };

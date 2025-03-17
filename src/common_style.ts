@@ -82,6 +82,9 @@ const COMMON_STYLE: Record<string, StyleProps> = {
   fontSizeLarge: {
     "font-size": 16,
   },
+  radius0: {
+    "border-radius": 0,
+  },
 };
 
 const COLORS: Record<string, ColorType> = {
