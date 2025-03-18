@@ -1,13 +1,6 @@
 import { COLORS } from "@/common_style";
-import {
-  ZButton,
-  ZColumn,
-  ZHeightEnum,
-  ZNavHeader,
-  ZRow,
-  ZText,
-  ZWidthEnum,
-} from "@/components";
+import { ZButton, ZColumn, ZRow, ZText } from "@/components";
+import { ZNavHeaderLayout } from "@/layouts";
 import React, { useState } from "react";
 import { v1 as uuidv1 } from "uuid";
 
@@ -32,12 +25,7 @@ function initItems() {
 const ListDemoScreen = () => {
   const [items, setItems] = useState(initItems);
   return (
-    <ZColumn
-      width={ZWidthEnum.Full}
-      height={ZHeightEnum.Full}
-      style={{ ...style.BackgroundStyle }}
-    >
-      <ZNavHeader withBack={true} title={"List Demo"}></ZNavHeader>
+    <ZNavHeaderLayout withBack={true} title={"List Demo"}>
       <ZColumn style={{ ...style.BackgroundStyle }}>
         {items.map((item) => (
           <ZRow key={item.id} style={{ ...style.BackgroundStyle }}>
@@ -83,7 +71,7 @@ const ListDemoScreen = () => {
           +1
         </ZButton>
       </ZRow>
-    </ZColumn>
+    </ZNavHeaderLayout>
   );
 };
 

@@ -30,7 +30,6 @@ const baseStyle: StyleProps = {
   ...COMMON_STYLE.minWidth40,
   ...COMMON_STYLE.fontSizeDefault,
   ...COMMON_STYLE.flexRow,
-  ...COMMON_STYLE.juestifyContentCenter,
   ...COMMON_STYLE.alignItemsCenter,
 };
 
@@ -143,7 +142,7 @@ const ZButton = (props: ZButtonProps) => {
         ...sizeStyleMap[size],
       };
     }
-  }, [type, size]);
+  }, [type, size, text]);
 
   return (
     <Button

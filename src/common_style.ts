@@ -10,7 +10,7 @@ const COMMON_STYLE: Record<string, StyleProps> = {
     display: "flex",
     "flex-direction": "column",
   },
-  juestifyContentCenter: {
+  justifyContentCenter: {
     "justify-content": "center",
   },
   alignItemsCenter: {
