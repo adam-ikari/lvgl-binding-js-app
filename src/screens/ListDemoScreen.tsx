@@ -11,6 +11,12 @@ import {
 import React, { useState } from "react";
 import { v1 as uuidv1 } from "uuid";
 
+const style = {
+  BackgroundStyle: {
+    "background-color": COLORS.PAGE_BACKGROUND,
+  },
+};
+
 function initItems() {
   const items = [];
   for (let i = 0; i < 5; i++) {
@@ -29,23 +35,12 @@ const ListDemoScreen = () => {
     <ZColumn
       width={ZWidthEnum.Full}
       height={ZHeightEnum.Full}
-      style={{
-        "background-color": COLORS.PAGE_BACKGROUND,
-      }}
+      style={{ ...style.BackgroundStyle }}
     >
       <ZNavHeader withBack={true} title={"List Demo"}></ZNavHeader>
-      <ZColumn
-        style={{
-          "background-color": COLORS.PAGE_BACKGROUND,
-        }}
-      >
+      <ZColumn style={{ ...style.BackgroundStyle }}>
         {items.map((item) => (
-          <ZRow
-            key={item.id}
-            style={{
-              "background-color": COLORS.PAGE_BACKGROUND,
-            }}
-          >
+          <ZRow key={item.id} style={{ ...style.BackgroundStyle }}>
             <ZText>{item.text}</ZText>
             <ZButton
               onClick={() => {
@@ -59,11 +54,7 @@ const ListDemoScreen = () => {
           </ZRow>
         ))}
       </ZColumn>
-      <ZRow
-        style={{
-          "background-color": COLORS.PAGE_BACKGROUND,
-        }}
-      >
+      <ZRow style={{ ...style.BackgroundStyle }}>
         <ZButton
           onClick={() => {
             if (items.length > 0) {

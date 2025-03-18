@@ -1,6 +1,6 @@
 import {
   ZButton,
-  ZButtonType,
+  ZButtonTypeEnum,
   ZColumn,
   ZRow,
   ZSizeEnum,
@@ -11,12 +11,12 @@ import { NavHeaderLayout } from "@/layouts"
 import React from "react";
 
 const buttonsData = [
-  { text: "Default", type: ZButtonType.Default },
-  { text: "Primary", type: ZButtonType.Primary },
-  { text: "Success", type: ZButtonType.Success },
-  { text: "Info", type: ZButtonType.Info },
-  { text: "Danger", type: ZButtonType.Danger },
-  { text: "Warning", type: ZButtonType.Warning },
+  { text: "Default", type: ZButtonTypeEnum.Default },
+  { text: "Primary", type: ZButtonTypeEnum.Primary },
+  { text: "Success", type: ZButtonTypeEnum.Success },
+  { text: "Info", type: ZButtonTypeEnum.Info },
+  { text: "Danger", type: ZButtonTypeEnum.Danger },
+  { text: "Warning", type: ZButtonTypeEnum.Warning },
 ];
 
 const ButtonDemoScreen = () => {

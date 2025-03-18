@@ -4,7 +4,7 @@ import { Button, Text } from "lvgljs-ui";
 import { StyleProps } from "lvgljs-ui/core/style";
 import React, { useMemo } from "react";
 
-enum ZButtonType {
+enum ZButtonTypeEnum {
   Default = "default",
   Primary = "primary",
   Success = "success",
@@ -16,7 +16,7 @@ enum ZButtonType {
 interface ZButtonProps {
   children?: string;
   style?: StyleProps;
-  type?: ZButtonType;
+  type?: ZButtonTypeEnum;
   size?: ZSizeEnum;
   text?: boolean;
   disable?: boolean;
@@ -122,7 +122,7 @@ const ZButton = (props: ZButtonProps) => {
   const {
     children = "",
     style: propStyle = {},
-    type = ZButtonType.Default,
+    type = ZButtonTypeEnum.Default,
     size = ZSizeEnum.Default,
     text = false,
     disable = false,
@@ -159,4 +159,4 @@ const ZButton = (props: ZButtonProps) => {
 };
 
 export type { ZButtonProps };
-export { ZButton, ZButtonType };
+export { ZButton, ZButtonTypeEnum };
