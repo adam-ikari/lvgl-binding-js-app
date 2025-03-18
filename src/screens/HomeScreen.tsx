@@ -23,6 +23,9 @@ const HomeScreen = () => {
         <ZRow>
           <ZButton onClick={() => navigate("/state")}>State Demo</ZButton>
         </ZRow>
+        <ZRow>
+          <ZButton onClick={() => navigate("/list")}>List Demo</ZButton>
+        </ZRow>
       </ZColumn>
     </View>
   );
