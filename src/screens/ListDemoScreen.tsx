@@ -40,7 +40,23 @@ const ListDemoScreen = () => {
         }}
       >
         {items.map((item) => (
-          <ZText key={item.id}>{item.text}</ZText>
+          <ZRow
+            key={item.id}
+            style={{
+              "background-color": COLORS.PAGE_BACKGROUND,
+            }}
+          >
+            <ZText>{item.text}</ZText>
+            <ZButton
+              onClick={() => {
+                const new_todos = items.filter((todo) => todo.id !== item.id);
+                console.log(new_todos);
+                setItems(new_todos);
+              }}
+            >
+              x
+            </ZButton>
+          </ZRow>
         ))}
       </ZColumn>
       <ZRow
