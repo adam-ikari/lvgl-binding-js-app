@@ -1,15 +1,13 @@
-import { COLORS } from "@/common_style";
 import {
   ZButton,
   ZButtonType,
   ZColumn,
-  ZHeightEnum,
-  ZNavHeader,
   ZRow,
   ZSizeEnum,
   ZText,
-  ZWidthEnum,
 } from "@/components";
+import { NavHeaderLayout } from "@/layouts"
+
 import React from "react";
 
 const buttonsData = [
@@ -23,14 +21,7 @@ const buttonsData = [
 
 const ButtonDemoScreen = () => {
   return (
-    <ZColumn
-      width={ZWidthEnum.Full}
-      height={ZHeightEnum.Full}
-      style={{
-        "background-color": COLORS.PAGE_BACKGROUND,
-      }}
-    >
-      <ZNavHeader withBack={true} title={"Button Demo"}></ZNavHeader>
+    <NavHeaderLayout withBack={true} title={"Button Demo"}>
       <ZColumn>
         <ZText size={ZSizeEnum.Large}>Size</ZText>
         <ZRow>
@@ -63,7 +54,7 @@ const ButtonDemoScreen = () => {
           ))}
         </ZRow>
       </ZColumn>
-    </ZColumn>
+    </NavHeaderLayout>
   );
 };
 
