@@ -8,7 +8,6 @@ const StateDemoScreen = () => {
     <ZNavHeaderLayout withBack={true} title={"State Demo"}>
       <ZText>{`${count}`}</ZText>
       <ZRow>
-        <ZButton onClick={() => setCount(count + 1)}>+1</ZButton>
         <ZButton
           onClick={() => {
             if (count > 0) {
@@ -18,6 +17,7 @@ const StateDemoScreen = () => {
         >
           -1
         </ZButton>
+        <ZButton onClick={() => setCount(count + 1)}>+1</ZButton>
         <ZButton onClick={() => setCount(0)}>Reset</ZButton>
       </ZRow>
     </ZNavHeaderLayout>
