@@ -8,7 +8,7 @@ interface ZNavHeaderLayoutProps {
   withBack?: boolean;
 }
 
-const ZNavHeaderLayout = (props: NavHeaderLayoutProps) => {
+const ZNavHeaderLayout = (props: ZNavHeaderLayoutProps) => {
   const { children, title = "", withBack = false } = props;
   return (
     <ZColumn
