@@ -16,13 +16,16 @@ const ZNavHeaderLayout = (props: ZNavHeaderLayoutProps) => {
       height={ZHeightEnum.Full}
       style={{
         "background-color": COLORS.PAGE_BACKGROUND,
+        overflow: "hidden",
       }}
     >
       <ZNavHeader withBack={withBack} title={title}></ZNavHeader>
       <ZColumn
+        width={ZWidthEnum.Full}
         style={{
           ...COMMON_STYLE.padding20,
           "background-color": COLORS.PAGE_BACKGROUND,
+          "flex-grow": 1,
         }}
       >
         {children}

@@ -1,6 +1,6 @@
 import { COLORS, COMMON_STYLE } from "@/common_style";
 import { ZButton, ZButtonTypeEnum, ZColumn, ZRow } from "@/components";
-import { View } from "lvgljs-ui";
+import { ZNavHeaderLayout } from "@/layouts";
 import React from "react";
 import { useNavigate } from "react-router-native";
 
@@ -13,55 +13,44 @@ const style = {
 const HomeScreen = () => {
   const navigate = useNavigate();
   return (
-    <View
-      style={{
-        ...COMMON_STYLE.noBorder,
-        ...COMMON_STYLE.fullHeight,
-        ...COMMON_STYLE.fullWidth,
-        ...COMMON_STYLE.radius0,
-        ...style.BackgroundStyle,
-      }}
-    >
-      <ZColumn
+    <ZNavHeaderLayout title="Home">
+      <ZRow
         style={{
           ...style.BackgroundStyle,
         }}
       >
-        <ZRow
-          style={{
-            ...style.BackgroundStyle,
-          }}
+        <ZButton
+          type={ZButtonTypeEnum.Primary}
+          onClick={() => navigate("/button")}
         >
-          <ZButton
-            type={ZButtonTypeEnum.Primary}
-            onClick={() => navigate("/button")}
-          >
-            Button Demo
-          </ZButton>
-        </ZRow>
-        <ZRow
-          style={{
-            ...style.BackgroundStyle,
-          }}
+          Button Demo
+        </ZButton>
+      </ZRow>
+      <ZRow
+        style={{
+          ...style.BackgroundStyle,
+        }}
+      >
+        <ZButton
+          type={ZButtonTypeEnum.Primary}
+          onClick={() => navigate("/state")}
         >
-          <ZButton
-            type={ZButtonTypeEnum.Primary}
-            onClick={() => navigate("/state")}
-          >
-            State Demo
-          </ZButton>
-        </ZRow>
-        <ZRow
-          style={{
-            ...style.BackgroundStyle,
-          }}
+          State Demo
+        </ZButton>
+      </ZRow>
+      <ZRow
+        style={{
+          ...style.BackgroundStyle,
+        }}
+      >
+        <ZButton
+          type={ZButtonTypeEnum.Primary}
+          onClick={() => navigate("/list")}
         >
-          <ZButton type={ZButtonTypeEnum.Primary} onClick={() => navigate("/list")}>
-            List Demo
-          </ZButton>
-        </ZRow>
-      </ZColumn>
-    </View>
+          List Demo
+        </ZButton>
+      </ZRow>
+    </ZNavHeaderLayout>
   );
 };
 

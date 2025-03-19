@@ -1,11 +1,4 @@
-import {
-  ZButton,
-  ZButtonTypeEnum,
-  ZColumn,
-  ZRow,
-  ZSizeEnum,
-  ZText,
-} from "@/components";
+import { ZButton, ZButtonTypeEnum, ZRow, ZSizeEnum, ZText } from "@/components";
 import { ZNavHeaderLayout } from "@/layouts";
 import React from "react";
 

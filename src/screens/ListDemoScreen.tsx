@@ -12,7 +12,7 @@ const style = {
 
 function initItems() {
   const items = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 10; i++) {
     const uuid = uuidv1();
     items.push({
       id: uuid,
