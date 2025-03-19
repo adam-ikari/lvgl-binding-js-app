@@ -1,4 +1,5 @@
 import { ZButton, ZRow, ZSizeEnum, ZText, ZWidthEnum } from ".";
+import useTime from "@/hooks/time";
 import React from "react";
 import { useNavigate } from "react-router-native";
 
@@ -10,6 +11,7 @@ interface ZNavHeaderProps {
 const ZNavHeader = (props: ZNavHeaderProps) => {
   const { withBack = false, title } = props;
   const navigate = useNavigate();
+  const time = useTime();
   return (
     <ZRow width={ZWidthEnum.Full}>
       {withBack && (
@@ -26,6 +28,7 @@ const ZNavHeader = (props: ZNavHeaderProps) => {
           {title}
         </ZText>
       )}
+      <ZText>{`${time}`}</ZText>
     </ZRow>
   );
 };
