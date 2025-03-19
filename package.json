@@ -15,6 +15,7 @@
   "dependencies": {
     "buffer": "^6.0.3",
     "core-js": "^3.23.2",
+    "dayjs": "^1.11.13",
     "esbuild": "^0.25.1",
     "fetch-blob": "^3.2.0",
     "lvgljs-ui": "file:deps/lvgljs-ui",

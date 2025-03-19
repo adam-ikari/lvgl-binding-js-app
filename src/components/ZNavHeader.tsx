@@ -11,7 +11,7 @@ interface ZNavHeaderProps {
 const ZNavHeader = (props: ZNavHeaderProps) => {
   const { withBack = false, title } = props;
   const navigate = useNavigate();
-  const time = useTime();
+  const time = useTime({format:"YYYY-MM-DD HH:mm:ss"});
   return (
     <ZRow width={ZWidthEnum.Full}>
       {withBack && (
