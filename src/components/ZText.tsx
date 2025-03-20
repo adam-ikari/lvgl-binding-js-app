@@ -1,18 +1,17 @@
-import { ZSizeEnum } from ".";
+import { ZSizeEnum, ZStyleProps } from ".";
 import { COMMON_STYLE } from "../common_style";
 import { Text } from "lvgljs-ui";
-import { StyleProps } from "lvgljs-ui/core/style";
 import React, { useMemo } from "react";
 
 interface ZTextProps {
   children?: string;
-  style?: StyleProps;
+  style?: ZStyleProps;
   size?: ZSizeEnum;
 }
 
-const baseStyle: StyleProps = {};
+const baseStyle: ZStyleProps = {};
 
-const sizeStyleMap: Record<string, StyleProps> = {
+const sizeStyleMap: Record<string, ZStyleProps> = {
   small: {
     ...COMMON_STYLE.fontSizeSmall,
   },
@@ -25,28 +24,28 @@ const sizeStyleMap: Record<string, StyleProps> = {
 };
 
 const ZText = (props: ZTextProps) => {
-  const { children, style: propStyle = {}, size = ZSizeEnum.Default } = props;
+  const {
+    children = "",
+    style: propStyle = {},
+    size = ZSizeEnum.Default,
+  } = props;
 
-  if (children == undefined) {
-    return null;
-  } else {
-    const computedStyle = useMemo(() => {
-      return {
-        ...baseStyle,
-        ...sizeStyleMap[size],
-      };
-    }, [size]);
-    return (
-      <Text
-        style={{
-          ...computedStyle,
-          ...propStyle,
-        }}
-      >
-        {children}
-      </Text>
-    );
-  }
+  const computedStyle = useMemo(() => {
+    return {
+      ...baseStyle,
+      ...sizeStyleMap[size],
+    };
+  }, [size]);
+  return (
+    <Text
+      style={{
+        ...computedStyle,
+        ...propStyle,
+      }}
+    >
+      {children}
+    </Text>
+  );
 };
 
 export { ZText, ZTextProps };

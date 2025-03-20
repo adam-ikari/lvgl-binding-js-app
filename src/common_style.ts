@@ -1,6 +1,11 @@
 import { StyleProps } from "lvgljs-ui/core/style";
 import { ColorType } from "lvgljs-ui/core/style/color";
 
+const CONSTANTS = {
+  MIN_HEIGHT_32: 32,
+  MAX_RADIUS: 0x7fff,
+};
+
 const COMMON_STYLE: Record<string, StyleProps> = {
   flexRow: {
     display: "flex",
@@ -128,4 +133,4 @@ const COLORS: Record<string, ColorType> = {
   GREY_DARK: "#DCDCDC", // 深灰
 };
 
-export { COMMON_STYLE, COLORS };
+export { COMMON_STYLE, COLORS, CONSTANTS };

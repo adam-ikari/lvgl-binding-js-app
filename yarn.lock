@@ -4142,6 +4142,11 @@ queue@6.0.2:
   dependencies:
     inherits "~2.0.3"
 
+radash@^12.1.0:
+  version "12.1.0"
+  resolved "https://registry.npmmirror.com/radash/-/radash-12.1.0.tgz#a15a5d745bfe3c3a6428148a606000aefd238560"
+  integrity sha512-b0Zcf09AhqKS83btmUeYBS8tFK7XL2e3RvLmZcm0sTdF1/UUlHSsjXdCcWNxe7yfmAlPve5ym0DmKGtTzP6kVQ==
+
 randombytes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmmirror.com/randombytes/-/randombytes-2.1.0.tgz"

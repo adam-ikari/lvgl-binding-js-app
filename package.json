@@ -10,7 +10,7 @@
     "preview": "deps/lvgljs/lvgljs run ./build/uncompressed/main.view.js",
     "preview:dev": "deps/lvgljs/lvgljs run ./build/uncompressed/main.view.js",
     "preview:prod": "deps/lvgljs/lvgljs run ./build/compressed/main.view.js",
-    "dev": "nodemon --watch 'src/**/*.jsx' --watch 'src/**/*.tsx' --ext 'jsx' --ext 'tsx' --exec 'npm run build:dev && npm run preview:dev'"
+    "dev": "nodemon --watch 'src/**/*.jsx' --watch 'src/**/*.tsx' --watch 'src/**/*.js' --watch 'src/**/*.ts' --ext 'jsx' --ext 'tsx' --exec 'npm run build:dev && npm run preview:dev'"
   },
   "dependencies": {
     "buffer": "^6.0.3",
@@ -20,6 +20,7 @@
     "fetch-blob": "^3.2.0",
     "lvgljs-ui": "file:deps/lvgljs-ui",
     "nodemon": "^3.1.4",
+    "radash": "^12.1.0",
     "react": "^16.13.1",
     "react-native": "^0.78.0",
     "react-proxy": "^2.0.8",

@@ -1,6 +1,5 @@
-import { ZColumn, ZRow } from ".";
+import { ZColumn, ZRow, ZStyleProps } from ".";
 import { COLORS, COMMON_STYLE } from "../common_style";
-import { StyleProps } from "lvgljs-ui/core/style";
 import React from "react";
 
 // 类型定义
@@ -8,10 +7,10 @@ interface ZCardProps {
   header?: React.ReactNode;
   children?: React.ReactNode;
   footer?: React.ReactNode;
-  style?: StyleProps;
+  style?: ZStyleProps;
 }
 
-const baseStyle: StyleProps = {
+const baseStyle: ZStyleProps = {
   ...COMMON_STYLE.noBorder,
   ...COMMON_STYLE.autoWidth,
   ...COMMON_STYLE.autoHeight,

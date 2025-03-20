@@ -1,33 +1,34 @@
-import { ZHeightEnum, ZWidthEnum } from ".";
+import { ZHeightEnum, ZStyleProps, ZWidthEnum } from ".";
 import { COMMON_STYLE } from "../common_style";
 import { View } from "lvgljs-ui";
-import { StyleProps } from "lvgljs-ui/core/style";
+import * as _ from "radash";
 import React, { useMemo } from "react";
 
 interface ZColumnProps {
   children?: React.ReactNode;
-  style?: StyleProps;
-  width?: ZWidthEnum;
-  height?: ZHeightEnum;
+  style?: ZStyleProps;
+  width?: ZWidthEnum | number;
+  height?: ZHeightEnum | number;
 }
 
 const ZColumn = (props: ZColumnProps) => {
-  const baseStyle: StyleProps = {
+  const baseStyle: ZStyleProps = {
     ...COMMON_STYLE.flexColumn,
     ...COMMON_STYLE.noBorder,
     ...COMMON_STYLE.padding0,
     ...COMMON_STYLE.radius0,
   };
 
-  const widthStyleMap: Record<string, StyleProps> = {
+  const widthStyleMap: Record<string, ZStyleProps> = {
     auto: COMMON_STYLE.autoWidth,
     full: COMMON_STYLE.fullWidth,
   };
 
-  const heightStyleMap: Record<string, StyleProps> = {
+  const heightStyleMap: Record<string, ZStyleProps> = {
     auto: COMMON_STYLE.autoHeight,
     full: COMMON_STYLE.fullHeight,
   };
+
   const {
     children,
     width = ZWidthEnum.Auto,
@@ -36,15 +37,30 @@ const ZColumn = (props: ZColumnProps) => {
   } = props;
 
   const computedStyle = useMemo(() => {
-    return {
-      ...baseStyle,
-      ...widthStyleMap[width],
-      ...heightStyleMap[height],
-      ...propStyle,
-    };
+    let style = baseStyle;
+    if (_.isNumber(width)) {
+      style["width"] = width;
+    } else {
+      style = { ...style, ...widthStyleMap[width] };
+    }
+    if (_.isNumber(height)) {
+      style["height"] = height;
+    } else {
+      style = { ...style, ...heightStyleMap[height] };
+    }
+    return style;
   }, [width, height]);
 
-  return <View style={computedStyle}>{children}</View>;
+  return (
+    <View
+      style={{
+        ...computedStyle,
+        ...propStyle,
+      }}
+    >
+      {children}
+    </View>
+  );
 };
 
 export type { ZColumnProps };

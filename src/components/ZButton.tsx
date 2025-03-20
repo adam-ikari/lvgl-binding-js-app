@@ -1,7 +1,6 @@
-import { ZSizeEnum } from ".";
-import { COLORS, COMMON_STYLE } from "../common_style";
-import { Button, Text } from "lvgljs-ui";
-import { StyleProps } from "lvgljs-ui/core/style";
+import { ZIconSymbol, ZSizeEnum, ZStyleProps, ZText } from ".";
+import { COLORS, COMMON_STYLE, CONSTANTS } from "@/common_style";
+import { Button } from "lvgljs-ui";
 import React, { useMemo } from "react";
 
 enum ZButtonTypeEnum {
@@ -15,15 +14,17 @@ enum ZButtonTypeEnum {
 
 interface ZButtonProps {
   children?: string;
-  style?: StyleProps;
+  style?: ZStyleProps;
+  icon?: ZIconSymbol;
   type?: ZButtonTypeEnum;
   size?: ZSizeEnum;
   text?: boolean;
+  round?: boolean;
   disable?: boolean;
   onClick?: (e: any) => void;
 }
 
-const baseStyle: StyleProps = {
+const baseStyle: ZStyleProps = {
   "border-radius": 4,
   "border-color": "#dedfe2",
   "shadow-width": 0,
@@ -31,9 +32,10 @@ const baseStyle: StyleProps = {
   ...COMMON_STYLE.fontSizeDefault,
   ...COMMON_STYLE.flexRow,
   ...COMMON_STYLE.alignItemsCenter,
+  // padding: 0,
 };
 
-const normalStyleMap: Record<string, StyleProps> = {
+const normalStyleMap: Record<string, ZStyleProps> = {
   primary: {
     "border-width": 1,
     "background-color": COLORS.PRIMARY,
@@ -66,7 +68,7 @@ const normalStyleMap: Record<string, StyleProps> = {
   },
 };
 
-const textStyleMap: Record<string, StyleProps> = {
+const textStyleMap: Record<string, ZStyleProps> = {
   primary: {
     "border-width": 0,
     "background-color": COLORS.WHITE,
@@ -99,7 +101,7 @@ const textStyleMap: Record<string, StyleProps> = {
   },
 };
 
-const sizeStyleMap: Record<string, StyleProps> = {
+const sizeStyleMap: Record<string, ZStyleProps> = {
   small: {
     ...COMMON_STYLE.minWidth32,
     ...COMMON_STYLE.minHeight32,
@@ -117,32 +119,41 @@ const sizeStyleMap: Record<string, StyleProps> = {
   },
 };
 
+const roundStyle: ZStyleProps = {
+  "border-radius": CONSTANTS.MAX_RADIUS,
+};
+
 const ZButton = (props: ZButtonProps) => {
   const {
-    children = "",
+    children,
     style: propStyle = {},
+    icon,
     type = ZButtonTypeEnum.Default,
     size = ZSizeEnum.Default,
     text = false,
+    round = false,
     disable = false,
     onClick = (e) => {},
   } = props;
 
   const computedStyle = useMemo(() => {
+    let style = {
+      ...baseStyle,
+      ...sizeStyleMap[size],
+    };
+
     if (text) {
-      return {
-        ...baseStyle,
-        ...textStyleMap[type],
-        ...sizeStyleMap[size],
-      };
+      style = { ...style, ...textStyleMap[type] };
     } else {
-      return {
-        ...baseStyle,
-        ...normalStyleMap[type],
-        ...sizeStyleMap[size],
-      };
+      style = { ...style, ...normalStyleMap[type] };
     }
-  }, [type, size, text]);
+
+    if (round) {
+      style = { ...style, ...roundStyle };
+    }
+
+    return style;
+  }, [type, size, text, round]);
 
   return (
     <Button
@@ -152,7 +163,8 @@ const ZButton = (props: ZButtonProps) => {
       }}
       onClick={onClick}
     >
-      <Text>{children}</Text>
+      {icon && <ZText>{icon}</ZText>}
+      {children && <ZText>{children}</ZText>}
     </Button>
   );
 };
