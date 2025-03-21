@@ -1,7 +1,7 @@
 import { COLORS } from "@/common_style";
 import { ZButton, ZButtonTypeEnum, ZColumn, ZRow, ZText } from "@/components";
 import { ZNavHeaderLayout } from "@/layouts";
-import React, { Children } from "react";
+import React from "react";
 import { useNavigate } from "react-router-native";
 
 const style = {
