@@ -150,9 +150,9 @@ const ZButton = (props: ZButtonProps) => {
     };
   }, [type, size, text, round, disable]);
 
-  const handleClick = (e: any) => {
+  const handleClick = () => {
     if (!disable) {
-      onClick(e);
+      onClick();
     }
   };
   if (onClick) {

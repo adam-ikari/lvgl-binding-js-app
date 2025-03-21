@@ -7,18 +7,33 @@ interface ZModalProps {
 }
 
 const ZModal = (props: ZModalProps) => {
-  const { children, onMaskClick = () => {} } = props;
-  return (
-    <Mask style={{ "border-radius": 0 }} onClick={onMaskClick}>
-      <View
-        align={{
-          type: EAlignType.ALIGN_CENTER,
-        }}
-      >
-        {children}
-      </View>
-    </Mask>
-  );
+  const { children, onMaskClick } = props;
+  if (onMaskClick) {
+    return (
+      <Mask style={{ "border-radius": 0 }} onClick={onMaskClick}>
+        <View
+          align={{
+            type: EAlignType.ALIGN_CENTER,
+          }}
+        >
+          {children}
+        </View>
+      </Mask>
+    );
+  } else {
+    return (
+      <Mask style={{ "border-radius": 0 }}>
+        <View
+          align={{
+            type: EAlignType.ALIGN_CENTER,
+          }}
+        >
+          {children}
+        </View>
+      </Mask>
+    );
+  }
 };
 
+export type { ZModalProps };
 export { ZModal };
