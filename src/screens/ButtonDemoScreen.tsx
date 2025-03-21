@@ -34,7 +34,7 @@ const rowStyle = {
 
 const ButtonDemoScreen = () => {
   return (
-    <ZNavHeaderLayout withBack={true} title={"Button Demo"}>
+    <ZNavHeaderLayout title={"Button Demo"} withBack>
       <ZText size={ZSizeEnum.Large}>Size</ZText>
       <ZRow style={rowStyle}>
         {buttonsData.map((item, index) => (
@@ -88,7 +88,12 @@ const ButtonDemoScreen = () => {
       </ZRow>
       <ZRow style={rowStyle}>
         {iconButtonsData.map((item, index) => (
-          <ZButton key={index} type={item.type} icon={item.icon} round></ZButton>
+          <ZButton
+            key={index}
+            type={item.type}
+            icon={item.icon}
+            round
+          ></ZButton>
         ))}
       </ZRow>
     </ZNavHeaderLayout>

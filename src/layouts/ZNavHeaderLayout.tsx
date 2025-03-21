@@ -1,5 +1,12 @@
 import { COLORS, COMMON_STYLE } from "@/common_style";
-import { ZColumn, ZHeightEnum, ZNavHeader, ZWidthEnum } from "@/components";
+import {
+  ZColumn,
+  ZHeightEnum,
+  ZNavHeader,
+  ZText,
+  ZWidthEnum,
+} from "@/components";
+import useTime from "@/hooks/time";
 import React from "react";
 
 interface ZNavHeaderLayoutProps {
@@ -10,6 +17,7 @@ interface ZNavHeaderLayoutProps {
 
 const ZNavHeaderLayout = (props: ZNavHeaderLayoutProps) => {
   const { children, title = "", withBack = false } = props;
+  const time = useTime({ format: "YYYY-MM-DD HH:mm" });
   return (
     <ZColumn
       width={ZWidthEnum.Full}
@@ -19,13 +27,18 @@ const ZNavHeaderLayout = (props: ZNavHeaderLayoutProps) => {
         overflow: "hidden",
       }}
     >
-      <ZNavHeader withBack={withBack} title={title}></ZNavHeader>
+      <ZNavHeader
+        withBack={withBack}
+        title={title}
+        addon={<ZText>{`${time}`}</ZText>}
+      ></ZNavHeader>
+
       <ZColumn
         width={ZWidthEnum.Full}
         style={{
           ...COMMON_STYLE.padding20,
-          "background-color": COLORS.PAGE_BACKGROUND,
           "flex-grow": 1,
+          "background-color": COLORS.PAGE_BACKGROUND,
         }}
       >
         {children}

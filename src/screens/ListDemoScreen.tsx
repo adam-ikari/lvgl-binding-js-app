@@ -25,7 +25,7 @@ function initItems() {
 const ListDemoScreen = () => {
   const [items, setItems] = useState(initItems);
   return (
-    <ZNavHeaderLayout withBack={true} title={"List Demo"}>
+    <ZNavHeaderLayout title={"List Demo"} withBack>
       <ZColumn style={{ ...style.BackgroundStyle }}>
         {items.map((item) => (
           <ZRow key={item.id} style={{ ...style.BackgroundStyle }}>
