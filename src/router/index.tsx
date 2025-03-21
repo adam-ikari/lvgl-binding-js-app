@@ -1,4 +1,5 @@
 import ButtonDemoScreen from "@/screens/ButtonDemoScreen";
+import DialogDemoScreen from "@/screens/DialogDemoScreen";
 import HomeScreen from "@/screens/HomeScreen";
 import ListDemoScreen from "@/screens/ListDemoScreen";
 import StateDemoScreen from "@/screens/StateDemoScreen";
@@ -15,6 +16,7 @@ const AppRouter = () => {
         <Route path="/icon" element={<IConDemoScreen />} />
         <Route path="/state" element={<StateDemoScreen />} />
         <Route path="/list" element={<ListDemoScreen />} />
+        <Route path="/dialog" element={<DialogDemoScreen />} />
       </Routes>
     </MemoryRouter>
   );

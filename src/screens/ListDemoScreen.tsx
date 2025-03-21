@@ -1,5 +1,13 @@
 import { COLORS } from "@/common_style";
-import { ZButton, ZColumn, ZRow, ZText } from "@/components";
+import {
+  ZButton,
+  ZButtonTypeEnum,
+  ZColumn,
+  ZIconSymbol,
+  ZRow,
+  ZSizeEnum,
+  ZText,
+} from "@/components";
 import { ZNavHeaderLayout } from "@/layouts";
 import React, { useState } from "react";
 import { v1 as uuidv1 } from "uuid";
@@ -31,19 +39,21 @@ const ListDemoScreen = () => {
           <ZRow key={item.id} style={{ ...style.BackgroundStyle }}>
             <ZText>{item.text}</ZText>
             <ZButton
+              icon={ZIconSymbol.Trash}
+              type={ZButtonTypeEnum.Danger}
+              size={ZSizeEnum.Small}
               onClick={() => {
                 const new_todos = items.filter((todo) => todo.id !== item.id);
                 console.log(new_todos);
                 setItems(new_todos);
               }}
-            >
-              x
-            </ZButton>
+            ></ZButton>
           </ZRow>
         ))}
       </ZColumn>
       <ZRow style={{ ...style.BackgroundStyle }}>
         <ZButton
+          icon={ZIconSymbol.Minus}
           onClick={() => {
             if (items.length > 0) {
               const new_todo = items.slice(0, -1);
@@ -51,10 +61,9 @@ const ListDemoScreen = () => {
               setItems(new_todo);
             }
           }}
-        >
-          -1
-        </ZButton>
+        ></ZButton>
         <ZButton
+          icon={ZIconSymbol.Plus}
           onClick={() => {
             const uuid = uuidv1();
             const new_todo = [
@@ -67,9 +76,7 @@ const ListDemoScreen = () => {
             console.log(new_todo);
             setItems(new_todo);
           }}
-        >
-          +1
-        </ZButton>
+        ></ZButton>
       </ZRow>
     </ZNavHeaderLayout>
   );

@@ -22,7 +22,7 @@ interface ZButtonProps {
   text?: boolean;
   round?: boolean;
   disable?: boolean;
-  onClick?: (e: any) => void;
+  onClick?: () => void;
 }
 
 const baseStyle: ZStyleProps = {

@@ -12,11 +12,15 @@ const style = {
 
 const indexData = [
   {
-    text: "Widgets",
+    text: "Basic Widgets",
     children: [
       { text: "Button Demo", path: "/button" },
       { text: "Icon Demo", path: "/icon" },
     ],
+  },
+  {
+    text: "Feedback Widgets",
+    children: [{ text: "Dialog Demo", path: "/dialog" }],
   },
   { text: "List Render", children: [{ text: "List Demo", path: "/list" }] },
   { text: "State", children: [{ text: "State Demo", path: "/state" }] },

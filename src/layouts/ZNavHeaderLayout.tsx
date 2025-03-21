@@ -13,7 +13,7 @@ import useTime from "@/hooks/time";
 import React from "react";
 
 interface ZNavHeaderLayoutProps {
-  children?: React.ReactNode;
+  children?: React.ReactNode | React.ReactNode[];
   title?: string;
   withBack?: boolean;
 }
