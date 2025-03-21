@@ -36,7 +36,7 @@ const ZNavHeaderLayout = (props: ZNavHeaderLayoutProps) => {
         addon={
           <ZRow>
             <ZIcon symbol={ZIconSymbol.Wifi}></ZIcon>
-            <ZText>{`${time}`}</ZText>
+            <ZText>{time}</ZText>
           </ZRow>
         }
       ></ZNavHeader>
