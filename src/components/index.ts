@@ -7,3 +7,4 @@ export * from "./common";
 export * from "./ZButton";
 export * from "./ZIcon";
 export * from "./ZModal"
+export * from "./ZDialog"
