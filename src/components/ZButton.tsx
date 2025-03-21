@@ -1,4 +1,5 @@
 import { ZIconSymbol, ZSizeEnum, ZStyleProps, ZText } from ".";
+import { ZIcon } from "./ZIcon";
 import { COLORS, COMMON_STYLE, CONSTANTS } from "@/common_style";
 import { Button } from "lvgljs-ui";
 import React, { useMemo } from "react";
@@ -163,7 +164,7 @@ const ZButton = (props: ZButtonProps) => {
         }}
         onClick={handleClick}
       >
-        {icon && <ZText>{icon}</ZText>}
+        {icon && <ZIcon symbol={icon} />}
         {children && <ZText>{children}</ZText>}
       </Button>
     );
@@ -175,7 +176,7 @@ const ZButton = (props: ZButtonProps) => {
           ...propStyle,
         }}
       >
-        {icon && <ZText>{icon}</ZText>}
+        {icon && <ZIcon symbol={icon}></ZIcon>}
         {children && <ZText>{children}</ZText>}
       </Button>
     );
