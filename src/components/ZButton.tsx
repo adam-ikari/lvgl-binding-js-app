@@ -101,9 +101,6 @@ const textStyleMap: Record<string, ZStyleProps> = {
 };
 
 const disabledStyle: ZStyleProps = {
-  // "background-color": COLORS.DISABLED_BG,
-  // "text-color": COLORS.DISABLED_TEXT,
-  // "border-color": COLORS.DISABLED_BORDER,
   opacity: 0.6,
 };
 
@@ -143,26 +140,13 @@ const ZButton = (props: ZButtonProps) => {
   } = props;
 
   const computedStyle = useMemo(() => {
-    let style = {
+    return {
       ...baseStyle,
       ...sizeStyleMap[size],
+      ...(text ? textStyleMap[type] : normalStyleMap[type]),
+      ...(round && roundStyle),
+      ...(disable && disabledStyle),
     };
-
-    if (text) {
-      style = { ...style, ...textStyleMap[type] };
-    } else {
-      style = { ...style, ...normalStyleMap[type] };
-    }
-
-    if (round) {
-      style = { ...style, ...roundStyle };
-    }
-
-    if (disable) {
-      style = { ...style, ...disabledStyle };
-    }
-
-    return style;
   }, [type, size, text, round, disable]);
 
   const handleClick = (e: any) => {
