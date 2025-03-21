@@ -9,7 +9,7 @@ interface ZColumnProps {
   style?: ZStyleProps;
   width?: ZWidthEnum | number;
   height?: ZHeightEnum | number;
-  warp?:boolean;
+  wrap?:boolean;
 }
 
 const ZColumn = (props: ZColumnProps) => {
@@ -35,7 +35,7 @@ const ZColumn = (props: ZColumnProps) => {
     width = ZWidthEnum.Auto,
     height = ZHeightEnum.Auto,
     style: propStyle = {},
-    warp = false
+    wrap = false
   } = props;
 
   const computedStyle = useMemo(() => {
@@ -50,7 +50,7 @@ const ZColumn = (props: ZColumnProps) => {
     } else {
       style = { ...style, ...heightStyleMap[height] };
     }
-    if (warp) {
+    if (wrap) {
       style["flex-wrap"] = "wrap"
     }
     return style;

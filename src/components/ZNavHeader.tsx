@@ -27,7 +27,7 @@ const ZNavHeader = (props: ZNavHeaderProps) => {
         </ZButton>
       )}
       {title && <ZText style={{ "flex-grow": 1 }}>{title}</ZText>}
-      {addon && <ZRow>{addon}</ZRow>}
+      {addon && addon}
     </ZRow>
   );
 };

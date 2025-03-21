@@ -2,7 +2,10 @@ import { COLORS, COMMON_STYLE } from "@/common_style";
 import {
   ZColumn,
   ZHeightEnum,
+  ZIcon,
+  ZIconSymbol,
   ZNavHeader,
+  ZRow,
   ZText,
   ZWidthEnum,
 } from "@/components";
@@ -30,7 +33,12 @@ const ZNavHeaderLayout = (props: ZNavHeaderLayoutProps) => {
       <ZNavHeader
         withBack={withBack}
         title={title}
-        addon={<ZText>{`${time}`}</ZText>}
+        addon={
+          <ZRow>
+            <ZIcon symbol={ZIconSymbol.Wifi}></ZIcon>
+            <ZText>{`${time}`}</ZText>
+          </ZRow>
+        }
       ></ZNavHeader>
 
       <ZColumn

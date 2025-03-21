@@ -11,7 +11,13 @@ const style = {
 };
 
 const indexData = [
-  { text: "Widgets", children: [{ text: "Button Demo", path: "/button" }] },
+  {
+    text: "Widgets",
+    children: [
+      { text: "Button Demo", path: "/button" },
+      { text: "Icon Demo", path: "/icon" },
+    ],
+  },
   { text: "List Render", children: [{ text: "List Demo", path: "/list" }] },
   { text: "State", children: [{ text: "State Demo", path: "/state" }] },
 ];
@@ -27,7 +33,12 @@ const HomeScreen = () => {
           }}
         >
           <ZText>{category.text}</ZText>
-          <ZRow warp>
+          <ZRow
+            wrap
+            style={{
+              ...style.BackgroundStyle,
+            }}
+          >
             {category.children.map((item) => (
               <ZButton
                 type={ZButtonTypeEnum.Primary}
