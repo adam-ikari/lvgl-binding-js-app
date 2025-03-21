@@ -9,6 +9,7 @@ interface ZRowProps {
   style?: ZStyleProps;
   width?: ZWidthEnum | number;
   height?: ZHeightEnum | number;
+  warp?:boolean;
 }
 
 const baseStyle: ZStyleProps = {
@@ -34,6 +35,7 @@ const ZRow = (props: ZRowProps) => {
     width = ZWidthEnum.Auto,
     height = ZHeightEnum.Auto,
     style: propStyle = {},
+    warp = false
   } = props;
   console.log(props);
 
@@ -48,6 +50,9 @@ const ZRow = (props: ZRowProps) => {
       style["height"] = height;
     } else {
       style = { ...style, ...heightStyleMap[height] };
+    }
+    if (warp) {
+      style["flex-wrap"] = "wrap"
     }
     return style;
   }, [width, height]);

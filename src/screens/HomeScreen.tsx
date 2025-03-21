@@ -1,7 +1,7 @@
-import { COLORS, COMMON_STYLE } from "@/common_style";
-import { ZButton, ZButtonTypeEnum, ZColumn, ZRow } from "@/components";
+import { COLORS } from "@/common_style";
+import { ZButton, ZButtonTypeEnum, ZColumn, ZRow, ZText } from "@/components";
 import { ZNavHeaderLayout } from "@/layouts";
-import React from "react";
+import React, { Children } from "react";
 import { useNavigate } from "react-router-native";
 
 const style = {
@@ -10,46 +10,35 @@ const style = {
   },
 };
 
+const indexData = [
+  { text: "Widgets", children: [{ text: "Button Demo", path: "/button" }] },
+  { text: "List Render", children: [{ text: "List Demo", path: "/list" }] },
+  { text: "State", children: [{ text: "State Demo", path: "/state" }] },
+];
+
 const HomeScreen = () => {
   const navigate = useNavigate();
   return (
     <ZNavHeaderLayout title="Home">
-      <ZRow
-        style={{
-          ...style.BackgroundStyle,
-        }}
-      >
-        <ZButton
-          type={ZButtonTypeEnum.Primary}
-          onClick={() => navigate("/button")}
+      {indexData.map((category) => (
+        <ZColumn
+          style={{
+            ...style.BackgroundStyle,
+          }}
         >
-          Button Demo
-        </ZButton>
-      </ZRow>
-      <ZRow
-        style={{
-          ...style.BackgroundStyle,
-        }}
-      >
-        <ZButton
-          type={ZButtonTypeEnum.Primary}
-          onClick={() => navigate("/state")}
-        >
-          State Demo
-        </ZButton>
-      </ZRow>
-      <ZRow
-        style={{
-          ...style.BackgroundStyle,
-        }}
-      >
-        <ZButton
-          type={ZButtonTypeEnum.Primary}
-          onClick={() => navigate("/list")}
-        >
-          List Demo
-        </ZButton>
-      </ZRow>
+          <ZText>{category.text}</ZText>
+          <ZRow warp>
+            {category.children.map((item) => (
+              <ZButton
+                type={ZButtonTypeEnum.Primary}
+                onClick={() => navigate(item.path)}
+              >
+                {item.text}
+              </ZButton>
+            ))}
+          </ZRow>
+        </ZColumn>
+      ))}
     </ZNavHeaderLayout>
   );
 };
