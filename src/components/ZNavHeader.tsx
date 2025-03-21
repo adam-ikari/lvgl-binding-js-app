@@ -6,11 +6,11 @@ import { useNavigate } from "react-router-native";
 interface ZNavHeaderProps {
   withBack?: boolean;
   title?: string;
-  addon?: React.ReactNode;
+  addons?: React.ReactNode[];
 }
 
 const ZNavHeader = (props: ZNavHeaderProps) => {
-  const { withBack = false, title, addon } = props;
+  const { withBack = false, title, addons } = props;
   const navigate = useNavigate();
 
   return (
@@ -26,8 +26,14 @@ const ZNavHeader = (props: ZNavHeaderProps) => {
           back
         </ZButton>
       )}
-      {title && <ZText style={{ "flex-grow": 1 }}>{title}</ZText>}
-      {addon && addon}
+      <ZRow
+        style={{
+          "flex-grow": 1,
+        }}
+      >
+        {title && <ZText>{title}</ZText>}
+      </ZRow>
+      <ZRow>{addons && addons.map((item) => item)}</ZRow>
     </ZRow>
   );
 };

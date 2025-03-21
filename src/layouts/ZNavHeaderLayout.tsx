@@ -33,12 +33,12 @@ const ZNavHeaderLayout = (props: ZNavHeaderLayoutProps) => {
       <ZNavHeader
         withBack={withBack}
         title={title}
-        addon={
-          <ZRow>
-            <ZIcon symbol={ZIconSymbol.Wifi}></ZIcon>
-            <ZText>{time}</ZText>
-          </ZRow>
-        }
+        addons={[
+          <ZIcon symbol={ZIconSymbol.Usb}></ZIcon>,
+          <ZIcon symbol={ZIconSymbol.Wifi}></ZIcon>,
+          <ZIcon symbol={ZIconSymbol.Envelope}></ZIcon>,
+          <ZText>{time}</ZText>,
+        ]}
       ></ZNavHeader>
 
       <ZColumn
