@@ -32,7 +32,6 @@ const baseStyle: ZStyleProps = {
   ...COMMON_STYLE.fontSizeDefault,
   ...COMMON_STYLE.flexRow,
   ...COMMON_STYLE.alignItemsCenter,
-  // padding: 0,
 };
 
 const normalStyleMap: Record<string, ZStyleProps> = {
@@ -101,6 +100,13 @@ const textStyleMap: Record<string, ZStyleProps> = {
   },
 };
 
+const disabledStyle: ZStyleProps = {
+  // "background-color": COLORS.DISABLED_BG,
+  // "text-color": COLORS.DISABLED_TEXT,
+  // "border-color": COLORS.DISABLED_BORDER,
+  opacity: 0.6,
+};
+
 const sizeStyleMap: Record<string, ZStyleProps> = {
   small: {
     ...COMMON_STYLE.minWidth32,
@@ -133,7 +139,7 @@ const ZButton = (props: ZButtonProps) => {
     text = false,
     round = false,
     disable = false,
-    onClick = (e) => {},
+    onClick,
   } = props;
 
   const computedStyle = useMemo(() => {
@@ -152,21 +158,44 @@ const ZButton = (props: ZButtonProps) => {
       style = { ...style, ...roundStyle };
     }
 
-    return style;
-  }, [type, size, text, round]);
+    if (disable) {
+      style = { ...style, ...disabledStyle };
+    }
 
-  return (
-    <Button
-      style={{
-        ...computedStyle,
-        ...propStyle,
-      }}
-      onClick={onClick}
-    >
-      {icon && <ZText>{icon}</ZText>}
-      {children && <ZText>{children}</ZText>}
-    </Button>
-  );
+    return style;
+  }, [type, size, text, round, disable]);
+
+  const handleClick = (e: any) => {
+    if (!disable) {
+      onClick(e);
+    }
+  };
+  if (onClick) {
+    return (
+      <Button
+        style={{
+          ...computedStyle,
+          ...propStyle,
+        }}
+        onClick={handleClick}
+      >
+        {icon && <ZText>{icon}</ZText>}
+        {children && <ZText>{children}</ZText>}
+      </Button>
+    );
+  } else {
+    return (
+      <Button
+        style={{
+          ...computedStyle,
+          ...propStyle,
+        }}
+      >
+        {icon && <ZText>{icon}</ZText>}
+        {children && <ZText>{children}</ZText>}
+      </Button>
+    );
+  }
 };
 
 export type { ZButtonProps };

@@ -65,6 +65,14 @@ const ButtonDemoScreen = () => {
           </ZButton>
         ))}
       </ZRow>
+      <ZText size={ZSizeEnum.Large}>Disable Button</ZText>
+      <ZRow style={rowStyle}>
+        {buttonsData.map((item, index) => (
+          <ZButton key={index} type={item.type} disable>
+            {item.text}
+          </ZButton>
+        ))}
+      </ZRow>
       <ZText size={ZSizeEnum.Large}>Round Button</ZText>
       <ZRow style={rowStyle}>
         {buttonsData.map((item, index) => (
