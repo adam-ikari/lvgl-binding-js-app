@@ -47,6 +47,7 @@ const ListDemoScreen = () => {
                 console.log(new_todos);
                 setItems(new_todos);
               }}
+              round
             ></ZButton>
           </ZRow>
         ))}
