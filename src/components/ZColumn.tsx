@@ -39,7 +39,7 @@ const ZColumn = (props: ZColumnProps) => {
   } = props;
 
   const computedStyle = useMemo(() => {
-    let style = baseStyle;
+    let style = {};
     if (_.isNumber(width)) {
       style["width"] = width;
     } else {
@@ -59,6 +59,7 @@ const ZColumn = (props: ZColumnProps) => {
   return (
     <View
       style={{
+        ...baseStyle,
         ...computedStyle,
         ...propStyle,
       }}

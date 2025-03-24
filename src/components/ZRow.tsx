@@ -40,7 +40,7 @@ const ZRow = (props: ZRowProps) => {
   console.log(props);
 
   const computedStyle = useMemo(() => {
-    let style = baseStyle;
+    let style = {};
     if (_.isNumber(width)) {
       style["width"] = width;
     } else {
@@ -60,6 +60,7 @@ const ZRow = (props: ZRowProps) => {
   return (
     <View
       style={{
+        ...baseStyle,
         ...computedStyle,
         ...propStyle,
       }}

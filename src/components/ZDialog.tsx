@@ -65,8 +65,9 @@ const ZDialog = (props: ZDialogProps) => {
           ...computedWidthStyle,
           ...computedHeightStyle,
           ...COMMON_STYLE.flexColumn,
-          ...COMMON_STYLE.padding0,
+          ...COMMON_STYLE.padding10,
           ...COMMON_STYLE.noBorder,
+          "border-radius": 4,
         }}
         align={{
           type: EAlignType.ALIGN_CENTER,
@@ -81,16 +82,20 @@ const ZDialog = (props: ZDialogProps) => {
           <ZRow style={{ "flex-grow": 1 }}>
             {title && <ZText size={ZSizeEnum.Large}>{title}</ZText>}
           </ZRow>
-
-          <ZButton
-            size={ZSizeEnum.Small}
-            icon={ZIconSymbol.Close}
-            round
-            text
-          ></ZButton>
+          {showClose && (
+            <ZButton
+              size={ZSizeEnum.Small}
+              icon={ZIconSymbol.Close}
+              round
+              text
+              onClick={onClose}
+            ></ZButton>
+          )}
         </ZRow>
-        <ZRow>{children}</ZRow>
-        <ZRow style={{ "flex-grow": 1 }}>
+        <ZRow width={ZWidthEnum.Full} style={{ "flex-grow": 1 }}>
+          {children}
+        </ZRow>
+        <ZRow width={ZWidthEnum.Full} style={{ "justify-content": "flex-end" }}>
           <ZButton onClick={onCancel}>Cancel</ZButton>
           <ZButton type={ZButtonTypeEnum.Primary} onClick={onConfirm}>
             Confirm

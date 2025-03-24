@@ -8,13 +8,7 @@ interface ZModalProps {
 }
 
 const styles: Record<string, ZStyleProps> = {
-  mask: { "border-radius": 0 },
-  view: {
-    width: "auto",
-    height: "auto",
-    padding: 0,
-    "border-radius": 0
-  },
+  mask: { "border-radius": 0, "border-width": 0 },
 };
 
 const ZModal = (props: ZModalProps) => {
@@ -23,19 +17,6 @@ const ZModal = (props: ZModalProps) => {
   return (
     <Mask style={styles.mask} onClick={onMaskClick}>
       <React.Fragment>{children}</React.Fragment>
-      {/* <View
-        style={{
-          ...styles.view,
-        }}
-        align={{
-          type: EAlignType.ALIGN_CENTER,
-        }}
-        onClick={(e) => {
-          console.log("ZModal View:" + JSON.stringify(e));
-        }}
-      >
-        
-      </View> */}
     </Mask>
   );
 };
