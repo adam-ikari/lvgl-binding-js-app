@@ -9,7 +9,12 @@ interface ZModalProps {
 
 const styles: Record<string, ZStyleProps> = {
   mask: { "border-radius": 0 },
-  view: { width: "auto", height: "auto" },
+  view: {
+    width: "auto",
+    height: "auto",
+    padding: 0,
+    "border-radius": 0
+  },
 };
 
 const ZModal = (props: ZModalProps) => {
@@ -17,8 +22,11 @@ const ZModal = (props: ZModalProps) => {
 
   return (
     <Mask style={styles.mask} onClick={onMaskClick}>
-      <View
-        style={styles.view}
+      <React.Fragment>{children}</React.Fragment>
+      {/* <View
+        style={{
+          ...styles.view,
+        }}
         align={{
           type: EAlignType.ALIGN_CENTER,
         }}
@@ -26,8 +34,8 @@ const ZModal = (props: ZModalProps) => {
           console.log("ZModal View:" + JSON.stringify(e));
         }}
       >
-        {children}
-      </View>
+        
+      </View> */}
     </Mask>
   );
 };

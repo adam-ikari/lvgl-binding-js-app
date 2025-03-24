@@ -1,28 +1,102 @@
-import { ZButton, ZButtonTypeEnum, ZColumn, ZModal, ZRow } from ".";
-import React from "react";
+import {
+  ZButton,
+  ZButtonTypeEnum,
+  ZColumn,
+  ZIconSymbol,
+  ZModal,
+  ZRow,
+  ZSizeEnum,
+  ZText,
+  ZWidthEnum,
+} from ".";
+import { COMMON_STYLE } from "@/common_style";
+import { Dimensions, EAlignType, View } from "lvgljs-ui";
+import React, { useMemo } from "react";
 
 interface ZDialogProps {
+  children?: React.ReactNode | React.ReactNode[];
+  title?: string;
+  showClose?: boolean;
+  onMaskClick?: () => void;
   onClose?: () => void;
   onCancel?: () => void;
   onConfirm?: () => void;
 }
 
 const ZDialog = (props: ZDialogProps) => {
+  const { width: windowWidth, height: windowHeight } = Dimensions.window;
   const {
+    children,
+    title,
+    showClose = true,
+    onMaskClick = () => {},
     onClose = () => {},
     onCancel = () => {},
     onConfirm = () => {},
   } = props;
+
+  const computedContainerStyle = useMemo(() => {
+    return {
+      "min-width": windowWidth * 0.3,
+      "min-height": windowHeight * 0.3,
+      "max-width": windowWidth * 0.8,
+      "max-height": windowHeight * 0.8,
+    };
+  }, [windowWidth, windowHeight]);
+
+  const computedWidthStyle = useMemo(() => {
+    return {
+      "min-width": windowWidth * 0.3,
+      "max-width": windowWidth * 0.8,
+    };
+  }, [windowWidth]);
+
+  const computedHeightStyle = useMemo(() => {
+    return {
+      "min-height": windowHeight * 0.3,
+      "max-height": windowHeight * 0.8,
+    };
+  }, [windowHeight]);
+
   return (
-    <ZModal onMaskClick={onClose}>
-      <ZColumn>
-        <ZRow>
+    <ZModal onMaskClick={onMaskClick}>
+      <View
+        style={{
+          ...computedWidthStyle,
+          ...computedHeightStyle,
+          ...COMMON_STYLE.flexColumn,
+          ...COMMON_STYLE.padding0,
+          ...COMMON_STYLE.noBorder,
+        }}
+        align={{
+          type: EAlignType.ALIGN_CENTER,
+        }}
+      >
+        <ZRow
+          width={ZWidthEnum.Full}
+          style={{
+            "align-items": "center",
+          }}
+        >
+          <ZRow style={{ "flex-grow": 1 }}>
+            {title && <ZText size={ZSizeEnum.Large}>{title}</ZText>}
+          </ZRow>
+
+          <ZButton
+            size={ZSizeEnum.Small}
+            icon={ZIconSymbol.Close}
+            round
+            text
+          ></ZButton>
+        </ZRow>
+        <ZRow>{children}</ZRow>
+        <ZRow style={{ "flex-grow": 1 }}>
           <ZButton onClick={onCancel}>Cancel</ZButton>
           <ZButton type={ZButtonTypeEnum.Primary} onClick={onConfirm}>
             Confirm
           </ZButton>
         </ZRow>
-      </ZColumn>
+      </View>
     </ZModal>
   );
 };

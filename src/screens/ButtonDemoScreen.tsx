@@ -99,6 +99,28 @@ const ButtonDemoScreen = () => {
           <ZButton
             key={index}
             type={item.type}
+            size={ZSizeEnum.Small}
+            icon={item.icon}
+            round
+          ></ZButton>
+        ))}
+      </ZRow>
+      <ZRow style={rowStyle}>
+        {iconButtonsData.map((item, index) => (
+          <ZButton
+            key={index}
+            type={item.type}
+            icon={item.icon}
+            round
+          ></ZButton>
+        ))}
+      </ZRow>
+      <ZRow style={rowStyle}>
+        {iconButtonsData.map((item, index) => (
+          <ZButton
+            key={index}
+            size={ZSizeEnum.Large}
+            type={item.type}
             icon={item.icon}
             round
           ></ZButton>

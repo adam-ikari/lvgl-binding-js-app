@@ -12,6 +12,11 @@ const DialogDemoScreen = () => {
       <ZButton onClick={toggleVisibale}>Open Dialog</ZButton>
       {visibale && (
         <ZDialog
+          title="Dialog"
+          onMaskClick={() => {
+            console.log("onMaskClick");
+            toggleVisibale();
+          }}
           onClose={() => {
             console.log("onClose");
             toggleVisibale();
@@ -24,7 +29,9 @@ const DialogDemoScreen = () => {
             console.log("onConfirm");
             toggleVisibale();
           }}
-        ></ZDialog>
+        >
+          <ZText>This is a Dialog</ZText>
+        </ZDialog>
       )}
     </ZNavHeaderLayout>
   );

@@ -7,14 +7,13 @@ import {
   ZText,
   ZWidthEnum,
 } from ".";
-import { CONSTANTS } from "@/common_style";
 import React from "react";
 import { useNavigate } from "react-router-native";
 
 interface ZNavHeaderProps {
   withBack?: boolean;
   title?: string;
-  addons?: React.ReactNode[];
+  addons?: React.ReactNode | React.ReactNode[];
 }
 
 const ZNavHeader = (props: ZNavHeaderProps) => {
@@ -24,16 +23,16 @@ const ZNavHeader = (props: ZNavHeaderProps) => {
   return (
     <ZRow
       width={ZWidthEnum.Full}
-      height={40}
+      height={48}
       style={{
         padding: 4,
-        "align-content": "center",
+        "align-items": "center",
       }}
     >
       <ZRow
         height={ZHeightEnum.Full}
         style={{
-          "align-content": "center",
+          "align-items": "center",
           "min-width": 40,
         }}
       >
@@ -43,6 +42,7 @@ const ZNavHeader = (props: ZNavHeaderProps) => {
             size={ZSizeEnum.Small}
             icon={ZIconSymbol.Left}
             text
+            round
             onClick={() => navigate(-1)}
           >
             back
@@ -53,7 +53,7 @@ const ZNavHeader = (props: ZNavHeaderProps) => {
         height={ZHeightEnum.Full}
         style={{
           "flex-grow": 1,
-          "align-content": "center",
+          "align-items": "center",
         }}
       >
         {title && <ZText>{title}</ZText>}
@@ -61,10 +61,10 @@ const ZNavHeader = (props: ZNavHeaderProps) => {
       <ZRow
         height={ZHeightEnum.Full}
         style={{
-          "align-content": "center",
+          "align-items": "center",
         }}
       >
-        {addons && addons.map((item) => item)}
+        {addons}
       </ZRow>
     </ZRow>
   );

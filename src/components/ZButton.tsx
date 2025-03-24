@@ -33,6 +33,8 @@ const baseStyle: ZStyleProps = {
   ...COMMON_STYLE.fontSizeDefault,
   ...COMMON_STYLE.flexRow,
   ...COMMON_STYLE.alignItemsCenter,
+  "align-items": "center",
+  "justify-content": "center",
 };
 
 const normalStyleMap: Record<string, ZStyleProps> = {
@@ -107,8 +109,8 @@ const disabledStyle: ZStyleProps = {
 
 const sizeStyleMap: Record<string, ZStyleProps> = {
   small: {
-    ...COMMON_STYLE.minWidth32,
-    ...COMMON_STYLE.minHeight32,
+    ...COMMON_STYLE.minWidth36,
+    ...COMMON_STYLE.minHeight36,
     ...COMMON_STYLE.fontSizeSmall,
   },
   default: {
@@ -127,6 +129,10 @@ const roundStyle: ZStyleProps = {
   "border-radius": CONSTANTS.MAX_RADIUS,
 };
 
+const noChildStyle: ZStyleProps = {
+  padding: 0,
+};
+
 const ZButton = (props: ZButtonProps) => {
   const {
     children,
@@ -142,45 +148,32 @@ const ZButton = (props: ZButtonProps) => {
 
   const computedStyle = useMemo(() => {
     return {
-      ...baseStyle,
+      ...(!children && noChildStyle),
       ...sizeStyleMap[size],
       ...(text ? textStyleMap[type] : normalStyleMap[type]),
       ...(round && roundStyle),
       ...(disable && disabledStyle),
     };
-  }, [type, size, text, round, disable]);
+  }, [type, size, text, round, disable, children]);
 
   const handleClick = () => {
     if (!disable) {
       onClick();
     }
   };
-  if (onClick) {
-    return (
-      <Button
-        style={{
-          ...computedStyle,
-          ...propStyle,
-        }}
-        onClick={handleClick}
-      >
-        {icon && <ZIcon symbol={icon} />}
-        {children && <ZText>{children}</ZText>}
-      </Button>
-    );
-  } else {
-    return (
-      <Button
-        style={{
-          ...computedStyle,
-          ...propStyle,
-        }}
-      >
-        {icon && <ZIcon symbol={icon}></ZIcon>}
-        {children && <ZText>{children}</ZText>}
-      </Button>
-    );
-  }
+  return (
+    <Button
+      style={{
+        ...baseStyle,
+        ...computedStyle,
+        ...propStyle,
+      }}
+      onClick={handleClick}
+    >
+      {icon && <ZIcon symbol={icon} size={size} />}
+      {children && <ZText size={size}>{children}</ZText>}
+    </Button>
+  );
 };
 
 export type { ZButtonProps };

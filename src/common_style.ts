@@ -36,8 +36,11 @@ const COMMON_STYLE: Record<string, StyleProps> = {
   minWidth20: {
     "min-width": 20,
   },
-  minWidth30: {
-    "min-width": 30,
+  minWidth32: {
+    "min-width": 32,
+  },
+  minWidth36: {
+    "min-width": 36,
   },
   minWidth40: {
     "min-width": 40,
@@ -63,6 +66,9 @@ const COMMON_STYLE: Record<string, StyleProps> = {
   minHeight32: {
     height: 32,
   },
+  minHeight36: {
+    height: 36,
+  },
   minHeight40: {
     height: 40,
   },
@@ -85,7 +91,7 @@ const COMMON_STYLE: Record<string, StyleProps> = {
     "font-size": 14,
   },
   fontSizeLarge: {
-    "font-size": 16,
+    "font-size": 18,
   },
   radius0: {
     "border-radius": 0,
