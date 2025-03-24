@@ -1,11 +1,13 @@
 {
-    "compilerOptions": {
-      "module": "NodeNext",
-      "typeRoots": [
-        "node_modules/@txikijs/types",
-        "node_modules/@types"
-      ]
+  "compilerOptions": {
+    "module": "NodeNext",
+    "typeRoots": ["node_modules/@txikijs/types", "node_modules/@types"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
     },
-    "include": ["src/**/*"],
-    "exclude": ["**/*.spec.ts"]
-  }
+    "jsx": "react"
+  },
+  "include": ["src/*"],
+  "exclude": ["**/*.spec.ts"]
+}
