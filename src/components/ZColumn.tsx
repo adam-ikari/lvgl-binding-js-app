@@ -10,9 +10,10 @@ interface ZColumnProps {
   width?: ZWidthEnum | number;
   height?: ZHeightEnum | number;
   wrap?: boolean;
+  gap?: number;
 }
 
-const ZColumn = (props?: ZColumnProps) => {
+const ZColumn = (props: ZColumnProps) => {
   const baseStyle: ZStyleProps = {
     ...COMMON_STYLE.flexColumn,
     ...COMMON_STYLE.noBorder,
@@ -36,10 +37,11 @@ const ZColumn = (props?: ZColumnProps) => {
     height = ZHeightEnum.Auto,
     style: propStyle = {},
     wrap = false,
+    gap = 10,
   } = props;
 
   const computedStyle = useMemo(() => {
-    let style = {};
+    let style = { "column-spacing": gap };
     if (_.isNumber(width)) {
       style["width"] = width;
     } else {
@@ -54,7 +56,7 @@ const ZColumn = (props?: ZColumnProps) => {
       style["flex-wrap"] = "wrap";
     }
     return style;
-  }, [width, height]);
+  }, [gap, width, height]);
 
   return (
     <View

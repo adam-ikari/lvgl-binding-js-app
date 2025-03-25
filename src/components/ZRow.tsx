@@ -9,7 +9,8 @@ interface ZRowProps {
   style?: ZStyleProps;
   width?: ZWidthEnum | number;
   height?: ZHeightEnum | number;
-  wrap?:boolean;
+  wrap?: boolean;
+  gap?: number;
 }
 
 const baseStyle: ZStyleProps = {
@@ -29,18 +30,19 @@ const heightStyleMap: Record<string, ZStyleProps> = {
   full: COMMON_STYLE.fullHeight,
 };
 
-const ZRow = (props?: ZRowProps) => {
+const ZRow = (props: ZRowProps) => {
   const {
     children,
     width = ZWidthEnum.Auto,
     height = ZHeightEnum.Auto,
     style: propStyle = {},
-    wrap = false
+    wrap = false,
+    gap = 10,
   } = props;
   console.log(props);
 
   const computedStyle = useMemo(() => {
-    let style = {};
+    let style = { "column-spacing": gap };
     if (_.isNumber(width)) {
       style["width"] = width;
     } else {
@@ -52,7 +54,7 @@ const ZRow = (props?: ZRowProps) => {
       style = { ...style, ...heightStyleMap[height] };
     }
     if (wrap) {
-      style["flex-wrap"] = "wrap"
+      style["flex-wrap"] = "wrap";
     }
     return style;
   }, [width, height]);

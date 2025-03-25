@@ -16,7 +16,7 @@ interface ZNavHeaderProps {
   addons?: React.ReactNode | React.ReactNode[];
 }
 
-const ZNavHeader = (props?: ZNavHeaderProps) => {
+const ZNavHeader = (props: ZNavHeaderProps) => {
   const { withBack = false, title, addons } = props;
   const navigate = useNavigate();
 

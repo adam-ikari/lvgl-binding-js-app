@@ -1,4 +1,4 @@
-import { COLORS, COMMON_STYLE } from "@/common_style";
+import { COLORS, COMMON_STYLE, CONSTANTS } from "@/common_style";
 import {
   ZColumn,
   ZHeightEnum,
@@ -9,7 +9,8 @@ import {
   ZWidthEnum,
 } from "@/components";
 import useTime from "@/hooks/time";
-import React from "react";
+import { Button, EAlignType, Text, View } from "lvgljs-ui";
+import React, { useRef } from "react";
 
 interface ZNavScreenLayoutProps {
   children?: React.ReactNode | React.ReactNode[];
@@ -24,38 +25,54 @@ const TimeAera = React.memo(() => {
 
 const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
   const { children, title = "", withBack = false } = props;
+  const topElementRef = useRef();
   return (
-    <ZColumn
-      width={ZWidthEnum.Full}
-      height={ZHeightEnum.Full}
-      style={{
-        "background-color": COLORS.PAGE_BACKGROUND,
-        overflow: "hidden",
-      }}
-    >
-      <ZNavHeader
-        withBack={withBack}
-        title={title}
-        addons={[
-          <ZIcon symbol={ZIconSymbol.Usb}></ZIcon>,
-          <ZIcon symbol={ZIconSymbol.Wifi}></ZIcon>,
-          <ZIcon symbol={ZIconSymbol.Bell}></ZIcon>,
-          <ZIcon symbol={ZIconSymbol.Envelope}></ZIcon>,
-          <TimeAera></TimeAera>,
-        ]}
-      ></ZNavHeader>
-
+    <React.Fragment>
       <ZColumn
         width={ZWidthEnum.Full}
+        height={ZHeightEnum.Full}
         style={{
-          ...COMMON_STYLE.padding20,
-          "flex-grow": 1,
           "background-color": COLORS.PAGE_BACKGROUND,
+          overflow: "hidden",
+        }}
+        gap={0}
+      >
+        <ZNavHeader
+          withBack={withBack}
+          title={title}
+          addons={[
+            <ZIcon symbol={ZIconSymbol.Usb}></ZIcon>,
+            <ZIcon symbol={ZIconSymbol.Wifi}></ZIcon>,
+            <ZIcon symbol={ZIconSymbol.Bell}></ZIcon>,
+            <ZIcon symbol={ZIconSymbol.Envelope}></ZIcon>,
+            <TimeAera></TimeAera>,
+          ]}
+        ></ZNavHeader>
+        <ZColumn
+          width={ZWidthEnum.Full}
+          style={{
+            ...COMMON_STYLE.padding20,
+            "flex-grow": 1,
+            "background-color": COLORS.PAGE_BACKGROUND,
+          }}
+        >
+          <View ref={topElementRef} style={{ width: 0, height: 0 }}></View>
+          {children}
+        </ZColumn>
+      </ZColumn>
+      <Button
+        style={{ "border-radius": CONSTANTS.MAX_RADIUS, width: 40, height: 40 }}
+        onClick={() => {
+          topElementRef.current?.scrollIntoView();
+        }}
+        align={{
+          type: EAlignType.ALIGN_BOTTOM_RIGHT,
+          pos: [-10, -10],
         }}
       >
-        {children}
-      </ZColumn>
-    </ZColumn>
+        <Text>{ZIconSymbol.Up}</Text>
+      </Button>
+    </React.Fragment>
   );
 };
 export type { ZNavScreenLayoutProps };

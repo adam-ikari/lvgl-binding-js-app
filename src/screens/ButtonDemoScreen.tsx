@@ -1,5 +1,12 @@
 import { COLORS } from "@/common_style";
-import { ZButton, ZButtonTypeEnum, ZRow, ZSizeEnum, ZText } from "@/components";
+import {
+  ZButton,
+  ZButtonGroup,
+  ZButtonTypeEnum,
+  ZRow,
+  ZSizeEnum,
+  ZText,
+} from "@/components";
 import { ZIconSymbol } from "@/components";
 import { ZNavScreenLayout } from "@/layouts";
 import React from "react";
@@ -125,6 +132,13 @@ const ButtonDemoScreen = () => {
             round
           ></ZButton>
         ))}
+      </ZRow>
+      <ZRow>
+        <ZButtonGroup>
+          <ZButton type={ZButtonTypeEnum.Primary}>One</ZButton>
+          <ZButton>Two</ZButton>
+          <ZButton>Three</ZButton>
+        </ZButtonGroup>
       </ZRow>
     </ZNavScreenLayout>
   );

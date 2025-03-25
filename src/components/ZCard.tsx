@@ -23,17 +23,17 @@ const baseStyle: ZStyleProps = {
   padding: 20,
 };
 
-const ZCardHeader = (props?: { children?: React.ReactNode }) => {
+const ZCardHeader = (props: { children?: React.ReactNode }) => {
   const { children } = props;
   return <ZRow>{children}</ZRow>;
 };
 
-const ZCardFooter = (props?: { children?: React.ReactNode }) => {
+const ZCardFooter = (props: { children?: React.ReactNode }) => {
   const { children } = props;
   return <ZRow>{children}</ZRow>;
 };
 
-const ZCard = (props?: ZCardProps) => {
+const ZCard = (props: ZCardProps) => {
   const { header, children, footer, style: propStyle = {} } = props;
   return (
     <ZColumn

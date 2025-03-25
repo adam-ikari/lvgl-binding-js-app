@@ -23,7 +23,7 @@ interface ZDialogProps {
   onConfirm?: () => void;
 }
 
-const ZDialog = (props?: ZDialogProps) => {
+const ZDialog = (props: ZDialogProps) => {
   const { width: windowWidth, height: windowHeight } = Dimensions.window;
   const {
     children,

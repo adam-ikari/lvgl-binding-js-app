@@ -11,7 +11,7 @@ const styles: Record<string, ZStyleProps> = {
   mask: { "border-radius": 0, "border-width": 0 },
 };
 
-const ZModal = (props?: ZModalProps) => {
+const ZModal = (props: ZModalProps) => {
   const { children, onMaskClick = () => {} } = props;
 
   return (

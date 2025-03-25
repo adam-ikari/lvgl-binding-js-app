@@ -133,7 +133,7 @@ const noChildStyle: ZStyleProps = {
   padding: 0,
 };
 
-const ZButton = (props?: ZButtonProps) => {
+const ZButton = (props: ZButtonProps) => {
   const {
     children,
     style: propStyle = {},
@@ -157,7 +157,7 @@ const ZButton = (props?: ZButtonProps) => {
   }, [type, size, text, round, disable, children]);
 
   const handleClick = () => {
-    if (!disable) {
+    if (!disable && onClick) {
       onClick();
     }
   };
