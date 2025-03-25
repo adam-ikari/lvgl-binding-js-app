@@ -20,15 +20,6 @@ const buttonsData = [
   { text: "Warning", type: ZButtonTypeEnum.Warning },
 ];
 
-const iconButtonsData = [
-  { icon: ZIconSymbol.Home, text: "Default", type: ZButtonTypeEnum.Default },
-  { icon: ZIconSymbol.Home, text: "Primary", type: ZButtonTypeEnum.Primary },
-  { icon: ZIconSymbol.Home, text: "Success", type: ZButtonTypeEnum.Success },
-  { icon: ZIconSymbol.Home, text: "Info", type: ZButtonTypeEnum.Info },
-  { icon: ZIconSymbol.Home, text: "Danger", type: ZButtonTypeEnum.Danger },
-  { icon: ZIconSymbol.Home, text: "Warning", type: ZButtonTypeEnum.Warning },
-];
-
 const style = {
   background: {
     "background-color": COLORS.PAGE_BACKGROUND,
@@ -90,51 +81,58 @@ const ButtonDemoScreen = () => {
       </ZRow>
       <ZText size={ZSizeEnum.Large}>Icon Button</ZText>
       <ZRow style={rowStyle}>
-        {iconButtonsData.map((item, index) => (
-          <ZButton key={index} type={item.type} icon={item.icon}>
-            {item.text}
-          </ZButton>
-        ))}
+        <ZButton size={ZSizeEnum.Small} icon={ZIconSymbol.Up} round />
+        <ZButton size={ZSizeEnum.Small} icon={ZIconSymbol.Down} round />
+        <ZButton size={ZSizeEnum.Small} icon={ZIconSymbol.Left} round />
+        <ZButton size={ZSizeEnum.Small} icon={ZIconSymbol.Right} round />
       </ZRow>
       <ZRow style={rowStyle}>
-        {iconButtonsData.map((item, index) => (
-          <ZButton key={index} type={item.type} icon={item.icon}></ZButton>
-        ))}
+        <ZButton type={ZButtonTypeEnum.Primary} icon={ZIconSymbol.Home}>
+          Home
+        </ZButton>
+        <ZButton icon={ZIconSymbol.Call} text>
+          Call
+        </ZButton>
+        <ZButton type={ZButtonTypeEnum.Danger} icon={ZIconSymbol.Trash} round>
+          Delete
+        </ZButton>
+        <ZButton
+          type={ZButtonTypeEnum.Info}
+          icon={ZIconSymbol.Trash}
+          disable
+          round
+        >
+          Delete
+        </ZButton>
       </ZRow>
       <ZRow style={rowStyle}>
-        {iconButtonsData.map((item, index) => (
-          <ZButton
-            key={index}
-            type={item.type}
-            size={ZSizeEnum.Small}
-            icon={item.icon}
-            round
-          ></ZButton>
-        ))}
+        <ZButton size={ZSizeEnum.Large} icon={ZIconSymbol.Battery1}>
+          20%
+        </ZButton>
+        <ZButton size={ZSizeEnum.Large} icon={ZIconSymbol.Battery2}>
+          50%
+        </ZButton>
+        <ZButton size={ZSizeEnum.Large} icon={ZIconSymbol.Battery3}>
+          80%
+        </ZButton>
+      </ZRow>
+      <ZText size={ZSizeEnum.Large}>Button Group</ZText>
+      <ZRow style={rowStyle}>
+        <ZButtonGroup size={ZSizeEnum.Small}>
+          <ZButton type={ZButtonTypeEnum.Primary}>One</ZButton>
+          <ZButton>Two</ZButton>
+          <ZButton>Three</ZButton>
+        </ZButtonGroup>
       </ZRow>
       <ZRow style={rowStyle}>
-        {iconButtonsData.map((item, index) => (
-          <ZButton
-            key={index}
-            type={item.type}
-            icon={item.icon}
-            round
-          ></ZButton>
-        ))}
-      </ZRow>
-      <ZRow style={rowStyle}>
-        {iconButtonsData.map((item, index) => (
-          <ZButton
-            key={index}
-            size={ZSizeEnum.Large}
-            type={item.type}
-            icon={item.icon}
-            round
-          ></ZButton>
-        ))}
-      </ZRow>
-      <ZRow>
         <ZButtonGroup>
+          <ZButton type={ZButtonTypeEnum.Primary}>One</ZButton>
+          <ZButton>Two</ZButton>
+          <ZButton>Three</ZButton>
+        </ZButtonGroup>
+      </ZRow>
+      <ZRow style={rowStyle}>
+        <ZButtonGroup size={ZSizeEnum.Large}>
           <ZButton type={ZButtonTypeEnum.Primary}>One</ZButton>
           <ZButton>Two</ZButton>
           <ZButton>Three</ZButton>

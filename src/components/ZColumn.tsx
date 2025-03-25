@@ -19,6 +19,7 @@ const ZColumn = (props: ZColumnProps) => {
     ...COMMON_STYLE.noBorder,
     ...COMMON_STYLE.padding0,
     ...COMMON_STYLE.radius0,
+    "align-items":"stretch"
   };
 
   const widthStyleMap: Record<string, ZStyleProps> = {
@@ -41,7 +42,7 @@ const ZColumn = (props: ZColumnProps) => {
   } = props;
 
   const computedStyle = useMemo(() => {
-    let style = { "column-spacing": gap };
+    let style = { "row-spacing": gap };
     if (_.isNumber(width)) {
       style["width"] = width;
     } else {
