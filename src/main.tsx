@@ -1,5 +1,17 @@
 import AppRouter from "@/router";
 import { Render } from "lvgljs-ui";
-import React from "react";
+import React, { Profiler } from "react";
 
-Render.render(<AppRouter />);
+const App = () => {
+  const onRender = (id, phase, actualDuration) => {
+    console.log(`${id} 组件 ${phase} 阶段耗时：${actualDuration}ms`);
+  };
+
+  return (
+    <Profiler id="AppRouter" onRender={onRender}>
+      <AppRouter />
+    </Profiler>
+  );
+};
+
+Render.render(<App></App>);
