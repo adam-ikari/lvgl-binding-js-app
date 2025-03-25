@@ -35,6 +35,7 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
         addons={[
           <ZIcon symbol={ZIconSymbol.Usb}></ZIcon>,
           <ZIcon symbol={ZIconSymbol.Wifi}></ZIcon>,
+          <ZIcon symbol={ZIconSymbol.Bell}></ZIcon>,
           <ZIcon symbol={ZIconSymbol.Envelope}></ZIcon>,
           <ZText>{time}</ZText>,
         ]}
