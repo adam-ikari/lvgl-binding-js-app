@@ -5,20 +5,19 @@ import {
   ZIcon,
   ZIconSymbol,
   ZNavHeader,
-  ZRow,
   ZText,
   ZWidthEnum,
 } from "@/components";
 import useTime from "@/hooks/time";
 import React from "react";
 
-interface ZNavHeaderLayoutProps {
+interface ZNavScreenLayoutProps {
   children?: React.ReactNode | React.ReactNode[];
   title?: string;
   withBack?: boolean;
 }
 
-const ZNavHeaderLayout = (props: ZNavHeaderLayoutProps) => {
+const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
   const { children, title = "", withBack = false } = props;
   const time = useTime({ format: "YYYY-MM-DD HH:mm" });
   return (
@@ -54,5 +53,5 @@ const ZNavHeaderLayout = (props: ZNavHeaderLayoutProps) => {
     </ZColumn>
   );
 };
-export type { ZNavHeaderLayoutProps };
-export { ZNavHeaderLayout };
+export type { ZNavScreenLayoutProps };
+export { ZNavScreenLayout };

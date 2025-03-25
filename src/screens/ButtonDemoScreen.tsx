@@ -1,7 +1,7 @@
 import { COLORS } from "@/common_style";
 import { ZButton, ZButtonTypeEnum, ZRow, ZSizeEnum, ZText } from "@/components";
 import { ZIconSymbol } from "@/components";
-import { ZNavHeaderLayout } from "@/layouts";
+import { ZNavScreenLayout } from "@/layouts";
 import React from "react";
 
 const buttonsData = [
@@ -34,7 +34,7 @@ const rowStyle = {
 
 const ButtonDemoScreen = () => {
   return (
-    <ZNavHeaderLayout title={"Button Demo"} withBack>
+    <ZNavScreenLayout title={"Button Demo"} withBack>
       <ZText size={ZSizeEnum.Large}>Size</ZText>
       <ZRow style={rowStyle}>
         {buttonsData.map((item, index) => (
@@ -126,7 +126,7 @@ const ButtonDemoScreen = () => {
           ></ZButton>
         ))}
       </ZRow>
-    </ZNavHeaderLayout>
+    </ZNavScreenLayout>
   );
 };
 

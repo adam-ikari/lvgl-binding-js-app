@@ -1,6 +1,6 @@
 import { COLORS } from "@/common_style";
 import { ZButton, ZButtonTypeEnum, ZColumn, ZRow, ZText } from "@/components";
-import { ZNavHeaderLayout } from "@/layouts";
+import { ZNavScreenLayout } from "@/layouts";
 import React from "react";
 import { useNavigate } from "react-router-native";
 
@@ -29,7 +29,7 @@ const indexData = [
 const HomeScreen = () => {
   const navigate = useNavigate();
   return (
-    <ZNavHeaderLayout title="Home">
+    <ZNavScreenLayout title="Home">
       {indexData.map((category) => (
         <ZColumn
           style={{
@@ -54,7 +54,7 @@ const HomeScreen = () => {
           </ZRow>
         </ZColumn>
       ))}
-    </ZNavHeaderLayout>
+    </ZNavScreenLayout>
   );
 };
 

@@ -8,7 +8,7 @@ import {
   ZText,
   ZWidthEnum,
 } from "@/components";
-import { ZNavHeaderLayout } from "@/layouts";
+import { ZNavScreenLayout } from "@/layouts";
 import React from "react";
 
 const iconSymbolData = [
@@ -82,7 +82,7 @@ const style = {
 
 const ZIconDemoScreen = () => {
   return (
-    <ZNavHeaderLayout title={"Icon Demo"} withBack>
+    <ZNavScreenLayout title={"Icon Demo"} withBack>
       <ZText size={ZSizeEnum.Large}>Icons</ZText>
       <ZRow
         wrap
@@ -103,7 +103,7 @@ const ZIconDemoScreen = () => {
           </ZColumn>
         ))}
       </ZRow>
-    </ZNavHeaderLayout>
+    </ZNavScreenLayout>
   );
 };
 

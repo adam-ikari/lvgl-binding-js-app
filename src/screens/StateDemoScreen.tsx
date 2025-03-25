@@ -1,6 +1,6 @@
 import { COLORS } from "@/common_style";
 import { ZButton, ZIconSymbol, ZRow, ZText } from "@/components";
-import { ZNavHeaderLayout } from "@/layouts";
+import { ZNavScreenLayout } from "@/layouts";
 import React, { useState } from "react";
 
 const style = {
@@ -12,7 +12,7 @@ const style = {
 const StateDemoScreen = () => {
   const [count, setCount] = useState(0);
   return (
-    <ZNavHeaderLayout title={"State Demo"} withBack>
+    <ZNavScreenLayout title={"State Demo"} withBack>
       <ZText>{`${count}`}</ZText>
       <ZRow
         style={{
@@ -35,7 +35,7 @@ const StateDemoScreen = () => {
           Reset
         </ZButton>
       </ZRow>
-    </ZNavHeaderLayout>
+    </ZNavScreenLayout>
   );
 };
 

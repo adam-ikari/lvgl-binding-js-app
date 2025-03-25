@@ -8,7 +8,7 @@ import {
   ZSizeEnum,
   ZText,
 } from "@/components";
-import { ZNavHeaderLayout } from "@/layouts";
+import { ZNavScreenLayout } from "@/layouts";
 import React, { useState } from "react";
 import { v1 as uuidv1 } from "uuid";
 
@@ -33,7 +33,7 @@ function initItems() {
 const ListDemoScreen = () => {
   const [items, setItems] = useState(initItems);
   return (
-    <ZNavHeaderLayout title={"List Demo"} withBack>
+    <ZNavScreenLayout title={"List Demo"} withBack>
       <ZColumn style={{ ...style.BackgroundStyle }}>
         {items.map((item) => (
           <ZRow key={item.id} style={{ ...style.BackgroundStyle }}>
@@ -79,7 +79,7 @@ const ListDemoScreen = () => {
           }}
         ></ZButton>
       </ZRow>
-    </ZNavHeaderLayout>
+    </ZNavScreenLayout>
   );
 };
 
