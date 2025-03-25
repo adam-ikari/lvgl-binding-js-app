@@ -16,6 +16,7 @@ const indexData = [
     children: [
       { text: "Button Demo", path: "/button" },
       { text: "Icon Demo", path: "/icon" },
+      { text: "Input Demo", path: "/input" },
     ],
   },
   {
@@ -44,12 +45,7 @@ const HomeScreen = () => {
             }}
           >
             {category.children.map((item) => (
-              <ZButton
-                type={ZButtonTypeEnum.Primary}
-                onClick={() => navigate(item.path)}
-              >
-                {item.text}
-              </ZButton>
+              <ZButton onClick={() => navigate(item.path)}>{item.text}</ZButton>
             ))}
           </ZRow>
         </ZColumn>

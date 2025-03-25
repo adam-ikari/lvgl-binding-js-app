@@ -9,3 +9,4 @@ export * from "./ZIcon";
 export * from "./ZModal"
 export * from "./ZDialog"
 export * from "./ZButtonGroup"
+export * from "./ZInput"

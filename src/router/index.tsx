@@ -4,6 +4,7 @@ import HomeScreen from "@/screens/HomeScreen";
 import ListDemoScreen from "@/screens/ListDemoScreen";
 import StateDemoScreen from "@/screens/StateDemoScreen";
 import IconDemoScreen from "@/screens/ZIconDemoScreen";
+import InputDemoScreen from "@/screens/InputDemoScreen"
 import React from "react";
 import { MemoryRouter, Route, Routes } from "react-router-native";
 
@@ -31,6 +32,10 @@ const AppRouter = () => {
         <Route
           path="/dialog"
           element={React.createElement(React.memo(DialogDemoScreen))}
+        />
+        <Route
+          path="/input"
+          element={React.createElement(React.memo(InputDemoScreen))}
         />
       </Routes>
     </MemoryRouter>

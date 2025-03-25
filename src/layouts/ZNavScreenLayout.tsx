@@ -61,7 +61,16 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
         </ZColumn>
       </ZColumn>
       <Button
-        style={{ "border-radius": CONSTANTS.MAX_RADIUS, width: 40, height: 40 }}
+        style={{
+          "border-radius": CONSTANTS.MAX_RADIUS,
+          width: 40,
+          height: 40,
+          padding: 0,
+          display: "flex",
+          "flex-direction": "row",
+          "align-items": "center",
+          "justify-content": "center",
+        }}
         onClick={() => {
           topElementRef.current?.scrollIntoView();
         }}
