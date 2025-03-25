@@ -1,3 +1,4 @@
+import { COMMON_STYLE } from "@/common_style";
 import {
   ZButton,
   ZButtonTypeEnum,
@@ -5,8 +6,7 @@ import {
   ZRow,
   ZSizeEnum,
   ZStyleProps,
-} from ".";
-import { COMMON_STYLE } from "@/common_style";
+} from "@/components";
 import React, { useMemo } from "react";
 
 enum ZButtonGroupDirectionEnum {
@@ -17,35 +17,14 @@ enum ZButtonGroupDirectionEnum {
 interface ZButtonGroupProps {
   children: React.ReactNode;
   direction?: ZButtonGroupDirectionEnum;
-  type?: ZButtonTypeEnum;
   size?: ZSizeEnum;
-  style?: ZStyleProps;
-  gap?: number;
-  round?: boolean;
 }
-
-const baseStyle: ZStyleProps = {
-  ...COMMON_STYLE.flexRow,
-  "border-radius": 4,
-  "border-width": 1,
-  "border-color": "#dedfe2",
-  "shadow-width": 0,
-};
-
-const directionStyleMap: Record<string, ZStyleProps> = {
-  horizontal: {
-    ...COMMON_STYLE.flexRow,
-  },
-  vertical: {
-    ...COMMON_STYLE.flexColumn,
-  },
-};
 
 const ZButtonGroup = (props: ZButtonGroupProps) => {
   const {
     children,
     direction = ZButtonGroupDirectionEnum.Horizontal,
-    size,
+    size = ZSizeEnum.Default,
   } = props;
 
   const buttons = (
@@ -53,7 +32,7 @@ const ZButtonGroup = (props: ZButtonGroupProps) => {
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child) && child.type === ZButton) {
           return React.cloneElement(child, {
-            size: size || child.props.size,
+            size: child.props.size,
             style: {
               ...child.props.style,
               "border-radius": 0,
