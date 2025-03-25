@@ -12,7 +12,7 @@ interface ZColumnProps {
   wrap?: boolean;
 }
 
-const ZColumn = (props: ZColumnProps) => {
+const ZColumn = (props?: ZColumnProps) => {
   const baseStyle: ZStyleProps = {
     ...COMMON_STYLE.flexColumn,
     ...COMMON_STYLE.noBorder,

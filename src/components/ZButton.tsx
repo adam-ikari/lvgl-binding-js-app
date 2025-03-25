@@ -133,7 +133,7 @@ const noChildStyle: ZStyleProps = {
   padding: 0,
 };
 
-const ZButton = (props: ZButtonProps) => {
+const ZButton = (props?: ZButtonProps) => {
   const {
     children,
     style: propStyle = {},

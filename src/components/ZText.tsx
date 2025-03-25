@@ -23,7 +23,7 @@ const sizeStyleMap: Record<string, ZStyleProps> = {
   },
 };
 
-const ZText = (props: ZTextProps) => {
+const ZText = (props?: ZTextProps) => {
   const {
     children = "",
     style: propStyle = {},

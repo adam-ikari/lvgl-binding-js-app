@@ -29,7 +29,7 @@ const heightStyleMap: Record<string, ZStyleProps> = {
   full: COMMON_STYLE.fullHeight,
 };
 
-const ZRow = (props: ZRowProps) => {
+const ZRow = (props?: ZRowProps) => {
   const {
     children,
     width = ZWidthEnum.Auto,

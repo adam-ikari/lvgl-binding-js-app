@@ -7,7 +7,7 @@ interface ZIconProps {
   size?: ZSizeEnum;
 }
 
-const ZIcon = (props: ZIconProps) => {
+const ZIcon = (props?: ZIconProps) => {
   const { symbol, size = ZSizeEnum.Default } = props;
   return <ZText size={size}>{symbol}</ZText>;
 };

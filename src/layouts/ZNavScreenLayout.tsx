@@ -17,9 +17,13 @@ interface ZNavScreenLayoutProps {
   withBack?: boolean;
 }
 
+const TimeAera = React.memo(() => {
+  const time = useTime({ format: "YYYY-MM-DD HH:mm" });
+  return <ZText>{time}</ZText>;
+});
+
 const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
   const { children, title = "", withBack = false } = props;
-  const time = useTime({ format: "YYYY-MM-DD HH:mm" });
   return (
     <ZColumn
       width={ZWidthEnum.Full}
@@ -37,7 +41,7 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
           <ZIcon symbol={ZIconSymbol.Wifi}></ZIcon>,
           <ZIcon symbol={ZIconSymbol.Bell}></ZIcon>,
           <ZIcon symbol={ZIconSymbol.Envelope}></ZIcon>,
-          <ZText>{time}</ZText>,
+          <TimeAera></TimeAera>,
         ]}
       ></ZNavHeader>
 

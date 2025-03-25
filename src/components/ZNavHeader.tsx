@@ -16,7 +16,7 @@ interface ZNavHeaderProps {
   addons?: React.ReactNode | React.ReactNode[];
 }
 
-const ZNavHeader = (props: ZNavHeaderProps) => {
+const ZNavHeader = (props?: ZNavHeaderProps) => {
   const { withBack = false, title, addons } = props;
   const navigate = useNavigate();
 
@@ -42,7 +42,6 @@ const ZNavHeader = (props: ZNavHeaderProps) => {
             size={ZSizeEnum.Small}
             icon={ZIconSymbol.Left}
             text
-            round
             onClick={() => navigate(-1)}
           >
             back
