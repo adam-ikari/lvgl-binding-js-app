@@ -33,10 +33,9 @@ const indexData = [
 const HomeScreen = () => {
   const navigate = useNavigate();
   return (
-    // <ZNavScreenLayout title="Home">
-    <React.Fragment>
+    <>
       {indexData.map((category) => (
-        <React.Fragment>
+        <>
           <ZText>{category.text}</ZText>
           <ZRow
             wrap
@@ -48,10 +47,9 @@ const HomeScreen = () => {
               <ZButton onClick={() => navigate(item.name)}>{item.text}</ZButton>
             ))}
           </ZRow>
-        </React.Fragment>
+        </>
       ))}
-    </React.Fragment>
-    // </ZNavScreenLayout>
+    </>
   );
 };
 

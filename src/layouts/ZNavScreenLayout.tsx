@@ -48,7 +48,7 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
   const topElementRef = useRef();
 
   return (
-    <React.Fragment>
+    <>
       <ZColumn
         width={ZWidthEnum.Full}
         height={ZHeightEnum.Full}
@@ -102,7 +102,7 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
       >
         <Text>{ZIconSymbol.Up}</Text>
       </Button>
-    </React.Fragment>
+    </>
   );
 };
 export type { ZNavScreenLayoutProps };

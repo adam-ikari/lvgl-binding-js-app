@@ -12,7 +12,7 @@ const style = {
 const StateDemoScreen = () => {
   const [count, setCount] = useState(0);
   return (
-    <ZNavScreenLayout title={"State Demo"} withBack>
+    <>
       <ZText>{`${count}`}</ZText>
       <ZRow
         style={{
@@ -35,7 +35,7 @@ const StateDemoScreen = () => {
           Reset
         </ZButton>
       </ZRow>
-    </ZNavScreenLayout>
+    </>
   );
 };
 

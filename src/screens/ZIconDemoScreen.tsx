@@ -82,7 +82,7 @@ const style = {
 
 const ZIconDemoScreen = () => {
   return (
-    <ZNavScreenLayout title={"Icon Demo"} withBack>
+    <>
       <ZText size={ZSizeEnum.Large}>Icons</ZText>
       <ZRow
         wrap
@@ -103,7 +103,7 @@ const ZIconDemoScreen = () => {
           </ZColumn>
         ))}
       </ZRow>
-    </ZNavScreenLayout>
+    </>
   );
 };
 

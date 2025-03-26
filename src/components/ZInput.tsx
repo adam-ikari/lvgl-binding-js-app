@@ -68,7 +68,19 @@ const ZInput = (props: ZInputProps) => {
       onChange(input);
     }
   }, [input]);
-
+  const button = useMemo(() => {
+    return allowClean && input ? (
+      <ZButton
+        size={size}
+        onClick={() => {
+          setInput("");
+        }}
+        icon={ZIconSymbol.Backspace}
+        round={round}
+        text
+      ></ZButton>
+    ) : null;
+  }, [allowClean, input]);
   return (
     <ZRow style={style.view} gap={0}>
       <Input
@@ -83,17 +95,7 @@ const ZInput = (props: ZInputProps) => {
         autoKeyBoard={true}
         mode={password ? "password" : "text"}
       ></Input>
-      {allowClean && (
-        <ZButton
-          size={size}
-          onClick={() => {
-            setInput("");
-          }}
-          icon={ZIconSymbol.Backspace}
-          round={round}
-          text
-        ></ZButton>
-      )}
+      {button}
     </ZRow>
   );
 };

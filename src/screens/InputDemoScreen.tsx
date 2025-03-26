@@ -1,6 +1,5 @@
 import { COLORS } from "@/common_style";
 import { ZInput, ZRow, ZSizeEnum, ZText } from "@/components";
-import { ZNavScreenLayout } from "@/layouts";
 import React from "react";
 
 const style = {
@@ -15,7 +14,7 @@ const rowStyle = {
 
 const InputDemoScreen = () => {
   return (
-    <ZNavScreenLayout title={"Input Demo"} withBack>
+    <>
       <ZText size={ZSizeEnum.Large}>Basic</ZText>
       <ZRow style={rowStyle}>
         <ZInput></ZInput>
@@ -29,7 +28,7 @@ const InputDemoScreen = () => {
       <ZRow style={rowStyle}>
         <ZInput value={"test"} allowClean></ZInput>
       </ZRow>
-    </ZNavScreenLayout>
+    </>
   );
 };
 
