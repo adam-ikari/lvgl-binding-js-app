@@ -11,7 +11,7 @@ import {
 import useTime from "@/hooks/time";
 import routerData from "@/router";
 import { Button, EAlignType, Text, View } from "lvgljs-ui";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
 import { useLocation } from "react-router-native";
 
 interface ZNavScreenLayoutProps {
@@ -40,7 +40,7 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
   const [title, setTitle] = useState("");
   const [withBack, setWithBack] = useState(isHome(location));
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setWithBack(isHome(location));
     setTitle(getMetaData(location)?.title);
   }, [location]);
