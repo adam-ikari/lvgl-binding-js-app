@@ -16,7 +16,9 @@ import { useLocation } from "react-router-native";
 
 const HEIGHT = 40;
 
-const HomeButton = React.memo(() => {
+const checkHome = (path) => path === "/";
+
+const HomeButton = () => {
   const navigate = useNavigate();
   return (
     <ZButton
@@ -24,10 +26,12 @@ const HomeButton = React.memo(() => {
       size={ZSizeEnum.Small}
       icon={ZIconSymbol.Home}
       text
-      onClick={() => navigate("/")}
-    ></ZButton>
+      onClick={() => {
+        navigate("/");
+      }}
+    />
   );
-});
+};
 
 const BackButton = React.memo(() => {
   const navigate = useNavigate();
@@ -44,8 +48,6 @@ const BackButton = React.memo(() => {
   );
 });
 
-const isHome = (location) => location.pathname !== "/";
-
 const getMetaData = (location) => {
   const route = routerData.find((item) => item.path === location.pathname);
   if (route && route.meta) {
@@ -54,23 +56,66 @@ const getMetaData = (location) => {
   return {};
 };
 
-const TimeAera = React.memo(() => {
+const NotificationAera = () => {
+  return (
+    <ZRow
+      height={ZHeightEnum.Full}
+      style={{
+        "align-items": "center",
+      }}
+    >
+      <ZIcon symbol={ZIconSymbol.Usb}></ZIcon>
+      <ZIcon symbol={ZIconSymbol.Wifi}></ZIcon>
+      <ZIcon symbol={ZIconSymbol.Bell}></ZIcon>
+      <ZIcon symbol={ZIconSymbol.Envelope}></ZIcon>
+    </ZRow>
+  );
+};
+
+const TimeAera = () => {
   const time = useTime({ format: "YYYY-MM-DD HH:mm" });
-  return <ZText>{time}</ZText>;
-});
+  return (
+    <ZRow
+      height={ZHeightEnum.Full}
+      style={{
+        "align-items": "center",
+      }}
+    >
+      <ZText>{time}</ZText>;
+    </ZRow>
+  );
+};
+
+const ActionAera = () => {
+  const location = useLocation();
+  const [isHome, setIsHome] = useState(checkHome(location.pathname));
+  useLayoutEffect(() => {
+    setIsHome(checkHome(location.pathname));
+  }, [location]);
+  return (
+    <ZRow
+      height={ZHeightEnum.Full}
+      gap={0}
+      style={{
+        "align-items": "center",
+      }}
+    >
+      <HomeButton />
+      {isHome ? null : <BackButton />}
+    </ZRow>
+  );
+};
 
 const ZNavHeader = () => {
   const location = useLocation();
   const [title, setTitle] = useState("");
-
-  const [withBack, setWithBack] = useState(isHome(location));
+  const [isHome, setIsHome] = useState(checkHome(location.pathname));
 
   useLayoutEffect(() => {
-    setWithBack(isHome(location));
+    console.log(checkHome(location.pathname));
+    setIsHome(checkHome(location.pathname));
     setTitle(getMetaData(location)?.title);
   }, [location]);
-
-  // const { withBack = false, title = "", addons } = props;
 
   return (
     <ZRow
@@ -81,16 +126,7 @@ const ZNavHeader = () => {
         "align-items": "center",
       }}
     >
-      <ZRow
-        height={ZHeightEnum.Full}
-        gap={0}
-        style={{
-          "align-items": "center",
-        }}
-      >
-        <HomeButton />
-        {withBack ? <BackButton /> : null}
-      </ZRow>
+      <ActionAera />
       <ZRow
         height={ZHeightEnum.Full}
         style={{
@@ -100,18 +136,8 @@ const ZNavHeader = () => {
       >
         <ZText>{title}</ZText>
       </ZRow>
-      <ZRow
-        height={ZHeightEnum.Full}
-        style={{
-          "align-items": "center",
-        }}
-      >
-        <ZIcon symbol={ZIconSymbol.Usb}></ZIcon>
-        <ZIcon symbol={ZIconSymbol.Wifi}></ZIcon>
-        <ZIcon symbol={ZIconSymbol.Bell}></ZIcon>
-        <ZIcon symbol={ZIconSymbol.Envelope}></ZIcon>
-        <TimeAera></TimeAera>,
-      </ZRow>
+      <NotificationAera />
+      <TimeAera />
     </ZRow>
   );
 };
