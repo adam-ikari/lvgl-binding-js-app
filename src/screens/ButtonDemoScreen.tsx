@@ -32,7 +32,8 @@ const rowStyle = {
 
 const ButtonDemoScreen = () => {
   return (
-    <ZNavScreenLayout title={"Button Demo"} withBack>
+    // <ZNavScreenLayout title={"Button Demo"} withBack>
+    <React.Fragment>
       <ZText size={ZSizeEnum.Large}>Size</ZText>
       <ZRow style={rowStyle}>
         {buttonsData.map((item, index) => (
@@ -138,7 +139,8 @@ const ButtonDemoScreen = () => {
           <ZButton>Three</ZButton>
         </ZButtonGroup>
       </ZRow>
-    </ZNavScreenLayout>
+    </React.Fragment>
+    // </ZNavScreenLayout>
   );
 };
 

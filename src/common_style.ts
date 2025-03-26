@@ -91,7 +91,7 @@ const COMMON_STYLE: Record<string, StyleProps> = {
     "font-size": 14,
   },
   fontSizeLarge: {
-    "font-size": 18,
+    "font-size": 16,
   },
   radius0: {
     "border-radius": 0,

@@ -6,28 +6,45 @@ import ListDemoScreen from "@/screens/ListDemoScreen";
 import StateDemoScreen from "@/screens/StateDemoScreen";
 import IconDemoScreen from "@/screens/ZIconDemoScreen";
 import React from "react";
-import { MemoryRouter, Route, Routes } from "react-router-native";
 
 const routerData = [
-  { name: "home", path: "/", component: HomeScreen },
-  { name: "button", path: "/button", component: ButtonDemoScreen },
-  { name: "icon", path: "/icon", component: IconDemoScreen },
-  { name: "state", path: "/state", component: StateDemoScreen },
-  { name: "list", path: "/list", component: ListDemoScreen },
-  { name: "dialog", path: "/dialog", component: DialogDemoScreen },
-  { name: "input", path: "/input", component: InputDemoScreen },
+  { name: "home", path: "/", element: <HomeScreen />, meta: { title: "Home" } },
+  {
+    name: "button",
+    path: "/button",
+    element: <ButtonDemoScreen />,
+    meta: { title: "Button Demo" },
+  },
+  {
+    name: "icon",
+    path: "/icon",
+    element: <IconDemoScreen />,
+    meta: { title: "Icon Demo" },
+  },
+  {
+    name: "state",
+    path: "/state",
+    element: <StateDemoScreen />,
+    meta: { title: "State Demo" },
+  },
+  {
+    name: "list",
+    path: "/list",
+    element: <ListDemoScreen />,
+    meta: { title: "List Demo" },
+  },
+  {
+    name: "dialog",
+    path: "/dialog",
+    element: <DialogDemoScreen />,
+    meta: { title: "Dialog Demo" },
+  },
+  {
+    name: "input",
+    path: "/input",
+    element: <InputDemoScreen />,
+    meta: { title: "Input Demo" },
+  },
 ];
 
-const AppRouter = () => {
-  return (
-    <MemoryRouter initialEntries={["/"]} initialIndex={0}>
-      <Routes>
-        {routerData.map(({ name, path, component: Component }) => (
-          <Route id={name} path={path} element={<Component />} />
-        ))}
-      </Routes>
-    </MemoryRouter>
-  );
-};
-
-export default AppRouter;
+export default routerData;

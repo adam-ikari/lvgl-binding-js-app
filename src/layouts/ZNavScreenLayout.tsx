@@ -9,13 +9,13 @@ import {
   ZWidthEnum,
 } from "@/components";
 import useTime from "@/hooks/time";
+import routerData from "@/router";
 import { Button, EAlignType, Text, View } from "lvgljs-ui";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-native";
 
 interface ZNavScreenLayoutProps {
   children?: React.ReactNode | React.ReactNode[];
-  title?: string;
-  withBack?: boolean;
 }
 
 const TimeAera = React.memo(() => {
@@ -23,9 +23,30 @@ const TimeAera = React.memo(() => {
   return <ZText>{time}</ZText>;
 });
 
+const isHome = (location) => location.pathname !== "/";
+
+const getMetaData = (location) => {
+  const route = routerData.find((item) => item.path === location.pathname);
+  if (route && route.meta) {
+    return route.meta;
+  }
+  return {};
+};
+
 const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
-  const { children, title = "", withBack = false } = props;
+  const { children } = props;
+
+  const location = useLocation();
+  const [title, setTitle] = useState("");
+  const [withBack, setWithBack] = useState(isHome(location));
+
+  useEffect(() => {
+    setWithBack(isHome(location));
+    setTitle(getMetaData(location)?.title);
+  }, [location]);
+
   const topElementRef = useRef();
+
   return (
     <React.Fragment>
       <ZColumn
