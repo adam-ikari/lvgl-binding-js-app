@@ -8,7 +8,6 @@ import {
   ZText,
   ZWidthEnum,
 } from "@/components";
-import { ZNavScreenLayout } from "@/layouts";
 import React from "react";
 
 const iconSymbolData = [
@@ -80,7 +79,7 @@ const style = {
   },
 };
 
-const ZIconDemoScreen = () => {
+const IconDemoScreen = () => {
   return (
     <>
       <ZText size={ZSizeEnum.Large}>Icons</ZText>
@@ -107,4 +106,4 @@ const ZIconDemoScreen = () => {
   );
 };
 
-export default ZIconDemoScreen;
+export default IconDemoScreen;
