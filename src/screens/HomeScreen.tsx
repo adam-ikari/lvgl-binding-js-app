@@ -16,8 +16,11 @@ const indexData = [
     children: [
       { text: "Button Demo", path: "/button" },
       { text: "Icon Demo", path: "/icon" },
-      { text: "Input Demo", path: "/input" },
     ],
+  },
+  {
+    text: "Form Widgets",
+    children: [{ text: "Input Demo", path: "/input" }],
   },
   {
     text: "Feedback Widgets",

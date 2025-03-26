@@ -16,9 +16,18 @@ const rowStyle = {
 const InputDemoScreen = () => {
   return (
     <ZNavScreenLayout title={"Input Demo"} withBack>
-      <ZText size={ZSizeEnum.Large}>Size</ZText>
+      <ZText size={ZSizeEnum.Large}>Basic</ZText>
       <ZRow style={rowStyle}>
         <ZInput></ZInput>
+        <ZInput placeholder={"please input"}></ZInput>
+      </ZRow>
+      <ZText size={ZSizeEnum.Large}>Password</ZText>
+      <ZRow style={rowStyle}>
+        <ZInput password></ZInput>
+      </ZRow>
+      <ZText size={ZSizeEnum.Large}>Allow Clean</ZText>
+      <ZRow style={rowStyle}>
+        <ZInput value={"test"} allowClean></ZInput>
       </ZRow>
     </ZNavScreenLayout>
   );
