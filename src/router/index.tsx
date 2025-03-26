@@ -8,17 +8,23 @@ import IconDemoScreen from "@/screens/ZIconDemoScreen";
 import React from "react";
 import { MemoryRouter, Route, Routes } from "react-router-native";
 
+const routerData = [
+  { path: "/", component: HomeScreen },
+  { path: "/button", component: ButtonDemoScreen },
+  { path: "/icon", component: IconDemoScreen },
+  { path: "/state", component: StateDemoScreen },
+  { path: "/list", component: ListDemoScreen },
+  { path: "/dialog", component: DialogDemoScreen },
+  { path: "/input", component: InputDemoScreen },
+];
+
 const AppRouter = () => {
   return (
     <MemoryRouter initialEntries={["/"]} initialIndex={0}>
       <Routes>
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/button" element={<ButtonDemoScreen />} />
-        <Route path="/icon" element={<IconDemoScreen />} />
-        <Route path="/state" element={<StateDemoScreen />} />
-        <Route path="/list" element={<ListDemoScreen />} />
-        <Route path="/dialog" element={<DialogDemoScreen />} />
-        <Route path="/input" element={<InputDemoScreen />} />
+        {routerData.map(({ path, component: Component }) => (
+          <Route key={path} path={path} element={<Component />} />
+        ))}
       </Routes>
     </MemoryRouter>
   );
