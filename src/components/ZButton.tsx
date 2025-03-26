@@ -109,19 +109,22 @@ const disabledStyle: ZStyleProps = {
 
 const sizeStyleMap: Record<string, ZStyleProps> = {
   small: {
-    ...COMMON_STYLE.minWidth36,
-    ...COMMON_STYLE.minHeight36,
+    ...COMMON_STYLE.minWidth32,
+    ...COMMON_STYLE.minHeight32,
     ...COMMON_STYLE.fontSizeSmall,
+    padding:4
   },
   default: {
-    ...COMMON_STYLE.minWidth40,
-    ...COMMON_STYLE.minHeight40,
+    ...COMMON_STYLE.minWidth36,
+    ...COMMON_STYLE.minHeight36,
     ...COMMON_STYLE.fontSizeDefault,
+    padding:8
   },
   large: {
-    ...COMMON_STYLE.minWidth48,
-    ...COMMON_STYLE.minHeight48,
+    ...COMMON_STYLE.minWidth40,
+    ...COMMON_STYLE.minHeight40,
     ...COMMON_STYLE.fontSizeLarge,
+    padding:16
   },
 };
 

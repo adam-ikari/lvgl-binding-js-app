@@ -16,6 +16,8 @@ interface ZNavHeaderProps {
   addons?: React.ReactNode | React.ReactNode[];
 }
 
+const HEIGHT = 40
+
 const ZNavHeader = (props: ZNavHeaderProps) => {
   const { withBack = false, title, addons } = props;
   const navigate = useNavigate();
@@ -23,7 +25,7 @@ const ZNavHeader = (props: ZNavHeaderProps) => {
   return (
     <ZRow
       width={ZWidthEnum.Full}
-      height={48}
+      height={HEIGHT}
       style={{
         padding: 4,
         "align-items": "center",

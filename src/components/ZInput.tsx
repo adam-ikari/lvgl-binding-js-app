@@ -1,5 +1,5 @@
 import { ZButton, ZIconSymbol, ZRow, ZSizeEnum, ZStyleProps } from ".";
-import { COMMON_STYLE } from "@/common_style";
+import { COMMON_STYLE, CONSTANTS } from "@/common_style";
 import { Input } from "lvgljs-ui";
 import React, { useEffect, useMemo, useState } from "react";
 
@@ -10,6 +10,7 @@ interface ZInputProps {
   size?: ZSizeEnum;
   value?: string;
   maxLangth?: number;
+  round?: boolean;
   onChange?: (value: string) => void;
 }
 
@@ -49,13 +50,17 @@ const ZInput = (props: ZInputProps) => {
     value = "",
     allowClean = false,
     maxLangth = 256,
+    round = false,
     onChange,
   } = props;
 
   const [input, setInput] = useState(value);
 
-  const computedStyle = useMemo(() => {
-    return { ...sizeStyleMap[size] };
+  const computedInputStyle = useMemo(() => {
+    return {
+      ...sizeStyleMap[size],
+      ...(round && { "border-radius": CONSTANTS.MAX_RADIUS }),
+    };
   }, [size]);
 
   useEffect(() => {
@@ -67,7 +72,7 @@ const ZInput = (props: ZInputProps) => {
   return (
     <ZRow style={style.view} gap={0}>
       <Input
-        style={{ ...style.input, ...computedStyle }}
+        style={{ ...style.input, ...computedInputStyle }}
         placeholder={placeholder}
         maxlength={maxLangth}
         value={input}
@@ -85,6 +90,7 @@ const ZInput = (props: ZInputProps) => {
             setInput("");
           }}
           icon={ZIconSymbol.Backspace}
+          round={round}
           text
         ></ZButton>
       )}
