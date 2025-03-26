@@ -2,48 +2,19 @@ import { COLORS, COMMON_STYLE, CONSTANTS } from "@/common_style";
 import {
   ZColumn,
   ZHeightEnum,
-  ZIcon,
   ZIconSymbol,
   ZNavHeader,
-  ZText,
   ZWidthEnum,
 } from "@/components";
-import useTime from "@/hooks/time";
-import routerData from "@/router";
 import { Button, EAlignType, Text, View } from "lvgljs-ui";
-import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
-import { useLocation } from "react-router-native";
+import React, { useRef } from "react";
 
 interface ZNavScreenLayoutProps {
   children?: React.ReactNode | React.ReactNode[];
 }
 
-const TimeAera = React.memo(() => {
-  const time = useTime({ format: "YYYY-MM-DD HH:mm" });
-  return <ZText>{time}</ZText>;
-});
-
-const isHome = (location) => location.pathname !== "/";
-
-const getMetaData = (location) => {
-  const route = routerData.find((item) => item.path === location.pathname);
-  if (route && route.meta) {
-    return route.meta;
-  }
-  return {};
-};
-
 const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
   const { children } = props;
-
-  const location = useLocation();
-  const [title, setTitle] = useState("");
-  const [withBack, setWithBack] = useState(isHome(location));
-
-  useLayoutEffect(() => {
-    setWithBack(isHome(location));
-    setTitle(getMetaData(location)?.title);
-  }, [location]);
 
   const topElementRef = useRef();
 
@@ -58,17 +29,7 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
         }}
         gap={0}
       >
-        <ZNavHeader
-          withBack={withBack}
-          title={title}
-          addons={[
-            <ZIcon symbol={ZIconSymbol.Usb}></ZIcon>,
-            <ZIcon symbol={ZIconSymbol.Wifi}></ZIcon>,
-            <ZIcon symbol={ZIconSymbol.Bell}></ZIcon>,
-            <ZIcon symbol={ZIconSymbol.Envelope}></ZIcon>,
-            <TimeAera></TimeAera>,
-          ]}
-        ></ZNavHeader>
+        <ZNavHeader />
         <ZColumn
           width={ZWidthEnum.Full}
           style={{
