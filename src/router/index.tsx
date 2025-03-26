@@ -9,21 +9,21 @@ import React from "react";
 import { MemoryRouter, Route, Routes } from "react-router-native";
 
 const routerData = [
-  { path: "/", component: HomeScreen },
-  { path: "/button", component: ButtonDemoScreen },
-  { path: "/icon", component: IconDemoScreen },
-  { path: "/state", component: StateDemoScreen },
-  { path: "/list", component: ListDemoScreen },
-  { path: "/dialog", component: DialogDemoScreen },
-  { path: "/input", component: InputDemoScreen },
+  { name: "home", path: "/", component: HomeScreen },
+  { name: "button", path: "/button", component: ButtonDemoScreen },
+  { name: "icon", path: "/icon", component: IconDemoScreen },
+  { name: "state", path: "/state", component: StateDemoScreen },
+  { name: "list", path: "/list", component: ListDemoScreen },
+  { name: "dialog", path: "/dialog", component: DialogDemoScreen },
+  { name: "input", path: "/input", component: InputDemoScreen },
 ];
 
 const AppRouter = () => {
   return (
     <MemoryRouter initialEntries={["/"]} initialIndex={0}>
       <Routes>
-        {routerData.map(({ path, component: Component }) => (
-          <Route key={path} path={path} element={<Component />} />
+        {routerData.map(({ name, path, component: Component }) => (
+          <Route id={name} path={path} element={<Component />} />
         ))}
       </Routes>
     </MemoryRouter>

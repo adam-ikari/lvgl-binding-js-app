@@ -14,20 +14,20 @@ const indexData = [
   {
     text: "Basic Widgets",
     children: [
-      { text: "Button Demo", path: "/button" },
-      { text: "Icon Demo", path: "/icon" },
+      { text: "Button Demo", name: "button" },
+      { text: "Icon Demo", name: "icon" },
     ],
   },
   {
     text: "Form Widgets",
-    children: [{ text: "Input Demo", path: "/input" }],
+    children: [{ text: "Input Demo", name: "input" }],
   },
   {
     text: "Feedback Widgets",
-    children: [{ text: "Dialog Demo", path: "/dialog" }],
+    children: [{ text: "Dialog Demo", name: "dialog" }],
   },
-  { text: "List Render", children: [{ text: "List Demo", path: "/list" }] },
-  { text: "State", children: [{ text: "State Demo", path: "/state" }] },
+  { text: "List Render", children: [{ text: "List Demo", name: "list" }] },
+  { text: "State", children: [{ text: "State Demo", name: "state" }] },
 ];
 
 const HomeScreen = () => {
@@ -48,7 +48,7 @@ const HomeScreen = () => {
             }}
           >
             {category.children.map((item) => (
-              <ZButton onClick={() => navigate(item.path)}>{item.text}</ZButton>
+              <ZButton onClick={() => navigate(item.name)}>{item.text}</ZButton>
             ))}
           </ZRow>
         </ZColumn>
