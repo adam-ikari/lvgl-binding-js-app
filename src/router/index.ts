@@ -1,12 +1,13 @@
 import ButtonDemoScreen from "@/screens/ButtonDemoScreen";
+import CardDemoScreen from "@/screens/CardDemoScreen";
 import DialogDemoScreen from "@/screens/DialogDemoScreen";
 import HomeScreen from "@/screens/HomeScreen";
+import IconDemoScreen from "@/screens/IconDemoScreen";
 import InputDemoScreen from "@/screens/InputDemoScreen";
 import ListDemoScreen from "@/screens/ListDemoScreen";
 import StateDemoScreen from "@/screens/StateDemoScreen";
-import IconDemoScreen from "@/screens/ZIconDemoScreen";
 
-const routerData = [
+export default [
   { name: "home", path: "/", component: HomeScreen, meta: { title: "Home" } },
   {
     name: "button",
@@ -44,6 +45,10 @@ const routerData = [
     component: InputDemoScreen,
     meta: { title: "Input Demo" },
   },
+  {
+    name: "card",
+    path: "/card",
+    component: CardDemoScreen,
+    meta: { title: "Card Demo" },
+  },
 ];
-
-export default routerData;

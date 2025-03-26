@@ -16,6 +16,7 @@ const indexData = [
     children: [
       { text: "Button Demo", name: "button" },
       { text: "Icon Demo", name: "icon" },
+      { text: "Card Demo", name: "card" },
     ],
   },
   {
