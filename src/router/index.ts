@@ -5,44 +5,43 @@ import InputDemoScreen from "@/screens/InputDemoScreen";
 import ListDemoScreen from "@/screens/ListDemoScreen";
 import StateDemoScreen from "@/screens/StateDemoScreen";
 import IconDemoScreen from "@/screens/ZIconDemoScreen";
-import React from "react";
 
 const routerData = [
-  { name: "home", path: "/", element: <HomeScreen />, meta: { title: "Home" } },
+  { name: "home", path: "/", component: HomeScreen, meta: { title: "Home" } },
   {
     name: "button",
     path: "/button",
-    element: <ButtonDemoScreen />,
+    component: ButtonDemoScreen,
     meta: { title: "Button Demo" },
   },
   {
     name: "icon",
     path: "/icon",
-    element: <IconDemoScreen />,
+    component: IconDemoScreen,
     meta: { title: "Icon Demo" },
   },
   {
     name: "state",
     path: "/state",
-    element: <StateDemoScreen />,
+    component: StateDemoScreen,
     meta: { title: "State Demo" },
   },
   {
     name: "list",
     path: "/list",
-    element: <ListDemoScreen />,
+    component: ListDemoScreen,
     meta: { title: "List Demo" },
   },
   {
     name: "dialog",
     path: "/dialog",
-    element: <DialogDemoScreen />,
+    component: DialogDemoScreen,
     meta: { title: "Dialog Demo" },
   },
   {
     name: "input",
     path: "/input",
-    element: <InputDemoScreen />,
+    component: InputDemoScreen,
     meta: { title: "Input Demo" },
   },
 ];

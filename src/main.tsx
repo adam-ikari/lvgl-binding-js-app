@@ -11,8 +11,12 @@ const App = () => {
     <MemoryRouter initialEntries={["/"]} initialIndex={0}>
       <ZNavScreenLayout>
         <Routes>
-          {routerData.map(({ name, path, element }) => (
-            <Route id={name} path={path} element={element} />
+          {routerData.map(({ name, path, component }) => (
+            <Route
+              id={name}
+              path={path}
+              element={React.createElement(component)}
+            />
           ))}
         </Routes>
       </ZNavScreenLayout>
