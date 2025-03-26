@@ -9,7 +9,7 @@ interface ZInputProps {
   allowClean?: boolean;
   size?: ZSizeEnum;
   value?: string;
-  maxLangth?: number;
+  maxLength?: number;
   round?: boolean;
   onChange?: (value: string) => void;
 }
@@ -42,6 +42,18 @@ const sizeStyleMap: Record<string, ZStyleProps> = {
   },
 };
 
+const ClearButton = React.memo(({ size, onClick, round }) => {
+  return (
+    <ZButton
+      size={size}
+      onClick={onClick}
+      icon={ZIconSymbol.Backspace}
+      round={round}
+      text
+    ></ZButton>
+  );
+});
+
 const ZInput = (props: ZInputProps) => {
   const {
     placeholder = "",
@@ -49,7 +61,7 @@ const ZInput = (props: ZInputProps) => {
     size = ZSizeEnum.Default,
     value = "",
     allowClean = false,
-    maxLangth = 256,
+    maxLength = 256,
     round = false,
     onChange,
   } = props;
@@ -68,25 +80,17 @@ const ZInput = (props: ZInputProps) => {
       onChange(input);
     }
   }, [input]);
-  const button = useMemo(() => {
-    return allowClean && input ? (
-      <ZButton
-        size={size}
-        onClick={() => {
-          setInput("");
-        }}
-        icon={ZIconSymbol.Backspace}
-        round={round}
-        text
-      ></ZButton>
-    ) : null;
-  }, [allowClean, input]);
+
+  const clearInput = () => {
+    setInput("");
+  };
+
   return (
     <ZRow style={style.view} gap={0}>
       <Input
         style={{ ...style.input, ...computedInputStyle }}
         placeholder={placeholder}
-        maxlength={maxLangth}
+        maxlength={maxLength}
         value={input}
         onChange={(e) => {
           setInput(e.value);
@@ -95,7 +99,9 @@ const ZInput = (props: ZInputProps) => {
         autoKeyBoard={true}
         mode={password ? "password" : "text"}
       ></Input>
-      {button}
+      {allowClean && input && input.length > 0 ? (
+        <ClearButton onClick={clearInput} size={size} round={round} />
+      ) : null}
     </ZRow>
   );
 };
