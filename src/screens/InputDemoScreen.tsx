@@ -1,5 +1,5 @@
 import { COLORS } from "@/common_style";
-import { ZInput, ZRow, ZSizeEnum, ZText } from "@/components";
+import { ZInput, ZInputModeEnum, ZRow, ZSizeEnum, ZText } from "@/components";
 import React from "react";
 
 const style = {
@@ -22,7 +22,7 @@ const InputDemoScreen = () => {
       </ZRow>
       <ZText size={ZSizeEnum.Large}>Password</ZText>
       <ZRow style={rowStyle}>
-        <ZInput mode="password"></ZInput>
+        <ZInput mode={ZInputModeEnum.PASSWORD}></ZInput>
       </ZRow>
       <ZText size={ZSizeEnum.Large}>Allow Clean</ZText>
       <ZRow style={rowStyle}>

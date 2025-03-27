@@ -4,9 +4,16 @@ import { useMergeStyle } from "@/hooks/styleHooks";
 import { Input } from "lvgljs-ui";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
+const mergeStyle = useMergeStyle();
+
+enum ZInputModeEnum {
+  TEXT = "text",
+  PASSWORD = "password",
+}
+
 interface ZInputProps {
   placeholder?: string;
-  mode?: "password" | "text";
+  mode?: ZInputModeEnum;
   allowClean?: boolean;
   size?: ZSizeEnum;
   value?: string;
@@ -14,8 +21,6 @@ interface ZInputProps {
   round?: boolean;
   onChange?: (value: string) => void;
 }
-
-const mergeStyle = useMergeStyle();
 
 const style = {
   input: mergeStyle(COMMON_STYLE.noBorder),
@@ -51,19 +56,18 @@ const sizeStyleMap: Record<string, ZStyleProps> = {
 interface ClearButtonProps {
   size: ZSizeEnum;
   onClick?: () => void;
-  round: boolean;
   display?: boolean;
 }
 
 const ClearButton = React.memo<ClearButtonProps>(
-  ({ size, onClick, round, display = true }) => {
+  ({ size, onClick, display = true }) => {
     if (display) {
       return (
         <ZButton
           size={size}
           onClick={onClick}
           icon={ZIconSymbol.Backspace}
-          round={round}
+          round
           text
         ></ZButton>
       );
@@ -72,7 +76,7 @@ const ClearButton = React.memo<ClearButtonProps>(
         <ZButton
           size={size}
           icon={ZIconSymbol.Backspace}
-          round={round}
+          round
           text
           disable
           style={{ opacity: 0 }}
@@ -134,7 +138,6 @@ const ZInput = (props: ZInputProps) => {
       <ClearButton
         onClick={clearInput}
         size={size}
-        round={round}
         display={allowClean && input && input.length > 0}
       />
     </ZRow>
@@ -142,4 +145,4 @@ const ZInput = (props: ZInputProps) => {
 };
 
 export type { ZInputProps };
-export { ZInput };
+export { ZInput, ZInputModeEnum };
