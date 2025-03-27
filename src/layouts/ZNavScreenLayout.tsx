@@ -1,4 +1,4 @@
-import { COLORS, COMMON_STYLE, CONSTANTS } from "@/common_style";
+import { COLORS, COMMON_STYLE } from "@/common_style";
 import {
   ZButton,
   ZColumn,
@@ -8,8 +8,11 @@ import {
   ZSizeEnum,
   ZWidthEnum,
 } from "@/components";
-import { Button, EAlignType, Text, View } from "lvgljs-ui";
+import { useMergeStyle } from "@/hooks/styleHooks";
+import { EAlignType, View } from "lvgljs-ui";
 import React, { useRef } from "react";
+
+const mergeStyle = useMergeStyle();
 
 interface ZNavScreenLayoutProps {
   children?: React.ReactNode | React.ReactNode[];
@@ -34,11 +37,10 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
         <ZNavHeader />
         <ZColumn
           width={ZWidthEnum.Full}
-          style={{
-            ...COMMON_STYLE.padding20,
+          style={mergeStyle(COMMON_STYLE.padding20, {
             "flex-grow": 1,
             "background-color": COLORS.PAGE_BACKGROUND,
-          }}
+          })}
         >
           <View ref={topElementRef} style={{ display: "none" }}></View>
           {children}
