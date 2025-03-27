@@ -40,7 +40,7 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
             "background-color": COLORS.PAGE_BACKGROUND,
           }}
         >
-          <View ref={topElementRef} style={{ width: 0, height: 0 }}></View>
+          <View ref={topElementRef} style={{ display: "none" }}></View>
           {children}
         </ZColumn>
       </ZColumn>
