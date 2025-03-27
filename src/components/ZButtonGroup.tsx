@@ -7,7 +7,7 @@ import React from "react";
 const mergeStyle = useMergeStyle();
 
 interface ZButtonGroupProps {
-  children?: typeof ZButton | (typeof ZButton)[];
+  children?: React.ReactNode | React.ReactNode[];
   size?: ZSizeEnum;
 }
 
