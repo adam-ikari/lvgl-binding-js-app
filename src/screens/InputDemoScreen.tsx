@@ -22,7 +22,7 @@ const InputDemoScreen = () => {
       </ZRow>
       <ZText size={ZSizeEnum.Large}>Password</ZText>
       <ZRow style={rowStyle}>
-        <ZInput password></ZInput>
+        <ZInput mode="password"></ZInput>
       </ZRow>
       <ZText size={ZSizeEnum.Large}>Allow Clean</ZText>
       <ZRow style={rowStyle}>

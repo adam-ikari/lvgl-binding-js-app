@@ -6,7 +6,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 
 interface ZInputProps {
   placeholder?: string;
-  password?: boolean;
+  mode?: "password" | "text";
   allowClean?: boolean;
   size?: ZSizeEnum;
   value?: string;
@@ -85,7 +85,7 @@ const ClearButton = React.memo<ClearButtonProps>(
 const ZInput = (props: ZInputProps) => {
   const {
     placeholder = "",
-    password = false,
+    mode = "text",
     size = ZSizeEnum.Default,
     value = "",
     allowClean = false,
@@ -129,7 +129,7 @@ const ZInput = (props: ZInputProps) => {
         }}
         onFocusStyle={COMMON_STYLE.noBorder}
         autoKeyBoard={true}
-        mode={password ? "password" : "text"}
+        mode={mode}
       ></Input>
       <ClearButton
         onClick={clearInput}
