@@ -115,7 +115,7 @@ const ZInput = (props: ZInputProps) => {
         onChange={(e) => {
           setInput(String(e.value));
         }}
-        onFocusStyle={{ "border-width": 0 }}
+        onFocusStyle={COMMON_STYLE.noBorder}
         autoKeyBoard={true}
         mode={password ? "password" : "text"}
       ></Input>
