@@ -1,6 +1,5 @@
 import { COLORS } from "@/common_style";
-import { ZButton, ZButtonTypeEnum, ZColumn, ZRow, ZText } from "@/components";
-import { ZNavScreenLayout } from "@/layouts";
+import { ZButton, ZRow, ZText } from "@/components";
 import React from "react";
 import { useNavigate } from "react-router-native";
 
@@ -14,21 +13,22 @@ const indexData = [
   {
     text: "Basic Widgets",
     children: [
-      { text: "Button Demo", name: "button" },
-      { text: "Icon Demo", name: "icon" },
-      { text: "Card Demo", name: "card" },
+      { text: "Button Demo", path: "/button" },
+      { text: "Icon Demo", path: "/icon" },
+      { text: "Card Demo", path: "/card" },
+      { text: "Switch Demo", path: "/switch" },
     ],
   },
   {
     text: "Form Widgets",
-    children: [{ text: "Input Demo", name: "input" }],
+    children: [{ text: "Input Demo", path: "/input" }],
   },
   {
     text: "Feedback Widgets",
-    children: [{ text: "Dialog Demo", name: "dialog" }],
+    children: [{ text: "Dialog Demo", path: "/dialog" }],
   },
-  { text: "List Render", children: [{ text: "List Demo", name: "list" }] },
-  { text: "State", children: [{ text: "State Demo", name: "state" }] },
+  { text: "List Render", children: [{ text: "List Demo", path: "/list" }] },
+  { text: "State", children: [{ text: "State Demo", path: "/state" }] },
 ];
 
 const HomeScreen = () => {
@@ -45,7 +45,7 @@ const HomeScreen = () => {
             }}
           >
             {category.children.map((item) => (
-              <ZButton onClick={() => navigate(item.name)}>{item.text}</ZButton>
+              <ZButton onClick={() => navigate(item.path)}>{item.text}</ZButton>
             ))}
           </ZRow>
         </>

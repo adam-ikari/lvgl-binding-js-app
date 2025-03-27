@@ -6,6 +6,7 @@ import IconDemoScreen from "@/screens/IconDemoScreen";
 import InputDemoScreen from "@/screens/InputDemoScreen";
 import ListDemoScreen from "@/screens/ListDemoScreen";
 import StateDemoScreen from "@/screens/StateDemoScreen";
+import SwitchDemoScreen from "@/screens/SwitchDemoScreen"
 
 export default [
   { name: "home", path: "/", component: HomeScreen, meta: { title: "Home" } },
@@ -50,5 +51,11 @@ export default [
     path: "/card",
     component: CardDemoScreen,
     meta: { title: "Card Demo" },
+  },
+  {
+    name: "switch",
+    path: "/switch",
+    component: SwitchDemoScreen,
+    meta: { title: "Switch Demo" },
   },
 ];
