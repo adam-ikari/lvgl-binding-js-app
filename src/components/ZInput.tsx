@@ -2,7 +2,7 @@ import { ZButton, ZIconSymbol, ZRow, ZSizeEnum, ZStyleProps } from ".";
 import { COMMON_STYLE, CONSTANTS } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { Input } from "lvgljs-ui";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 interface ZInputProps {
   placeholder?: string;
@@ -18,8 +18,16 @@ interface ZInputProps {
 const mergeStyle = useMergeStyle();
 
 const style = {
-  input: COMMON_STYLE.noBorder,
-  view: mergeStyle(COMMON_STYLE.radius4, COMMON_STYLE.border1),
+  input: mergeStyle(COMMON_STYLE.noBorder),
+  view: mergeStyle(
+    COMMON_STYLE.flexRow,
+    COMMON_STYLE.alignItemsCenter,
+    COMMON_STYLE.justifyContentCenter,
+    COMMON_STYLE.autoWidth,
+    COMMON_STYLE.autoHeight,
+    COMMON_STYLE.radius4,
+    COMMON_STYLE.border1,
+  ),
 };
 
 const sizeStyleMap: Record<string, ZStyleProps> = {
@@ -87,6 +95,7 @@ const ZInput = (props: ZInputProps) => {
   } = props;
 
   const [input, setInput] = useState(value);
+  const inputRef = useRef();
 
   useEffect(() => {
     if (onChange) {
@@ -103,11 +112,14 @@ const ZInput = (props: ZInputProps) => {
 
   const clearInput = () => {
     setInput("");
+    console.log(inputRef.current);
+    // inputRef.current.focus(); // not work
   };
 
   return (
     <ZRow style={style.view} gap={0}>
       <Input
+        // ref={inputRef}
         style={mergeStyle(style.input, computedInputStyle)}
         placeholder={placeholder}
         maxlength={maxLength}

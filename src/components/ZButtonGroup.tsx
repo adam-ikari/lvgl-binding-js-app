@@ -1,11 +1,13 @@
-import { ZButton, ZRow, ZSizeEnum } from "@/components";
+import { COMMON_STYLE } from "@/common_style";
+import { ZButton, ZButtonProps, ZRow, ZSizeEnum } from "@/components";
 import { useMergeStyle } from "@/hooks/styleHooks";
+import * as _ from "radash";
 import React from "react";
 
 const mergeStyle = useMergeStyle();
 
 interface ZButtonGroupProps {
-  children?: React.ReactNode | React.ReactNode[];
+  children?: typeof ZButton | (typeof ZButton)[];
   size?: ZSizeEnum;
 }
 
@@ -15,11 +17,11 @@ const ZButtonGroup = (props: ZButtonGroupProps) => {
   return (
     <ZRow gap={0}>
       {children &&
-        React.Children.map(children, (child) => {
+        React.Children.map(children, (child: typeof ZButton) => {
           if (React.isValidElement(child) && child.type === ZButton) {
             return React.cloneElement(child, {
               size,
-              style: mergeStyle(child.props.style, { "border-radius": 0 }),
+              style: mergeStyle(child.props.style, COMMON_STYLE.radius0),
               round: false,
             });
           }
