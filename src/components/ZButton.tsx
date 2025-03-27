@@ -186,15 +186,17 @@ const ZButton = (props: ZButtonProps) => {
     }
   };
 
-  const computedStyle = useMemo(() => {
-    return mergeStyle(
-      sizeStyleMap[size],
-      text ? textStyleMap[type] : normalStyleMap[type],
-      round && roundStyle,
-      disable && disabledStyle,
-      !children && noChildStyle,
-    );
-  }, [type, size, text, round, disable, children]);
+  const computedStyle = useMemo(
+    () =>
+      mergeStyle(
+        sizeStyleMap[size],
+        text ? textStyleMap[type] : normalStyleMap[type],
+        round && roundStyle,
+        disable && disabledStyle,
+        !children && noChildStyle,
+      ),
+    [type, size, text, round, disable, children],
+  );
 
   const Component = disable ? View : Button;
 
