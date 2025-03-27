@@ -7,6 +7,7 @@ const mergeStyle = useMergeStyle();
 
 interface ZSwitchProps {
   style?: ZStyleProps;
+  [key: string]: any; // Allow other props to be passed to the Switch component
 }
 
 const ZSwitch = (props: ZSwitchProps) => {

@@ -1,9 +1,11 @@
 import { COLORS, COMMON_STYLE, CONSTANTS } from "@/common_style";
 import {
+  ZButton,
   ZColumn,
   ZHeightEnum,
   ZIconSymbol,
   ZNavHeader,
+  ZSizeEnum,
   ZWidthEnum,
 } from "@/components";
 import { Button, EAlignType, Text, View } from "lvgljs-ui";
@@ -42,17 +44,7 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
           {children}
         </ZColumn>
       </ZColumn>
-      <Button
-        style={{
-          "border-radius": CONSTANTS.MAX_RADIUS,
-          width: 40,
-          height: 40,
-          padding: 0,
-          display: "flex",
-          "flex-direction": "row",
-          "align-items": "center",
-          "justify-content": "center",
-        }}
+      <ZButton
         onClick={() => {
           topElementRef.current?.scrollIntoView();
         }}
@@ -60,9 +52,10 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
           type: EAlignType.ALIGN_BOTTOM_RIGHT,
           pos: [-10, -10],
         }}
-      >
-        <Text>{ZIconSymbol.Up}</Text>
-      </Button>
+        size={ZSizeEnum.Large}
+        icon={ZIconSymbol.Up}
+        round
+      ></ZButton>
     </>
   );
 };

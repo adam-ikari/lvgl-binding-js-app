@@ -8,7 +8,6 @@ import {
   ZText,
 } from "@/components";
 import { ZIconSymbol } from "@/components";
-import { ZNavScreenLayout } from "@/layouts";
 import React from "react";
 
 const buttonsData = [
@@ -85,6 +84,11 @@ const ButtonDemoScreen = () => {
         <ZButton size={ZSizeEnum.Small} icon={ZIconSymbol.Down} round />
         <ZButton size={ZSizeEnum.Small} icon={ZIconSymbol.Left} round />
         <ZButton size={ZSizeEnum.Small} icon={ZIconSymbol.Right} round />
+      </ZRow>
+      <ZRow style={rowStyle}>
+        <ZButton size={ZSizeEnum.Small} icon={ZIconSymbol.Audio} round />
+        <ZButton icon={ZIconSymbol.Bluetooth} round />
+        <ZButton size={ZSizeEnum.Large} icon={ZIconSymbol.Image} round />
       </ZRow>
       <ZRow style={rowStyle}>
         <ZButton type={ZButtonTypeEnum.Primary} icon={ZIconSymbol.Home}>

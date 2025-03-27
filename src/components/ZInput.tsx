@@ -1,5 +1,6 @@
 import { ZButton, ZIconSymbol, ZRow, ZSizeEnum, ZStyleProps } from ".";
 import { COMMON_STYLE, CONSTANTS } from "@/common_style";
+import { useMergeStyle } from "@/hooks/styleHooks";
 import { Input } from "lvgljs-ui";
 import React, { useEffect, useMemo, useState } from "react";
 
@@ -14,6 +15,8 @@ interface ZInputProps {
   onChange?: (value: string) => void;
 }
 
+const mergeStyle = useMergeStyle();
+
 const style = {
   input: {
     "border-width": 0,
@@ -25,24 +28,30 @@ const style = {
 };
 
 const sizeStyleMap: Record<string, ZStyleProps> = {
-  small: {
-    ...COMMON_STYLE.minWidth36,
-    ...COMMON_STYLE.minHeight36,
-    ...COMMON_STYLE.fontSizeSmall,
-  },
-  default: {
-    ...COMMON_STYLE.minWidth40,
-    ...COMMON_STYLE.minHeight40,
-    ...COMMON_STYLE.fontSizeDefault,
-  },
-  large: {
-    ...COMMON_STYLE.minWidth48,
-    ...COMMON_STYLE.minHeight48,
-    ...COMMON_STYLE.fontSizeLarge,
-  },
+  small: mergeStyle(
+    COMMON_STYLE.minWidth36,
+    COMMON_STYLE.minHeight36,
+    COMMON_STYLE.fontSizeSmall,
+  ),
+  default: mergeStyle(
+    COMMON_STYLE.minWidth40,
+    COMMON_STYLE.minHeight40,
+    COMMON_STYLE.fontSizeDefault,
+  ),
+  large: mergeStyle(
+    COMMON_STYLE.minWidth48,
+    COMMON_STYLE.minHeight48,
+    COMMON_STYLE.fontSizeLarge,
+  ),
 };
 
-const ClearButton = React.memo(({ size, onClick, round }) => {
+interface ClearButtonProps {
+  size: ZSizeEnum;
+  onClick: () => void;
+  round: boolean;
+}
+
+const ClearButton = React.memo<ClearButtonProps>(({ size, onClick, round }) => {
   return (
     <ZButton
       size={size}
@@ -68,18 +77,18 @@ const ZInput = (props: ZInputProps) => {
 
   const [input, setInput] = useState(value);
 
-  const computedInputStyle = useMemo(() => {
-    return {
-      ...sizeStyleMap[size],
-      ...(round && { "border-radius": CONSTANTS.MAX_RADIUS }),
-    };
-  }, [size]);
-
   useEffect(() => {
     if (onChange) {
       onChange(input);
     }
   }, [input]);
+
+  const computedInputStyle = useMemo(() => {
+    return mergeStyle(
+      sizeStyleMap[size],
+      round ? { "border-radius": CONSTANTS.MAX_RADIUS } : {},
+    );
+  }, [size, round, mergeStyle]);
 
   const clearInput = () => {
     setInput("");
@@ -88,12 +97,12 @@ const ZInput = (props: ZInputProps) => {
   return (
     <ZRow style={style.view} gap={0}>
       <Input
-        style={{ ...style.input, ...computedInputStyle }}
+        style={mergeStyle(style.input, computedInputStyle)}
         placeholder={placeholder}
         maxlength={maxLength}
         value={input}
         onChange={(e) => {
-          setInput(e.value);
+          setInput(String(e.value));
         }}
         onFocusStyle={{ "border-width": 0 }}
         autoKeyBoard={true}

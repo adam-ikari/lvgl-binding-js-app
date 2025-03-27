@@ -1,8 +1,12 @@
 import { ZIconSymbol, ZSizeEnum, ZStyleProps, ZText } from ".";
 import { ZIcon } from "./ZIcon";
 import { COLORS, COMMON_STYLE, CONSTANTS } from "@/common_style";
-import { Button } from "lvgljs-ui";
+import { useMergeStyle } from "@/hooks/styleHooks";
+import { Button, View } from "lvgljs-ui";
+import * as _ from "radash";
 import React, { useMemo } from "react";
+
+const mergeStyle = useMergeStyle();
 
 enum ZButtonTypeEnum {
   Default = "default",
@@ -23,19 +27,23 @@ interface ZButtonProps {
   round?: boolean;
   disable?: boolean;
   onClick?: () => void;
+  [key: string]: any;
 }
 
-const baseStyle: ZStyleProps = {
-  "border-radius": 4,
-  "border-color": "#dedfe2",
-  "shadow-width": 0,
-  ...COMMON_STYLE.minWidth40,
-  ...COMMON_STYLE.fontSizeDefault,
-  ...COMMON_STYLE.flexRow,
-  ...COMMON_STYLE.alignItemsCenter,
-  "align-items": "center",
-  "justify-content": "center",
-};
+const baseStyle: ZStyleProps = mergeStyle(
+  COMMON_STYLE.minWidth40,
+  COMMON_STYLE.fontSizeDefault,
+  COMMON_STYLE.flexRow,
+  COMMON_STYLE.alignItemsCenter,
+  {
+    width: "auto",
+    "border-radius": 4,
+    "border-color": "#dedfe2",
+    "shadow-width": 0,
+    "align-items": "center",
+    "justify-content": "center",
+  },
+);
 
 const normalStyleMap: Record<string, ZStyleProps> = {
   primary: {
@@ -108,24 +116,24 @@ const disabledStyle: ZStyleProps = {
 };
 
 const sizeStyleMap: Record<string, ZStyleProps> = {
-  small: {
-    ...COMMON_STYLE.minWidth32,
-    ...COMMON_STYLE.minHeight32,
-    ...COMMON_STYLE.fontSizeSmall,
-    padding:4
-  },
-  default: {
-    ...COMMON_STYLE.minWidth36,
-    ...COMMON_STYLE.minHeight36,
-    ...COMMON_STYLE.fontSizeDefault,
-    padding:8
-  },
-  large: {
-    ...COMMON_STYLE.minWidth40,
-    ...COMMON_STYLE.minHeight40,
-    ...COMMON_STYLE.fontSizeLarge,
-    padding:16
-  },
+  small: mergeStyle(
+    COMMON_STYLE.minWidth32,
+    COMMON_STYLE.minHeight32,
+    COMMON_STYLE.fontSizeSmall,
+    { padding: 4 },
+  ),
+  default: mergeStyle(
+    COMMON_STYLE.minWidth36,
+    COMMON_STYLE.minHeight36,
+    COMMON_STYLE.fontSizeDefault,
+    { padding: 8 },
+  ),
+  large: mergeStyle(
+    COMMON_STYLE.minWidth40,
+    COMMON_STYLE.minHeight40,
+    COMMON_STYLE.fontSizeLarge,
+    { padding: 16 },
+  ),
 };
 
 const roundStyle: ZStyleProps = {
@@ -135,6 +143,25 @@ const roundStyle: ZStyleProps = {
 const noChildStyle: ZStyleProps = {
   padding: 0,
 };
+
+interface ButtonContentProps {
+  icon?: ZIconSymbol;
+  children?: string;
+  size: ZSizeEnum;
+}
+
+const ButtonContent = React.memo(
+  ({ icon, children, size }: ButtonContentProps) => {
+    if (!icon && !children) return null;
+
+    return (
+      <>
+        {icon ? <ZIcon symbol={icon} size={size} /> : null}
+        {children ? <ZText size={size}>{children}</ZText> : null}
+      </>
+    );
+  },
+);
 
 const ZButton = (props: ZButtonProps) => {
   const {
@@ -147,35 +174,37 @@ const ZButton = (props: ZButtonProps) => {
     round = false,
     disable = false,
     onClick,
+    ...restProps
   } = props;
 
-  const computedStyle = useMemo(() => {
-    return {
-      ...(!children && noChildStyle),
-      ...sizeStyleMap[size],
-      ...(text ? textStyleMap[type] : normalStyleMap[type]),
-      ...(round && roundStyle),
-      ...(disable && disabledStyle),
-    };
-  }, [type, size, text, round, disable, children]);
-
   const handleClick = () => {
-    if (!disable && onClick) {
+    if (!disable && onClick && _.isFunction(onClick)) {
       onClick();
     }
   };
+
+  const computedStyle = useMemo(() => {
+    return mergeStyle(
+      sizeStyleMap[size],
+      text ? textStyleMap[type] : normalStyleMap[type],
+      round && roundStyle,
+      disable && disabledStyle,
+      !children && noChildStyle,
+    );
+  }, [type, size, text, round, disable, children]);
+
+  const Component = disable ? View : Button;
+
   return (
-    <Button
-      style={{
-        ...baseStyle,
-        ...computedStyle,
-        ...propStyle,
-      }}
+    <Component
+      style={mergeStyle(baseStyle, computedStyle, propStyle)}
       onClick={handleClick}
+      {...restProps}
     >
-      {icon && <ZIcon symbol={icon} size={size} />}
-      {children && <ZText size={size}>{children}</ZText>}
-    </Button>
+      <ButtonContent icon={icon} size={size}>
+        {children}
+      </ButtonContent>
+    </Component>
   );
 };
 

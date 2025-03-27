@@ -1,7 +1,6 @@
 import {
   ZButton,
   ZButtonTypeEnum,
-  ZColumn,
   ZIconSymbol,
   ZModal,
   ZRow,
@@ -10,8 +9,11 @@ import {
   ZWidthEnum,
 } from ".";
 import { COMMON_STYLE } from "@/common_style";
+import { useMergeStyle } from "@/hooks/styleHooks";
 import { Dimensions, EAlignType, View } from "lvgljs-ui";
 import React, { useMemo } from "react";
+
+const mergeStyle = useMergeStyle();
 
 interface ZDialogProps {
   children?: React.ReactNode | React.ReactNode[];
@@ -35,15 +37,6 @@ const ZDialog = (props: ZDialogProps) => {
     onConfirm = () => {},
   } = props;
 
-  const computedContainerStyle = useMemo(() => {
-    return {
-      "min-width": windowWidth * 0.3,
-      "min-height": windowHeight * 0.3,
-      "max-width": windowWidth * 0.8,
-      "max-height": windowHeight * 0.8,
-    };
-  }, [windowWidth, windowHeight]);
-
   const computedWidthStyle = useMemo(() => {
     return {
       "min-width": windowWidth * 0.3,
@@ -61,14 +54,16 @@ const ZDialog = (props: ZDialogProps) => {
   return (
     <ZModal onMaskClick={onMaskClick}>
       <View
-        style={{
-          ...computedWidthStyle,
-          ...computedHeightStyle,
-          ...COMMON_STYLE.flexColumn,
-          ...COMMON_STYLE.padding10,
-          ...COMMON_STYLE.noBorder,
-          "border-radius": 4,
-        }}
+        style={mergeStyle(
+          computedWidthStyle,
+          computedHeightStyle,
+          COMMON_STYLE.flexColumn,
+          COMMON_STYLE.padding10,
+          COMMON_STYLE.noBorder,
+          {
+            "border-radius": 4,
+          },
+        )}
         align={{
           type: EAlignType.ALIGN_CENTER,
         }}

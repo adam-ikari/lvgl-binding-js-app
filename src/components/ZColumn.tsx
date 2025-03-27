@@ -1,5 +1,6 @@
 import { ZHeightEnum, ZStyleProps, ZWidthEnum } from ".";
 import { COMMON_STYLE } from "../common_style";
+import { useMergeStyle } from "@/hooks/styleHooks";
 import { View } from "lvgljs-ui";
 import * as _ from "radash";
 import React, { useMemo } from "react";
@@ -13,13 +14,15 @@ interface ZColumnProps {
   gap?: number;
 }
 
+const mergeStyle = useMergeStyle();
+
 const ZColumn = (props: ZColumnProps) => {
-  const baseStyle: ZStyleProps = {
-    ...COMMON_STYLE.flexColumn,
-    ...COMMON_STYLE.noBorder,
-    ...COMMON_STYLE.padding0,
-    ...COMMON_STYLE.radius0,
-  };
+  const baseStyle: ZStyleProps = mergeStyle(
+    COMMON_STYLE.flexColumn,
+    COMMON_STYLE.noBorder,
+    COMMON_STYLE.padding0,
+    COMMON_STYLE.radius0,
+  );
 
   const widthStyleMap: Record<string, ZStyleProps> = {
     auto: COMMON_STYLE.autoWidth,
@@ -41,31 +44,17 @@ const ZColumn = (props: ZColumnProps) => {
   } = props;
 
   const computedStyle = useMemo(() => {
-    let style = { "row-spacing": gap };
-    if (_.isNumber(width)) {
-      style["width"] = width;
-    } else {
-      style = { ...style, ...widthStyleMap[width] };
-    }
-    if (_.isNumber(height)) {
-      style["height"] = height;
-    } else {
-      style = { ...style, ...heightStyleMap[height] };
-    }
-    if (wrap) {
-      style["flex-wrap"] = "wrap";
-    }
-    return style;
-  }, [gap, width, height]);
+    return mergeStyle(
+      { "row-spacing": gap },
+      _.isNumber(width) ? { width } : widthStyleMap[width],
+      _.isNumber(height) ? { height } : heightStyleMap[height],
+      wrap && { "flex-wrap": "wrap" },
+      propStyle,
+    );
+  }, [gap, width, height, wrap]);
 
   return (
-    <View
-      style={{
-        ...baseStyle,
-        ...computedStyle,
-        ...propStyle,
-      }}
-    >
+    <View style={mergeStyle(baseStyle, computedStyle, propStyle)}>
       {children}
     </View>
   );
