@@ -31,17 +31,18 @@ interface ZButtonProps {
 }
 
 const baseStyle: ZStyleProps = mergeStyle(
-  COMMON_STYLE.minWidth40,
-  COMMON_STYLE.fontSizeDefault,
   COMMON_STYLE.flexRow,
   COMMON_STYLE.alignItemsCenter,
   {
     width: "auto",
+    height: "auto",
     "border-radius": 4,
     "border-color": "#dedfe2",
     "shadow-width": 0,
     "align-items": "center",
     "justify-content": "center",
+    "padding-top": 0,
+    "padding-bottom": 0,
   },
 );
 
@@ -120,19 +121,19 @@ const sizeStyleMap: Record<string, ZStyleProps> = {
     COMMON_STYLE.minWidth32,
     COMMON_STYLE.minHeight32,
     COMMON_STYLE.fontSizeSmall,
-    { padding: 4 },
+    { "padding-left": 8, "padding-right": 8 },
   ),
   default: mergeStyle(
     COMMON_STYLE.minWidth36,
     COMMON_STYLE.minHeight36,
     COMMON_STYLE.fontSizeDefault,
-    { padding: 8 },
+    { "padding-left": 8, "padding-right": 8 },
   ),
   large: mergeStyle(
     COMMON_STYLE.minWidth40,
     COMMON_STYLE.minHeight40,
     COMMON_STYLE.fontSizeLarge,
-    { padding: 16 },
+    { "padding-left": 8, "padding-right": 8 },
   ),
 };
 
@@ -152,14 +153,16 @@ interface ButtonContentProps {
 
 const ButtonContent = React.memo(
   ({ icon, children, size }: ButtonContentProps) => {
-    if (!icon && !children) return null;
-
-    return (
-      <>
-        {icon ? <ZIcon symbol={icon} size={size} /> : null}
-        {children ? <ZText size={size}>{children}</ZText> : null}
-      </>
-    );
+    if (!icon && !children) {
+      return null;
+    } else {
+      return (
+        <>
+          {icon ? <ZIcon symbol={icon} size={size} /> : null}
+          {children ? <ZText size={size}>{children}</ZText> : null}
+        </>
+      );
+    }
   },
 );
 
