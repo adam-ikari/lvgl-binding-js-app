@@ -105,6 +105,27 @@ const COMMON_STYLE: Record<string, StyleProps> = {
   minWidth50: {
     "min-width": 50,
   },
+  width10: {
+    "min-width": 10,
+  },
+  width20: {
+    "min-width": 20,
+  },
+  width32: {
+    "min-width": 32,
+  },
+  width36: {
+    "min-width": 36,
+  },
+  width40: {
+    "min-width": 40,
+  },
+  width48: {
+    "min-width": 48,
+  },
+  width50: {
+    "min-width": 50,
+  },
   fullHeight: {
     height: "100%",
   },
@@ -127,6 +148,24 @@ const COMMON_STYLE: Record<string, StyleProps> = {
     height: 40,
   },
   minHeight48: {
+    height: 48,
+  },
+  height12: {
+    height: 12,
+  },
+  height24: {
+    height: 24,
+  },
+  height32: {
+    height: 32,
+  },
+  height36: {
+    height: 36,
+  },
+  height40: {
+    height: 40,
+  },
+  height48: {
     height: 48,
   },
   padding0: {
