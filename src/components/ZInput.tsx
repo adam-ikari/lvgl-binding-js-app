@@ -18,13 +18,8 @@ interface ZInputProps {
 const mergeStyle = useMergeStyle();
 
 const style = {
-  input: {
-    "border-width": 0,
-  },
-  view: {
-    "border-radius": 4,
-    "border-width": 1,
-  },
+  input: COMMON_STYLE.noBorder,
+  view: mergeStyle(COMMON_STYLE.radius4, COMMON_STYLE.border1),
 };
 
 const sizeStyleMap: Record<string, ZStyleProps> = {

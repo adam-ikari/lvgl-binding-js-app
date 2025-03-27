@@ -33,14 +33,13 @@ interface ZButtonProps {
 const baseStyle: ZStyleProps = mergeStyle(
   COMMON_STYLE.flexRow,
   COMMON_STYLE.alignItemsCenter,
+  COMMON_STYLE.justifyContentCenter,
+  COMMON_STYLE.autoWidth,
+  COMMON_STYLE.autoHeight,
+  COMMON_STYLE.radius4,
   {
-    width: "auto",
-    height: "auto",
-    "border-radius": 4,
-    "border-color": "#dedfe2",
+    "border-color": COLORS.BORDER,
     "shadow-width": 0,
-    "align-items": "center",
-    "justify-content": "center",
     "padding-top": 0,
     "padding-bottom": 0,
   },
@@ -48,32 +47,32 @@ const baseStyle: ZStyleProps = mergeStyle(
 
 const normalStyleMap: Record<string, ZStyleProps> = {
   primary: {
-    "border-width": 1,
+    ...COMMON_STYLE.border1,
     "background-color": COLORS.PRIMARY,
     "text-color": COLORS.WHITE,
   },
   success: {
-    "border-width": 1,
+    ...COMMON_STYLE.border1,
     "background-color": COLORS.SUCCESS,
     "text-color": COLORS.WHITE,
   },
   info: {
-    "border-width": 1,
+    ...COMMON_STYLE.border1,
     "background-color": COLORS.INFO,
     "text-color": COLORS.WHITE,
   },
   danger: {
-    "border-width": 1,
+    ...COMMON_STYLE.border1,
     "background-color": COLORS.DANGER,
     "text-color": COLORS.WHITE,
   },
   warning: {
-    "border-width": 1,
+    ...COMMON_STYLE.border1,
     "background-color": COLORS.WARNING,
     "text-color": COLORS.WHITE,
   },
   default: {
-    "border-width": 1,
+    ...COMMON_STYLE.border1,
     "background-color": COLORS.WHITE,
     "text-color": COLORS.REGULAR_TEXT,
   },
@@ -81,32 +80,32 @@ const normalStyleMap: Record<string, ZStyleProps> = {
 
 const textStyleMap: Record<string, ZStyleProps> = {
   primary: {
-    "border-width": 0,
+    ...COMMON_STYLE.noBorder,
     "background-color": COLORS.WHITE,
     "text-color": COLORS.PRIMARY,
   },
   success: {
-    "border-width": 0,
+    ...COMMON_STYLE.noBorder,
     "background-color": COLORS.WHITE,
     "text-color": COLORS.SUCCESS,
   },
   info: {
-    "border-width": 0,
+    ...COMMON_STYLE.noBorder,
     "background-color": COLORS.WHITE,
     "text-color": COLORS.INFO,
   },
   danger: {
-    "border-width": 0,
+    ...COMMON_STYLE.noBorder,
     "background-color": COLORS.WHITE,
     "text-color": COLORS.DANGER,
   },
   warning: {
-    "border-width": 0,
+    ...COMMON_STYLE.noBorder,
     "background-color": COLORS.WHITE,
     "text-color": COLORS.WARNING,
   },
   default: {
-    "border-width": 0,
+    ...COMMON_STYLE.noBorder,
     "background-color": COLORS.WHITE,
     "text-color": COLORS.REGULAR_TEXT,
   },
@@ -121,25 +120,23 @@ const sizeStyleMap: Record<string, ZStyleProps> = {
     COMMON_STYLE.minWidth32,
     COMMON_STYLE.minHeight32,
     COMMON_STYLE.fontSizeSmall,
-    { "padding-left": 8, "padding-right": 8 },
+    COMMON_STYLE.paddingHorizontal8,
   ),
   default: mergeStyle(
     COMMON_STYLE.minWidth36,
     COMMON_STYLE.minHeight36,
     COMMON_STYLE.fontSizeDefault,
-    { "padding-left": 8, "padding-right": 8 },
+    COMMON_STYLE.paddingHorizontal8,
   ),
   large: mergeStyle(
     COMMON_STYLE.minWidth40,
     COMMON_STYLE.minHeight40,
     COMMON_STYLE.fontSizeLarge,
-    { "padding-left": 8, "padding-right": 8 },
+    COMMON_STYLE.paddingHorizontal8,
   ),
 };
 
-const roundStyle: ZStyleProps = {
-  "border-radius": CONSTANTS.MAX_RADIUS,
-};
+const roundStyle: ZStyleProps = COMMON_STYLE.radiusMax
 
 const noChildStyle: ZStyleProps = {
   padding: 0,
