@@ -42,21 +42,37 @@ const sizeStyleMap: Record<string, ZStyleProps> = {
 
 interface ClearButtonProps {
   size: ZSizeEnum;
-  onClick: () => void;
+  onClick?: () => void;
   round: boolean;
+  display?: boolean;
 }
 
-const ClearButton = React.memo<ClearButtonProps>(({ size, onClick, round }) => {
-  return (
-    <ZButton
-      size={size}
-      onClick={onClick}
-      icon={ZIconSymbol.Backspace}
-      round={round}
-      text
-    ></ZButton>
-  );
-});
+const ClearButton = React.memo<ClearButtonProps>(
+  ({ size, onClick, round, display = true }) => {
+    if (display) {
+      return (
+        <ZButton
+          size={size}
+          onClick={onClick}
+          icon={ZIconSymbol.Backspace}
+          round={round}
+          text
+        ></ZButton>
+      );
+    } else {
+      return (
+        <ZButton
+          size={size}
+          icon={ZIconSymbol.Backspace}
+          round={round}
+          text
+          disable
+          style={{ opacity: 0 }}
+        ></ZButton>
+      );
+    }
+  },
+);
 
 const ZInput = (props: ZInputProps) => {
   const {
@@ -103,9 +119,12 @@ const ZInput = (props: ZInputProps) => {
         autoKeyBoard={true}
         mode={password ? "password" : "text"}
       ></Input>
-      {allowClean && input && input.length > 0 ? (
-        <ClearButton onClick={clearInput} size={size} round={round} />
-      ) : null}
+      <ClearButton
+        onClick={clearInput}
+        size={size}
+        round={round}
+        display={allowClean && input && input.length > 0}
+      />
     </ZRow>
   );
 };
