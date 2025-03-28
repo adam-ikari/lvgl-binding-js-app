@@ -1,5 +1,5 @@
 import { COMMON_STYLE } from "@/common_style";
-import { ZButton, ZButtonProps, ZRow, ZSizeEnum } from "@/components";
+import { ZButton, ZRow, ZSizeEnum } from "@/components";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import * as _ from "radash";
 import React from "react";
