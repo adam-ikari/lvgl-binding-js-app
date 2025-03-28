@@ -13,6 +13,7 @@ export interface ZFlexContainerProps {
   wrap?: boolean;
   gap?: number;
   flexDirection: "row" | "column";
+  [key: string]: any;
 }
 
 const widthStyleMap: Record<string, ZStyleProps> = {
@@ -41,6 +42,7 @@ export const ZFlexContainer = (props: ZFlexContainerProps) => {
     style: propStyle = {},
     wrap = false,
     gap = 10,
+    ...restProps
   } = props;
 
   const computedStyle = useMemo(() => {
@@ -59,7 +61,10 @@ export const ZFlexContainer = (props: ZFlexContainerProps) => {
   }, [gap, width, height, wrap]);
 
   return (
-    <View style={mergeStyle(baseStyle, computedStyle, propStyle)}>
+    <View
+      style={mergeStyle(baseStyle, computedStyle, propStyle)}
+      {...restProps}
+    >
       {children}
     </View>
   );

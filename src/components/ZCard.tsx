@@ -11,6 +11,7 @@ interface ZCardProps {
   children?: React.ReactNode;
   footer?: React.ReactNode;
   style?: ZStyleProps;
+  [key: string]: any;
 }
 
 const baseStyle: ZStyleProps = mergeStyle(
@@ -39,9 +40,15 @@ const ZCardFooter = (props: { children?: React.ReactNode }) => {
 };
 
 const ZCard = (props: ZCardProps) => {
-  const { header, children, footer, style: propStyle = {} } = props;
+  const {
+    header,
+    children,
+    footer,
+    style: propStyle = {},
+    ...restProps
+  } = props;
   return (
-    <ZColumn style={mergeStyle(baseStyle, propStyle)}>
+    <ZColumn style={mergeStyle(baseStyle, propStyle)} {...restProps}>
       {/* header */}
       {header && <ZCardHeader>{header}</ZCardHeader>}
       {/* content */}
