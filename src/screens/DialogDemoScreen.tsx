@@ -1,5 +1,4 @@
 import { ZButton, ZDialog, ZText } from "@/components";
-import { ZNavHeaderLayout } from "@/layouts";
 import React, { useState } from "react";
 
 const DialogDemoScreen = () => {
@@ -8,7 +7,7 @@ const DialogDemoScreen = () => {
     setVisibale(!visibale);
   };
   return (
-    <ZNavHeaderLayout title="Dialog Demo" withBack>
+    <>
       <ZButton onClick={toggleVisibale}>Open Dialog</ZButton>
       {visibale && (
         <ZDialog
@@ -33,7 +32,7 @@ const DialogDemoScreen = () => {
           <ZText>This is a Dialog</ZText>
         </ZDialog>
       )}
-    </ZNavHeaderLayout>
+    </>
   );
 };
 

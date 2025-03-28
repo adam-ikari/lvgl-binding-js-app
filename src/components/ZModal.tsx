@@ -16,7 +16,7 @@ const ZModal = (props: ZModalProps) => {
 
   return (
     <Mask style={styles.mask} onClick={onMaskClick}>
-      <React.Fragment>{children}</React.Fragment>
+      <>{children}</>
     </Mask>
   );
 };

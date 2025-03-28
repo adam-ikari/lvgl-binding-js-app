@@ -1,54 +1,131 @@
 import {
   ZButton,
   ZHeightEnum,
+  ZIcon,
   ZIconSymbol,
   ZRow,
   ZSizeEnum,
   ZText,
   ZWidthEnum,
 } from ".";
-import React from "react";
+import useTime from "@/hooks/time";
+import routerData from "@/router";
+import React, { useLayoutEffect, useState } from "react";
 import { useNavigate } from "react-router-native";
+import { useLocation } from "react-router-native";
 
-interface ZNavHeaderProps {
-  withBack?: boolean;
-  title?: string;
-  addons?: React.ReactNode | React.ReactNode[];
-}
+const HEIGHT = 40;
 
-const ZNavHeader = (props: ZNavHeaderProps) => {
-  const { withBack = false, title, addons } = props;
+const checkHome = (path) => path === "/";
+
+const HomeButton = () => {
   const navigate = useNavigate();
+  return (
+    <ZButton
+      style={{ "flex-grow": 0 }}
+      size={ZSizeEnum.Small}
+      icon={ZIconSymbol.Home}
+      text
+      onClick={() => {
+        navigate("/");
+      }}
+    />
+  );
+};
+
+const BackButton = React.memo(() => {
+  const navigate = useNavigate();
+  return (
+    <ZButton
+      style={{ "flex-grow": 0 }}
+      size={ZSizeEnum.Small}
+      icon={ZIconSymbol.Left}
+      text
+      onClick={() => navigate(-1)}
+    >
+      back
+    </ZButton>
+  );
+});
+
+const getMetaData = (location) => {
+  const route = routerData.find((item) => item.path === location.pathname);
+  if (route && route.meta) {
+    return route.meta;
+  }
+  return {};
+};
+
+const NotificationAera = () => {
+  return (
+    <ZRow
+      height={ZHeightEnum.Full}
+      style={{
+        "align-items": "center",
+      }}
+    >
+      <ZIcon symbol={ZIconSymbol.Usb}></ZIcon>
+      <ZIcon symbol={ZIconSymbol.Wifi}></ZIcon>
+      <ZIcon symbol={ZIconSymbol.Bell}></ZIcon>
+      <ZIcon symbol={ZIconSymbol.Envelope}></ZIcon>
+    </ZRow>
+  );
+};
+
+const TimeAera = () => {
+  const time = useTime({ format: "YYYY-MM-DD HH:mm" });
+  return (
+    <ZRow
+      height={ZHeightEnum.Full}
+      style={{
+        "align-items": "center",
+      }}
+    >
+      <ZText>{time}</ZText>;
+    </ZRow>
+  );
+};
+
+const ActionAera = () => {
+  const location = useLocation();
+  const [isHome, setIsHome] = useState(checkHome(location.pathname));
+  useLayoutEffect(() => {
+    setIsHome(checkHome(location.pathname));
+  }, [location]);
+  return (
+    <ZRow
+      height={ZHeightEnum.Full}
+      gap={0}
+      style={{
+        "align-items": "center",
+      }}
+    >
+      <HomeButton />
+      {isHome ? null : <BackButton />}
+    </ZRow>
+  );
+};
+
+const ZNavHeader = () => {
+  const location = useLocation();
+  const [title, setTitle] = useState("");
+  const [isHome, setIsHome] = useState(checkHome(location.pathname));
+
+  useLayoutEffect(() => {
+    setIsHome(checkHome(location.pathname));
+    setTitle(getMetaData(location)?.title);
+  }, [location]);
 
   return (
     <ZRow
       width={ZWidthEnum.Full}
-      height={48}
+      height={HEIGHT}
       style={{
         padding: 4,
         "align-items": "center",
       }}
     >
-      <ZRow
-        height={ZHeightEnum.Full}
-        style={{
-          "align-items": "center",
-          "min-width": 40,
-        }}
-      >
-        {withBack && (
-          <ZButton
-            style={{ "flex-grow": 0 }}
-            size={ZSizeEnum.Small}
-            icon={ZIconSymbol.Left}
-            text
-            round
-            onClick={() => navigate(-1)}
-          >
-            back
-          </ZButton>
-        )}
-      </ZRow>
+      <ActionAera />
       <ZRow
         height={ZHeightEnum.Full}
         style={{
@@ -56,19 +133,12 @@ const ZNavHeader = (props: ZNavHeaderProps) => {
           "align-items": "center",
         }}
       >
-        {title && <ZText>{title}</ZText>}
+        <ZText>{title}</ZText>
       </ZRow>
-      <ZRow
-        height={ZHeightEnum.Full}
-        style={{
-          "align-items": "center",
-        }}
-      >
-        {addons}
-      </ZRow>
+      <NotificationAera />
+      <TimeAera />
     </ZRow>
   );
 };
 
-export type { ZNavHeaderProps };
 export { ZNavHeader };

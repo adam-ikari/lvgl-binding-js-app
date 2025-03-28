@@ -6,7 +6,7 @@ interface UseTimeProps {
   interval?: number;
 }
 
-const useTime = (props?: UseTimeProps) => {
+const useTime = (props: UseTimeProps) => {
   const { format, interval = 1000 } = props;
   let getTime;
 

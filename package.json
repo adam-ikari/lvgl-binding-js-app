@@ -7,9 +7,9 @@
     "build": "node ./build.js",
     "build:dev": "cross-env NODE_ENV=development node ./build.js",
     "build:prod": "cross-env NODE_ENV=production node ./build.js",
-    "preview": "deps/lvgljs/lvgljs run ./build/uncompressed/main.view.js",
-    "preview:dev": "deps/lvgljs/lvgljs run ./build/uncompressed/main.view.js",
-    "preview:prod": "deps/lvgljs/lvgljs run ./build/compressed/main.view.js",
+    "preview": "node -e \"const { runBinary } = require('./deps/lvgljs'); runBinary('./build/uncompressed/main.view.js');\"",
+    "preview:dev": "node -e \"const { runBinary } = require('./deps/lvgljs'); runBinary('./build/uncompressed/main.view.js');\"",
+    "preview:prod": "node -e \"const { runBinary } = require('./deps/lvgljs'); runBinary('./build/compressed/main.view.js');\"",
     "dev": "nodemon --watch 'src/**/*.jsx' --watch 'src/**/*.tsx' --watch 'src/**/*.js' --watch 'src/**/*.ts' --ext 'jsx' --ext 'tsx' --exec 'npm run build:dev && npm run preview:dev'"
   },
   "dependencies": {
