@@ -112,7 +112,6 @@ const ZNavHeader = () => {
   const [isHome, setIsHome] = useState(checkHome(location.pathname));
 
   useLayoutEffect(() => {
-    console.log(checkHome(location.pathname));
     setIsHome(checkHome(location.pathname));
     setTitle(getMetaData(location)?.title);
   }, [location]);

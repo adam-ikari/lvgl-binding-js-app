@@ -116,7 +116,6 @@ const ZInput = (props: ZInputProps) => {
 
   const clearInput = () => {
     setInput("");
-    console.log(inputRef.current);
     // inputRef.current.focus(); // not work
   };
 
