@@ -1,4 +1,4 @@
-import { COLORS, COMMON_STYLE } from "@/common_style";
+import { COMMON_STYLE } from "@/common_style";
 import {
   ZButton,
   ZButtonGroup,
@@ -6,12 +6,12 @@ import {
   ZCard,
   ZRow,
   ZSizeEnum,
+  ZSwitch,
   ZText,
 } from "@/components";
 import { ZIconSymbol } from "@/components";
 import { useMergeStyle } from "@/hooks/styleHooks";
-import React from "react";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import React, { useState } from "react";
 
 const buttonTypeData = [
   { text: "Default", type: ZButtonTypeEnum.Default },
@@ -40,6 +40,7 @@ const PageSession = ({ children, title }) => (
 );
 
 const ButtonDemoScreen = () => {
+  const [disable, setDisable] = useState(false);
   return (
     <>
       <PageSession title="type">
@@ -77,11 +78,17 @@ const ButtonDemoScreen = () => {
 
       <PageSession title="Disable Button">
         <ZRow>
-          {buttonTypeData.map((item, index) => (
-            <ZButton key={index} type={item.type} disable>
-              {item.text}
-            </ZButton>
-          ))}
+          <ZRow>
+            {buttonTypeData.map((item, index) => (
+              <ZButton key={index} type={item.type} disable={disable}>
+                {item.text}
+              </ZButton>
+            ))}
+          </ZRow>
+          <ZSwitch
+            value={disable}
+            onChange={(value) => setDisable(value)}
+          ></ZSwitch>
         </ZRow>
       </PageSession>
 

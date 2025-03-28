@@ -1,11 +1,18 @@
-import { ZRow, ZSwitch } from "@/components";
-import React from "react";
+import { ZRow, ZSwitch, ZText } from "@/components";
+import React, { useState } from "react";
 
 const SwitchDemoScreen = () => {
+  const [onOff, setOnOff] = useState(false);
   return (
     <>
       <ZRow>
-        <ZSwitch></ZSwitch>
+        <ZText>{JSON.stringify(onOff)}</ZText>
+        <ZSwitch
+          value={onOff}
+          onChange={(value) => {
+            setOnOff(value);
+          }}
+        ></ZSwitch>
       </ZRow>
     </>
   );

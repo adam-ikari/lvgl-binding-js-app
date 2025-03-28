@@ -1,13 +1,10 @@
-import { COLORS } from "@/common_style";
-import { ZButton, ZRow, ZText } from "@/components";
+import { COLORS, COMMON_STYLE } from "@/common_style";
+import { ZButton, ZCard, ZRow, ZSizeEnum, ZText } from "@/components";
+import { useMergeStyle } from "@/hooks/styleHooks";
 import React from "react";
 import { useNavigate } from "react-router-native";
 
-const style = {
-  BackgroundStyle: {
-    "background-color": COLORS.PAGE_BACKGROUND,
-  },
-};
+const mergeStyle = useMergeStyle();
 
 const indexData = [
   {
@@ -31,24 +28,29 @@ const indexData = [
   { text: "State", children: [{ text: "State Demo", path: "/state" }] },
 ];
 
+const PageSession = ({ children, title }) => (
+  <ZCard
+    style={mergeStyle(COMMON_STYLE.fullWidth)}
+    header={<ZText size={ZSizeEnum.Large}>{title}</ZText>}
+  >
+    {children}
+  </ZCard>
+);
+
 const HomeScreen = () => {
   const navigate = useNavigate();
   return (
     <>
-      {indexData.map((category) => (
-        <>
-          <ZText>{category.text}</ZText>
-          <ZRow
-            wrap
-            style={{
-              ...style.BackgroundStyle,
-            }}
-          >
-            {category.children.map((item) => (
-              <ZButton onClick={() => navigate(item.path)}>{item.text}</ZButton>
+      {indexData.map((category, index) => (
+        <PageSession key={index} title={category.text}>
+          <ZRow wrap>
+            {category.children.map((item, index) => (
+              <ZButton key={index} onClick={() => navigate(item.path)}>
+                {item.text}
+              </ZButton>
             ))}
           </ZRow>
-        </>
+        </PageSession>
       ))}
     </>
   );
