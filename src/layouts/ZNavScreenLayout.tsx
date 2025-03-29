@@ -1,6 +1,7 @@
 import { COLORS, COMMON_STYLE } from "@/common_style";
 import {
   ZButton,
+  ZButtonTypeEnum,
   ZColumn,
   ZHeightEnum,
   ZIconSymbol,
@@ -52,8 +53,9 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
         }}
         align={{
           type: EAlignType.ALIGN_BOTTOM_RIGHT,
-          pos: [-10, -10],
+          pos: [-40, -40],
         }}
+        type={ZButtonTypeEnum.Primary}
         size={ZSizeEnum.Large}
         icon={ZIconSymbol.Up}
         round

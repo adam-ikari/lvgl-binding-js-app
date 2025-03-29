@@ -177,9 +177,17 @@ const COMMON_STYLE: Record<string, StyleProps> = {
   padding20: {
     padding: 20,
   },
+  paddingHorizontal4: {
+    "padding-left": 4,
+    "padding-right": 4,
+  },
   paddingHorizontal8: {
     "padding-left": 8,
     "padding-right": 8,
+  },
+  paddingHorizontal16: {
+    "padding-left": 16,
+    "padding-right": 16,
   },
   fontSizeSmall: {
     "font-size": 12,

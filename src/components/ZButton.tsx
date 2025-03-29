@@ -120,7 +120,7 @@ const sizeStyleMap: Record<string, ZStyleProps> = {
     COMMON_STYLE.minWidth32,
     COMMON_STYLE.minHeight32,
     COMMON_STYLE.fontSizeSmall,
-    COMMON_STYLE.paddingHorizontal8,
+    COMMON_STYLE.paddingHorizontal4,
   ),
   default: mergeStyle(
     COMMON_STYLE.minWidth36,
@@ -129,10 +129,10 @@ const sizeStyleMap: Record<string, ZStyleProps> = {
     COMMON_STYLE.paddingHorizontal8,
   ),
   large: mergeStyle(
-    COMMON_STYLE.minWidth40,
-    COMMON_STYLE.minHeight40,
+    COMMON_STYLE.minWidth48,
+    COMMON_STYLE.minHeight48,
     COMMON_STYLE.fontSizeLarge,
-    COMMON_STYLE.paddingHorizontal8,
+    COMMON_STYLE.paddingHorizontal16,
   ),
 };
 
