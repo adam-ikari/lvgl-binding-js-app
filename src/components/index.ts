@@ -11,3 +11,4 @@ export * from "./ZDialog";
 export * from "./ZButtonGroup";
 export * from "./ZInput";
 export * from "./ZSwitch";
+export * from "./ZFlexContainer";

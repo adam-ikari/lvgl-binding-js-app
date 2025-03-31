@@ -1,4 +1,11 @@
-import { ZSizeEnum, ZStyleProps } from ".";
+import {
+  ZAlignItemsEnum,
+  ZRow,
+  ZSizeEnum,
+  ZStyleProps,
+  ZText,
+  ZTextTypeEnum,
+} from ".";
 import { COMMON_STYLE } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { Switch } from "lvgljs-ui";
@@ -11,6 +18,8 @@ interface ZSwitchProps {
   value?: boolean;
   size?: ZSizeEnum;
   onChange?: (value: boolean) => void;
+  activeText?: string;
+  inactiveText?: string;
   [key: string]: any; // Allow other props to be passed to the Switch component
 }
 
@@ -26,6 +35,8 @@ const ZSwitch = (props: ZSwitchProps) => {
     value: propValue = false,
     onChange = (_) => {},
     size = ZSizeEnum.Default,
+    activeText,
+    inactiveText,
     ...restProps
   } = props;
 
@@ -42,14 +53,26 @@ const ZSwitch = (props: ZSwitchProps) => {
   }, [value]);
 
   return (
-    <Switch
-      checked={value}
-      style={mergeStyle(sizeStyleMap[size], propStyle)}
-      {...restProps}
-      onChange={() => {
-        setValue(!value);
-      }}
-    />
+    <ZRow alignItems={ZAlignItemsEnum.Center} gap={4}>
+      {inactiveText && (
+        <ZText type={!value ? ZTextTypeEnum.Primary : ZTextTypeEnum.Default}>
+          {inactiveText}
+        </ZText>
+      )}
+      <Switch
+        checked={value}
+        style={mergeStyle(sizeStyleMap[size], propStyle)}
+        {...restProps}
+        onChange={() => {
+          setValue(!value);
+        }}
+      />
+      {activeText && (
+        <ZText type={value ? ZTextTypeEnum.Primary : ZTextTypeEnum.Default}>
+          {activeText}
+        </ZText>
+      )}
+    </ZRow>
   );
 };
 

@@ -136,7 +136,7 @@ const sizeStyleMap: Record<string, ZStyleProps> = {
   ),
 };
 
-const roundStyle: ZStyleProps = COMMON_STYLE.radiusMax
+const roundStyle: ZStyleProps = COMMON_STYLE.radiusMax;
 
 const noChildStyle: ZStyleProps = {
   padding: 0,
@@ -146,17 +146,22 @@ interface ButtonContentProps {
   icon?: ZIconSymbol;
   children?: string;
   size: ZSizeEnum;
+  type: ZButtonTypeEnum;
 }
 
 const ButtonContent = React.memo(
-  ({ icon, children, size }: ButtonContentProps) => {
+  ({ icon, children, size, type }: ButtonContentProps) => {
     if (!icon && !children) {
       return null;
     } else {
       return (
         <>
-          {icon ? <ZIcon symbol={icon} size={size} /> : null}
-          {children ? <ZText size={size}>{children}</ZText> : null}
+          {icon ? <ZIcon symbol={icon} size={size} light={type !== ZButtonTypeEnum.Default}/> : null}
+          {children ? (
+            <ZText size={size} light={type !== ZButtonTypeEnum.Default}>
+              {children}
+            </ZText>
+          ) : null}
         </>
       );
     }
@@ -203,7 +208,7 @@ const ZButton = (props: ZButtonProps) => {
       onClick={handleClick}
       {...restProps}
     >
-      <ButtonContent icon={icon} size={size}>
+      <ButtonContent icon={icon} size={size} type={type}>
         {children}
       </ButtonContent>
     </Component>
