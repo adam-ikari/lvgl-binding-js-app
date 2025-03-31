@@ -5,7 +5,15 @@ import { View } from "lvgljs-ui";
 import * as _ from "radash";
 import React, { useMemo } from "react";
 
-export interface ZFlexContainerProps {
+const mergeStyle = useMergeStyle();
+
+enum ZAlignItemsEnum {
+  Start = "start",
+  Center = "center",
+  End = "end",
+}
+
+interface ZFlexContainerProps {
   children?: React.ReactNode;
   style?: ZStyleProps;
   width?: ZWidthEnum | number;
@@ -13,8 +21,17 @@ export interface ZFlexContainerProps {
   wrap?: boolean;
   gap?: number;
   flexDirection: "row" | "column";
+  alignItems: ZAlignItemsEnum;
   [key: string]: any;
 }
+
+const baseStyle: ZStyleProps = mergeStyle(
+  COMMON_STYLE.noBorder,
+  COMMON_STYLE.padding0,
+  COMMON_STYLE.radius0,
+  COMMON_STYLE.alignItemsStart,
+  COMMON_STYLE.justifyContentStart,
+);
 
 const widthStyleMap: Record<string, ZStyleProps> = {
   auto: COMMON_STYLE.autoWidth,
@@ -26,15 +43,13 @@ const heightStyleMap: Record<string, ZStyleProps> = {
   full: COMMON_STYLE.fullHeight,
 };
 
-export const ZFlexContainer = (props: ZFlexContainerProps) => {
-  const mergeStyle = useMergeStyle();
+const alignItemsStyle: Record<string, ZStyleProps> = {
+  start: COMMON_STYLE.alignItemsStart,
+  center: COMMON_STYLE.alignItemsCenter,
+  end: COMMON_STYLE.alignItemsEnd,
+};
 
-  const baseStyle: ZStyleProps = mergeStyle(
-    COMMON_STYLE.noBorder,
-    COMMON_STYLE.padding0,
-    COMMON_STYLE.radius0,
-  );
-
+const ZFlexContainer = (props: ZFlexContainerProps) => {
   const {
     children,
     width = ZWidthEnum.Auto,
@@ -42,6 +57,7 @@ export const ZFlexContainer = (props: ZFlexContainerProps) => {
     style: propStyle = {},
     wrap = false,
     gap = 10,
+    alignItems = ZAlignItemsEnum.Start,
     ...restProps
   } = props;
 
@@ -55,6 +71,7 @@ export const ZFlexContainer = (props: ZFlexContainerProps) => {
         : { "row-spacing": gap },
       _.isNumber(width) ? { width } : widthStyleMap[width],
       _.isNumber(height) ? { height } : heightStyleMap[height],
+      alignItemsStyle[alignItems],
       wrap && { "flex-wrap": "wrap" },
       propStyle,
     );
@@ -69,3 +86,5 @@ export const ZFlexContainer = (props: ZFlexContainerProps) => {
     </View>
   );
 };
+export type { ZFlexContainerProps };
+export { ZFlexContainer, ZAlignItemsEnum };

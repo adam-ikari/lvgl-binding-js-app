@@ -118,19 +118,19 @@ const disabledStyle: ZStyleProps = {
 const sizeStyleMap: Record<string, ZStyleProps> = {
   small: mergeStyle(
     COMMON_STYLE.minWidth32,
-    COMMON_STYLE.minHeight32,
+    COMMON_STYLE.height32,
     COMMON_STYLE.fontSizeSmall,
     COMMON_STYLE.paddingHorizontal4,
   ),
   default: mergeStyle(
     COMMON_STYLE.minWidth36,
-    COMMON_STYLE.minHeight36,
+    COMMON_STYLE.height36,
     COMMON_STYLE.fontSizeDefault,
     COMMON_STYLE.paddingHorizontal8,
   ),
   large: mergeStyle(
     COMMON_STYLE.minWidth48,
-    COMMON_STYLE.minHeight48,
+    COMMON_STYLE.height48,
     COMMON_STYLE.fontSizeLarge,
     COMMON_STYLE.paddingHorizontal16,
   ),

@@ -56,11 +56,23 @@ const COMMON_STYLE: Record<string, StyleProps> = {
     display: "flex",
     "flex-direction": "column",
   },
+  justifyContentStart: {
+    "justify-content": "start",
+  },
   justifyContentCenter: {
     "justify-content": "center",
   },
+  justifyContentEnd: {
+    "justify-content": "end",
+  },
+  alignItemsStart: {
+    "align-items": "start",
+  },
   alignItemsCenter: {
     "align-items": "center",
+  },
+  alignItemsEnd: {
+    "align-items": "end",
   },
   noBorder: {
     "border-width": 0,
@@ -106,25 +118,43 @@ const COMMON_STYLE: Record<string, StyleProps> = {
     "min-width": 50,
   },
   width10: {
-    "min-width": 10,
+    width: 10,
   },
   width20: {
-    "min-width": 20,
+    width: 20,
+  },
+  width24: {
+    width: 24,
   },
   width32: {
-    "min-width": 32,
+    width: 32,
   },
   width36: {
-    "min-width": 36,
+    width: 36,
   },
   width40: {
-    "min-width": 40,
+    width: 40,
+  },
+  width42: {
+    width: 42,
   },
   width48: {
-    "min-width": 48,
+    width: 48,
   },
   width50: {
-    "min-width": 50,
+    width: 50,
+  },
+  width56: {
+    width: 56,
+  },
+  width64: {
+    width: 50,
+  },
+  width72: {
+    width: 72,
+  },
+  width80: {
+    width: 80,
   },
   fullHeight: {
     height: "100%",
@@ -152,6 +182,9 @@ const COMMON_STYLE: Record<string, StyleProps> = {
   },
   height12: {
     height: 12,
+  },
+  height20: {
+    height: 20,
   },
   height24: {
     height: 24,
