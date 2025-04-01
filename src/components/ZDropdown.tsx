@@ -2,29 +2,29 @@ import { ZSizeEnum, ZStyleProps } from ".";
 import { COMMON_STYLE } from "../common_style";
 import { useMergeStyle } from "../hooks/styleHooks";
 import { Dropdownlist } from "lvgljs-ui";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 
-const mergeStyle = useMergeStyle();
-
-interface ZDropdownProps {
+interface ZDropdownProps<T> {
   style?: ZStyleProps;
-  value?: any;
-  options?: Array<{ label: string; value: any }>;
+  value?: T;
+  options?: Array<{ label: string; value: T }>;
   size?: ZSizeEnum;
-  onChange?: (value: any) => void;
+  onChange?: (value: T) => void;
   placeholder?: string;
   [key: string]: any;
 }
 
-const baseStyle: ZStyleProps = mergeStyle(COMMON_STYLE.radius4);
+const ZDropdown = <T,>(props: ZDropdownProps<T>) => {
+  const mergeStyle = useMergeStyle();
 
-const sizeStyleMap: Record<string, ZStyleProps> = {
-  small: mergeStyle(COMMON_STYLE.width120, COMMON_STYLE.height32),
-  default: mergeStyle(COMMON_STYLE.width160, COMMON_STYLE.height36),
-  large: mergeStyle(COMMON_STYLE.width200, COMMON_STYLE.height40),
-};
+  const baseStyle: ZStyleProps = mergeStyle(COMMON_STYLE.radius4);
 
-const ZDropdown = (props: ZDropdownProps) => {
+  const sizeStyleMap: Record<string, ZStyleProps> = {
+    small: mergeStyle(COMMON_STYLE.width120, COMMON_STYLE.height32),
+    default: mergeStyle(COMMON_STYLE.width160, COMMON_STYLE.height36),
+    large: mergeStyle(COMMON_STYLE.width200, COMMON_STYLE.height40),
+  };
+
   const {
     style: propStyle = {},
     value: propValue = undefined,
@@ -49,19 +49,26 @@ const ZDropdown = (props: ZDropdownProps) => {
     }
   }, [value]);
 
-  const handleChange = (e) => {
-    setValue(options.find((opt) => opt.label === e.value)?.value);
-    // onChange(value);
+  const handleChange = (e: { value: number }) => {
+    const selectedValue = options[e.value]?.value;
+    setValue(selectedValue);
+    if (onChange && selectedValue !== undefined) {
+      onChange(selectedValue);
+    }
   };
 
   return (
     <Dropdownlist
       items={options.map((opt) => opt.label)}
       selectIndex={options.findIndex((opt) => opt.value === propValue)}
-      // text={value || placeholder}
-      // direction={0}
-      // arrow={1}
-      // highlightSelect={true}
+      text={
+        value
+          ? options.find((opt) => opt.value === value)?.label || placeholder
+          : placeholder
+      }
+      direction={0}
+      arrow={1}
+      highlightSelect={true}
       style={mergeStyle(baseStyle, sizeStyleMap[size], propStyle)}
       onChange={handleChange}
       {...restProps}
