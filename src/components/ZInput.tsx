@@ -2,7 +2,7 @@ import { ZButton, ZIconSymbol, ZSizeEnum, ZStyleProps } from ".";
 import { COMMON_STYLE, CONSTANTS } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { EAlignType, Input, View } from "lvgljs-ui";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const mergeStyle = useMergeStyle();
 
