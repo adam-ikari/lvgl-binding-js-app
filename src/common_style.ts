@@ -56,14 +56,41 @@ const COMMON_STYLE: Record<string, StyleProps> = {
     display: "flex",
     "flex-direction": "column",
   },
-  justifyContentStart: {
-    "justify-content": "start",
+  justifyContentFlexStart: {
+    /**
+     * 默认对齐方式，子元素在主轴（flex-direction定义的方向）上从起点开始对齐
+     */
+    "justify-content": "flex-start",
   },
   justifyContentCenter: {
+    /**
+     * 居中对齐，子元素在主轴（flex-direction定义的方向）上居中对齐
+     */
     "justify-content": "center",
   },
-  justifyContentEnd: {
-    "justify-content": "end",
+  justifyContentFlexEnd: {
+    /**
+     * 结束对齐，子元素在主轴（flex-direction定义的方向）上从终点开始对齐
+     */
+    "justify-content": "flex-end",
+  },
+  justifyContentBetween: {
+    /**
+     * 两端对齐，子元素之间的空间平均分布
+     */
+    "justify-content": "space-between",
+  },
+  justifyContentAround: {
+    /**
+     * 环绕对齐，子元素之间的空间平均分布，首尾元素与边框距离相等
+     */
+    "justify-content": "space-around",
+  },
+  justifyContentEvenly: {
+    /**
+     * 平均分布，子元素之间的空间平均分布，首尾元素与边框距离相等
+     */
+    "justify-content": "space-evenly",
   },
   alignItemsStart: {
     "align-items": "start",

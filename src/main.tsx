@@ -14,6 +14,7 @@ const App = () => {
           {routerData.map(({ name, path, component }) => (
             <Route
               id={name}
+              key={name}
               path={path}
               element={React.createElement(component)}
             />

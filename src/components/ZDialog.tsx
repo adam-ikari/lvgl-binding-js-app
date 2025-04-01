@@ -1,7 +1,9 @@
 import {
+  ZAlignItemsEnum,
   ZButton,
   ZButtonTypeEnum,
   ZIconSymbol,
+  ZJustifyContentEnum,
   ZModal,
   ZRow,
   ZSizeEnum,
@@ -12,8 +14,6 @@ import { COMMON_STYLE } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { Dimensions, EAlignType, View } from "lvgljs-ui";
 import React, { useMemo } from "react";
-
-const mergeStyle = useMergeStyle();
 
 interface ZDialogProps {
   children?: React.ReactNode | React.ReactNode[];
@@ -27,6 +27,9 @@ interface ZDialogProps {
 
 const ZDialog = (props: ZDialogProps) => {
   const { width: windowWidth, height: windowHeight } = Dimensions.window;
+
+  const mergeStyle = useMergeStyle();
+
   const {
     children,
     title,
@@ -68,12 +71,7 @@ const ZDialog = (props: ZDialogProps) => {
           type: EAlignType.ALIGN_CENTER,
         }}
       >
-        <ZRow
-          width={ZWidthEnum.Full}
-          style={{
-            "align-items": "center",
-          }}
-        >
+        <ZRow width={ZWidthEnum.Full} alignItems={ZAlignItemsEnum.Center}>
           <ZRow style={{ "flex-grow": 1 }}>
             {title && <ZText size={ZSizeEnum.Large}>{title}</ZText>}
           </ZRow>
@@ -90,7 +88,11 @@ const ZDialog = (props: ZDialogProps) => {
         <ZRow width={ZWidthEnum.Full} style={{ "flex-grow": 1 }}>
           {children}
         </ZRow>
-        <ZRow width={ZWidthEnum.Full} style={{ "justify-content": "flex-end" }}>
+        <ZRow
+          width={ZWidthEnum.Full}
+          justifyContent={ZJustifyContentEnum.End}
+          // alignItems={ZAlignItemsEnum.Center}
+        >
           <ZButton onClick={onCancel}>Cancel</ZButton>
           <ZButton type={ZButtonTypeEnum.Primary} onClick={onConfirm}>
             Confirm

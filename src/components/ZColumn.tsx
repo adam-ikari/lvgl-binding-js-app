@@ -1,11 +1,19 @@
-import { ZFlexContainer, ZFlexContainerProps } from ".";
+import {
+  ZFlexContainer,
+  ZFlexContainerDirection,
+  ZFlexContainerProps,
+} from ".";
 import React from "react";
 
-interface ZColumnProps extends Omit<ZFlexContainerProps, "flexDirection"> {}
+interface ZColumnProps extends Omit<ZFlexContainerProps, "direction"> {}
 
 const ZColumn = (props: ZColumnProps) => {
-  const { gap = 20 } = props;
-  return <ZFlexContainer {...props} flexDirection="column" gap={gap} />;
+  return (
+    <ZFlexContainer
+      {...props}
+      direction={ZFlexContainerDirection.Column}
+    />
+  );
 };
 
 export type { ZColumnProps };

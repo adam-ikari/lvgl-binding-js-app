@@ -3,8 +3,6 @@ import { COLORS, COMMON_STYLE } from "../common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import React from "react";
 
-const mergeStyle = useMergeStyle();
-
 // 类型定义
 interface ZCardProps {
   header?: React.ReactNode;
@@ -13,21 +11,6 @@ interface ZCardProps {
   style?: ZStyleProps;
   [key: string]: any;
 }
-
-const baseStyle: ZStyleProps = mergeStyle(
-  COMMON_STYLE.noBorder,
-  COMMON_STYLE.autoWidth,
-  COMMON_STYLE.autoHeight,
-  {
-    "shadow-color": COLORS.GREY_DARK,
-    "shadow-offset-x": 0,
-    "shadow-offset-y": 0,
-    "shadow-opacity": 50,
-    "shadow-width": 24,
-    "border-radius": 4,
-    padding: 20,
-  },
-);
 
 const ZCardHeader = (props: { children?: React.ReactNode }) => {
   const { children } = props;
@@ -40,6 +23,22 @@ const ZCardFooter = (props: { children?: React.ReactNode }) => {
 };
 
 const ZCard = (props: ZCardProps) => {
+  const mergeStyle = useMergeStyle();
+  const baseStyle: ZStyleProps = mergeStyle(
+    COMMON_STYLE.noBorder,
+    COMMON_STYLE.autoWidth,
+    COMMON_STYLE.autoHeight,
+    COMMON_STYLE.padding20,
+    COMMON_STYLE.radius4,
+    {
+      "shadow-color": COLORS.GREY_DARK,
+      "shadow-offset-x": 0,
+      "shadow-offset-y": 0,
+      "shadow-opacity": 50,
+      "shadow-width": 24,
+    },
+  );
+
   const {
     header,
     children,
@@ -47,6 +46,7 @@ const ZCard = (props: ZCardProps) => {
     style: propStyle = {},
     ...restProps
   } = props;
+
   return (
     <ZColumn style={mergeStyle(baseStyle, propStyle)} {...restProps}>
       {/* header */}

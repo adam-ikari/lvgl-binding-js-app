@@ -4,14 +4,14 @@ import { useMergeStyle } from "@/hooks/styleHooks";
 import * as _ from "radash";
 import React from "react";
 
-const mergeStyle = useMergeStyle();
-
 interface ZButtonGroupProps {
   children?: React.ReactNode | React.ReactNode[];
   size?: ZSizeEnum;
 }
 
 const ZButtonGroup = (props: ZButtonGroupProps) => {
+  const mergeStyle = useMergeStyle();
+
   const { children, size = ZSizeEnum.Default } = props;
 
   return (
