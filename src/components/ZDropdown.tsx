@@ -16,6 +16,8 @@ interface ZDropdownProps {
   [key: string]: any;
 }
 
+const baseStyle: ZStyleProps = mergeStyle(COMMON_STYLE.radius4);
+
 const sizeStyleMap: Record<string, ZStyleProps> = {
   small: mergeStyle(COMMON_STYLE.width120, COMMON_STYLE.height32),
   default: mergeStyle(COMMON_STYLE.width160, COMMON_STYLE.height36),
@@ -48,14 +50,14 @@ const ZDropdown = (props: ZDropdownProps) => {
   return (
     <Dropdownlist
       items={options.map((opt) => opt.label)}
-      // selectIndex={2}
-      // text={value || placeholder}
+      selectIndex={options.findIndex((opt) => opt.value === value)}
+      text={value || placeholder}
       // direction={0}
       // arrow={1}
       // highlightSelect={true}
-      // style={mergeStyle(sizeStyleMap[size], propStyle)}
-      // onChange={handleChange}
-      // {...restProps}
+      style={mergeStyle(baseStyle, sizeStyleMap[size], propStyle)}
+      onChange={handleChange}
+      {...restProps}
     />
   );
 };
