@@ -5,8 +5,6 @@ import { View } from "lvgljs-ui";
 import * as _ from "radash";
 import React, { useMemo } from "react";
 
-const mergeStyle = useMergeStyle();
-
 enum ZAlignItemsEnum {
   Start = "start",
   Center = "center",
@@ -40,38 +38,40 @@ interface ZFlexContainerProps {
   [key: string]: any;
 }
 
-const baseStyle: ZStyleProps = mergeStyle(
-  COMMON_STYLE.noBorder,
-  COMMON_STYLE.padding0,
-  COMMON_STYLE.radius0,
-);
-
-const widthStyleMap: Record<string, ZStyleProps> = {
-  auto: COMMON_STYLE.autoWidth,
-  full: COMMON_STYLE.fullWidth,
-};
-
-const heightStyleMap: Record<string, ZStyleProps> = {
-  auto: COMMON_STYLE.autoHeight,
-  full: COMMON_STYLE.fullHeight,
-};
-
-const justifyContentStyle: Record<string, ZStyleProps> = {
-  start: COMMON_STYLE.justifyContentFlexStart,
-  center: COMMON_STYLE.justifyContentCenter,
-  end: COMMON_STYLE.justifyContentFlexEnd,
-  "space-between": COMMON_STYLE.justifyContentBetween,
-  "space-around": COMMON_STYLE.justifyContentAround,
-  "space-evenly": COMMON_STYLE.justifyContentEvenly,
-};
-
-const alignItemsStyle: Record<string, ZStyleProps> = {
-  start: COMMON_STYLE.alignItemsStart,
-  center: COMMON_STYLE.alignItemsCenter,
-  end: COMMON_STYLE.alignItemsEnd,
-};
-
 const ZFlexContainer = (props: ZFlexContainerProps) => {
+  const mergeStyle = useMergeStyle();
+
+  const baseStyle: ZStyleProps = mergeStyle(
+    COMMON_STYLE.noBorder,
+    COMMON_STYLE.padding0,
+    COMMON_STYLE.radius0,
+  );
+
+  const widthStyleMap: Record<string, ZStyleProps> = {
+    auto: COMMON_STYLE.autoWidth,
+    full: COMMON_STYLE.fullWidth,
+  };
+
+  const heightStyleMap: Record<string, ZStyleProps> = {
+    auto: COMMON_STYLE.autoHeight,
+    full: COMMON_STYLE.fullHeight,
+  };
+
+  const justifyContentStyle: Record<string, ZStyleProps> = {
+    start: COMMON_STYLE.justifyContentFlexStart,
+    center: COMMON_STYLE.justifyContentCenter,
+    end: COMMON_STYLE.justifyContentFlexEnd,
+    "space-between": COMMON_STYLE.justifyContentBetween,
+    "space-around": COMMON_STYLE.justifyContentAround,
+    "space-evenly": COMMON_STYLE.justifyContentEvenly,
+  };
+
+  const alignItemsStyle: Record<string, ZStyleProps> = {
+    start: COMMON_STYLE.alignItemsStart,
+    center: COMMON_STYLE.alignItemsCenter,
+    end: COMMON_STYLE.alignItemsEnd,
+  };
+
   const {
     children,
     direction = ZFlexContainerDirection.Row,
