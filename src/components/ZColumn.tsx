@@ -1,4 +1,4 @@
-import { ZFlexContainer, ZFlexContainerProps } from "./ZFlexContainer";
+import { ZFlexContainer, ZFlexContainerProps } from ".";
 import React from "react";
 
 interface ZColumnProps extends Omit<ZFlexContainerProps, "flexDirection"> {}
@@ -9,4 +9,4 @@ const ZColumn = (props: ZColumnProps) => {
 };
 
 export type { ZColumnProps };
-export { ZColumn };
+export default ZColumn;

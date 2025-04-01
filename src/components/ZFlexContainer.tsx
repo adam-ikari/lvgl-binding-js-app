@@ -87,4 +87,5 @@ const ZFlexContainer = (props: ZFlexContainerProps) => {
   );
 };
 export type { ZFlexContainerProps };
-export { ZFlexContainer, ZAlignItemsEnum };
+export { ZAlignItemsEnum };
+export default ZFlexContainer;

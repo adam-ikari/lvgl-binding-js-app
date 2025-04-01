@@ -22,4 +22,4 @@ const ZModal = (props: ZModalProps) => {
 };
 
 export type { ZModalProps };
-export { ZModal };
+export default ZModal;

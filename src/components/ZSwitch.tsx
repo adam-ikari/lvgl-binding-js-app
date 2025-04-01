@@ -84,4 +84,4 @@ const ZSwitch = (props: ZSwitchProps) => {
 };
 
 export type { ZSwitchProps };
-export { ZSwitch };
+export default ZSwitch;

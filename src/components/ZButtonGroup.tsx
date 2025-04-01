@@ -32,4 +32,4 @@ const ZButtonGroup = (props: ZButtonGroupProps) => {
 };
 
 export type { ZButtonGroupProps };
-export { ZButtonGroup };
+export default ZButtonGroup;

@@ -133,4 +133,5 @@ const ZInput = (props: ZInputProps) => {
 };
 
 export type { ZInputProps };
-export { ZInput, ZInputModeEnum };
+export { ZInputModeEnum };
+export default ZInput;

@@ -1,5 +1,5 @@
 import { ZIconSymbol, ZSizeEnum, ZStyleProps, ZText } from ".";
-import { ZIcon } from "./ZIcon";
+import { ZIcon } from ".";
 import { COLORS, COMMON_STYLE, CONSTANTS } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { Button, View } from "lvgljs-ui";
@@ -217,4 +217,5 @@ const ZButton = (props: ZButtonProps) => {
 };
 
 export type { ZButtonProps };
-export { ZButton, ZButtonTypeEnum };
+export { ZButtonTypeEnum };
+export default ZButton;

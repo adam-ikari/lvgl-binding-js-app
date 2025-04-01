@@ -1,4 +1,4 @@
-import { ZFlexContainer, ZFlexContainerProps } from "./ZFlexContainer";
+import { ZFlexContainer, ZFlexContainerProps } from ".";
 import React from "react";
 
 interface ZRowProps extends Omit<ZFlexContainerProps, "flexDirection"> {}
@@ -8,4 +8,4 @@ const ZRow = (props: ZRowProps) => {
 };
 
 export type { ZRowProps };
-export { ZRow };
+export default ZRow;

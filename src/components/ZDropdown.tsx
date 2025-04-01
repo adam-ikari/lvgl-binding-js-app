@@ -73,4 +73,4 @@ const ZDropdown = <T,>(props: ZDropdownProps<T>) => {
 };
 
 export type { ZDropdownProps };
-export { ZDropdown };
+export default ZDropdown;

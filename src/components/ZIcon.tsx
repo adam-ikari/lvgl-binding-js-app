@@ -18,4 +18,4 @@ const ZIcon = (props: ZIconProps) => {
 };
 
 export type { ZIconProps };
-export { ZIcon };
+export default ZIcon;

@@ -101,4 +101,4 @@ const ZDialog = (props: ZDialogProps) => {
   );
 };
 
-export { ZDialog };
+export default ZDialog;

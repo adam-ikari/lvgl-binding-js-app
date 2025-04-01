@@ -143,4 +143,4 @@ const ZNavHeader = () => {
   );
 };
 
-export { ZNavHeader };
+export default ZNavHeader;

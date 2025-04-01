@@ -106,4 +106,5 @@ const ZText = (props: ZTextProps) => {
   );
 };
 export type { ZTextProps };
-export { ZText, ZTextTypeEnum };
+export { ZTextTypeEnum };
+export default ZText;
