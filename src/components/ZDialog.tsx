@@ -63,9 +63,7 @@ const ZDialog = (props: ZDialogProps) => {
           COMMON_STYLE.flexColumn,
           COMMON_STYLE.padding10,
           COMMON_STYLE.noBorder,
-          {
-            "border-radius": 4,
-          },
+          COMMON_STYLE.radius4,
         )}
         align={{
           type: EAlignType.ALIGN_CENTER,
@@ -91,7 +89,7 @@ const ZDialog = (props: ZDialogProps) => {
         <ZRow
           width={ZWidthEnum.Full}
           justifyContent={ZJustifyContentEnum.End}
-          // alignItems={ZAlignItemsEnum.Center}
+          alignItems={ZAlignItemsEnum.Center}
         >
           <ZButton onClick={onCancel}>Cancel</ZButton>
           <ZButton type={ZButtonTypeEnum.Primary} onClick={onConfirm}>
