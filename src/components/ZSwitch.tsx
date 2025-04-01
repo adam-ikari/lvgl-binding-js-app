@@ -9,7 +9,7 @@ import {
 import { COMMON_STYLE } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { Switch } from "lvgljs-ui";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 
 const mergeStyle = useMergeStyle();
 
@@ -34,7 +34,7 @@ const ZSwitch = (props: ZSwitchProps) => {
   const {
     style: propStyle = {},
     value: propValue = false,
-    onChange = (_) => {},
+    onChange,
     size = ZSizeEnum.Default,
     activeText,
     inactiveText,
@@ -45,13 +45,17 @@ const ZSwitch = (props: ZSwitchProps) => {
   const [value, setValue] = useState(propValue);
 
   // 监听外部 propValue 变化，同步内部状态
-  useEffect(() => {
-    setValue(propValue);
+  useLayoutEffect(() => {
+    if (value !== propValue) {
+      setValue(propValue);
+    }
   }, [propValue]);
 
   // 内部状态变化时触发回调
-  useEffect(() => {
-    onChange(value);
+  useLayoutEffect(() => {
+    if (value !== propValue && onChange) {
+      onChange(value);
+    }
   }, [value]);
 
   return (

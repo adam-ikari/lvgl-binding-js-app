@@ -2,16 +2,16 @@ import { ZSizeEnum, ZStyleProps } from ".";
 import { COMMON_STYLE } from "../common_style";
 import { useMergeStyle } from "../hooks/styleHooks";
 import { Dropdownlist } from "lvgljs-ui";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 
 const mergeStyle = useMergeStyle();
 
 interface ZDropdownProps {
   style?: ZStyleProps;
-  value?: string;
-  options?: Array<{ label: string; value: string }>;
+  value?: any;
+  options?: Array<{ label: string; value: any }>;
   size?: ZSizeEnum;
-  onChange?: (value: string) => void;
+  onChange?: (value: any) => void;
   placeholder?: string;
   [key: string]: any;
 }
@@ -27,9 +27,9 @@ const sizeStyleMap: Record<string, ZStyleProps> = {
 const ZDropdown = (props: ZDropdownProps) => {
   const {
     style: propStyle = {},
-    value: propValue = "",
+    value: propValue = undefined,
     options = [],
-    onChange = (_) => {},
+    onChange,
     size = ZSizeEnum.Default,
     placeholder = "please select",
     ...restProps
@@ -37,21 +37,28 @@ const ZDropdown = (props: ZDropdownProps) => {
 
   const [value, setValue] = useState(propValue);
 
-  useEffect(() => {
-    setValue(propValue);
+  useLayoutEffect(() => {
+    if (value !== propValue) {
+      setValue(propValue);
+    }
   }, [propValue]);
 
-  const handleChange = (e: { value: number }) => {
-    const selectedValue = options[e.value]?.value || "";
-    setValue(selectedValue);
-    onChange?.(selectedValue);
+  useLayoutEffect(() => {
+    if (value !== propValue && onChange) {
+      onChange(value);
+    }
+  }, [value]);
+
+  const handleChange = (e) => {
+    setValue(options.find((opt) => opt.label === e.value)?.value);
+    // onChange(value);
   };
 
   return (
     <Dropdownlist
       items={options.map((opt) => opt.label)}
-      selectIndex={options.findIndex((opt) => opt.value === value)}
-      text={value || placeholder}
+      selectIndex={options.findIndex((opt) => opt.value === propValue)}
+      // text={value || placeholder}
       // direction={0}
       // arrow={1}
       // highlightSelect={true}

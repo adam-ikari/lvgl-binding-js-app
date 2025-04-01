@@ -2,7 +2,7 @@ import { ZButton, ZIconSymbol, ZSizeEnum, ZStyleProps } from ".";
 import { COMMON_STYLE, CONSTANTS } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { EAlignType, Input, View } from "lvgljs-ui";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useLayoutEffect, useMemo, useState } from "react";
 
 const mergeStyle = useMergeStyle();
 
@@ -76,17 +76,23 @@ const ZInput = (props: ZInputProps) => {
     placeholder = "",
     mode = "text",
     size = ZSizeEnum.Default,
-    value = "",
+    value: propValue = "",
     allowClean = false,
     maxLength = 256,
     round = false,
     onChange,
   } = props;
 
-  const [input, setInput] = useState(value);
+  const [input, setInput] = useState(propValue);
 
-  useEffect(() => {
-    if (onChange) {
+  useLayoutEffect(() => {
+    if (input !== propValue) {
+      onChange(input);
+    }
+  }, [propValue]);
+
+  useLayoutEffect(() => {
+    if (input !== propValue && onChange) {
       onChange(input);
     }
   }, [input]);
