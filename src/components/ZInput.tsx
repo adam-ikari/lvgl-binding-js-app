@@ -56,23 +56,20 @@ interface ClearButtonProps {
   display?: boolean;
 }
 
-const ClearButton = React.memo<ClearButtonProps>(
-  ({ size, onClick, display = true }) => {
-    return (
-      <ZButton
-        size={size}
-        icon={ZIconSymbol.Backspace}
-        onClick={onClick}
-        round
-        text
-        style={!display && { display: "none" }}
-        align={{
-          type: EAlignType.ALIGN_RIGHT_MID,
-        }}
-      ></ZButton>
-    );
-  },
-);
+const ClearButton = React.memo<ClearButtonProps>(({ size, onClick }) => {
+  return (
+    <ZButton
+      size={size}
+      icon={ZIconSymbol.Backspace}
+      onClick={onClick}
+      round
+      text
+      align={{
+        type: EAlignType.ALIGN_RIGHT_MID,
+      }}
+    ></ZButton>
+  );
+});
 
 const ZInput = (props: ZInputProps) => {
   const {
@@ -97,13 +94,12 @@ const ZInput = (props: ZInputProps) => {
   const computedInputStyle = useMemo(() => {
     return mergeStyle(
       sizeStyleMap[size],
-      round ? { "border-radius": CONSTANTS.MAX_RADIUS } : {},
+      round && { "border-radius": CONSTANTS.MAX_RADIUS },
     );
   }, [size, round, mergeStyle]);
 
   const clearInput = () => {
     setInput("");
-    // inputRef.current.focus(); // not work
   };
 
   return (
@@ -123,11 +119,9 @@ const ZInput = (props: ZInputProps) => {
           type: EAlignType.ALIGN_CENTER,
         }}
       ></Input>
-      <ClearButton
-        onClick={clearInput}
-        size={size}
-        display={allowClean && input && input.length > 0}
-      />
+      {allowClean && input && input.length > 0 ? (
+        <ClearButton onClick={clearInput} size={size} />
+      ) : null}
     </View>
   );
 };
