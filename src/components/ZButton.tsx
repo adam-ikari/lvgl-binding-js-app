@@ -154,17 +154,12 @@ const ButtonContent = React.memo(
     if (!icon && !children) {
       return null;
     } else {
+      const light = type !== ZButtonTypeEnum.Default;
       return (
         <>
-          {icon && (
-            <ZIcon
-              symbol={icon}
-              size={size}
-              light={type !== ZButtonTypeEnum.Default}
-            />
-          )}
+          {icon && <ZIcon symbol={icon} size={size} light={light} />}
           {children && (
-            <ZText size={size} light={type !== ZButtonTypeEnum.Default}>
+            <ZText size={size} light={light}>
               {children}
             </ZText>
           )}
