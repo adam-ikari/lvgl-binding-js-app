@@ -156,12 +156,18 @@ const ButtonContent = React.memo(
     } else {
       return (
         <>
-          {icon ? <ZIcon symbol={icon} size={size} light={type !== ZButtonTypeEnum.Default}/> : null}
-          {children ? (
+          {icon && (
+            <ZIcon
+              symbol={icon}
+              size={size}
+              light={type !== ZButtonTypeEnum.Default}
+            />
+          )}
+          {children && (
             <ZText size={size} light={type !== ZButtonTypeEnum.Default}>
               {children}
             </ZText>
-          ) : null}
+          )}
         </>
       );
     }

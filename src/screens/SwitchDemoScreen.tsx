@@ -53,6 +53,18 @@ const SwitchDemoScreen = () => {
           ></ZSwitch>
         </ZRow>
       </PageSession>
+      <PageSession title="Disable">
+        <ZRow alignItems={ZAlignItemsEnum.Center}>
+          <ZSwitch
+            value={onOff}
+            onChange={(value) => {
+              console.log("onChange:" + JSON.stringify(value));
+              setOnOff(value);
+            }}
+            disabled
+          ></ZSwitch>
+        </ZRow>
+      </PageSession>
     </>
   );
 };

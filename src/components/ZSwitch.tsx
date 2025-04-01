@@ -20,6 +20,7 @@ interface ZSwitchProps {
   onChange?: (value: boolean) => void;
   activeText?: string;
   inactiveText?: string;
+  disabled?: boolean;
   [key: string]: any; // Allow other props to be passed to the Switch component
 }
 
@@ -37,6 +38,7 @@ const ZSwitch = (props: ZSwitchProps) => {
     size = ZSizeEnum.Default,
     activeText,
     inactiveText,
+    disabled = false,
     ...restProps
   } = props;
 
@@ -66,6 +68,7 @@ const ZSwitch = (props: ZSwitchProps) => {
         onChange={() => {
           setValue(!value);
         }}
+        disabled={disabled}
       />
       {activeText && (
         <ZText type={value ? ZTextTypeEnum.Primary : ZTextTypeEnum.Default}>
