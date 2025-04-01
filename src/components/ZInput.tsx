@@ -65,7 +65,6 @@ const ClearButton = React.memo<ClearButtonProps>(
         onClick={onClick}
         round
         text
-        disable={!display}
         style={!display && { display: "none" }}
         align={{
           type: EAlignType.ALIGN_RIGHT_MID,
