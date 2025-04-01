@@ -14,6 +14,7 @@ const indexData = [
       { text: "Icon Demo", path: "/icon" },
       { text: "Card Demo", path: "/card" },
       { text: "Switch Demo", path: "/switch" },
+      { text: "Dropdown Demo", path: "/dropdown" },
     ],
   },
   {

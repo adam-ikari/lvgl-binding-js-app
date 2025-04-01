@@ -1,12 +1,13 @@
 import ButtonDemoScreen from "@/screens/ButtonDemoScreen";
 import CardDemoScreen from "@/screens/CardDemoScreen";
 import DialogDemoScreen from "@/screens/DialogDemoScreen";
+import DropdownDemoScreen from "@/screens/DropdownDemoScreen";
 import HomeScreen from "@/screens/HomeScreen";
 import IconDemoScreen from "@/screens/IconDemoScreen";
 import InputDemoScreen from "@/screens/InputDemoScreen";
 import ListDemoScreen from "@/screens/ListDemoScreen";
 import StateDemoScreen from "@/screens/StateDemoScreen";
-import SwitchDemoScreen from "@/screens/SwitchDemoScreen"
+import SwitchDemoScreen from "@/screens/SwitchDemoScreen";
 
 export default [
   { name: "home", path: "/", component: HomeScreen, meta: { title: "Home" } },
@@ -57,5 +58,11 @@ export default [
     path: "/switch",
     component: SwitchDemoScreen,
     meta: { title: "Switch Demo" },
+  },
+  {
+    name: "dropdown",
+    path: "/dropdown",
+    component: DropdownDemoScreen,
+    meta: { title: "Dropdown Demo" },
   },
 ];
