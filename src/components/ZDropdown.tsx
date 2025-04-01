@@ -61,13 +61,9 @@ const ZDropdown = <T,>(props: ZDropdownProps<T>) => {
     <Dropdownlist
       items={options.map((opt) => opt.label)}
       selectIndex={options.findIndex((opt) => opt.value === propValue)}
-      text={
-        value
-          ? options.find((opt) => opt.value === value)?.label || placeholder
-          : placeholder
-      }
-      direction={0}
-      arrow={1}
+      // text={propValue ? undefined : placeholder}
+      // direction={0}
+      // arrow={1}
       highlightSelect={true}
       style={mergeStyle(baseStyle, sizeStyleMap[size], propStyle)}
       onChange={handleChange}
