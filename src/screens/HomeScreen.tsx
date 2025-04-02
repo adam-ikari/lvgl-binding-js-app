@@ -1,6 +1,5 @@
-import { COMMON_STYLE } from "@/common_style";
-import { ZButton, ZCard, ZRow, ZSizeEnum, ZText } from "@/components";
-import { useMergeStyle } from "@/hooks/styleHooks";
+import { ZButton, ZRow } from "@/components";
+import PageSession from "@/screens/common/PageSession";
 import React from "react";
 import { useNavigate } from "react-router-native";
 
@@ -28,18 +27,6 @@ const indexData = [
   { text: "List Render", children: [{ text: "List Demo", path: "/list" }] },
   { text: "State", children: [{ text: "State Demo", path: "/state" }] },
 ];
-
-const PageSession = ({ children, title }) => {
-  const mergeStyle = useMergeStyle();
-  return (
-    <ZCard
-      style={mergeStyle(COMMON_STYLE.fullWidth)}
-      header={<ZText size={ZSizeEnum.Large}>{title}</ZText>}
-    >
-      {children}
-    </ZCard>
-  );
-};
 
 const HomeScreen = () => {
   const navigate = useNavigate();

@@ -16,4 +16,4 @@ const PageSession = ({ children, title }) => {
   );
 };
 
-export { PageSession };
+export default PageSession;
