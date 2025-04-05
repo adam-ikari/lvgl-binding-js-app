@@ -1,44 +1,50 @@
-import { ZHeightEnum, ZStyleProps, ZWidthEnum } from ".";
+import { ZHeightEnum, ZHeightType, ZStyleProps, ZWidthEnum, ZWidthType } from ".";
 import { COMMON_STYLE } from "../common_style";
 import { useMergeStyle } from "../hooks/styleHooks";
 import { View } from "lvgljs-ui";
 import * as _ from "radash";
 import React, { useMemo } from "react";
 
-enum ZAlignItemsEnum {
-  Start = "start",
-  Center = "center",
-  End = "end",
+export const ZFlexAlignItems = {
+  Start: "start",
+  Center: "center",
+  End: "end",
+} as const
+
+export type ZFlexAlignItemsType = keyof typeof ZFlexAlignItems;
+
+export const ZFlexJustifyContent = {
+  Start: "start",
+  Center: "center",
+  End: "end",
+  SpaceBetween: "space-between",
+  SpaceAround: "space-around",
+  SpaceEvenly: "space-evenly",
 }
 
-enum ZJustifyContentEnum {
-  Start = "start", // items will be packed toward the start of the flex-direction
-  Center = "center", // items will be centered in the flex-direction
-  End = "end", // items will be packed toward the end of the flex-direction
-  SpaceBetween = "space-between", // items will be evenly distributed in the line
-  SpaceAround = "space-around", // items will be evenly distributed with space around them
-  SpaceEvenly = "space-evenly", // items will be evenly distributed with equal space around them
-}
+export type ZFlexJustifyContentType = keyof typeof ZFlexJustifyContent;
 
-enum ZFlexContainerDirection {
+export enum ZFlexContainerDirection {
   Row = "row", // items will be arranged in a row (left to right in LTR; right to left in RTL)
   Column = "column", // items will be arranged in a column (top to bottom)
 }
 
-interface ZFlexContainerProps {
+export type ZFlexContainerDirectionType = `${ZFlexContainerDirection}`;
+
+export interface ZFlexContainerProps {
   children?: React.ReactNode;
   style?: ZStyleProps;
-  width?: ZWidthEnum | number;
-  height?: ZHeightEnum | number;
+  width?: ZWidthType;
+  height?: ZHeightType;
   wrap?: boolean;
   gap?: number;
-  direction: ZFlexContainerDirection;
-  justifyContent?: ZJustifyContentEnum;
-  alignItems?: ZAlignItemsEnum;
+  direction: ZFlexContainerDirectionType;
+  justifyContent?: ZFlexJustifyContentType;
+  alignItems?: ZFlexAlignItemsType;
   [key: string]: any;
 }
 
-const ZFlexContainer = (props: ZFlexContainerProps) => {
+export default (props: ZFlexContainerProps) => {
   const mergeStyle = useMergeStyle();
 
   const baseStyle: ZStyleProps = mergeStyle(
@@ -80,8 +86,8 @@ const ZFlexContainer = (props: ZFlexContainerProps) => {
     style: propStyle = {},
     wrap = false,
     gap = 10,
-    alignItems = ZAlignItemsEnum.Start,
-    justifyContent = ZJustifyContentEnum.Start,
+    alignItems = ZFlexAlignItems.Start,
+    justifyContent = ZFlexJustifyContent.Start,
     ...restProps
   } = props;
 
@@ -107,6 +113,3 @@ const ZFlexContainer = (props: ZFlexContainerProps) => {
     </View>
   );
 };
-export type { ZFlexContainerProps };
-export { ZAlignItemsEnum, ZJustifyContentEnum, ZFlexContainerDirection };
-export default ZFlexContainer;

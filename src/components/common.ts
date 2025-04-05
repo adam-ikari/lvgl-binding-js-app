@@ -3,16 +3,22 @@ enum ZWidthEnum {
   Full = "full",
 }
 
+type ZWidthType = `${ZWidthEnum}` | number;
+
 enum ZHeightEnum {
   Auto = "auto",
   Full = "full",
 }
+
+type ZHeightType = `${ZHeightEnum}` | number;
 
 enum ZSizeEnum {
   Small = "small",
   Default = "default",
   Large = "large",
 }
+
+type ZSizeType = `${ZSizeEnum}` | number;
 
 enum ZIconSymbol {
   Audio = "\uF001",
@@ -76,5 +82,9 @@ enum ZIconSymbol {
   SdCard = "\uF7C2",
   NewLine = "\uF8A2",
 }
+
+type ZIconSymbolType = `${ZIconSymbol}`;
+
+export type { ZHeightType, ZWidthType, ZSizeType, ZIconSymbolType };
 export type { StyleProps as ZStyleProps } from "lvgljs-ui/core/style";
 export { ZWidthEnum, ZHeightEnum, ZSizeEnum, ZIconSymbol };

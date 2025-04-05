@@ -1,5 +1,5 @@
 import {
-  ZAlignItemsEnum,
+  ZFlexAlignItems,
   ZRow,
   ZSizeEnum,
   ZStyleProps,
@@ -59,7 +59,7 @@ const ZSwitch = (props: ZSwitchProps) => {
   }, [value]);
 
   return (
-    <ZRow alignItems={ZAlignItemsEnum.Center} gap={4}>
+    <ZRow alignItems={ZFlexAlignItems.Center} gap={4}>
       {inactiveText && (
         <ZText type={!value ? ZTextTypeEnum.Primary : ZTextTypeEnum.Default}>
           {inactiveText}

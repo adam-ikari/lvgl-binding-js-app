@@ -1,9 +1,9 @@
 import {
-  ZAlignItemsEnum,
+  ZFlexAlignItems,
   ZButton,
   ZButtonTypeEnum,
   ZIconSymbol,
-  ZJustifyContentEnum,
+  ZFlexJustifyContent,
   ZModal,
   ZRow,
   ZSizeEnum,
@@ -69,7 +69,7 @@ const ZDialog = (props: ZDialogProps) => {
           type: EAlignType.ALIGN_CENTER,
         }}
       >
-        <ZRow width={ZWidthEnum.Full} alignItems={ZAlignItemsEnum.Center}>
+        <ZRow width={ZWidthEnum.Full} alignItems={ZFlexAlignItems.Center}>
           <ZRow style={{ "flex-grow": 1 }}>
             {title && <ZText size={ZSizeEnum.Large}>{title}</ZText>}
           </ZRow>
@@ -88,8 +88,8 @@ const ZDialog = (props: ZDialogProps) => {
         </ZRow>
         <ZRow
           width={ZWidthEnum.Full}
-          justifyContent={ZJustifyContentEnum.End}
-          alignItems={ZAlignItemsEnum.Center}
+          justifyContent={ZFlexJustifyContent.End}
+          alignItems={ZFlexAlignItems.Center}
         >
           <ZButton onClick={onCancel}>Cancel</ZButton>
           <ZButton type={ZButtonTypeEnum.Primary} onClick={onConfirm}>

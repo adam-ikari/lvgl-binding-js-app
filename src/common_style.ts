@@ -237,6 +237,10 @@ const COMMON_STYLE: Record<string, StyleProps> = {
   padding20: {
     padding: 20,
   },
+  paddingHorizontal0: {
+    "padding-left": 0,
+    "padding-right": 0,
+  },
   paddingHorizontal4: {
     "padding-left": 4,
     "padding-right": 4,
@@ -248,6 +252,22 @@ const COMMON_STYLE: Record<string, StyleProps> = {
   paddingHorizontal16: {
     "padding-left": 16,
     "padding-right": 16,
+  },
+  paddingVertical0: {
+    "padding-top": 0,
+    "padding-bottom": 0,
+  },
+  paddingVertical4: {
+    "padding-top": 4,
+    "padding-bottom": 4,
+  },
+  paddingVertical8: {
+    "padding-top": 8,
+    "padding-bottom": 8,
+  },
+  paddingVertical16: {
+    "padding-top": 16,
+    "padding-bottom": 16,
   },
   fontSizeSmall: {
     "font-size": 12,

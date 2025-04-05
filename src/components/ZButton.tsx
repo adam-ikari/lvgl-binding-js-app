@@ -1,6 +1,6 @@
 import { ZIconSymbol, ZSizeEnum, ZStyleProps, ZText } from ".";
 import { ZIcon } from ".";
-import { COLORS, COMMON_STYLE, CONSTANTS } from "@/common_style";
+import { COLORS, COMMON_STYLE } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { Button, View } from "lvgljs-ui";
 import * as _ from "radash";
@@ -15,11 +15,13 @@ enum ZButtonTypeEnum {
   Warning = "warning",
 }
 
+type ZButtonType = `${ZButtonTypeEnum}`;
+
 interface ZButtonProps {
   children?: string;
   style?: ZStyleProps;
   icon?: ZIconSymbol;
-  type?: ZButtonTypeEnum;
+  type?: ZButtonType;
   size?: ZSizeEnum;
   text?: boolean;
   round?: boolean;
@@ -32,7 +34,7 @@ interface ButtonContentProps {
   icon?: ZIconSymbol;
   children?: string;
   size: ZSizeEnum;
-  type: ZButtonTypeEnum;
+  type: ZButtonType;
 }
 
 const ButtonContent = React.memo(
@@ -65,11 +67,10 @@ const ZButton = (props: ZButtonProps) => {
     COMMON_STYLE.autoWidth,
     COMMON_STYLE.autoHeight,
     COMMON_STYLE.radius4,
+    COMMON_STYLE.paddingVertical0,
     {
       "border-color": COLORS.BORDER,
       "shadow-width": 0,
-      "padding-top": 0,
-      "padding-bottom": 0,
     },
   );
 
@@ -206,6 +207,6 @@ const ZButton = (props: ZButtonProps) => {
   );
 };
 
-export type { ZButtonProps };
+export type { ZButtonProps, ZButtonType };
 export { ZButtonTypeEnum };
 export default ZButton;

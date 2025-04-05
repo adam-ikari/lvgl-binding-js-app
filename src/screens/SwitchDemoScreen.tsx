@@ -1,6 +1,6 @@
 import { COMMON_STYLE } from "@/common_style";
 import { ZButton, ZCard, ZRow, ZSizeEnum, ZSwitch, ZText } from "@/components";
-import { ZAlignItemsEnum } from "@/components/ZFlexContainer";
+import { ZFlexAlignItems } from "@/components/ZFlexContainer";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import React, { useState } from "react";
 
@@ -20,7 +20,7 @@ const SwitchDemoScreen = () => {
   return (
     <>
       <PageSession title="Size">
-        <ZRow alignItems={ZAlignItemsEnum.Center}>
+        <ZRow alignItems={ZFlexAlignItems.Center}>
           {[
             { size: ZSizeEnum.Small },
             { size: ZSizeEnum.Default },
@@ -41,7 +41,7 @@ const SwitchDemoScreen = () => {
         </ZRow>
       </PageSession>
       <PageSession title="Text description">
-        <ZRow alignItems={ZAlignItemsEnum.Center}>
+        <ZRow alignItems={ZFlexAlignItems.Center}>
           <ZSwitch
             value={onOff}
             onChange={(value) => {
@@ -54,7 +54,7 @@ const SwitchDemoScreen = () => {
         </ZRow>
       </PageSession>
       <PageSession title="Disable">
-        <ZRow alignItems={ZAlignItemsEnum.Center}>
+        <ZRow alignItems={ZFlexAlignItems.Center}>
           <ZSwitch
             value={onOff}
             onChange={(value) => {
