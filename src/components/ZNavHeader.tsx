@@ -1,12 +1,12 @@
 import {
   ZButton,
-  ZHeightEnum,
+  ZHeight,
   ZIcon,
   ZIconSymbol,
   ZRow,
-  ZSizeEnum,
+  ZSize,
   ZText,
-  ZWidthEnum,
+  ZWidth,
 } from ".";
 import useTime from "@/hooks/time";
 import routerData from "@/router";
@@ -23,7 +23,7 @@ const HomeButton = () => {
   return (
     <ZButton
       style={{ "flex-grow": 0 }}
-      size={ZSizeEnum.Small}
+      size={ZSize.Small}
       icon={ZIconSymbol.Home}
       onClick={() => {
         navigate("/");
@@ -39,7 +39,7 @@ const BackButton = React.memo(() => {
   return (
     <ZButton
       style={{ "flex-grow": 0 }}
-      size={ZSizeEnum.Small}
+      size={ZSize.Small}
       icon={ZIconSymbol.Left}
       onClick={() => navigate(-1)}
       text
@@ -61,7 +61,7 @@ const getMetaData = (location) => {
 const NotificationAera = () => {
   return (
     <ZRow
-      height={ZHeightEnum.Full}
+      height={ZHeight.Full}
       style={{
         "align-items": "center",
       }}
@@ -78,7 +78,7 @@ const TimeAera = () => {
   const time = useTime({ format: "YYYY-MM-DD HH:mm" });
   return (
     <ZRow
-      height={ZHeightEnum.Full}
+      height={ZHeight.Full}
       style={{
         "align-items": "center",
       }}
@@ -96,7 +96,7 @@ const ActionAera = () => {
   }, [location]);
   return (
     <ZRow
-      height={ZHeightEnum.Full}
+      height={ZHeight.Full}
       gap={0}
       style={{
         "align-items": "center",
@@ -120,7 +120,7 @@ const ZNavHeader = () => {
 
   return (
     <ZRow
-      width={ZWidthEnum.Full}
+      width={ZWidth.Full}
       height={HEIGHT}
       style={{
         padding: 4,
@@ -129,7 +129,7 @@ const ZNavHeader = () => {
     >
       <ActionAera />
       <ZRow
-        height={ZHeightEnum.Full}
+        height={ZHeight.Full}
         style={{
           "flex-grow": 1,
           "align-items": "center",

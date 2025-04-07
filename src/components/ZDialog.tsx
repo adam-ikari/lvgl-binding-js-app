@@ -1,14 +1,14 @@
 import {
-  ZFlexAlignItems,
   ZButton,
-  ZButtonTypeEnum,
-  ZIconSymbol,
+  ZButtonType,
+  ZFlexAlignItems,
   ZFlexJustifyContent,
+  ZIconSymbol,
   ZModal,
   ZRow,
-  ZSizeEnum,
+  ZSize,
   ZText,
-  ZWidthEnum,
+  ZWidth,
 } from ".";
 import { COMMON_STYLE } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
@@ -69,13 +69,13 @@ const ZDialog = (props: ZDialogProps) => {
           type: EAlignType.ALIGN_CENTER,
         }}
       >
-        <ZRow width={ZWidthEnum.Full} alignItems={ZFlexAlignItems.Center}>
+        <ZRow width={ZWidth.Full} alignItems={ZFlexAlignItems.Center}>
           <ZRow style={{ "flex-grow": 1 }}>
-            {title && <ZText size={ZSizeEnum.Large}>{title}</ZText>}
+            {title && <ZText size={ZSize.Large}>{title}</ZText>}
           </ZRow>
           {showClose && (
             <ZButton
-              size={ZSizeEnum.Small}
+              size={ZSize.Small}
               icon={ZIconSymbol.Close}
               round
               text
@@ -83,16 +83,16 @@ const ZDialog = (props: ZDialogProps) => {
             ></ZButton>
           )}
         </ZRow>
-        <ZRow width={ZWidthEnum.Full} style={{ "flex-grow": 1 }}>
+        <ZRow width={ZWidth.Full} style={{ "flex-grow": 1 }}>
           {children}
         </ZRow>
         <ZRow
-          width={ZWidthEnum.Full}
+          width={ZWidth.Full}
           justifyContent={ZFlexJustifyContent.End}
           alignItems={ZFlexAlignItems.Center}
         >
           <ZButton onClick={onCancel}>Cancel</ZButton>
-          <ZButton type={ZButtonTypeEnum.Primary} onClick={onConfirm}>
+          <ZButton type={ZButtonType.Primary} onClick={onConfirm}>
             Confirm
           </ZButton>
         </ZRow>

@@ -1,11 +1,11 @@
 import { COLORS } from "@/common_style";
 import {
   ZButton,
-  ZButtonTypeEnum,
+  ZButtonType,
   ZColumn,
   ZIconSymbol,
   ZRow,
-  ZSizeEnum,
+  ZSize,
   ZText,
 } from "@/components";
 import { ZNavScreenLayout } from "@/layouts";
@@ -40,8 +40,8 @@ const ListDemoScreen = () => {
             <ZText>{item.text}</ZText>
             <ZButton
               icon={ZIconSymbol.Trash}
-              type={ZButtonTypeEnum.Danger}
-              size={ZSizeEnum.Small}
+              type={ZButtonType.Danger}
+              size={ZSize.Small}
               onClick={() => {
                 const new_todos = items.filter((todo) => todo.id !== item.id);
                 console.log(new_todos);

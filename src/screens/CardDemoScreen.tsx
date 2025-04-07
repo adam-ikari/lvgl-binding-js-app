@@ -1,5 +1,5 @@
 import { COLORS } from "@/common_style";
-import { ZCard, ZRow, ZSizeEnum, ZText } from "@/components";
+import { ZCard, ZRow, ZSize, ZText } from "@/components";
 import React from "react";
 
 const style = {
@@ -16,7 +16,7 @@ const CardDemoScreen = () => {
   return (
     <>
       <ZRow style={rowStyle}>
-        <ZText size={ZSizeEnum.Large}>Basic Card</ZText>
+        <ZText size={ZSize.Large}>Basic Card</ZText>
       </ZRow>
       <ZRow style={rowStyle}>
         <ZCard>
@@ -24,12 +24,12 @@ const CardDemoScreen = () => {
         </ZCard>
       </ZRow>
       <ZRow style={rowStyle}>
-        <ZText size={ZSizeEnum.Large}>Card with Header and Footer</ZText>
+        <ZText size={ZSize.Large}>Card with Header and Footer</ZText>
       </ZRow>
       <ZRow style={rowStyle}>
         <ZCard
-          header={<ZText size={ZSizeEnum.Large}>Title</ZText>}
-          footer={<ZText size={ZSizeEnum.Small}>Footer</ZText>}
+          header={<ZText size={ZSize.Large}>Title</ZText>}
+          footer={<ZText size={ZSize.Small}>Footer</ZText>}
         >
           <ZText>This is card content</ZText>
         </ZCard>

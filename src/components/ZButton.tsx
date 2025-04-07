@@ -1,28 +1,35 @@
-import { ZIconSymbol, ZSizeEnum, ZStyleProps, ZText } from ".";
-import { ZIcon } from ".";
+import {
+  ZIcon,
+  ZIconSymbolType,
+  ZSize,
+  ZSizeType,
+  ZStyleProps,
+  ZText,
+} from ".";
 import { COLORS, COMMON_STYLE } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { Button, View } from "lvgljs-ui";
 import * as _ from "radash";
 import React, { useMemo } from "react";
+import { ValuesType } from "utility-types";
 
-enum ZButtonTypeEnum {
-  Default = "default",
-  Primary = "primary",
-  Success = "success",
-  Info = "info",
-  Danger = "danger",
-  Warning = "warning",
-}
+export const ZButtonType = {
+  Default: "default",
+  Primary: "primary",
+  Success: "success",
+  Info: "info",
+  Danger: "danger",
+  Warning: "warning",
+} as const;
 
-type ZButtonType = `${ZButtonTypeEnum}`;
+export type ZButtonTypeType = ValuesType<typeof ZButtonType>;
 
-interface ZButtonProps {
+export interface ZButtonProps {
   children?: string;
   style?: ZStyleProps;
-  icon?: ZIconSymbol;
-  type?: ZButtonType;
-  size?: ZSizeEnum;
+  icon?: ZIconSymbolType;
+  type?: ZButtonTypeType;
+  size?: ZSizeType;
   text?: boolean;
   round?: boolean;
   disable?: boolean;
@@ -31,10 +38,10 @@ interface ZButtonProps {
 }
 
 interface ButtonContentProps {
-  icon?: ZIconSymbol;
+  icon?: ZIconSymbolType;
   children?: string;
-  size: ZSizeEnum;
-  type: ZButtonType;
+  size: ZSizeType;
+  type: ZButtonTypeType;
 }
 
 const ButtonContent = React.memo(
@@ -42,7 +49,7 @@ const ButtonContent = React.memo(
     if (!icon && !children) {
       return null;
     } else {
-      const light = type !== ZButtonTypeEnum.Default;
+      const light = type !== ZButtonType.Default;
       return (
         <>
           {icon && <ZIcon symbol={icon} size={size} light={light} />}
@@ -74,7 +81,7 @@ const ZButton = (props: ZButtonProps) => {
     },
   );
 
-  const normalStyleMap: Record<string, ZStyleProps> = {
+  const normalStyleMap: Record<ZButtonTypeType, ZStyleProps> = {
     primary: mergeStyle(COMMON_STYLE.border1, {
       "background-color": COLORS.PRIMARY,
       "text-color": COLORS.WHITE,
@@ -103,7 +110,7 @@ const ZButton = (props: ZButtonProps) => {
     }),
   };
 
-  const textStyleMap: Record<string, ZStyleProps> = {
+  const textStyleMap: Record<ZButtonTypeType, ZStyleProps> = {
     primary: mergeStyle(COMMON_STYLE.noBorder, {
       "background-color": COLORS.WHITE,
       "text-color": COLORS.PRIMARY,
@@ -134,7 +141,7 @@ const ZButton = (props: ZButtonProps) => {
     opacity: 0.6,
   };
 
-  const sizeStyleMap: Record<string, ZStyleProps> = {
+  const sizeStyleMap: Record<ZSizeType, ZStyleProps> = {
     small: mergeStyle(
       COMMON_STYLE.minWidth32,
       COMMON_STYLE.height32,
@@ -165,8 +172,8 @@ const ZButton = (props: ZButtonProps) => {
     children,
     style: propStyle = {},
     icon,
-    type = ZButtonTypeEnum.Default,
-    size = ZSizeEnum.Default,
+    type = ZButtonType.Default,
+    size = ZSize.Default,
     text = false,
     round = false,
     disable = false,
@@ -174,11 +181,11 @@ const ZButton = (props: ZButtonProps) => {
     ...restProps
   } = props;
 
-  const handleClick = () => {
+  const handleClick = React.useCallback(() => {
     if (!disable && onClick && _.isFunction(onClick)) {
       onClick();
     }
-  };
+  }, [disable, onClick]);
 
   const computedStyle = useMemo(
     () =>
@@ -207,6 +214,4 @@ const ZButton = (props: ZButtonProps) => {
   );
 };
 
-export type { ZButtonProps, ZButtonType };
-export { ZButtonTypeEnum };
 export default ZButton;

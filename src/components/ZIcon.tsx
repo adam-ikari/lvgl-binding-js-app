@@ -1,15 +1,15 @@
 import { ZIconSymbol, ZText } from ".";
-import { ZSizeEnum } from ".";
+import { ZSize } from ".";
 import React from "react";
 
 interface ZIconProps {
   symbol: ZIconSymbol;
-  size?: ZSizeEnum;
+  size?: ZSize;
   light?: boolean;
 }
 
 const ZIcon = (props: ZIconProps) => {
-  const { symbol, size = ZSizeEnum.Default, light } = props;
+  const { symbol, size = ZSize.Default, light } = props;
   return (
     <ZText size={size} light={light}>
       {symbol}

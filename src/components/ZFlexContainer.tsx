@@ -1,17 +1,18 @@
-import { ZHeightEnum, ZHeightType, ZStyleProps, ZWidthEnum, ZWidthType } from ".";
+import { ZHeight, ZHeightType, ZStyleProps, ZWidth, ZWidthType } from ".";
 import { COMMON_STYLE } from "../common_style";
 import { useMergeStyle } from "../hooks/styleHooks";
 import { View } from "lvgljs-ui";
 import * as _ from "radash";
 import React, { useMemo } from "react";
+import { ValuesType } from "utility-types";
 
 export const ZFlexAlignItems = {
   Start: "start",
   Center: "center",
   End: "end",
-} as const
+} as const;
 
-export type ZFlexAlignItemsType = keyof typeof ZFlexAlignItems;
+export type ZFlexAlignItemsType = ValuesType<typeof ZFlexAlignItems>;
 
 export const ZFlexJustifyContent = {
   Start: "start",
@@ -20,16 +21,18 @@ export const ZFlexJustifyContent = {
   SpaceBetween: "space-between",
   SpaceAround: "space-around",
   SpaceEvenly: "space-evenly",
-}
+} as const;
 
-export type ZFlexJustifyContentType = keyof typeof ZFlexJustifyContent;
+export type ZFlexJustifyContentType = ValuesType<typeof ZFlexJustifyContent>;
 
 export enum ZFlexContainerDirection {
   Row = "row", // items will be arranged in a row (left to right in LTR; right to left in RTL)
   Column = "column", // items will be arranged in a column (top to bottom)
 }
 
-export type ZFlexContainerDirectionType = `${ZFlexContainerDirection}`;
+export type ZFlexContainerDirectionType = ValuesType<
+  typeof ZFlexContainerDirection
+>;
 
 export interface ZFlexContainerProps {
   children?: React.ReactNode;
@@ -53,17 +56,17 @@ export default (props: ZFlexContainerProps) => {
     COMMON_STYLE.radius0,
   );
 
-  const widthStyleMap: Record<string, ZStyleProps> = {
+  const widthStyleMap: Record<ZWidthType, ZStyleProps> = {
     auto: COMMON_STYLE.autoWidth,
     full: COMMON_STYLE.fullWidth,
   };
 
-  const heightStyleMap: Record<string, ZStyleProps> = {
+  const heightStyleMap: Record<ZHeightType, ZStyleProps> = {
     auto: COMMON_STYLE.autoHeight,
     full: COMMON_STYLE.fullHeight,
   };
 
-  const justifyContentStyle: Record<string, ZStyleProps> = {
+  const justifyContentStyle: Record<ZFlexJustifyContentType, ZStyleProps> = {
     start: COMMON_STYLE.justifyContentFlexStart,
     center: COMMON_STYLE.justifyContentCenter,
     end: COMMON_STYLE.justifyContentFlexEnd,
@@ -72,7 +75,7 @@ export default (props: ZFlexContainerProps) => {
     "space-evenly": COMMON_STYLE.justifyContentEvenly,
   };
 
-  const alignItemsStyle: Record<string, ZStyleProps> = {
+  const alignItemsStyle: Record<ZFlexAlignItemsType, ZStyleProps> = {
     start: COMMON_STYLE.alignItemsStart,
     center: COMMON_STYLE.alignItemsCenter,
     end: COMMON_STYLE.alignItemsEnd,
@@ -81,8 +84,8 @@ export default (props: ZFlexContainerProps) => {
   const {
     children,
     direction = ZFlexContainerDirection.Row,
-    width = ZWidthEnum.Auto,
-    height = ZHeightEnum.Auto,
+    width = ZWidth.Auto,
+    height = ZHeight.Auto,
     style: propStyle = {},
     wrap = false,
     gap = 10,

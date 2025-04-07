@@ -1,18 +1,18 @@
 import { COMMON_STYLE } from "@/common_style";
-import { ZButton, ZRow, ZSizeEnum } from "@/components";
+import { ZButton, ZRow, ZSize } from "@/components";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import * as _ from "radash";
 import React from "react";
 
 interface ZButtonGroupProps {
   children?: React.ReactNode | React.ReactNode[];
-  size?: ZSizeEnum;
+  size?: ZSize;
 }
 
 const ZButtonGroup = (props: ZButtonGroupProps) => {
   const mergeStyle = useMergeStyle();
 
-  const { children, size = ZSizeEnum.Default } = props;
+  const { children, size = ZSize.Default } = props;
 
   return (
     <ZRow gap={0}>

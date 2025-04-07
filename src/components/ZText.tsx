@@ -1,4 +1,4 @@
-import { ZSizeEnum, ZStyleProps } from ".";
+import { ZSize, ZStyleProps } from ".";
 import { COLORS, COMMON_STYLE } from "../common_style";
 import { Text } from "lvgljs-ui";
 import React, { useMemo } from "react";
@@ -15,7 +15,7 @@ enum ZTextTypeEnum {
 interface ZTextProps {
   children?: string;
   style?: ZStyleProps;
-  size?: ZSizeEnum;
+  size?: ZSize;
   type?: ZTextTypeEnum;
   light?: boolean;
   [key: string]: any;
@@ -81,7 +81,7 @@ const ZText = (props: ZTextProps) => {
   const {
     children = "",
     style: propStyle = {},
-    size = ZSizeEnum.Default,
+    size = ZSize.Default,
     type = ZTextTypeEnum.Default,
     light,
   } = props;

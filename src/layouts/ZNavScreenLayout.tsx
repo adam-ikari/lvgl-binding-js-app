@@ -1,13 +1,13 @@
 import { COLORS, COMMON_STYLE } from "@/common_style";
 import {
   ZButton,
-  ZButtonTypeEnum,
+  ZButtonType,
   ZColumn,
-  ZHeightEnum,
+  ZHeight,
   ZIconSymbol,
   ZNavHeader,
-  ZSizeEnum,
-  ZWidthEnum,
+  ZSize,
+  ZWidth,
 } from "@/components";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { EAlignType, View } from "lvgljs-ui";
@@ -27,8 +27,8 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
   return (
     <>
       <ZColumn
-        width={ZWidthEnum.Full}
-        height={ZHeightEnum.Full}
+        width={ZWidth.Full}
+        height={ZHeight.Full}
         style={{
           "background-color": COLORS.PAGE_BACKGROUND,
           overflow: "hidden",
@@ -37,7 +37,7 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
       >
         <ZNavHeader />
         <ZColumn
-          width={ZWidthEnum.Full}
+          width={ZWidth.Full}
           style={mergeStyle(COMMON_STYLE.padding20, {
             "flex-grow": 1,
             "background-color": COLORS.PAGE_BACKGROUND,
@@ -55,8 +55,8 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
           type: EAlignType.ALIGN_BOTTOM_RIGHT,
           pos: [-40, -40],
         }}
-        type={ZButtonTypeEnum.Primary}
-        size={ZSizeEnum.Large}
+        type={ZButtonType.Primary}
+        size={ZSize.Large}
         icon={ZIconSymbol.Up}
         round
       ></ZButton>

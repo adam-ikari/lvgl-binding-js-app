@@ -1,19 +1,7 @@
-import { COMMON_STYLE } from "@/common_style";
-import { ZButton, ZCard, ZRow, ZSizeEnum, ZSwitch, ZText } from "@/components";
+import PageSession from "./common/PageSession";
+import { ZRow, ZSize, ZSwitch } from "@/components";
 import { ZFlexAlignItems } from "@/components/ZFlexContainer";
-import { useMergeStyle } from "@/hooks/styleHooks";
 import React, { useState } from "react";
-
-const mergeStyle = useMergeStyle();
-
-const PageSession = ({ children, title }) => (
-  <ZCard
-    style={mergeStyle(COMMON_STYLE.fullWidth)}
-    header={<ZText size={ZSizeEnum.Large}>{title}</ZText>}
-  >
-    {children}
-  </ZCard>
-);
 
 const SwitchDemoScreen = () => {
   const [onOff, setOnOff] = useState(false);
@@ -22,9 +10,9 @@ const SwitchDemoScreen = () => {
       <PageSession title="Size">
         <ZRow alignItems={ZFlexAlignItems.Center}>
           {[
-            { size: ZSizeEnum.Small },
-            { size: ZSizeEnum.Default },
-            { size: ZSizeEnum.Large },
+            { size: ZSize.Small },
+            { size: ZSize.Default },
+            { size: ZSize.Large },
           ].map(({ size }, index) => {
             return (
               <ZSwitch

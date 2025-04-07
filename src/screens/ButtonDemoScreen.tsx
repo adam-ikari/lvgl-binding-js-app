@@ -1,9 +1,9 @@
 import {
   ZButton,
   ZButtonGroup,
-  ZButtonTypeEnum,
+  ZButtonType,
   ZRow,
-  ZSizeEnum,
+  ZSize,
   ZSwitch,
 } from "@/components";
 import { ZIconSymbol } from "@/components";
@@ -11,16 +11,16 @@ import PageSession from "@/screens/common/PageSession";
 import React, { useState } from "react";
 
 const buttonTypeData = [
-  { text: "Default", type: ZButtonTypeEnum.Default },
-  { text: "Primary", type: ZButtonTypeEnum.Primary },
-  { text: "Success", type: ZButtonTypeEnum.Success },
-  { text: "Info", type: ZButtonTypeEnum.Info },
-  { text: "Danger", type: ZButtonTypeEnum.Danger },
-  { text: "Warning", type: ZButtonTypeEnum.Warning },
+  { text: "Default", type: ZButtonType.Default },
+  { text: "Primary", type: ZButtonType.Primary },
+  { text: "Success", type: ZButtonType.Success },
+  { text: "Info", type: ZButtonType.Info },
+  { text: "Danger", type: ZButtonType.Danger },
+  { text: "Warning", type: ZButtonType.Warning },
 ];
 
 const buttonGroupData = [
-  { text: "One", type: ZButtonTypeEnum.Primary },
+  { text: "One", type: ZButtonType.Primary },
   { text: "Two" },
   { text: "Three" },
 ];
@@ -41,9 +41,9 @@ const ButtonDemoScreen = () => {
       <PageSession title="size">
         <ZRow>
           {[
-            { text: "Small", size: ZSizeEnum.Small },
-            { text: "Default", size: ZSizeEnum.Default },
-            { text: "Large", size: ZSizeEnum.Large },
+            { text: "Small", size: ZSize.Small },
+            { text: "Default", size: ZSize.Default },
+            { text: "Large", size: ZSize.Large },
           ].map(({ text, size }, index) => (
             <ZButton key={index} size={size}>
               {text}
@@ -96,30 +96,30 @@ const ButtonDemoScreen = () => {
             { icon: ZIconSymbol.Left },
             { icon: ZIconSymbol.Right },
           ].map(({ icon }, index) => (
-            <ZButton key={index} size={ZSizeEnum.Small} icon={icon} round />
+            <ZButton key={index} size={ZSize.Small} icon={icon} round />
           ))}
         </ZRow>
         <ZRow>
           {[
-            { icon: ZIconSymbol.Audio, size: ZSizeEnum.Small },
-            { icon: ZIconSymbol.Bluetooth, size: ZSizeEnum.Default },
-            { icon: ZIconSymbol.Image, size: ZSizeEnum.Large },
+            { icon: ZIconSymbol.Audio, size: ZSize.Small },
+            { icon: ZIconSymbol.Bluetooth, size: ZSize.Default },
+            { icon: ZIconSymbol.Image, size: ZSize.Large },
           ].map(({ icon, size }, index) => (
             <ZButton key={index} size={size} icon={icon} round />
           ))}
         </ZRow>
         <ZRow>
-          <ZButton type={ZButtonTypeEnum.Primary} icon={ZIconSymbol.Home}>
+          <ZButton type={ZButtonType.Primary} icon={ZIconSymbol.Home}>
             Home
           </ZButton>
           <ZButton icon={ZIconSymbol.Call} text>
             Call
           </ZButton>
-          <ZButton type={ZButtonTypeEnum.Danger} icon={ZIconSymbol.Trash} round>
+          <ZButton type={ZButtonType.Danger} icon={ZIconSymbol.Trash} round>
             Delete
           </ZButton>
           <ZButton
-            type={ZButtonTypeEnum.Info}
+            type={ZButtonType.Info}
             icon={ZIconSymbol.Trash}
             disable
             round
@@ -133,14 +133,14 @@ const ButtonDemoScreen = () => {
             { icon: ZIconSymbol.Battery2 },
             { icon: ZIconSymbol.Battery3 },
           ].map(({ icon }, index) => (
-            <ZButton key={index} size={ZSizeEnum.Large} icon={icon} text />
+            <ZButton key={index} size={ZSize.Large} icon={icon} text />
           ))}
         </ZRow>
       </PageSession>
 
       <PageSession title="Button Group">
         <ZRow>
-          <ZButtonGroup size={ZSizeEnum.Small}>
+          <ZButtonGroup size={ZSize.Small}>
             {buttonGroupData.map(({ text, type }, index) => (
               <ZButton key={index} type={type}>
                 {text}
@@ -158,7 +158,7 @@ const ButtonDemoScreen = () => {
           </ZButtonGroup>
         </ZRow>
         <ZRow>
-          <ZButtonGroup size={ZSizeEnum.Large}>
+          <ZButtonGroup size={ZSize.Large}>
             {buttonGroupData.map(({ text, type }, index) => (
               <ZButton key={index} type={type}>
                 {text}
