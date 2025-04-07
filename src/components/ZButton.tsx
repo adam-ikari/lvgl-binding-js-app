@@ -6,7 +6,7 @@ import { Button, View } from "lvgljs-ui";
 import * as _ from "radash";
 import React, { useMemo } from "react";
 
-enum ZButtonTypeEnum {
+const enum ZButtonTypeEnum {
   Default = "default",
   Primary = "primary",
   Success = "success",

@@ -3,7 +3,7 @@ import { COLORS, COMMON_STYLE } from "../common_style";
 import { Text } from "lvgljs-ui";
 import React, { useMemo } from "react";
 
-enum ZTextTypeEnum {
+const enum ZTextTypeEnum {
   Default = "default",
   Primary = "primary",
   Success = "success",

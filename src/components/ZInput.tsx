@@ -6,7 +6,7 @@ import React, { useLayoutEffect, useMemo, useState } from "react";
 
 const mergeStyle = useMergeStyle();
 
-enum ZInputModeEnum {
+const enum ZInputModeEnum {
   TEXT = "text",
   PASSWORD = "password",
 }

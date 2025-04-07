@@ -1,18 +1,18 @@
-enum ZWidthEnum {
+const enum ZWidthEnum {
   Auto = "auto",
   Full = "full",
 }
 
 type ZWidthType = `${ZWidthEnum}` | number;
 
-enum ZHeightEnum {
+const enum ZHeightEnum {
   Auto = "auto",
   Full = "full",
 }
 
 type ZHeightType = `${ZHeightEnum}` | number;
 
-enum ZSizeEnum {
+const enum ZSizeEnum {
   Small = "small",
   Default = "default",
   Large = "large",
@@ -20,7 +20,7 @@ enum ZSizeEnum {
 
 type ZSizeType = `${ZSizeEnum}` | number;
 
-enum ZIconSymbol {
+const enum ZIconSymbol {
   Audio = "\uF001",
   Video = "\uF008",
   List = "\uF00B",

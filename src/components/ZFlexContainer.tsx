@@ -24,7 +24,7 @@ export const ZFlexJustifyContent = {
 
 export type ZFlexJustifyContentType = keyof typeof ZFlexJustifyContent;
 
-export enum ZFlexContainerDirection {
+export const enum ZFlexContainerDirection {
   Row = "row", // items will be arranged in a row (left to right in LTR; right to left in RTL)
   Column = "column", // items will be arranged in a column (top to bottom)
 }
