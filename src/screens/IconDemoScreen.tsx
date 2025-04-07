@@ -4,9 +4,9 @@ import {
   ZIcon,
   ZIconSymbol,
   ZRow,
-  ZSize,
+  ZSizeEnum,
   ZText,
-  ZWidth,
+  ZWidthEnum,
 } from "@/components";
 import React from "react";
 
@@ -82,10 +82,10 @@ const style = {
 const IconDemoScreen = () => {
   return (
     <>
-      <ZText size={ZSize.Large}>Icons</ZText>
+      <ZText size={ZSizeEnum.Large}>Icons</ZText>
       <ZRow
         wrap
-        width={ZWidth.Full}
+        width={ZWidthEnum.Full}
         style={{
           ...style.BackgroundStyle,
         }}
@@ -98,7 +98,7 @@ const IconDemoScreen = () => {
             }}
           >
             <ZIcon symbol={item.icon} />
-            <ZText size={ZSize.Small}>{item.text}</ZText>
+            <ZText size={ZSizeEnum.Small}>{item.text}</ZText>
           </ZColumn>
         ))}
       </ZRow>

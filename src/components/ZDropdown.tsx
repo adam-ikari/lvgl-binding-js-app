@@ -1,4 +1,4 @@
-import { ZSize, ZStyleProps } from ".";
+import { ZSizeEnum, ZStyleProps } from ".";
 import { COMMON_STYLE } from "../common_style";
 import { useMergeStyle } from "../hooks/styleHooks";
 import { Dropdownlist } from "lvgljs-ui";
@@ -8,7 +8,7 @@ interface ZDropdownProps<T> {
   style?: ZStyleProps;
   value?: T;
   options?: Array<{ label: string; value: T }>;
-  size?: ZSize;
+  size?: ZSizeEnum;
   onChange?: (value: T) => void;
   placeholder?: string;
   [key: string]: any;
@@ -30,7 +30,7 @@ const ZDropdown = <T,>(props: ZDropdownProps<T>) => {
     value: propValue = undefined,
     options = [],
     onChange,
-    size = ZSize.Default,
+    size = ZSizeEnum.Default,
     placeholder = "please select",
     ...restProps
   } = props;

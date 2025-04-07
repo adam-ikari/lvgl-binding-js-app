@@ -1,7 +1,7 @@
 import {
   ZFlexAlignItems,
   ZRow,
-  ZSize,
+  ZSizeEnum,
   ZStyleProps,
   ZText,
   ZTextTypeEnum,
@@ -16,7 +16,7 @@ const mergeStyle = useMergeStyle();
 interface ZSwitchProps {
   style?: ZStyleProps;
   value?: boolean;
-  size?: ZSize;
+  size?: ZSizeEnum;
   onChange?: (value: boolean) => void;
   activeText?: string;
   inactiveText?: string;
@@ -35,7 +35,7 @@ const ZSwitch = (props: ZSwitchProps) => {
     style: propStyle = {},
     value: propValue = false,
     onChange,
-    size = ZSize.Default,
+    size = ZSizeEnum.Default,
     activeText,
     inactiveText,
     disabled = false,

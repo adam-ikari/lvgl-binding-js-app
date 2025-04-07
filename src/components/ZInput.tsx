@@ -1,4 +1,4 @@
-import { ZButton, ZIconSymbol, ZSize, ZStyleProps } from ".";
+import { ZButton, ZIconSymbol, ZSizeEnum, ZStyleProps } from ".";
 import { COMMON_STYLE, CONSTANTS } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { EAlignType, Input, View } from "lvgljs-ui";
@@ -15,7 +15,7 @@ interface ZInputProps {
   placeholder?: string;
   mode?: ZInputModeEnum;
   allowClean?: boolean;
-  size?: ZSize;
+  size?: ZSizeEnum;
   value?: string;
   maxLength?: number;
   round?: boolean;
@@ -51,7 +51,7 @@ const sizeStyleMap: Record<string, ZStyleProps> = {
 };
 
 interface ClearButtonProps {
-  size: ZSize;
+  size: ZSizeEnum;
   onClick?: () => void;
   display?: boolean;
 }
@@ -75,7 +75,7 @@ const ZInput = (props: ZInputProps) => {
   const {
     placeholder = "",
     mode = "text",
-    size = ZSize.Default,
+    size = ZSizeEnum.Default,
     value: propValue = "",
     allowClean = false,
     maxLength = 256,
