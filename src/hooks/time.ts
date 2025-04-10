@@ -8,13 +8,8 @@ interface UseTimeProps {
 
 const useTime = (props: UseTimeProps) => {
   const { format, interval = 1000 } = props;
-  let getTime;
 
-  if (format) {
-    getTime = () => dayjs().format(format);
-  } else {
-    getTime = () => dayjs();
-  }
+  const getTime = format ? () => dayjs().format(format) : () => dayjs();
 
   const [time, setTime] = useState(getTime());
 
