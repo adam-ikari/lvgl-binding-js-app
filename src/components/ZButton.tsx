@@ -3,7 +3,7 @@ import { ZIcon } from ".";
 import { COLORS, COMMON_STYLE } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { Button, View } from "lvgljs-ui";
-import * as _ from "radash";
+import { isFunction } from "radash";
 import React, { useMemo } from "react";
 
 const enum ZButtonTypeEnum {
@@ -175,7 +175,7 @@ const ZButton = (props: ZButtonProps) => {
   } = props;
 
   const handleClick = () => {
-    if (!disable && onClick && _.isFunction(onClick)) {
+    if (!disable && onClick && isFunction(onClick)) {
       onClick();
     }
   };

@@ -8,7 +8,7 @@ import {
 import { COMMON_STYLE } from "../common_style";
 import { useMergeStyle } from "../hooks/styleHooks";
 import { View } from "lvgljs-ui";
-import * as _ from "radash";
+import { isNumber } from "radash";
 import React, { useMemo } from "react";
 
 export const enum ZFlexAlignItems {
@@ -102,8 +102,8 @@ const ZFlexContainer = (props: ZFlexContainerProps) => {
       direction === "row"
         ? mergeStyle(COMMON_STYLE.flexRow, { "column-spacing": gap })
         : mergeStyle(COMMON_STYLE.flexColumn, { "row-spacing": gap }),
-      _.isNumber(width) ? { width } : widthStyleMap[width],
-      _.isNumber(height) ? { height } : heightStyleMap[height],
+      isNumber(width) ? { width } : widthStyleMap[width],
+      isNumber(height) ? { height } : heightStyleMap[height],
       alignItemsStyle[alignItems],
       justifyContentStyle[justifyContent],
       wrap && { "flex-wrap": "wrap" },
