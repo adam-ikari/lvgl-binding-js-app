@@ -28,6 +28,7 @@ const excludeReactNativeModules = {
 async function compressFile(inputPath, outputPath) {
   const code = fs.readFileSync(inputPath, "utf8");
   const result = await minify(code, {
+    sourceMap: process.env.NODE_ENV === 'development',
     compress: {
       // 核心配置
       arrows: true, // 转换箭头函数为普通函数（若更短）
@@ -95,6 +96,7 @@ async function build() {
         define: {
           "process.env.NODE_ENV": `"${process.env.NODE_ENV || "development"}"`,
         },
+        sourcemap: process.env.NODE_ENV === 'development',
         plugins: [
           alias({
             "@": path.resolve(__dirname, "src"),
