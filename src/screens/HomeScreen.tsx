@@ -10,6 +10,7 @@ const indexData = [
       { text: "Button Demo", path: "/button" },
       { text: "Icon Demo", path: "/icon" },
       { text: "Card Demo", path: "/card" },
+      { text: "Progress Bar Demo", path: "/process-bar" },
     ],
   },
   {

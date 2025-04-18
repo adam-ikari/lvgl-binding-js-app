@@ -8,6 +8,7 @@ import InputDemoScreen from "@/screens/InputDemoScreen";
 import ListDemoScreen from "@/screens/ListDemoScreen";
 import StateDemoScreen from "@/screens/StateDemoScreen";
 import SwitchDemoScreen from "@/screens/SwitchDemoScreen";
+import ProcessBarScreen from "@/screens/ProcessBarScreen";
 
 export default [
   { name: "home", path: "/", component: HomeScreen, meta: { title: "Home" } },
@@ -64,5 +65,11 @@ export default [
     path: "/dropdown",
     component: DropdownDemoScreen,
     meta: { title: "Dropdown Demo" },
+  },
+  {
+    name: "process-bar",
+    path: "/process-bar",
+    component: ProcessBarScreen,
+    meta: { title: "Progress Bar Demo" },
   },
 ];
