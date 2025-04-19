@@ -9,7 +9,7 @@ import {
 import { COMMON_STYLE } from "../common_style";
 import { useMergeStyle } from "../hooks/styleHooks";
 import { Checkbox } from "lvgljs-ui";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 
 const mergeStyle = useMergeStyle();
 
