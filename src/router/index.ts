@@ -9,6 +9,7 @@ import ListDemoScreen from "@/screens/ListDemoScreen";
 import StateDemoScreen from "@/screens/StateDemoScreen";
 import SwitchDemoScreen from "@/screens/SwitchDemoScreen";
 import ProcessBarScreen from "@/screens/ProcessBarScreen";
+import CheckboxDemoScreen from "@/screens/CheckboxDemoScreen";
 
 export default [
   { name: "home", path: "/", component: HomeScreen, meta: { title: "Home" } },
@@ -71,5 +72,11 @@ export default [
     path: "/process-bar",
     component: ProcessBarScreen,
     meta: { title: "Progress Bar Demo" },
+  },
+  {
+    name: "checkbox",
+    path: "/checkbox",
+    component: CheckboxDemoScreen,
+    meta: { title: "Checkbox Demo" }
   },
 ];

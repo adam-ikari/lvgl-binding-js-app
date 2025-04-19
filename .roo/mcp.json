@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "lv_binding_js Docs": {
+      "url": "https://gitmcp.io/lvgl/lv_binding_js?tab=readme-ov-file",
+      "disabled": false,
+      "autoApprove": []
+    },
+    "lvgl-binding-js-app Docs": {
+      "url": "https://gitmcp.io/chenzd123456/lvgl-binding-js-app"
+    }
+  }
+}
