@@ -1,19 +1,7 @@
-import { COMMON_STYLE } from "../common_style";
-import { ZCard, ZRow, ZSizeEnum, ZText, ZCheckbox } from "../components";
-import { ZFlexAlignItems } from "../components/ZFlexContainer";
-import { useMergeStyle } from "../hooks/styleHooks";
+import { ZRow, ZSizeEnum, ZText, ZCheckbox } from "@/components";
+import { ZFlexAlignItems } from "@/components/ZFlexContainer";
 import React, { useState } from "react";
-
-const mergeStyle = useMergeStyle();
-
-const PageSession = ({ children, title }) => (
-  <ZCard
-    style={mergeStyle(COMMON_STYLE.fullWidth)}
-    header={<ZText size={ZSizeEnum.Large}>{title}</ZText>}
-  >
-    {children}
-  </ZCard>
-);
+import PageSession from "./common/PageSession";
 
 const CheckboxDemoScreen = () => {
   const [checked, setChecked] = useState(false);
