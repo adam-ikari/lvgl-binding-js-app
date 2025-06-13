@@ -1,4 +1,4 @@
-import { ZButton } from "@/components";
+import { ZButton, ZText } from "@/components";
 import React, { useEffect, useState } from "react";
 
 const WasmDemoScreen = () => {
@@ -6,6 +6,7 @@ const WasmDemoScreen = () => {
     null,
   );
   const [result, setResult] = useState<number | null>(0);
+  const [time, setTime] = useState<number>(0);
 
   useEffect(() => {
     const loadWasm = async () => {
@@ -24,12 +25,18 @@ const WasmDemoScreen = () => {
 
   return (
     <>
+      <ZText>{`result:${result} use ${time}ms`}</ZText>
       <ZButton
         onClick={() => {
+          //计算耗时
+          const startTime = performance.now();
           setResult(wasmInstance?.exports.add(1, 2));
+          const endTime = performance.now();
+          setTime((endTime - startTime) / 1000);
+          console.log("WASM execution time:", endTime - startTime, "ms");
         }}
       >
-        {result}
+        add
       </ZButton>
     </>
   );
