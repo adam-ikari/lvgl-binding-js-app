@@ -10,6 +10,7 @@ import StateDemoScreen from "@/screens/StateDemoScreen";
 import SwitchDemoScreen from "@/screens/SwitchDemoScreen";
 import ProcessBarScreen from "@/screens/ProcessBarScreen";
 import CheckboxDemoScreen from "@/screens/CheckboxDemoScreen";
+import WasmDemoScreen from "@/screens/WasmDemoScreen"
 
 export default [
   { name: "home", path: "/", component: HomeScreen, meta: { title: "Home" } },
@@ -78,5 +79,11 @@ export default [
     path: "/checkbox",
     component: CheckboxDemoScreen,
     meta: { title: "Checkbox Demo" }
+  },
+  {
+    name: "wasm",
+    path: "/wasm",
+    component: WasmDemoScreen,
+    meta: { title: "WASM Demo" }
   },
 ];
