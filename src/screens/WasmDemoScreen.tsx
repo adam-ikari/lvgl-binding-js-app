@@ -1,6 +1,17 @@
 import { ZButton, ZText } from "@/components";
 import React, { useEffect, useState } from "react";
 
+const loadWasm = async (): Promise<WebAssembly.Instance | null> => {
+  try {
+    const data = await tjs.readFile("./libtestbench.wasm");
+    const { instance } = await WebAssembly.instantiate(data);
+    return instance;
+    console.log("WASM loaded successfully:", instance);
+  } catch (error) {
+    console.error("Failed to load WASM:", error);
+  }
+};
+
 const WasmDemoScreen = () => {
   const [wasmInstance, setWasmInstance] = useState<WebAssembly.Instance | null>(
     null,
@@ -9,18 +20,9 @@ const WasmDemoScreen = () => {
   const [time, setTime] = useState<number>(0);
 
   useEffect(() => {
-    const loadWasm = async () => {
-      try {
-        const data = await tjs.readFile("./libtestbench.wasm");
-        const { instance } = await WebAssembly.instantiate(data);
-        setWasmInstance(instance);
-        console.log("WASM loaded successfully:", instance);
-      } catch (error) {
-        console.error("Failed to load WASM:", error);
-      }
-    };
-
-    loadWasm();
+    (async () => {
+      setWasmInstance(await loadWasm());
+    })();
   }, []);
 
   return (
