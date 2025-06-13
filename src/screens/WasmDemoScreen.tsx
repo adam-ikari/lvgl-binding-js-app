@@ -42,7 +42,7 @@ const WasmDemoScreen = () => {
           }
           const endTime = performance.now();
           setTime((endTime - startTime) / 1000);
-          console.log("WASM execution time:", endTime - startTime, "ms");
+          console.log("WASM execution time:", time, "ms");
         }}
       >
         add
