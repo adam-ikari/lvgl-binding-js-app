@@ -5,8 +5,8 @@ const loadWasm = async (): Promise<WebAssembly.Instance | null> => {
   try {
     const data = await tjs.readFile("./libtestbench.wasm");
     const { instance } = await WebAssembly.instantiate(data);
+    console.log("WASM loaded successfully:");
     return instance;
-    console.log("WASM loaded successfully:", instance);
   } catch (error) {
     console.error("Failed to load WASM:", error);
   }
