@@ -7,9 +7,9 @@
     "build": "node ./build.js",
     "build:dev": "cross-env NODE_ENV=development node ./build.js",
     "build:prod": "cross-env NODE_ENV=production node ./build.js",
-    "preview": "node -e \"const { runBinary } = require('./deps/lvgljs'); runBinary('./build/uncompressed/main.view.js');\"",
-    "preview:dev": "node -e \"const { runBinary } = require('./deps/lvgljs'); runBinary('./build/uncompressed/main.view.js');\"",
-    "preview:prod": "node -e \"const { runBinary } = require('./deps/lvgljs'); runBinary('./build/compressed/main.view.js');\"",
+    "preview": "cd ./build/uncompressed && node -e \"const { runBinary } = require('../../deps/lvgljs'); runBinary('main.view.js');\"",
+    "preview:dev": "cd ./build/uncompressed && node -e \"const { runBinary } = require('../../deps/lvgljs'); runBinary('main.view.js');\"",
+    "preview:prod": "cd ./build/compressed && node -e \"const { runBinary } = require('../../deps/lvgljs'); runBinary('main.view.js');\"",
     "dev": "nodemon --watch 'src/**/*.jsx' --watch 'src/**/*.tsx' --watch 'src/**/*.js' --watch 'src/**/*.ts' --ext 'jsx' --ext 'tsx' --exec 'npm run build:dev && npm run preview:dev'"
   },
   "dependencies": {

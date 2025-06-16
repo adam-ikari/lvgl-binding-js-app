@@ -97,6 +97,9 @@ async function build() {
           "process.env.NODE_ENV": `"${process.env.NODE_ENV || "development"}"`,
         },
         sourcemap: process.env.NODE_ENV === 'development',
+        loader: {
+          '.wasm': 'file'
+        },
         plugins: [
           alias({
             "@": path.resolve(__dirname, "src"),

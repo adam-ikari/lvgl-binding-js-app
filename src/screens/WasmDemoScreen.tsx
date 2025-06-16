@@ -1,3 +1,4 @@
+import libtestbench from "@/assets/libtestbench.wasm";
 import { ZButton, ZText } from "@/components";
 import React, { useEffect, useState } from "react";
 
@@ -7,7 +8,7 @@ interface WasmExports {
 
 const loadWasm = async (): Promise<WebAssembly.Instance | null> => {
   try {
-    const data = await tjs.readFile("./libtestbench.wasm");
+    const data = await tjs.readFile(libtestbench);
     const { instance } = await WebAssembly.instantiate(data);
     console.log("WASM loaded successfully:");
     return instance;
@@ -37,12 +38,17 @@ const WasmDemoScreen = () => {
           //计算耗时
           const startTime = performance.now();
           if (wasmInstance) {
-            const exports = wasmInstance.exports as unknown as WasmExports;
-            setResult(exports.add(1, 2));
+            try {
+              const exports = wasmInstance.exports as unknown as WasmExports;
+              setResult(exports.add(1, 2));
+            } catch (error) {
+              console.error("WASM execution error:", error);
+            }
           }
           const endTime = performance.now();
-          setTime((endTime - startTime) / 1000);
-          console.log("WASM execution time:", time, "ms");
+          const duration = endTime - startTime;
+          setTime(duration);
+          console.log("WASM execution time:", duration, "ms");
         }}
       >
         add

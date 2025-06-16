@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "NodeNext",
-    "typeRoots": ["node_modules/@txikijs/types", "node_modules/@types"],
+    "typeRoots": ["node_modules/@txikijs/types", "node_modules/@types", "src/types"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
