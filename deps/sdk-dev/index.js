@@ -1,17 +1,18 @@
 const path = require("path");
 const fs = require("fs");
 const { _build } = require("./build");
-const { compressFile } = require("./compress");
 const { run } = require("./run");
 
-const buildDir = path.join("build", "uncompressed");
-const compressedDir = path.join("build", "compressed");
+const buildDir = path.join("build");
 
 async function build() {
-  // 创建compressed文件夹
-  if (!fs.existsSync(compressedDir)) {
-    fs.mkdirSync(compressedDir, { recursive: true });
+  // remove build directory if it exists
+  if (fs.existsSync(buildDir)) {
+    fs.rmSync(buildDir, { recursive: true, force: true });
   }
+
+  // create build directory
+  fs.mkdirSync(buildDir, { recursive: true });
 
   const manifest = JSON.parse(fs.readFileSync("manifest.json", "utf-8"));
   

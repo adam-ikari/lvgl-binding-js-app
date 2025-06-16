@@ -16,9 +16,9 @@ function getBinaryPath() {
   return binaryPath;
 }
 
-function run(scriptPath, dir = "uncompressed") {
+function run(scriptPath) {
   const binaryPath = getBinaryPath();
-  const buildDir = path.join(process.cwd(), "build", dir);
+  const buildDir = path.join(process.cwd(), "build");
   const fullPath = path.join(buildDir, scriptPath);
 
   if (!fs.existsSync(fullPath)) {

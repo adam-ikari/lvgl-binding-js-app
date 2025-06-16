@@ -2,7 +2,7 @@ const fs = require("fs");
 const { minify } = require("terser");
 
 const defaultCompressOptions = {
-  sourceMap: process.env.NODE_ENV === "development",
+  // sourceMap: process.env.NODE_ENV === "development",
   compress: {
     arrows: true,
     booleans: true,

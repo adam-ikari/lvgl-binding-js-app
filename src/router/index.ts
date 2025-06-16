@@ -11,6 +11,7 @@ import SwitchDemoScreen from "@/screens/SwitchDemoScreen";
 import ProcessBarScreen from "@/screens/ProcessBarScreen";
 import CheckboxDemoScreen from "@/screens/CheckboxDemoScreen";
 import WasmDemoScreen from "@/screens/WasmDemoScreen"
+import ImageDemoScreen from "@/screens/ImageDemoScreen";
 
 export default [
   { name: "home", path: "/", component: HomeScreen, meta: { title: "Home" } },
@@ -85,5 +86,11 @@ export default [
     path: "/wasm",
     component: WasmDemoScreen,
     meta: { title: "WASM Demo" }
+  },
+  {
+    name: "image",
+    path: "/image",
+    component: ImageDemoScreen,
+    meta: { title: "Image Demo" }
   },
 ];

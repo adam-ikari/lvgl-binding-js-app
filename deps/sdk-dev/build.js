@@ -1,9 +1,8 @@
 const path = require("path");
-const os = require("os");
-const { execSync } = require("child_process");
-const fs = require("fs");
 const esbuild = require("esbuild");
 const alias = require("esbuild-plugin-alias");
+const { compressFile } = require("./compress");
+const { resourcePlugin } = require('./resources')
 
 const excludeReactNativeModules = {
   name: "exclude-react-native-modules",
@@ -43,6 +42,12 @@ async function _build(buildDir, manifest) {
       sourcemap: process.env.NODE_ENV === "development",
       loader: {
         ".wasm": "file",
+        ".jpg": "file",
+        ".jpeg": "file",
+        ".png": "file",
+        ".bmp": "file",
+        ".gif": "file",
+        ".svg": "file",
       },
       metafile: true,
       plugins: [
@@ -50,9 +55,13 @@ async function _build(buildDir, manifest) {
           "@": path.resolve(__dirname, "src"),
         }),
         excludeReactNativeModules,
-        require('./resources').resourcePlugin
+        resourcePlugin
       ],
     });
+
+    if (process.env.NODE_ENV !== "development") {
+      await compressFile(outputFile, outputFile);
+    }
   }
 }
 

@@ -8,8 +8,8 @@
     "build:dev": "cross-env NODE_ENV=development node scripts/build.js",
     "build:prod": "cross-env NODE_ENV=production node scripts/build.js",
     "preview": "npm run preview:dev",
-    "preview:dev": "cross-env NODE_ENV=development node scripts/preview.js uncompressed",
-    "preview:prod": "cross-env NODE_ENV=production node scripts/preview.js compressed",
+    "preview:dev": "cross-env NODE_ENV=development node scripts/preview.js",
+    "preview:prod": "cross-env NODE_ENV=production node scripts/preview.js",
     "dev": "nodemon --config nodemon.json --exec 'npm run build:dev && npm run preview:dev'"
   },
   "dependencies": {
