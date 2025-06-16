@@ -1,5 +1,5 @@
 {
   "name": "app1",
   "package_name": "com.demo.app1",
-  "entries": [{ "name": "main", "type": "view", "entry": "./src/main.jsx" }]
+  "entries": [{ "name": "main", "type": "view", "entry": "./src/main.tsx" }]
 }

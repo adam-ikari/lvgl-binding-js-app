@@ -1,3 +1,19 @@
+const path = require('path');
+const os = require('os');
+const { execSync } = require('child_process');
+
+function getBinaryPath() {
+  const platform = os.platform();
+  const binaryName = 'lvgljs';
+  const binaryDir = platform === 'darwin' ? 'mac' : 'linux';
+  return path.join(__dirname, binaryDir, binaryName);
+}
+
+function run(scriptPath) {
+  const binaryPath = getBinaryPath();
+  execSync(`${binaryPath} run ${scriptPath}`, { stdio: 'inherit' });
+}
+
 const path = require("path");
 const fs = require("fs");
 const { minify } = require("terser");
@@ -68,7 +84,7 @@ async function compressFile(inputPath, outputPath) {
   fs.writeFileSync(outputPath, result.code);
 }
 
-async function build() {
+async function _build() {
   // 创建compressed文件夹
   if (!fs.existsSync(compressedDir)) {
     fs.mkdirSync(compressedDir, { recursive: true });
@@ -78,7 +94,7 @@ async function build() {
   const entries = manifest.entries;
 
   for (const item of entries) {
-    const entry = path.resolve(__dirname, item.entry);
+    const entry = path.resolve(process.cwd(), item.entry);
     const outputFile = path.resolve(buildDir, `${item.name}.${item.type}.js`);
     const compressedFile = path.resolve(
       compressedDir,
@@ -158,4 +174,15 @@ async function build() {
   }
 }
 
-build();
+const build = ()=> {
+  _build().then(() => {
+    console.log("All builds completed successfully.");
+  }).catch((error) => {
+    console.error("Build failed:", error);
+  });
+}
+
+module.exports = {
+  run,
+  build
+};

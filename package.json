@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node ./build.js",
-    "build:dev": "cross-env NODE_ENV=development node ./build.js",
-    "build:prod": "cross-env NODE_ENV=production node ./build.js",
-    "preview": "cd ./build/uncompressed && node -e \"const { runBinary } = require('../../deps/lvgljs'); runBinary('main.view.js');\"",
-    "preview:dev": "cd ./build/uncompressed && node -e \"const { runBinary } = require('../../deps/lvgljs'); runBinary('main.view.js');\"",
-    "preview:prod": "cd ./build/compressed && node -e \"const { runBinary } = require('../../deps/lvgljs'); runBinary('main.view.js');\"",
+    "build": "cross-env NODE_ENV=development && node -e \"const { build } = require('sdk'); build();\"",
+    "build:dev": "cross-env NODE_ENV=development && node -e \"const { build } = require('sdk'); build();\"",
+    "build:prod": "cross-env NODE_ENV=production && node -e \"const { build } = require('sdk'); build();\"",
+    "preview": "cd /home/zhaodi-chen/project/lvgl_app/build/uncompressed && node -e \"const { run } = require('sdk'); run('main.view.js');\"",
+    "preview:dev": "cd /home/zhaodi-chen/project/lvgl_app/build/uncompressed && node -e \"const { run } = require('sdk'); run('main.view.js');\"",
+    "preview:prod": "cd /home/zhaodi-chen/project/lvgl_app/build/compressed && node -e \"const { run } = require('sdk'); run('main.view.js');\"",
     "dev": "nodemon --watch 'src/**/*.jsx' --watch 'src/**/*.tsx' --watch 'src/**/*.js' --watch 'src/**/*.ts' --ext 'jsx' --ext 'tsx' --exec 'npm run build:dev && npm run preview:dev'"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "esbuild": "^0.25.1",
     "fetch-blob": "^3.2.0",
     "lvgljs-ui": "file:deps/lvgljs-ui",
+    "sdk": "file:deps/sdk",
     "nodemon": "^3.1.4",
     "radash": "^12.1.0",
     "react": "^16.13.1",
