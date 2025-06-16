@@ -1,6 +1,6 @@
 import { ZSizeEnum, ZStyleProps } from ".";
 import { COLORS, COMMON_STYLE } from "../common_style";
-import { Text } from "sdk/ui";
+import { Text } from "sdk-ui";
 import React, { useMemo } from "react";
 
 const enum ZTextTypeEnum {

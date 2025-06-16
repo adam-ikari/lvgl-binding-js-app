@@ -1,6 +1,6 @@
 import { ZNavScreenLayout } from "@/layouts";
 import routerData from "@/router";
-import { Dimensions, Render } from "sdk/ui";
+import { Dimensions, Render } from "sdk-ui";
 import React, { Profiler } from "react";
 import { MemoryRouter, Route, Routes } from "react-router-native";
 

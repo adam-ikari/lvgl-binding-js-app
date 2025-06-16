@@ -1,0 +1,11 @@
+{
+  "watch": [
+    "src/**/*.jsx",
+    "src/**/*.tsx", 
+    "src/**/*.js",
+    "src/**/*.ts"
+  ],
+  "ext": "jsx,tsx,js,ts",
+  "exec": "npm run build:dev && npm run preview:dev",
+  "delay": 1000
+}

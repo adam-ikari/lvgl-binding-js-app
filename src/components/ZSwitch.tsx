@@ -8,7 +8,7 @@ import {
 } from ".";
 import { COMMON_STYLE } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
-import { Switch } from "sdk/ui";
+import { Switch } from "sdk-ui";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 
 const mergeStyle = useMergeStyle();

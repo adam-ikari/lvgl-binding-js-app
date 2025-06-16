@@ -42,9 +42,10 @@ const resourcePlugin = {
           const ext = path.extname(outputPath);
           if (resourceExts.includes(ext)) {
             const srcPath = path.resolve(outputPath);
+            const baseDir = build.initialOptions.outdir || path.dirname(build.initialOptions.outfile);
             const destPath = path.join(
-              build.options.outdir || path.dirname(build.options.outfile),
-              path.relative(build.initialOptions.outdir || path.dirname(build.initialOptions.outfile), outputPath)
+              baseDir,
+              path.relative(baseDir, outputPath)
             );
             fs.mkdirSync(path.dirname(destPath), { recursive: true });
             fs.copyFileSync(srcPath, destPath);

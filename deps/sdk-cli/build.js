@@ -35,6 +35,7 @@ async function _build(buildDir, manifest) {
       platform: "neutral",
       external: ["tjs:path", "react-native"],
       outfile: outputFile,
+      absWorkingDir: process.cwd(),
       mainFields: ["module", "main"],
       define: {
         "process.env.NODE_ENV": `"${process.env.NODE_ENV || "development"}"`,
