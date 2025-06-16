@@ -28,7 +28,7 @@ const indexData = [
   },
   { text: "List Render", children: [{ text: "List Demo", path: "/list" }] },
   { text: "State", children: [{ text: "State Demo", path: "/state" }] },
-  { text: "WASM", children: [{ text: "WASM Demo", path: "/wasm" }] },
+  { text: "Web API", children: [{ text: "WASM Demo", path: "/wasm" }] },
 ];
 
 const HomeScreen = () => {
