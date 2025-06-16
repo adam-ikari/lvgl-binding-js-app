@@ -1,4 +1,4 @@
-const { run } = require('sdk-cli');
+const { run } = require('sdk-dev');
 const env = process.env.NODE_ENV || 'development';
 const dir = process.argv[2] || 'uncompressed';
 

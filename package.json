@@ -49,6 +49,6 @@
     "glob": "^10.3.15",
     "prettier": "^3.0.1",
     "terser": "^5.39.0",
-    "sdk-cli": "file:deps/sdk-cli"
+    "sdk-dev": "file:deps/sdk-dev"
   }
 }
