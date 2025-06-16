@@ -1,6 +1,7 @@
 const path = require("path");
 const esbuild = require("esbuild");
 const alias = require("esbuild-plugin-alias");
+
 const { compressFile } = require("./compress");
 const { resourcePlugin } = require('./resources')
 
