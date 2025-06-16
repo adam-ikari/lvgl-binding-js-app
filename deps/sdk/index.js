@@ -1,29 +1,26 @@
-const path = require('path');
-const os = require('os');
-const { execSync } = require('child_process');
-
-function getBinaryPath() {
-  const platform = os.platform();
-  const runtimeBaseDir = "runtime"
-  const binaryName = 'lvgljs';
-  const binaryDir = platform === 'darwin' ? 'mac' : 'linux';
-  return path.join(__dirname, runtimeBaseDir, binaryDir, binaryName);
-}
-
-function run(scriptPath) {
-  const binaryPath = getBinaryPath();
-  execSync(`${binaryPath} run ${scriptPath}`, { stdio: 'inherit' });
-}
-
 const path = require("path");
+const os = require("os");
+const { execSync } = require("child_process");
 const fs = require("fs");
 const { minify } = require("terser");
-
 const esbuild = require("esbuild");
 const alias = require("esbuild-plugin-alias");
 
 const buildDir = path.join("build", "uncompressed");
 const compressedDir = path.join("build", "compressed");
+
+function getBinaryPath() {
+  const platform = os.platform();
+  const runtimeBaseDir = "runtime";
+  const binaryName = "lvgljs";
+  const binaryDir = platform === "darwin" ? "mac" : "linux";
+  return path.join(__dirname, runtimeBaseDir, binaryDir, binaryName);
+}
+
+function run(scriptPath) {
+  const binaryPath = getBinaryPath();
+  execSync(`${binaryPath} run ${scriptPath}`, { stdio: "inherit" });
+}
 
 const excludeReactNativeModules = {
   name: "exclude-react-native-modules",
@@ -124,33 +121,51 @@ async function _build() {
           }),
           excludeReactNativeModules,
           {
-            name: 'resource-copy-plugin',
+            name: "resource-copy-plugin",
             setup(build) {
               // 支持的资源文件扩展名
               const resourceExts = [
-                '.wasm', '.png', '.jpg', '.jpeg', '.gif', '.svg',
-                '.woff', '.woff2', '.ttf', '.eot', '.otf',
-                '.mp3', '.wav', '.ogg', '.mp4', '.webm'
+                ".wasm",
+                ".png",
+                ".jpg",
+                ".jpeg",
+                ".gif",
+                ".svg",
+                ".woff",
+                ".woff2",
+                ".ttf",
+                ".eot",
+                ".otf",
+                ".mp3",
+                ".wav",
+                ".ogg",
+                ".mp4",
+                ".webm",
               ];
-              
-              build.onLoad({ filter: new RegExp(`(${resourceExts.join('|')})$`) }, (args) => {
-                console.log(`Loading resource file: ${args.path}`);
-                return {
-                  loader: 'file',
-                  contents: fs.readFileSync(args.path)
-                }
-              });
-              
+
+              build.onLoad(
+                { filter: new RegExp(`(${resourceExts.join("|")})$`) },
+                (args) => {
+                  console.log(`Loading resource file: ${args.path}`);
+                  return {
+                    loader: "file",
+                    contents: fs.readFileSync(args.path),
+                  };
+                },
+              );
+
               // 构建完成后复制所有资源文件
               build.onEnd(async (result) => {
                 if (result.metafile) {
-                  for (const [outputPath, fileInfo] of Object.entries(result.metafile.outputs)) {
+                  for (const [outputPath, fileInfo] of Object.entries(
+                    result.metafile.outputs,
+                  )) {
                     const ext = path.extname(outputPath);
                     if (resourceExts.includes(ext)) {
                       const srcPath = path.resolve(outputPath);
                       const destPath = path.join(
                         compressedDir,
-                        path.relative(buildDir, outputPath)
+                        path.relative(buildDir, outputPath),
                       );
                       fs.mkdirSync(path.dirname(destPath), { recursive: true });
                       fs.copyFileSync(srcPath, destPath);
@@ -159,8 +174,8 @@ async function _build() {
                   }
                 }
               });
-            }
-          }
+            },
+          },
         ],
       })
       .then(async () => {
@@ -175,15 +190,17 @@ async function _build() {
   }
 }
 
-const build = ()=> {
-  _build().then(() => {
-    console.log("All builds completed successfully.");
-  }).catch((error) => {
-    console.error("Build failed:", error);
-  });
-}
+const build = () => {
+  _build()
+    .then(() => {
+      console.log("All builds completed successfully.");
+    })
+    .catch((error) => {
+      console.error("Build failed:", error);
+    });
+};
 
 module.exports = {
   run,
-  build
+  build,
 };

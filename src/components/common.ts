@@ -86,5 +86,5 @@ const enum ZIconSymbol {
 type ZIconSymbolType = `${ZIconSymbol}`;
 
 export type { ZHeightType, ZWidthType, ZSizeType, ZIconSymbolType };
-export type { StyleProps as ZStyleProps } from "lvgljs-ui/core/style";
+export type { StyleProps as ZStyleProps } from "sdk/ui/core/style";
 export { ZWidthEnum, ZHeightEnum, ZSizeEnum, ZIconSymbol };

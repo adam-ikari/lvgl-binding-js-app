@@ -1,4 +1,4 @@
-import { ProgressBar } from "lvgljs-ui";
+import { ProgressBar } from "sdk/ui";
 import React, { useEffect, useState } from "react";
 import { StyleProp } from "@/types";
 

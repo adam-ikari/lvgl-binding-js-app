@@ -1,5 +1,5 @@
-import { StyleProps } from "lvgljs-ui/core/style";
-import { ColorType } from "lvgljs-ui/core/style/color";
+import { StyleProps } from "sdk/ui/core/style";
+import { ColorType } from "sdk/ui/core/style/color";
 
 const CONSTANTS = {
   MIN_HEIGHT_32: 32,

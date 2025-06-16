@@ -12,7 +12,7 @@ import {
 } from ".";
 import { COMMON_STYLE } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
-import { Dimensions, EAlignType, View } from "lvgljs-ui";
+import { Dimensions, EAlignType, View } from "sdk/ui";
 import React, { useMemo } from "react";
 
 interface ZDialogProps {

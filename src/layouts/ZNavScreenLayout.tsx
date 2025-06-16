@@ -10,7 +10,7 @@ import {
   ZWidthEnum,
 } from "@/components";
 import { useMergeStyle } from "@/hooks/styleHooks";
-import { EAlignType, View } from "lvgljs-ui";
+import { EAlignType, View } from "sdk/ui";
 import React, { useRef } from "react";
 
 const mergeStyle = useMergeStyle();

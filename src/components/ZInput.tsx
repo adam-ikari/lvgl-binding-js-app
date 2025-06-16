@@ -1,7 +1,7 @@
 import { ZButton, ZIconSymbol, ZSizeEnum, ZStyleProps } from ".";
 import { COMMON_STYLE, CONSTANTS } from "@/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
-import { EAlignType, Input, View } from "lvgljs-ui";
+import { EAlignType, Input, View } from "sdk/ui";
 import React, { useLayoutEffect, useMemo, useState } from "react";
 
 const mergeStyle = useMergeStyle();
