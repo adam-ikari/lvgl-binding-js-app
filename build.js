@@ -28,7 +28,7 @@ const excludeReactNativeModules = {
 async function compressFile(inputPath, outputPath) {
   const code = fs.readFileSync(inputPath, "utf8");
   const result = await minify(code, {
-    sourceMap: process.env.NODE_ENV === 'development',
+    sourceMap: process.env.NODE_ENV === "development",
     compress: {
       // 核心配置
       arrows: true, // 转换箭头函数为普通函数（若更短）
@@ -96,15 +96,50 @@ async function build() {
         define: {
           "process.env.NODE_ENV": `"${process.env.NODE_ENV || "development"}"`,
         },
-        sourcemap: process.env.NODE_ENV === 'development',
+        sourcemap: process.env.NODE_ENV === "development",
         loader: {
-          '.wasm': 'file'
+          ".wasm": "file",
         },
+        metafile: true,
         plugins: [
           alias({
             "@": path.resolve(__dirname, "src"),
           }),
           excludeReactNativeModules,
+          {
+            name: 'wasm-copy-plugin',
+            setup(build) {
+              // 记录所有加载的wasm文件
+              const wasmFiles = new Set();
+              
+              build.onLoad({ filter: /\.wasm$/ }, (args) => {
+                console.log(`Loading WASM file: ${args.path}`);
+                wasmFiles.add(args.path);
+                return {
+                  loader: 'file',
+                  contents: fs.readFileSync(args.path)
+                }
+              });
+              
+              // 构建完成后复制处理过的wasm文件
+              build.onEnd(async (result) => {
+                if (result.metafile) {
+                  for (const [outputPath, fileInfo] of Object.entries(result.metafile.outputs)) {
+                    if (outputPath.endsWith('.wasm')) {
+                      const srcPath = path.resolve(outputPath);
+                      const destPath = path.join(
+                        compressedDir,
+                        path.basename(outputPath)
+                      );
+                      fs.mkdirSync(path.dirname(destPath), { recursive: true });
+                      fs.copyFileSync(srcPath, destPath);
+                      console.log(`Copied processed WASM file to: ${destPath}`);
+                    }
+                  }
+                }
+              });
+            }
+          }
         ],
       })
       .then(async () => {
