@@ -5,7 +5,8 @@
       "disabled": false,
       "autoApprove": [],
       "alwaysAllow": [
-        "fetch_lv_binding_js_documentation"
+        "fetch_lv_binding_js_documentation",
+        "search_lv_binding_js_docs"
       ]
     },
     "txiki.js Docs": {
