@@ -107,33 +107,37 @@ async function build() {
           }),
           excludeReactNativeModules,
           {
-            name: 'wasm-copy-plugin',
+            name: 'resource-copy-plugin',
             setup(build) {
-              // 记录所有加载的wasm文件
-              const wasmFiles = new Set();
+              // 支持的资源文件扩展名
+              const resourceExts = [
+                '.wasm', '.png', '.jpg', '.jpeg', '.gif', '.svg',
+                '.woff', '.woff2', '.ttf', '.eot', '.otf',
+                '.mp3', '.wav', '.ogg', '.mp4', '.webm'
+              ];
               
-              build.onLoad({ filter: /\.wasm$/ }, (args) => {
-                console.log(`Loading WASM file: ${args.path}`);
-                wasmFiles.add(args.path);
+              build.onLoad({ filter: new RegExp(`(${resourceExts.join('|')})$`) }, (args) => {
+                console.log(`Loading resource file: ${args.path}`);
                 return {
                   loader: 'file',
                   contents: fs.readFileSync(args.path)
                 }
               });
               
-              // 构建完成后复制处理过的wasm文件
+              // 构建完成后复制所有资源文件
               build.onEnd(async (result) => {
                 if (result.metafile) {
                   for (const [outputPath, fileInfo] of Object.entries(result.metafile.outputs)) {
-                    if (outputPath.endsWith('.wasm')) {
+                    const ext = path.extname(outputPath);
+                    if (resourceExts.includes(ext)) {
                       const srcPath = path.resolve(outputPath);
                       const destPath = path.join(
                         compressedDir,
-                        path.basename(outputPath)
+                        path.relative(buildDir, outputPath)
                       );
                       fs.mkdirSync(path.dirname(destPath), { recursive: true });
                       fs.copyFileSync(srcPath, destPath);
-                      console.log(`Copied processed WASM file to: ${destPath}`);
+                      console.log(`Copied processed resource to: ${destPath}`);
                     }
                   }
                 }
