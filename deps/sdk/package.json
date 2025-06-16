@@ -1,0 +1,22 @@
+{
+  "name": "lvgljs-sdk",
+  "version": "1.0.0",
+  "description": "LVGL JavaScript SDK for building and running applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "keywords": [
+    "lvgl",
+    "javascript",
+    "sdk",
+    "build"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "esbuild": "^0.25.1",
+    "esbuild-plugin-alias": "^0.2.1",
+    "terser": "^5.39.0"
+  }
+}
