@@ -5,6 +5,8 @@ const alias = require("esbuild-plugin-alias");
 const { compressFile } = require("./compress");
 const { resourcePlugin } = require('./resources')
 
+// This plugin excludes React Native modules from the build process
+// by resolving them to an empty module, preventing them from being bundled.
 const excludeReactNativeModules = {
   name: "exclude-react-native-modules",
   setup(build) {
