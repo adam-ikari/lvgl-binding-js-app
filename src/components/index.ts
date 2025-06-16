@@ -31,3 +31,5 @@ export * from "./ZProcessBar";
 export { default as ZProcessBar } from "./ZProcessBar";
 export * from "./ZCheckbox";
 export { default as ZCheckbox } from "./ZCheckbox";
+export * from "./ZImage";
+export { default as ZImage } from "./ZImage";
