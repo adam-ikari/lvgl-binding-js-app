@@ -1,9 +1,11 @@
 import { ZImage } from "../components";
 import { ZSizeEnum } from "../components/common";
 import PageSession from "./common/PageSession";
+import React, { useEffect } from "react";
+
 import smallImg from "@/assets/images/demo-images/small.jpg";
 import mediumImg from "@/assets/images/demo-images/medium.jpg";
-import React, { useEffect } from "react";
+
 
 const ImageDemoScreen = () => {
   useEffect(() => {
