@@ -1,19 +1,19 @@
 import ButtonDemoScreen from "@/screens/ButtonDemoScreen";
 import CardDemoScreen from "@/screens/CardDemoScreen";
+import CheckboxDemoScreen from "@/screens/CheckboxDemoScreen";
 import DialogDemoScreen from "@/screens/DialogDemoScreen";
 import DropdownDemoScreen from "@/screens/DropdownDemoScreen";
+import GlobalStatusDemoScreen from "@/screens/GlobalStatusDemoScreen";
 import HomeScreen from "@/screens/HomeScreen";
 import IconDemoScreen from "@/screens/IconDemoScreen";
+import ImageDemoScreen from "@/screens/ImageDemoScreen";
 import InputDemoScreen from "@/screens/InputDemoScreen";
 import ListDemoScreen from "@/screens/ListDemoScreen";
+import LocalstorageDemoScreen from "@/screens/LocalstorageDemoScreen";
+import ProcessBarScreen from "@/screens/ProcessBarScreen";
 import StateDemoScreen from "@/screens/StateDemoScreen";
 import SwitchDemoScreen from "@/screens/SwitchDemoScreen";
-import ProcessBarScreen from "@/screens/ProcessBarScreen";
-import CheckboxDemoScreen from "@/screens/CheckboxDemoScreen";
-import WasmDemoScreen from "@/screens/WasmDemoScreen"
-import ImageDemoScreen from "@/screens/ImageDemoScreen";
-import GlobalStatusDemoScreen from "@/screens/GlobalStatusDemoScreen";
-import LocalStorageDemoScreen from "@/screens/LocalStorageDemoScreen";
+import WasmDemoScreen from "@/screens/WasmDemoScreen";
 
 export default [
   { name: "home", path: "/", component: HomeScreen, meta: { title: "Home" } },
@@ -87,24 +87,24 @@ export default [
     name: "checkbox",
     path: "/checkbox",
     component: CheckboxDemoScreen,
-    meta: { title: "Checkbox Demo" }
+    meta: { title: "Checkbox Demo" },
   },
   {
     name: "wasm",
     path: "/wasm",
     component: WasmDemoScreen,
-    meta: { title: "WASM Demo" }
+    meta: { title: "WASM Demo" },
   },
   {
     name: "localstorage",
     path: "/localstorage",
-    component: LocalStorageDemoScreen,
-    meta: { title: "LocalStorage Demo" }
+    component: LocalstorageDemoScreen,
+    meta: { title: "LocalStorage Demo" },
   },
   {
     name: "image",
     path: "/image",
     component: ImageDemoScreen,
-    meta: { title: "Image Demo" }
+    meta: { title: "Image Demo" },
   },
 ];

@@ -12,7 +12,7 @@ const rowStyle = {
   ...style.background,
 };
 
-const LocalStorageDemoScreen = () => {
+const LocalstorageDemoScreen = () => {
   const [key, setKey] = useState("key");
   const [value, setValue] = useState("value");
   const [kv, setKV] = useState<{ [key: string]: string }>({});
@@ -32,4 +32,4 @@ const LocalStorageDemoScreen = () => {
   );
 };
 
-export default LocalStorageDemoScreen;
+export default LocalstorageDemoScreen;
