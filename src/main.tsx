@@ -9,11 +9,11 @@ import "zustand-polyfills";
 
 const { window: windowDimensions } = Dimensions;
 
-const App = () => {
-  // Initialize i18n with the current language from settings store
-  const { language, setLanguage } = useSettingsStore();
-  setLanguage(language);
+// 初始化语言设置
+const settingsStore = useSettingsStore.getState();
+i18n.changeLanguage(settingsStore.language);
 
+const App = () => {
   return (
     <MemoryRouter initialEntries={["/"]} initialIndex={0}>
       <ZNavScreenLayout>
