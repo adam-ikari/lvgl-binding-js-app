@@ -13,6 +13,7 @@ import CheckboxDemoScreen from "@/screens/CheckboxDemoScreen";
 import WasmDemoScreen from "@/screens/WasmDemoScreen"
 import ImageDemoScreen from "@/screens/ImageDemoScreen";
 import GlobalStatusDemoScreen from "@/screens/GlobalStatusDemoScreen";
+import LocalStorageDemoScreen from "@/screens/LocalStorageDemoScreen";
 
 export default [
   { name: "home", path: "/", component: HomeScreen, meta: { title: "Home" } },
@@ -93,6 +94,12 @@ export default [
     path: "/wasm",
     component: WasmDemoScreen,
     meta: { title: "WASM Demo" }
+  },
+  {
+    name: "localstorage",
+    path: "/localstorage",
+    component: LocalStorageDemoScreen,
+    meta: { title: "LocalStorage Demo" }
   },
   {
     name: "image",

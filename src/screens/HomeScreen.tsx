@@ -35,7 +35,13 @@ const indexData = [
       { text: "Global State Demo", path: "/global_state" },
     ],
   },
-  { text: "Web API", children: [{ text: "WASM Demo", path: "/wasm" }] },
+  {
+    text: "Web API",
+    children: [
+      { text: "WASM Demo", path: "/wasm" },
+      { text: "LocalStorage Demo", path: "/localstorage" },
+    ],
+  },
 ];
 
 const HomeScreen = () => {

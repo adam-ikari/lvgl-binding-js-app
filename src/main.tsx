@@ -1,10 +1,10 @@
 import { ZNavScreenLayout } from "@/layouts";
 import routerData from "@/router";
-import React, { Component, Profiler } from "react";
+import React, { Profiler } from "react";
 import { MemoryRouter, Route, Routes } from "react-router-native";
 import { Dimensions, Render } from "sdk-ui";
 
-const { window } = Dimensions;
+const { window: windowDimensions } = Dimensions;
 
 const App = () => {
   return (
@@ -27,7 +27,7 @@ const App = () => {
 
 const onRender = (id, phase, actualDuration) => {
   console.log(
-    `${id} 组件 ${phase} 阶段耗时：${actualDuration}ms 分辨率：${window.width}x${window.height}`,
+    `${id} 组件 ${phase} 阶段耗时：${actualDuration}ms 分辨率：${windowDimensions.width}x${windowDimensions.height}`,
   );
 };
 
