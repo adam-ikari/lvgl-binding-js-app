@@ -22,14 +22,13 @@
     "react-reconciler": "^0.25.1",
     "react-router": "^6.3.0",
     "react-router-native": "^6.30.0",
-    "sdk-ui": "file:deps/sdk-ui",
+    "sdk-ui": "link:deps/sdk-ui",
     "text-encoding": "^0.7.0",
     "urlpattern-polyfill": "^5.0.3",
     "util": "^0.12.4",
     "uuid": "^11.1.0",
     "web-streams-polyfill": "^3.2.1",
-    "whatwg-fetch": "^3.6.2",
-    "zustand": "file:deps/zustand"
+    "whatwg-fetch": "^3.6.2"
   },
   "author": "",
   "license": "MIT",
@@ -44,7 +43,7 @@
     "glob": "^10.3.15",
     "nodemon": "^3.1.10",
     "prettier": "^3.0.1",
-    "sdk-dev": "file:deps/sdk-dev",
+    "sdk-dev": "link:deps/sdk-dev",
     "terser": "^5.39.0",
     "webpack": "^5.99.9"
   }

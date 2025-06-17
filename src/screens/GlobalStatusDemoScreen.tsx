@@ -1,5 +1,4 @@
 import { ZButton, ZIconSymbol, ZRow, ZText } from "@/components";
-import { useCounterStore } from "@/stores/useCounterStore";
 import { COLORS } from "@/styles/common_style";
 import React from "react";
 
@@ -10,20 +9,9 @@ const style = {
 };
 
 const GlobalStatusDemoScreen = () => {
-  const { count, increase, reset } = useCounterStore();
   return (
     <>
-      <ZText>{`${count}`}</ZText>
-      <ZRow
-        style={{
-          ...style.BackgroundStyle,
-        }}
-      >
-        <ZButton icon={ZIconSymbol.Plus} onClick={() => increase()}></ZButton>
-        <ZButton icon={ZIconSymbol.Refresh} onClick={() => reset()}>
-          Reset
-        </ZButton>
-      </ZRow>
+      <ZText>TODO</ZText>
     </>
   );
 };
