@@ -2,14 +2,7 @@ import { ZButton, ZRow, ZText } from "@/components";
 import PageSession from "@/screens/common/PageSession";
 import { useCounterStore } from "@/stores/useCounterStore";
 import { useSettingsStore } from "@/stores/useSettingsStore";
-import { COLORS } from "@/styles/common_style";
 import React from "react";
-
-const style = {
-  BackgroundStyle: {
-    "background-color": COLORS.PAGE_BACKGROUND,
-  },
-};
 
 const GlobalStatusDemoScreen = () => {
   const { count, inc, dec, reset } = useCounterStore();
