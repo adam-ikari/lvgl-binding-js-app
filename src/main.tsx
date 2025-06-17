@@ -1,48 +1,14 @@
 import { ZNavScreenLayout } from "@/layouts";
 import routerData from "@/router";
-import { Dimensions, Render } from "sdk-ui";
-import React, { Profiler, Component } from "react";
+import React, { Component, Profiler } from "react";
 import { MemoryRouter, Route, Routes } from "react-router-native";
-
-interface ErrorBoundaryProps {
-  children: React.ReactNode;
-}
-
-interface ErrorBoundaryState {
-  hasError: boolean;
-}
-
-class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  state: ErrorBoundaryState = { hasError: false };
-
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error("Error caught by ErrorBoundary:", error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div>Something went wrong.</div>;
-    }
-    return this.props.children;
-  }
-}
+import { Dimensions, Render } from "sdk-ui";
 
 const { window } = Dimensions;
 
 const App = () => {
   return (
-    <MemoryRouter
-      initialEntries={["/"]}
-      initialIndex={0}
-      future={{
-        v7_startTransition: true,
-        v7_relativeSplatPath: true
-      }}
-    >
+    <MemoryRouter initialEntries={["/"]} initialIndex={0}>
       <ZNavScreenLayout>
         <Routes>
           {routerData.map(({ name, path, component }) => (
@@ -66,9 +32,7 @@ const onRender = (id, phase, actualDuration) => {
 };
 
 Render.render(
-  <ErrorBoundary>
-    <Profiler id="App" onRender={onRender}>
-      <App />
-    </Profiler>
-  </ErrorBoundary>,
+  <Profiler id="App" onRender={onRender}>
+    <App />
+  </Profiler>,
 );
