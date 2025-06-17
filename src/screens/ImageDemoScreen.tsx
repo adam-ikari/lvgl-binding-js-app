@@ -1,14 +1,13 @@
 import { ZImage } from "../components";
 import { ZSizeEnum } from "../components/common";
 import PageSession from "./common/PageSession";
-import React, { useEffect } from "react";
-import { Image } from 'sdk-ui'
 import imgsrc from "@/assets/avatar.png";
-
+import React, { useEffect } from "react";
+import { Image } from "sdk-ui";
 
 const ImageDemoScreen = () => {
   useEffect(() => {
-    console.log('Small image URL:', imgsrc);
+    console.log("Small image URL:", imgsrc);
   }, []);
 
   const demoImages = [
@@ -28,19 +27,18 @@ const ImageDemoScreen = () => {
     {
       src: imgsrc,
       round: true,
-    }
+    },
   ];
 
   return (
     <PageSession title="Image Demo">
-        {demoImages.map((img, index) => (
-            <ZImage
-              src={img.src}
-              round={img.round}
-              onClick={() => console.log(`image ${index} clicked`)}
-            />
-        ))}
-        {/* <ZImage src={imgsrc} /> */}
+      {demoImages.map((img, index) => (
+        <ZImage
+          src={img.src}
+          round={img.round}
+          onClick={() => console.log(`image ${index} clicked`)}
+        />
+      ))}
     </PageSession>
   );
 };
