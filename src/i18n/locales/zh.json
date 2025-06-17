@@ -1,0 +1,11 @@
+{
+  "app": {
+    "title": "LVGL应用",
+    "description": "使用LVGL的演示应用"
+  },
+  "common": {
+    "ok": "确定",
+    "cancel": "取消", 
+    "back": "返回"
+  }
+}

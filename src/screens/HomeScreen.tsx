@@ -1,11 +1,14 @@
 import { ZButton, ZRow } from "@/components";
+import i18n from "@/i18n";
 import PageSession from "@/screens/common/PageSession";
 import React from "react";
 import { useNavigate } from "react-router-native";
 
+const t = i18n.t;
+
 const indexData = [
   {
-    text: "Basic Widgets",
+    text: t("BASIC_WIDGETS"),
     children: [
       { text: "Button Demo", path: "/button" },
       { text: "Icon Demo", path: "/icon" },

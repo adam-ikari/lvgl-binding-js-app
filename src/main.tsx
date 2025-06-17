@@ -1,15 +1,14 @@
+import i18n from "@/i18n";
 import { ZNavScreenLayout } from "@/layouts";
 import routerData from "@/router";
 import React, { Profiler } from "react";
 import { MemoryRouter, Route, Routes } from "react-router-native";
 import { Dimensions, Render } from "sdk-ui";
 import "zustand-polyfills";
-import {useSettingsStore} from "@/stores/useSettingsStore";
 
 const { window: windowDimensions } = Dimensions;
 
 const App = () => {
-  const {theme, setTheme} = useSettingsStore();
   return (
     <MemoryRouter initialEntries={["/"]} initialIndex={0}>
       <ZNavScreenLayout>
