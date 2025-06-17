@@ -1,6 +1,6 @@
+import i18n from "@/i18n";
 import { create } from "zustand";
 import { PersistOptions, persist } from "zustand/middleware";
-import i18n from "@/i18n";
 
 interface SettingsState {
   theme: string; // e.g., "light" or "dark"

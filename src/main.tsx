@@ -1,6 +1,7 @@
 import i18n from "@/i18n";
 import { ZNavScreenLayout } from "@/layouts";
 import routerData from "@/router";
+import { useSettingsStore } from "@/stores/useSettingsStore";
 import React, { Profiler } from "react";
 import { MemoryRouter, Route, Routes } from "react-router-native";
 import { Dimensions, Render } from "sdk-ui";
@@ -9,6 +10,10 @@ import "zustand-polyfills";
 const { window: windowDimensions } = Dimensions;
 
 const App = () => {
+  // Initialize i18n with the current language from settings store
+  const { language, setLanguage } = useSettingsStore();
+  setLanguage(language);
+
   return (
     <MemoryRouter initialEntries={["/"]} initialIndex={0}>
       <ZNavScreenLayout>
