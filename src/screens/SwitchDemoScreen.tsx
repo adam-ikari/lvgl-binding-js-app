@@ -1,4 +1,4 @@
-import { COMMON_STYLE } from "@/common_style";
+import { COMMON_STYLE } from "@/styles/common_style";
 import { ZButton, ZCard, ZRow, ZSizeEnum, ZSwitch, ZText } from "@/components";
 import { ZFlexAlignItems } from "@/components/ZFlexContainer";
 import { useMergeStyle } from "@/hooks/styleHooks";

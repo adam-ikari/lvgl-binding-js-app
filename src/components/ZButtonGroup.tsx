@@ -1,4 +1,4 @@
-import { COMMON_STYLE } from "@/common_style";
+import { COMMON_STYLE } from "@/styles/common_style";
 import { ZButton, ZRow, ZSizeEnum } from "@/components";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import React from "react";

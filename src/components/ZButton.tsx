@@ -1,6 +1,6 @@
 import { ZIconSymbol, ZSizeEnum, ZStyleProps, ZText } from ".";
 import { ZIcon } from ".";
-import { COLORS, COMMON_STYLE } from "@/common_style";
+import { COLORS, COMMON_STYLE } from "@/styles/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { Button, View } from "sdk-ui";
 import * as _ from "radash";

@@ -6,7 +6,7 @@ import {
   ZText,
   ZTextTypeEnum,
 } from ".";
-import { COMMON_STYLE } from "../common_style";
+import { COMMON_STYLE } from "../styles/common_style";
 import { useMergeStyle } from "../hooks/styleHooks";
 import { Checkbox } from "sdk-ui";
 import React, { useLayoutEffect, useState } from "react";

@@ -1,4 +1,4 @@
-import { COLORS } from "@/common_style";
+import { COLORS } from "@/styles/common_style";
 import { ZButton, ZIconSymbol, ZRow, ZText } from "@/components";
 import { ZNavScreenLayout } from "@/layouts";
 import React, { useState } from "react";

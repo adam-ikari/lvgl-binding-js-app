@@ -8,6 +8,6 @@
     },
     "jsx": "react"
   },
-  "include": ["src/*"],
+  "include": ["src/*", "src/styles/common_style.ts"],
   "exclude": ["**/*.spec.ts"]
 }

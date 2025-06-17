@@ -1,4 +1,4 @@
-import { COLORS, COMMON_STYLE } from "@/common_style";
+import { COLORS, COMMON_STYLE } from "@/styles/common_style";
 import {
   ZButton,
   ZButtonTypeEnum,

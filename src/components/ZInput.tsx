@@ -1,5 +1,5 @@
 import { ZButton, ZIconSymbol, ZSizeEnum, ZStyleProps } from ".";
-import { COMMON_STYLE, CONSTANTS } from "@/common_style";
+import { COMMON_STYLE, CONSTANTS } from "@/styles/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { EAlignType, Input, View } from "sdk-ui";
 import React, { useLayoutEffect, useMemo, useState } from "react";
