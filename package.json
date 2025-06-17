@@ -7,20 +7,16 @@
     "build": "npm run build:dev",
     "build:dev": "cross-env NODE_ENV=development node scripts/build.js",
     "build:prod": "cross-env NODE_ENV=production node scripts/build.js",
-    "preview": "npm run preview:dev",
-    "preview:dev": "cross-env NODE_ENV=development node scripts/preview.js",
-    "preview:prod": "cross-env NODE_ENV=production node scripts/preview.js",
-    "dev": "nodemon --config nodemon.json --exec 'npm run build:dev && npm run preview:dev'"
+    "preview": "cross-env NODE_ENV=development node scripts/preview.js",
+    "dev": "nodemon --config nodemon.json --exec 'npm run build:dev && npm run preview'"
   },
   "dependencies": {
     "buffer": "^6.0.3",
     "core-js": "^3.23.2",
     "dayjs": "^1.11.13",
-    "esbuild": "^0.25.1",
     "fetch-blob": "^3.2.0",
-    "nodemon": "^3.1.4",
     "radash": "^12.1.0",
-    "react": "^16.13.1",
+    "react": "^17.0.2",
     "react-native": "^0.78.0",
     "react-proxy": "^2.0.8",
     "react-reconciler": "^0.25.1",
@@ -32,10 +28,7 @@
     "util": "^0.12.4",
     "uuid": "^11.1.0",
     "web-streams-polyfill": "^3.2.1",
-    "webpack": "^5.73.0",
-    "webpack-dev-server": "^4.9.2",
-    "whatwg-fetch": "^3.6.2",
-    "zustand": "^5.0.5"
+    "whatwg-fetch": "^3.6.2"
   },
   "author": "",
   "license": "MIT",
@@ -45,10 +38,13 @@
     "@types/react": "^16.3.1",
     "@types/react-reconciler": "^0.18.0",
     "cross-env": "^7.0.3",
+    "esbuild": "^0.25.5",
     "esbuild-plugin-alias": "^0.2.1",
     "glob": "^10.3.15",
+    "nodemon": "^3.1.10",
     "prettier": "^3.0.1",
     "sdk-dev": "file:deps/sdk-dev",
-    "terser": "^5.39.0"
+    "terser": "^5.39.0",
+    "webpack": "^5.99.9"
   }
 }
