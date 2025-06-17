@@ -6,7 +6,9 @@
     "paths": {
       "@/*": ["src/*"],
     },
-    "jsx": "react"
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "include": ["src/*", "src/styles/common_style.ts"],
   "exclude": ["**/*.spec.ts"]
