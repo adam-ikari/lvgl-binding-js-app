@@ -1,7 +1,7 @@
 import { ZSizeEnum, ZStyleProps } from ".";
 import { COLORS, COMMON_STYLE } from "../styles/common_style";
-import { Text } from "sdk-ui";
 import React, { useMemo } from "react";
+import { Text } from "sdk-ui";
 
 const enum ZTextTypeEnum {
   Default = "default",
@@ -84,6 +84,7 @@ const ZText = (props: ZTextProps) => {
     size = ZSizeEnum.Default,
     type = ZTextTypeEnum.Default,
     light,
+    ...restProps
   } = props;
 
   const computedStyle = useMemo(() => {
@@ -100,6 +101,7 @@ const ZText = (props: ZTextProps) => {
         ...computedStyle,
         ...propStyle,
       }}
+      {...restProps}
     >
       {children}
     </Text>

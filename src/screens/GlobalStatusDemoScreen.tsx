@@ -1,4 +1,11 @@
-import { ZButton, ZRow, ZText } from "@/components";
+import {
+  ZButton,
+  ZFlexAlignItems,
+  ZRow,
+  ZSwitch,
+  ZText,
+  ZWidthEnum,
+} from "@/components";
 import PageSession from "@/screens/common/PageSession";
 import { useCounterStore } from "@/stores/useCounterStore";
 import { useSettingsStore } from "@/stores/useSettingsStore";
@@ -6,7 +13,7 @@ import React from "react";
 
 const GlobalStatusDemoScreen = () => {
   const { count, inc, dec, reset } = useCounterStore();
-  const { theme, setTheme } = useSettingsStore();
+  const { theme, toggleTheme } = useSettingsStore();
   return (
     <>
       <PageSession title="Global Status">
@@ -18,10 +25,12 @@ const GlobalStatusDemoScreen = () => {
         </ZRow>
       </PageSession>
       <PageSession title="Settings">
-        <ZText>{`Theme: ${theme}`}</ZText>
-        <ZButton onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-          Toggle Theme
-        </ZButton>
+        <ZRow width={ZWidthEnum.Full}>
+          <ZRow style={{ "flex-grow": 1 }}>
+            <ZText>{`Theme: ${theme}`}</ZText>
+          </ZRow>
+          <ZSwitch value={theme === "dark"} onChange={() => toggleTheme()} />
+        </ZRow>
       </PageSession>
     </>
   );

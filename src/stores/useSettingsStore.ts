@@ -3,14 +3,17 @@ import { PersistOptions, persist } from "zustand/middleware";
 
 interface SettingsState {
   theme: string; // e.g., "light" or "dark"
-  setTheme: (newTheme: string) => void;
+  toggleTheme?: () => void; // Optional method to toggle theme
 }
 
 const useSettingsStore = create(
   persist<SettingsState>(
     (set) => ({
       theme: "light", // default theme
-      setTheme: (newTheme: string) => set({ theme: newTheme }),
+      toggleTheme: () =>
+        set((state) => ({
+          theme: state.theme === "light" ? "dark" : "light",
+        })),
     }),
     {
       name: "settings-storage", // unique name for the storage
