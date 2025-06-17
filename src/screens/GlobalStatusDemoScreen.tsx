@@ -1,4 +1,4 @@
-import { ZButton, ZIconSymbol, ZRow, ZText } from "@/components";
+import { ZText } from "@/components";
 import { COLORS } from "@/styles/common_style";
 import React from "react";
 
