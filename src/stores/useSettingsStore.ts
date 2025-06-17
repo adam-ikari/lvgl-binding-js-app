@@ -27,12 +27,6 @@ const useSettingsStore = create(
       name: "settings-storage", // unique name for the storage
       version: 1, // version number for migrations
       throttle: 1000, // save at most once per second
-      onRehydrateStorage: () => (state) => {
-        // Force save when rehydrated
-        if (state) {
-          useSettingsStore.persist.save();
-        }
-      },
     } as PersistOptions<SettingsState, SettingsState>,
   ),
 );
