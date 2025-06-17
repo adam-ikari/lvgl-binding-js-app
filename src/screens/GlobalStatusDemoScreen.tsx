@@ -1,4 +1,5 @@
-import { ZText } from "@/components";
+import { ZButton, ZText } from "@/components";
+import { useCounterStore } from "@/stores/useCounterStore";
 import { COLORS } from "@/styles/common_style";
 import React from "react";
 
@@ -9,9 +10,11 @@ const style = {
 };
 
 const GlobalStatusDemoScreen = () => {
+  const { count, inc } = useCounterStore();
   return (
     <>
-      <ZText>TODO</ZText>
+      <ZText>{`${count}`}</ZText>
+      <ZButton onClick={() => inc()}>inc</ZButton>
     </>
   );
 };

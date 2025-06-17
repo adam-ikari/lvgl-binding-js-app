@@ -3784,15 +3784,13 @@ schema-utils@^4.3.0, schema-utils@^4.3.2:
     ajv-formats "^2.1.1"
     ajv-keywords "^5.1.0"
 
-"sdk-dev@file:deps/sdk-dev":
-  version "1.0.0"
-  dependencies:
-    esbuild "^0.25.1"
-    esbuild-plugin-alias "^0.2.1"
-    terser "^5.39.0"
+"sdk-dev@link:deps/sdk-dev":
+  version "0.0.0"
+  uid ""
 
-"sdk-ui@file:deps/sdk-ui":
-  version "0.0.1"
+"sdk-ui@link:deps/sdk-ui":
+  version "0.0.0"
+  uid ""
 
 selfsigned@^2.4.1:
   version "2.4.1"
@@ -4389,5 +4387,11 @@ yargs@^17.6.2:
     y18n "^5.0.5"
     yargs-parser "^21.1.1"
 
-"zustand@file:deps/zustand":
+"zustand-polyfills@link:deps/zustand-polyfills":
+  version "0.0.0"
+  uid ""
+
+zustand@^5.0.5:
   version "5.0.5"
+  resolved "https://registry.npmmirror.com/zustand/-/zustand-5.0.5.tgz#3e236f6a953142d975336d179bc735d97db17e84"
+  integrity sha512-mILtRfKW9xM47hqxGIxCv12gXusoY/xTSHBYApXozR0HmQv299whhBeeAcRy+KrPPybzosvJBCOmVjq6x12fCg==

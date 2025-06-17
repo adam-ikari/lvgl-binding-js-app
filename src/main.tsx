@@ -3,6 +3,7 @@ import routerData from "@/router";
 import React, { Profiler } from "react";
 import { MemoryRouter, Route, Routes } from "react-router-native";
 import { Dimensions, Render } from "sdk-ui";
+import "zustand-polyfills";
 
 const { window: windowDimensions } = Dimensions;
 

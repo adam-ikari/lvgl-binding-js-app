@@ -28,7 +28,9 @@
     "util": "^0.12.4",
     "uuid": "^11.1.0",
     "web-streams-polyfill": "^3.2.1",
-    "whatwg-fetch": "^3.6.2"
+    "whatwg-fetch": "^3.6.2",
+    "zustand": "^5.0.5",
+    "zustand-polyfills": "link:deps/zustand-polyfills"
   },
   "author": "",
   "license": "MIT",
