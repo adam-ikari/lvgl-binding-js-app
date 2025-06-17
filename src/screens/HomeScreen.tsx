@@ -28,7 +28,13 @@ const indexData = [
     children: [{ text: "Dialog Demo", path: "/dialog" }],
   },
   { text: "List Render", children: [{ text: "List Demo", path: "/list" }] },
-  { text: "State", children: [{ text: "State Demo", path: "/state" }] },
+  {
+    text: "State",
+    children: [
+      { text: "State Demo", path: "/state" },
+      { text: "Global State Demo", path: "/global_state" },
+    ],
+  },
   { text: "Web API", children: [{ text: "WASM Demo", path: "/wasm" }] },
 ];
 

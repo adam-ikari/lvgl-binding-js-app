@@ -12,6 +12,7 @@ import ProcessBarScreen from "@/screens/ProcessBarScreen";
 import CheckboxDemoScreen from "@/screens/CheckboxDemoScreen";
 import WasmDemoScreen from "@/screens/WasmDemoScreen"
 import ImageDemoScreen from "@/screens/ImageDemoScreen";
+import GlobalStatusDemoScreen from "@/screens/GlobalStatusDemoScreen";
 
 export default [
   { name: "home", path: "/", component: HomeScreen, meta: { title: "Home" } },
@@ -32,6 +33,12 @@ export default [
     path: "/state",
     component: StateDemoScreen,
     meta: { title: "State Demo" },
+  },
+  {
+    name: "global_state",
+    path: "/global_state",
+    component: GlobalStatusDemoScreen,
+    meta: { title: "Global State Demo" },
   },
   {
     name: "list",

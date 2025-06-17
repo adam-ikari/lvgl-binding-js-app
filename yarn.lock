@@ -4388,3 +4388,6 @@ yargs@^17.6.2:
     string-width "^4.2.3"
     y18n "^5.0.5"
     yargs-parser "^21.1.1"
+
+"zustand@file:deps/zustand":
+  version "5.0.5"
