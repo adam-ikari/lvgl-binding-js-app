@@ -2,36 +2,31 @@ import { ZImage } from "../components";
 import { ZSizeEnum } from "../components/common";
 import PageSession from "./common/PageSession";
 import React, { useEffect } from "react";
-
-import smallImg from "@/assets/images/demo-images/small.jpg";
-import mediumImg from "@/assets/images/demo-images/medium.jpg";
+import { Image } from 'sdk-ui'
+import imgsrc from "@/assets/avatar.png";
 
 
 const ImageDemoScreen = () => {
   useEffect(() => {
-    console.log('Small image URL:', smallImg);
-    console.log('Medium image URL:', mediumImg);
+    console.log('Small image URL:', imgsrc);
   }, []);
 
   const demoImages = [
     {
-      src: smallImg,
-      size: "small",
+      src: imgsrc,
       round: false,
     },
     {
-      src: mediumImg,
-      size: "default",
+      src: imgsrc,
       round: false,
     },
     {
-      src: mediumImg,
+      src: imgsrc,
       size: "large",
       round: false,
     },
     {
-      src: smallImg, // 复用小图
-      size: "default",
+      src: imgsrc,
       round: true,
     }
   ];
@@ -41,13 +36,11 @@ const ImageDemoScreen = () => {
         {demoImages.map((img, index) => (
             <ZImage
               src={img.src}
-              size={img.size === "small" ? ZSizeEnum.Small :
-                   img.size === "medium" ? ZSizeEnum.Default :
-                   ZSizeEnum.Large}
               round={img.round}
-              onClick={() => console.log(`点击了`)}
+              onClick={() => console.log(`image ${index} clicked`)}
             />
         ))}
+        {/* <ZImage src={imgsrc} /> */}
     </PageSession>
   );
 };

@@ -11,7 +11,6 @@ interface ZImageProps {
   width?: number | string;
   height?: number | string;
   style?: ZStyleProps;
-  size?: ZSizeEnum;
   round?: boolean;
   onClick?: () => void;
   [key: string]: any;
@@ -27,12 +26,6 @@ const ZImage = (props: ZImageProps) => {
       "object-fit": "contain",
     },
   );
-
-  const sizeStyleMap: Record<string, ZStyleProps> = {
-    small: mergeStyle(COMMON_STYLE.width32, COMMON_STYLE.height32),
-    default: mergeStyle(COMMON_STYLE.width64, COMMON_STYLE.height64),
-    large: mergeStyle(COMMON_STYLE.width128, COMMON_STYLE.height128),
-  };
 
   const roundStyle: ZStyleProps = COMMON_STYLE.radiusMax;
 
@@ -56,7 +49,6 @@ const ZImage = (props: ZImageProps) => {
 
   const computedStyle = {
     ...baseStyle,
-    ...sizeStyleMap[size],
     ...(round ? roundStyle : {}),
     ...(width ? { width } : {}),
     ...(height ? { height } : {}),
@@ -66,7 +58,7 @@ const ZImage = (props: ZImageProps) => {
   return (
     <Image
       src={src}
-      style={computedStyle}
+      // style={computedStyle}
       onClick={handleClick}
       {...restProps}
     />
