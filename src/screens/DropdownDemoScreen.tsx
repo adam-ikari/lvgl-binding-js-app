@@ -1,4 +1,4 @@
-import { ZDropdown } from "@/components";
+import { ZDropdown, ZText } from "@/components";
 import PageSession from "@/screens/common/PageSession";
 import React, { useState } from "react";
 
@@ -13,11 +13,11 @@ const DropdownDemoScreen = () => {
 
   return (
     <PageSession title={"Basic Dropdown Demo"}>
+      <ZText>{`value:${value}`}</ZText>
       <ZDropdown
         options={options}
         value={value}
         onChange={(value) => {
-          console.log(value);
           setValue(value);
         }}
       />

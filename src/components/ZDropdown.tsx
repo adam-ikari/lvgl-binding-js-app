@@ -1,8 +1,26 @@
 import { ZSizeEnum, ZStyleProps } from ".";
-import { COMMON_STYLE } from "../styles/common_style";
 import { useMergeStyle } from "../hooks/styleHooks";
-import { Dropdownlist } from "sdk-ui";
+import { COMMON_STYLE } from "../styles/common_style";
 import React, { useLayoutEffect, useState } from "react";
+import { Dropdownlist } from "sdk-ui";
+
+const enum ZDropdownDirectionEnum {
+  None = 0x00,
+  Left = 1 << 0,
+  Right = 1 << 1,
+  Top = 1 << 2,
+  Bottom = 1 << 3,
+  Horizontal = (1 << 0) | (1 << 1),
+  Vertical = (1 << 2) | (1 << 3),
+  All = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3),
+}
+
+const enum ZDropdownArrowEnum {
+  Up = 0,
+  Right = 1,
+  Down = 2,
+  Left = 3,
+}
 
 interface ZDropdownProps<T> {
   style?: ZStyleProps;
@@ -11,6 +29,8 @@ interface ZDropdownProps<T> {
   size?: ZSizeEnum;
   onChange?: (value: T) => void;
   placeholder?: string;
+  direction?: ZDropdownDirectionEnum; // 0: up, 1: down, 2: left, 3: right
+  arrow?: number;
   [key: string]: any;
 }
 
@@ -32,6 +52,8 @@ const ZDropdown = <T,>(props: ZDropdownProps<T>) => {
     onChange,
     size = ZSizeEnum.Default,
     placeholder = "please select",
+    direction = ZDropdownDirectionEnum.Bottom,
+    arrow = ZDropdownArrowEnum.Down,
     ...restProps
   } = props;
 
@@ -49,10 +71,10 @@ const ZDropdown = <T,>(props: ZDropdownProps<T>) => {
     }
   }, [value]);
 
-  const handleChange = (e: { value: number }) => {
-    const selectedValue = options[e.value]?.value;
+  const handleChange = (e: { value: any }) => {
+    const selectedValue = options.find((opt) => opt.label === e.value)?.value;
     setValue(selectedValue);
-    if (onChange && selectedValue !== undefined) {
+    if (onChange) {
       onChange(selectedValue);
     }
   };
@@ -61,9 +83,9 @@ const ZDropdown = <T,>(props: ZDropdownProps<T>) => {
     <Dropdownlist
       items={options.map((opt) => opt.label)}
       selectIndex={options.findIndex((opt) => opt.value === propValue)}
-      // text={propValue ? undefined : placeholder}
-      // direction={0}
-      // arrow={1}
+      text={propValue ? undefined : placeholder}
+      direction={direction}
+      arrow={arrow}
       highlightSelect={true}
       style={mergeStyle(baseStyle, sizeStyleMap[size], propStyle)}
       onChange={handleChange}
@@ -72,5 +94,5 @@ const ZDropdown = <T,>(props: ZDropdownProps<T>) => {
   );
 };
 
-export type { ZDropdownProps };
+export type { ZDropdownProps, ZDropdownDirectionEnum };
 export default ZDropdown;

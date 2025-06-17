@@ -1,6 +1,6 @@
 import {
   ZButton,
-  ZFlexAlignItems,
+  ZDropdown,
   ZRow,
   ZSwitch,
   ZText,
@@ -11,9 +11,15 @@ import { useCounterStore } from "@/stores/useCounterStore";
 import { useSettingsStore } from "@/stores/useSettingsStore";
 import React from "react";
 
+const languageOptions = [
+  { label: "system", value: "system" },
+  { label: "en", value: "en" },
+  { label: "zh", value: "zh" },
+];
+
 const GlobalStatusDemoScreen = () => {
   const { count, inc, dec, reset } = useCounterStore();
-  const { theme, toggleTheme } = useSettingsStore();
+  const { theme, toggleTheme, language, setLanguage } = useSettingsStore();
   return (
     <>
       <PageSession title="Global Status">
@@ -30,6 +36,19 @@ const GlobalStatusDemoScreen = () => {
             <ZText>{`Theme: ${theme}`}</ZText>
           </ZRow>
           <ZSwitch value={theme === "dark"} onChange={() => toggleTheme()} />
+        </ZRow>
+        <ZRow width={ZWidthEnum.Full}>
+          <ZRow style={{ "flex-grow": 1 }}>
+            <ZText>{`Language: ${language}`}</ZText>
+          </ZRow>
+          <ZDropdown
+            options={languageOptions}
+            value={language}
+            onChange={(value) => {
+              console.log(value);
+              setLanguage(value);
+            }}
+          ></ZDropdown>
         </ZRow>
       </PageSession>
     </>
