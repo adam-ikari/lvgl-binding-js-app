@@ -17,7 +17,7 @@ const useSettingsStore = create(
         set((state) => ({
           theme: state.theme === "light" ? "dark" : "light",
         })),
-      language: "en", // default language
+      language: "system", // default language
       setLanguage: (lang: string) => {
         i18n.changeLanguage(lang);
         set({ language: lang });
@@ -26,7 +26,6 @@ const useSettingsStore = create(
     {
       name: "settings-storage", // unique name for the storage
       version: 1, // version number for migrations
-      throttle: 1000, // save at most once per second
     } as PersistOptions<SettingsState, SettingsState>,
   ),
 );
