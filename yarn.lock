@@ -689,7 +689,7 @@ jsesc@^3.0.2:
   resolved "https://registry.npmmirror.com/jsesc/-/jsesc-3.1.0.tgz#74d335a234f67ed19907fdadfac7ccf9d409825d"
   integrity sha512-/sM3dO2FOzXjKQhJuo0Q173wf2KOo8t4I8vHy6lF9poUp7bKT0/NHE8fPX23PwfhnykfqnC2xRxOnVw5XuGIaA==
 
-lodash@^4.17.21, lodash@^4.6.1:
+lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.npmmirror.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -821,13 +821,6 @@ react-is@^16.13.1:
   resolved "https://registry.npmmirror.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-proxy@^2.0.8:
-  version "2.0.8"
-  resolved "https://registry.npmmirror.com/react-proxy/-/react-proxy-2.0.8.tgz#76ae78c9be4e54d409cfec7bb7d513ec7f1b284c"
-  integrity sha512-iYUKak7a+fGRk7mphfah9KnmIZ2l026tkge82Phicc82qltuiqz0lOpizg/7lO4n9ZSom0DpPVdSKLJYQnxOuA==
-  dependencies:
-    lodash "^4.6.1"
-
 react-reconciler@^0.25.1:
   version "0.25.1"
   resolved "https://registry.npmmirror.com/react-reconciler/-/react-reconciler-0.25.1.tgz#f9814d59d115e1210762287ce987801529363aaa"
@@ -850,13 +843,6 @@ react-router@6.30.0:
   version "6.30.0"
   resolved "https://registry.npmmirror.com/react-router/-/react-router-6.30.0.tgz#9789d775e63bc0df60f39ced77c8c41f1e01ff90"
   integrity sha512-D3X8FyH9nBcTSHGdEKurK7r8OYE1kKFn3d/CF+CoxbSHkxU7o37+Uh7eAHRXr6k2tSExXYO++07PeXJtA/dEhQ==
-  dependencies:
-    "@remix-run/router" "1.23.0"
-
-react-router@^6.3.0:
-  version "6.30.1"
-  resolved "https://registry.npmmirror.com/react-router/-/react-router-6.30.1.tgz#ecb3b883c9ba6dbf5d319ddbc996747f4ab9f4c3"
-  integrity sha512-X1m21aEmxGXqENEPG3T6u0Th7g0aS4ZmoNynhbs+Cn+q+QGTLt+d5IQ2bHAXKzKcxGJjxACpVbnYQSCRcfxHlQ==
   dependencies:
     "@remix-run/router" "1.23.0"
 
