@@ -8,7 +8,7 @@ const WorkerDemoScreen = () => {
   const handleCalculate = () => {
     console.log("hello!");
 
-    const w = new Worker("./worker1.worker.js");
+    const w = new Worker("worker1.worker.js");
     w.addEventListener("message", (event) => {
       const msg = event.data;
       console.log("received message!");
