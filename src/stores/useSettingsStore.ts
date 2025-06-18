@@ -1,4 +1,4 @@
-import i18n from "@/i18n";
+import { changeLanguage } from "@/i18n";
 import { create } from "zustand";
 import { PersistOptions, persist } from "zustand/middleware";
 
@@ -6,7 +6,7 @@ interface SettingsState {
   theme: string; // e.g., "light" or "dark"
   toggleTheme: () => void; // Method to toggle theme
   language: string; // language setting
-  setLanguage: (lang: string) => void; // Method to set language
+  setLanguage: (language: string) => void; // Method to set language
 }
 
 const useSettingsStore = create(
@@ -18,9 +18,9 @@ const useSettingsStore = create(
           theme: state.theme === "light" ? "dark" : "light",
         })),
       language: "system", // default language
-      setLanguage: (lang: string) => {
-        i18n.changeLanguage(lang);
-        set({ language: lang });
+      setLanguage: (language: string) => {
+        set({ language });
+        changeLanguage(language);
       },
     }),
     {

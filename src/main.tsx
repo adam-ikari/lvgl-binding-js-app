@@ -1,8 +1,8 @@
-import i18n from "@/i18n";
+import { changeLanguage } from "@/i18n";
 import { ZNavScreenLayout } from "@/layouts";
 import routerData from "@/router";
 import { useSettingsStore } from "@/stores/useSettingsStore";
-import React, { Profiler, useLayoutEffect } from "react";
+import React, { Profiler } from "react";
 import { MemoryRouter, Route, Routes } from "react-router-native";
 import { Dimensions, Render } from "sdk-ui";
 import "zustand-polyfills";
@@ -12,14 +12,7 @@ function init() {
   // 在这里添加需要在渲染前执行的初始化逻辑
   // 例如：全局配置、环境检查、预加载资源等
   console.log("initialization...");
-  const { language } = useSettingsStore.getState();
-  console.log(`Current language setting: ${language}`);
-  // 如果语言设置为系统语言，则使用环境变量中的语言
-  if (language === "system") {
-    const env_lang = tjs.env.LANG || "en"; // Default to 'en' if not set
-    console.log(`Using environment language: ${env_lang}`);
-    i18n.changeLanguage(env_lang);
-  }
+  changeLanguage(useSettingsStore.getState().language);
 }
 
 const { window: windowDimensions } = Dimensions;
