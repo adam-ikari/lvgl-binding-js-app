@@ -1,4 +1,4 @@
-const { build } = require("sdk-dev");
+const { build } = require("sdk-cli");
 const env = process.env.NODE_ENV || "development";
 
 console.log(`Starting ${env} build...`);

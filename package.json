@@ -36,7 +36,7 @@
     "glob": "^10.3.15",
     "nodemon": "^3.1.10",
     "prettier": "^3.0.1",
-    "sdk-dev": "link:deps/sdk-dev",
+    "sdk-cli": "link:deps/sdk-cli",
     "terser": "^5.39.0"
   }
 }

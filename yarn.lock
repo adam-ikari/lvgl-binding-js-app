@@ -527,7 +527,7 @@ esbuild-plugin-alias@^0.2.1:
   resolved "https://registry.npmmirror.com/esbuild-plugin-alias/-/esbuild-plugin-alias-0.2.1.tgz#45a86cb941e20e7c2bc68a2bea53562172494fcb"
   integrity sha512-jyfL/pwPqaFXyKnj8lP8iLk6Z0m099uXR45aSN8Av1XD4vhvQutxxPzgA2bTcAwQpa1zCXDcWOlhFgyP3GKqhQ==
 
-esbuild@^0.25.1, esbuild@^0.25.5:
+esbuild@^0.25.5:
   version "0.25.5"
   resolved "https://registry.npmmirror.com/esbuild/-/esbuild-0.25.5.tgz#71075054993fdfae76c66586f9b9c1f8d7edd430"
   integrity sha512-P8OtKZRv/5J5hhz0cUAdu/cLuPIKXpQl1R9pZtvmHWQvrAUVd0UNIPT4IB4W3rNOqVO0rlqHmCIbSwxh/c9yUQ==
@@ -869,7 +869,7 @@ scheduler@^0.19.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-"sdk-dev@link:deps/sdk-dev":
+"sdk-cli@link:deps/sdk-cli":
   version "0.0.0"
   uid ""
 
