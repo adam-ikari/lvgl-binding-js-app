@@ -13,7 +13,8 @@
     "txiki.js Docs": {
       "url": "https://gitmcp.io/chenzd123456/txiki.js",
       "alwaysAllow": [
-        "search_txiki_js_documentation"
+        "search_txiki_js_documentation",
+        "fetch_txiki_js_documentation"
       ]
     }
   }
