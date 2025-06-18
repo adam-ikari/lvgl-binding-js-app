@@ -1,6 +1,7 @@
 import {
   ZButton,
   ZDropdown,
+  ZIconSymbol,
   ZRow,
   ZSwitch,
   ZText,
@@ -25,12 +26,18 @@ const GlobalStatusDemoScreen = () => {
       <PageSession title="Global Status">
         <ZText>{`counter: ${count}`}</ZText>
         <ZRow>
-          <ZButton onClick={() => inc()}>inc</ZButton>
-          <ZButton onClick={() => dec()}>inc</ZButton>
-          <ZButton onClick={() => reset()}>inc</ZButton>
+          <ZButton icon={ZIconSymbol.Minus} onClick={() => dec()}>
+            dec
+          </ZButton>
+          <ZButton icon={ZIconSymbol.Plus} onClick={() => inc()}>
+            inc
+          </ZButton>
+          <ZButton icon={ZIconSymbol.Refresh} onClick={() => reset()}>
+            reset
+          </ZButton>
         </ZRow>
       </PageSession>
-      <PageSession title="Settings">
+      <PageSession title="Persist Status">
         <ZRow width={ZWidthEnum.Full}>
           <ZRow style={{ "flex-grow": 1 }}>
             <ZText>{`Theme: ${theme}`}</ZText>
