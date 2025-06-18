@@ -44,6 +44,7 @@ const HomeScreen = () => {
       text: "Web API",
       children: [
         { text: "WASM Demo", path: "/wasm" },
+        { text: "Worker Demo", path: "/worker" },
         { text: "LocalStorage Demo", path: "/localstorage" },
       ],
     },
