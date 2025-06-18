@@ -1,36 +1,46 @@
 import { ZSizeEnum, ZStyleProps } from ".";
 import { useMergeStyle } from "../hooks/styleHooks";
 import { COMMON_STYLE } from "../styles/common_style";
-import React, { useLayoutEffect, useState } from "react";
-import { Dropdownlist } from "sdk-ui";
+import React, { useEffect, useMemo, useState } from "react";
+import {
+  Dropdownlist,
+  EDropdownListArrowDirection,
+  EDropdownlistDirection,
+} from "sdk-ui";
 
-const enum ZDropdownDirectionEnum {
-  None = 0x00,
-  Left = 1 << 0,
-  Right = 1 << 1,
-  Top = 1 << 2,
-  Bottom = 1 << 3,
-  Horizontal = (1 << 0) | (1 << 1),
-  Vertical = (1 << 2) | (1 << 3),
-  All = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3),
+enum ZDropdownDirectionEnum {
+  None = EDropdownlistDirection.none,
+  Left = EDropdownlistDirection.left,
+  Right = EDropdownlistDirection.right,
+  Top = EDropdownlistDirection.top,
+  Bottom = EDropdownlistDirection.bottom,
+  Horizontal = EDropdownlistDirection.horizontal,
+  Vertical = EDropdownlistDirection.vertical,
+  All = EDropdownlistDirection.all,
 }
 
-const enum ZDropdownArrowEnum {
-  Up = 0,
-  Right = 1,
-  Down = 2,
-  Left = 3,
+enum ZDropdownArrowEnum {
+  Up = EDropdownListArrowDirection.up,
+  Down = EDropdownListArrowDirection.down,
+  Left = EDropdownListArrowDirection.left,
+  Right = EDropdownListArrowDirection.right,
+}
+
+interface ZDropdownOption<T> {
+  label: string;
+  value: T;
+  disabled?: boolean;
 }
 
 interface ZDropdownProps<T> {
   style?: ZStyleProps;
   value?: T;
-  options?: Array<{ label: string; value: T }>;
+  options?: Array<ZDropdownOption<T>>;
   size?: ZSizeEnum;
-  onChange?: (value: T) => void;
+  onChange?: (value: T | undefined) => void;
   placeholder?: string;
-  direction?: ZDropdownDirectionEnum; // 0: up, 1: down, 2: left, 3: right
-  arrow?: number;
+  direction?: ZDropdownDirectionEnum;
+  arrow?: ZDropdownArrowEnum;
   [key: string]: any;
 }
 
@@ -57,37 +67,43 @@ const ZDropdown = <T,>(props: ZDropdownProps<T>) => {
     ...restProps
   } = props;
 
-  const [value, setValue] = useState(propValue);
+  const [internalValue, setInternalValue] = useState(propValue);
 
-  useLayoutEffect(() => {
-    if (value !== propValue) {
-      setValue(propValue);
-    }
+  useEffect(() => {
+    setInternalValue(propValue);
   }, [propValue]);
 
-  useLayoutEffect(() => {
-    if (value !== propValue && onChange) {
-      onChange(value);
-    }
-  }, [value]);
+  const selectedIndex = useMemo(() => {
+    return options.findIndex((opt) => opt.value === internalValue);
+  }, [options, internalValue]);
+
+  const itemLabels = useMemo(() => {
+    return options.map((opt) => opt.label);
+  }, [options]);
 
   const handleChange = (e: { value: any }) => {
-    const selectedValue = options.find((opt) => opt.label === e.value)?.value;
-    setValue(selectedValue);
-    if (onChange) {
-      onChange(selectedValue);
+    const selectedOption = options.find((opt) => opt.label === e.value);
+    setInternalValue(e.value);
+    if (selectedOption && onChange) {
+      onChange(selectedOption.value);
     }
   };
 
   return (
     <Dropdownlist
-      items={options.map((opt) => opt.label)}
-      selectIndex={options.findIndex((opt) => opt.value === propValue)}
-      text={propValue ? undefined : placeholder}
+      items={itemLabels}
+      selectIndex={selectedIndex}
+      // text={internalValue !== undefined ? null : placeholder}
       direction={direction}
       arrow={arrow}
-      highlightSelect={true}
-      style={mergeStyle(baseStyle, sizeStyleMap[size], propStyle)}
+      highlightSelect={internalValue !== undefined}
+      style={mergeStyle(
+        baseStyle,
+        sizeStyleMap[size],
+        propStyle,
+        props.disabled ? COMMON_STYLE.disabled : {},
+        internalValue === undefined ? COMMON_STYLE.textSecondary : {},
+      )}
       onChange={handleChange}
       {...restProps}
     />
