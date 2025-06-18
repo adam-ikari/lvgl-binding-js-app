@@ -7,7 +7,18 @@ const WorkerDemoScreen = () => {
   let worker: Worker | null = null;
 
   const handleCalculate = () => {
-    // TODO
+
+    console.log('hello!');
+
+    const w = new Worker('./worker1.worker.js');
+    w.addEventListener('message', event => {
+        const msg = event.data;
+        console.log('received message!');
+        console.log(JSON.stringify(msg));
+        w.terminate();
+    });
+
+    console.log('Worker created!');
   };
 
   return (
