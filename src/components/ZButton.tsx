@@ -1,4 +1,4 @@
-import { ZIconSymbol, ZSizeEnum, ZStyleProps, ZText } from ".";
+import { ZIconSymbol, ZSizeEnum, ZStyleProps, ZText, ZTextTypeEnum } from ".";
 import { ZIcon } from ".";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { COLORS, COMMON_STYLE } from "@/styles/common_style";
@@ -35,21 +35,35 @@ interface ButtonContentProps {
   children?: string;
   size: ZSizeEnum;
   type: ZButtonType;
+  text: boolean;
 }
 
 const ButtonContent = React.memo(
-  ({ icon, children, size, type }: ButtonContentProps) => {
+  ({ icon, children, size, type, text }: ButtonContentProps) => {
     if (!icon && !children) {
       return null;
     } else {
-      const light = type !== ZButtonTypeEnum.Default;
       return (
         <>
-          {icon && <ZIcon symbol={icon} size={size} light={light} />}
+          {icon && (
+            <ZIcon
+              symbol={icon}
+              size={size}
+              light={type !== ZButtonTypeEnum.Default}
+            />
+          )}
           {children && (
-            <ZText size={size} light={light}>
-              {children}
-            </ZText>
+            <>
+              {text ? (
+                <ZText size={size} type={type}>
+                  {children}
+                </ZText>
+              ) : (
+                <ZText light={type !== ZButtonTypeEnum.Default}>
+                  {children}
+                </ZText>
+              )}
+            </>
           )}
         </>
       );
@@ -200,7 +214,7 @@ const ZButton = (props: ZButtonProps) => {
       onClick={handleClick}
       {...restProps}
     >
-      <ButtonContent icon={icon} size={size} type={type}>
+      <ButtonContent icon={icon} size={size} type={type} text={text}>
         {children}
       </ButtonContent>
     </Component>
