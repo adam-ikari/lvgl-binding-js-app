@@ -1,16 +1,13 @@
-import { COMMON_STYLE } from "@/common_style";
 import {
   ZButton,
   ZButtonGroup,
   ZButtonTypeEnum,
-  ZCard,
   ZRow,
   ZSizeEnum,
   ZSwitch,
-  ZText,
 } from "@/components";
 import { ZIconSymbol } from "@/components";
-import { useMergeStyle } from "@/hooks/styleHooks";
+import PageSession from "@/screens/common/PageSession";
 import React, { useState } from "react";
 
 const buttonTypeData = [
@@ -27,17 +24,6 @@ const buttonGroupData = [
   { text: "Two" },
   { text: "Three" },
 ];
-
-const mergeStyle = useMergeStyle();
-
-const PageSession = ({ children, title }) => (
-  <ZCard
-    style={mergeStyle(COMMON_STYLE.fullWidth)}
-    header={<ZText size={ZSizeEnum.Large}>{title}</ZText>}
-  >
-    {children}
-  </ZCard>
-);
 
 const ButtonDemoScreen = () => {
   const [disable, setDisable] = useState(false);

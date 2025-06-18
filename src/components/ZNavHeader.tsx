@@ -25,10 +25,11 @@ const HomeButton = () => {
       style={{ "flex-grow": 0 }}
       size={ZSizeEnum.Small}
       icon={ZIconSymbol.Home}
-      text
       onClick={() => {
         navigate("/");
       }}
+      text
+      round
     />
   );
 };
@@ -40,8 +41,9 @@ const BackButton = React.memo(() => {
       style={{ "flex-grow": 0 }}
       size={ZSizeEnum.Small}
       icon={ZIconSymbol.Left}
-      text
       onClick={() => navigate(-1)}
+      text
+      round
     >
       back
     </ZButton>
@@ -141,4 +143,4 @@ const ZNavHeader = () => {
   );
 };
 
-export { ZNavHeader };
+export default ZNavHeader;

@@ -1,6 +1,8 @@
 import {
   ZButton,
   ZButtonTypeEnum,
+  ZFlexAlignItems,
+  ZFlexJustifyContent,
   ZIconSymbol,
   ZModal,
   ZRow,
@@ -8,12 +10,10 @@ import {
   ZText,
   ZWidthEnum,
 } from ".";
-import { COMMON_STYLE } from "@/common_style";
+import { COMMON_STYLE } from "@/styles/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
-import { Dimensions, EAlignType, View } from "lvgljs-ui";
+import { Dimensions, EAlignType, View } from "sdk-ui";
 import React, { useMemo } from "react";
-
-const mergeStyle = useMergeStyle();
 
 interface ZDialogProps {
   children?: React.ReactNode | React.ReactNode[];
@@ -27,6 +27,9 @@ interface ZDialogProps {
 
 const ZDialog = (props: ZDialogProps) => {
   const { width: windowWidth, height: windowHeight } = Dimensions.window;
+
+  const mergeStyle = useMergeStyle();
+
   const {
     children,
     title,
@@ -60,20 +63,13 @@ const ZDialog = (props: ZDialogProps) => {
           COMMON_STYLE.flexColumn,
           COMMON_STYLE.padding10,
           COMMON_STYLE.noBorder,
-          {
-            "border-radius": 4,
-          },
+          COMMON_STYLE.radius4,
         )}
         align={{
           type: EAlignType.ALIGN_CENTER,
         }}
       >
-        <ZRow
-          width={ZWidthEnum.Full}
-          style={{
-            "align-items": "center",
-          }}
-        >
+        <ZRow width={ZWidthEnum.Full} alignItems={ZFlexAlignItems.Center}>
           <ZRow style={{ "flex-grow": 1 }}>
             {title && <ZText size={ZSizeEnum.Large}>{title}</ZText>}
           </ZRow>
@@ -90,7 +86,11 @@ const ZDialog = (props: ZDialogProps) => {
         <ZRow width={ZWidthEnum.Full} style={{ "flex-grow": 1 }}>
           {children}
         </ZRow>
-        <ZRow width={ZWidthEnum.Full} style={{ "justify-content": "flex-end" }}>
+        <ZRow
+          width={ZWidthEnum.Full}
+          justifyContent={ZFlexJustifyContent.End}
+          alignItems={ZFlexAlignItems.Center}
+        >
           <ZButton onClick={onCancel}>Cancel</ZButton>
           <ZButton type={ZButtonTypeEnum.Primary} onClick={onConfirm}>
             Confirm
@@ -101,4 +101,4 @@ const ZDialog = (props: ZDialogProps) => {
   );
 };
 
-export { ZDialog };
+export default ZDialog;

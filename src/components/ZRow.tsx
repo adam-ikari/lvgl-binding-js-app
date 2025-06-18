@@ -1,11 +1,21 @@
-import { ZFlexContainer, ZFlexContainerProps } from "./ZFlexContainer";
+import {
+  ZFlexAlignItems,
+  ZFlexContainer,
+  ZFlexContainerDirection,
+  ZFlexContainerProps,
+} from ".";
 import React from "react";
 
-interface ZRowProps extends Omit<ZFlexContainerProps, "flexDirection"> {}
+export interface ZRowProps extends Omit<ZFlexContainerProps, "direction"> {}
 
 const ZRow = (props: ZRowProps) => {
-  return <ZFlexContainer {...props} flexDirection="row" />;
+  return (
+    <ZFlexContainer
+      {...props}
+      direction={ZFlexContainerDirection.Row}
+      alignItems={ZFlexAlignItems.Center}
+    />
+  );
 };
 
-export type { ZRowProps };
-export { ZRow };
+export default ZRow;

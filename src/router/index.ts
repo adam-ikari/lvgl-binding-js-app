@@ -1,12 +1,19 @@
 import ButtonDemoScreen from "@/screens/ButtonDemoScreen";
 import CardDemoScreen from "@/screens/CardDemoScreen";
+import CheckboxDemoScreen from "@/screens/CheckboxDemoScreen";
 import DialogDemoScreen from "@/screens/DialogDemoScreen";
+import DropdownDemoScreen from "@/screens/DropdownDemoScreen";
+import GlobalStatusDemoScreen from "@/screens/GlobalStatusDemoScreen";
 import HomeScreen from "@/screens/HomeScreen";
 import IconDemoScreen from "@/screens/IconDemoScreen";
+import ImageDemoScreen from "@/screens/ImageDemoScreen";
 import InputDemoScreen from "@/screens/InputDemoScreen";
 import ListDemoScreen from "@/screens/ListDemoScreen";
+import LocalstorageDemoScreen from "@/screens/LocalstorageDemoScreen";
+import ProcessBarScreen from "@/screens/ProcessBarScreen";
 import StateDemoScreen from "@/screens/StateDemoScreen";
-import SwitchDemoScreen from "@/screens/SwitchDemoScreen"
+import SwitchDemoScreen from "@/screens/SwitchDemoScreen";
+import WasmDemoScreen from "@/screens/WasmDemoScreen";
 
 export default [
   { name: "home", path: "/", component: HomeScreen, meta: { title: "Home" } },
@@ -27,6 +34,12 @@ export default [
     path: "/state",
     component: StateDemoScreen,
     meta: { title: "State Demo" },
+  },
+  {
+    name: "global_state",
+    path: "/global_state",
+    component: GlobalStatusDemoScreen,
+    meta: { title: "Global State Demo" },
   },
   {
     name: "list",
@@ -57,5 +70,41 @@ export default [
     path: "/switch",
     component: SwitchDemoScreen,
     meta: { title: "Switch Demo" },
+  },
+  {
+    name: "dropdown",
+    path: "/dropdown",
+    component: DropdownDemoScreen,
+    meta: { title: "Dropdown Demo" },
+  },
+  {
+    name: "process-bar",
+    path: "/process-bar",
+    component: ProcessBarScreen,
+    meta: { title: "Progress Bar Demo" },
+  },
+  {
+    name: "checkbox",
+    path: "/checkbox",
+    component: CheckboxDemoScreen,
+    meta: { title: "Checkbox Demo" },
+  },
+  {
+    name: "wasm",
+    path: "/wasm",
+    component: WasmDemoScreen,
+    meta: { title: "WASM Demo" },
+  },
+  {
+    name: "localstorage",
+    path: "/localstorage",
+    component: LocalstorageDemoScreen,
+    meta: { title: "LocalStorage Demo" },
+  },
+  {
+    name: "image",
+    path: "/image",
+    component: ImageDemoScreen,
+    meta: { title: "Image Demo" },
   },
 ];

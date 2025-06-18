@@ -1,14 +1,12 @@
 import { ZIconSymbol, ZSizeEnum, ZStyleProps, ZText } from ".";
-import { ZIcon } from "./ZIcon";
-import { COLORS, COMMON_STYLE, CONSTANTS } from "@/common_style";
+import { ZIcon } from ".";
 import { useMergeStyle } from "@/hooks/styleHooks";
-import { Button, View } from "lvgljs-ui";
+import { COLORS, COMMON_STYLE } from "@/styles/common_style";
 import * as _ from "radash";
 import React, { useMemo } from "react";
+import { Button, View } from "sdk-ui";
 
-const mergeStyle = useMergeStyle();
-
-enum ZButtonTypeEnum {
+const enum ZButtonTypeEnum {
   Default = "default",
   Primary = "primary",
   Success = "success",
@@ -17,11 +15,13 @@ enum ZButtonTypeEnum {
   Warning = "warning",
 }
 
+type ZButtonType = `${ZButtonTypeEnum}`;
+
 interface ZButtonProps {
   children?: string;
   style?: ZStyleProps;
   icon?: ZIconSymbol;
-  type?: ZButtonTypeEnum;
+  type?: ZButtonType;
   size?: ZSizeEnum;
   text?: boolean;
   round?: boolean;
@@ -30,133 +30,27 @@ interface ZButtonProps {
   [key: string]: any;
 }
 
-const baseStyle: ZStyleProps = mergeStyle(
-  COMMON_STYLE.flexRow,
-  COMMON_STYLE.alignItemsCenter,
-  COMMON_STYLE.justifyContentCenter,
-  COMMON_STYLE.autoWidth,
-  COMMON_STYLE.autoHeight,
-  COMMON_STYLE.radius4,
-  {
-    "border-color": COLORS.BORDER,
-    "shadow-width": 0,
-    "padding-top": 0,
-    "padding-bottom": 0,
-  },
-);
-
-const normalStyleMap: Record<string, ZStyleProps> = {
-  primary: {
-    ...COMMON_STYLE.border1,
-    "background-color": COLORS.PRIMARY,
-    "text-color": COLORS.WHITE,
-  },
-  success: {
-    ...COMMON_STYLE.border1,
-    "background-color": COLORS.SUCCESS,
-    "text-color": COLORS.WHITE,
-  },
-  info: {
-    ...COMMON_STYLE.border1,
-    "background-color": COLORS.INFO,
-    "text-color": COLORS.WHITE,
-  },
-  danger: {
-    ...COMMON_STYLE.border1,
-    "background-color": COLORS.DANGER,
-    "text-color": COLORS.WHITE,
-  },
-  warning: {
-    ...COMMON_STYLE.border1,
-    "background-color": COLORS.WARNING,
-    "text-color": COLORS.WHITE,
-  },
-  default: {
-    ...COMMON_STYLE.border1,
-    "background-color": COLORS.WHITE,
-    "text-color": COLORS.REGULAR_TEXT,
-  },
-};
-
-const textStyleMap: Record<string, ZStyleProps> = {
-  primary: {
-    ...COMMON_STYLE.noBorder,
-    "background-color": COLORS.WHITE,
-    "text-color": COLORS.PRIMARY,
-  },
-  success: {
-    ...COMMON_STYLE.noBorder,
-    "background-color": COLORS.WHITE,
-    "text-color": COLORS.SUCCESS,
-  },
-  info: {
-    ...COMMON_STYLE.noBorder,
-    "background-color": COLORS.WHITE,
-    "text-color": COLORS.INFO,
-  },
-  danger: {
-    ...COMMON_STYLE.noBorder,
-    "background-color": COLORS.WHITE,
-    "text-color": COLORS.DANGER,
-  },
-  warning: {
-    ...COMMON_STYLE.noBorder,
-    "background-color": COLORS.WHITE,
-    "text-color": COLORS.WARNING,
-  },
-  default: {
-    ...COMMON_STYLE.noBorder,
-    "background-color": COLORS.WHITE,
-    "text-color": COLORS.REGULAR_TEXT,
-  },
-};
-
-const disabledStyle: ZStyleProps = {
-  opacity: 0.6,
-};
-
-const sizeStyleMap: Record<string, ZStyleProps> = {
-  small: mergeStyle(
-    COMMON_STYLE.minWidth32,
-    COMMON_STYLE.minHeight32,
-    COMMON_STYLE.fontSizeSmall,
-    COMMON_STYLE.paddingHorizontal8,
-  ),
-  default: mergeStyle(
-    COMMON_STYLE.minWidth36,
-    COMMON_STYLE.minHeight36,
-    COMMON_STYLE.fontSizeDefault,
-    COMMON_STYLE.paddingHorizontal8,
-  ),
-  large: mergeStyle(
-    COMMON_STYLE.minWidth40,
-    COMMON_STYLE.minHeight40,
-    COMMON_STYLE.fontSizeLarge,
-    COMMON_STYLE.paddingHorizontal8,
-  ),
-};
-
-const roundStyle: ZStyleProps = COMMON_STYLE.radiusMax
-
-const noChildStyle: ZStyleProps = {
-  padding: 0,
-};
-
 interface ButtonContentProps {
   icon?: ZIconSymbol;
   children?: string;
   size: ZSizeEnum;
+  type: ZButtonType;
 }
 
 const ButtonContent = React.memo(
-  ({ icon, children, size }: ButtonContentProps) => {
+  ({ icon, children, size, type }: ButtonContentProps) => {
     if (!icon && !children) {
       return null;
     } else {
+      const light = type !== ZButtonTypeEnum.Default;
       return (
         <>
-          {icon ? <ZIcon symbol={icon} size={size} /> : null}
-          {children ? <ZText size={size}>{children}</ZText> : null}
+          {icon && <ZIcon symbol={icon} size={size} light={light} />}
+          {children && (
+            <ZText size={size} light={light}>
+              {children}
+            </ZText>
+          )}
         </>
       );
     }
@@ -164,6 +58,109 @@ const ButtonContent = React.memo(
 );
 
 const ZButton = (props: ZButtonProps) => {
+  const mergeStyle = useMergeStyle();
+
+  const baseStyle: ZStyleProps = mergeStyle(
+    COMMON_STYLE.flexRow,
+    COMMON_STYLE.alignItemsCenter,
+    COMMON_STYLE.justifyContentCenter,
+    COMMON_STYLE.autoWidth,
+    COMMON_STYLE.autoHeight,
+    COMMON_STYLE.radius4,
+    COMMON_STYLE.paddingVertical0,
+    {
+      "border-color": COLORS.BORDER,
+      "shadow-width": 0,
+    },
+  );
+
+  const normalStyleMap: Record<string, ZStyleProps> = {
+    primary: mergeStyle(COMMON_STYLE.border1, {
+      "background-color": COLORS.PRIMARY,
+      "text-color": COLORS.WHITE,
+    }),
+    success: mergeStyle(COMMON_STYLE.border1, {
+      "background-color": COLORS.SUCCESS,
+      "text-color": COLORS.WHITE,
+    }),
+    info: mergeStyle(COMMON_STYLE.border1, {
+      ...COMMON_STYLE.border1,
+      "background-color": COLORS.INFO,
+      "text-color": COLORS.WHITE,
+    }),
+    danger: mergeStyle(COMMON_STYLE.border1, {
+      "background-color": COLORS.DANGER,
+      "text-color": COLORS.WHITE,
+    }),
+    warning: mergeStyle(COMMON_STYLE.border1, {
+      "background-color": COLORS.WARNING,
+      "text-color": COLORS.WHITE,
+    }),
+    default: mergeStyle(COMMON_STYLE.border1, {
+      ...COMMON_STYLE.border1,
+      "background-color": COLORS.WHITE,
+      "text-color": COLORS.REGULAR_TEXT,
+    }),
+  };
+
+  const textStyleMap: Record<string, ZStyleProps> = {
+    primary: mergeStyle(COMMON_STYLE.noBorder, {
+      "background-color": COLORS.WHITE,
+      "text-color": COLORS.PRIMARY,
+    }),
+    success: mergeStyle(COMMON_STYLE.noBorder, {
+      "background-color": COLORS.WHITE,
+      "text-color": COLORS.SUCCESS,
+    }),
+    info: mergeStyle(COMMON_STYLE.noBorder, {
+      "background-color": COLORS.WHITE,
+      "text-color": COLORS.INFO,
+    }),
+    danger: mergeStyle(COMMON_STYLE.noBorder, {
+      "background-color": COLORS.WHITE,
+      "text-color": COLORS.DANGER,
+    }),
+    warning: mergeStyle(COMMON_STYLE.noBorder, {
+      "background-color": COLORS.WHITE,
+      "text-color": COLORS.WARNING,
+    }),
+    default: mergeStyle(COMMON_STYLE.noBorder, {
+      "background-color": COLORS.WHITE,
+      "text-color": COLORS.REGULAR_TEXT,
+    }),
+  };
+
+  const disabledStyle: ZStyleProps = {
+    opacity: 0.6,
+  };
+
+  const sizeStyleMap: Record<string, ZStyleProps> = {
+    small: mergeStyle(
+      COMMON_STYLE.minWidth32,
+      COMMON_STYLE.height32,
+      COMMON_STYLE.fontSizeSmall,
+      COMMON_STYLE.paddingHorizontal4,
+    ),
+    default: mergeStyle(
+      COMMON_STYLE.minWidth36,
+      COMMON_STYLE.height36,
+      COMMON_STYLE.fontSizeDefault,
+      COMMON_STYLE.paddingHorizontal8,
+    ),
+    large: mergeStyle(
+      COMMON_STYLE.minWidth48,
+      COMMON_STYLE.height48,
+      COMMON_STYLE.fontSizeLarge,
+      COMMON_STYLE.paddingHorizontal16,
+    ),
+  };
+
+  const roundStyle: ZStyleProps = COMMON_STYLE.radiusMax;
+
+  const noChildStyle: ZStyleProps = {
+    padding: 0,
+  };
+
   const {
     children,
     style: propStyle = {},
@@ -203,12 +200,13 @@ const ZButton = (props: ZButtonProps) => {
       onClick={handleClick}
       {...restProps}
     >
-      <ButtonContent icon={icon} size={size}>
+      <ButtonContent icon={icon} size={size} type={type}>
         {children}
       </ButtonContent>
     </Component>
   );
 };
 
-export type { ZButtonProps };
-export { ZButton, ZButtonTypeEnum };
+export type { ZButtonProps, ZButtonType };
+export { ZButtonTypeEnum };
+export default ZButton;

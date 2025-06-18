@@ -1,10 +1,7 @@
-import { COMMON_STYLE } from "@/common_style";
+import { COMMON_STYLE } from "@/styles/common_style";
 import { ZButton, ZRow, ZSizeEnum } from "@/components";
 import { useMergeStyle } from "@/hooks/styleHooks";
-import * as _ from "radash";
 import React from "react";
-
-const mergeStyle = useMergeStyle();
 
 interface ZButtonGroupProps {
   children?: React.ReactNode | React.ReactNode[];
@@ -12,6 +9,8 @@ interface ZButtonGroupProps {
 }
 
 const ZButtonGroup = (props: ZButtonGroupProps) => {
+  const mergeStyle = useMergeStyle();
+
   const { children, size = ZSizeEnum.Default } = props;
 
   return (
@@ -32,4 +31,4 @@ const ZButtonGroup = (props: ZButtonGroupProps) => {
 };
 
 export type { ZButtonGroupProps };
-export { ZButtonGroup };
+export default ZButtonGroup;

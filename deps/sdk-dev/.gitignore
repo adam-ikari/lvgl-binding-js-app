@@ -1,0 +1,14 @@
+# Build artifacts
+build/
+node_modules/
+
+# Logs
+*.log
+
+# IDE files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db

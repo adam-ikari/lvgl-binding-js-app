@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "lv_binding_js Docs": {
+      "url": "https://gitmcp.io/lvgl/lv_binding_js?tab=readme-ov-file",
+      "disabled": false,
+      "autoApprove": [],
+      "alwaysAllow": [
+        "fetch_lv_binding_js_documentation",
+        "search_lv_binding_js_docs",
+        "fetch_generic_url_content"
+      ]
+    },
+    "txiki.js Docs": {
+      "url": "https://gitmcp.io/chenzd123456/txiki.js"
+    }
+  }
+}

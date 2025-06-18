@@ -1,6 +1,7 @@
-import { COLORS, COMMON_STYLE } from "@/common_style";
+import { COLORS, COMMON_STYLE } from "@/styles/common_style";
 import {
   ZButton,
+  ZButtonTypeEnum,
   ZColumn,
   ZHeightEnum,
   ZIconSymbol,
@@ -9,7 +10,7 @@ import {
   ZWidthEnum,
 } from "@/components";
 import { useMergeStyle } from "@/hooks/styleHooks";
-import { EAlignType, View } from "lvgljs-ui";
+import { EAlignType, View } from "sdk-ui";
 import React, { useRef } from "react";
 
 const mergeStyle = useMergeStyle();
@@ -52,8 +53,9 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
         }}
         align={{
           type: EAlignType.ALIGN_BOTTOM_RIGHT,
-          pos: [-10, -10],
+          pos: [-40, -40],
         }}
+        type={ZButtonTypeEnum.Primary}
         size={ZSizeEnum.Large}
         icon={ZIconSymbol.Up}
         round

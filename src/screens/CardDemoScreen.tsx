@@ -1,4 +1,4 @@
-import { COLORS } from "@/common_style";
+import { COLORS } from "@/styles/common_style";
 import { ZCard, ZRow, ZSizeEnum, ZText } from "@/components";
 import React from "react";
 

@@ -1,12 +1,24 @@
 import { ZSizeEnum, ZStyleProps } from ".";
-import { COMMON_STYLE } from "../common_style";
-import { Text } from "lvgljs-ui";
+import { COLORS, COMMON_STYLE } from "../styles/common_style";
 import React, { useMemo } from "react";
+import { Text } from "sdk-ui";
+
+const enum ZTextTypeEnum {
+  Default = "default",
+  Primary = "primary",
+  Success = "success",
+  Info = "info",
+  Danger = "danger",
+  Warning = "warning",
+}
 
 interface ZTextProps {
   children?: string;
   style?: ZStyleProps;
   size?: ZSizeEnum;
+  type?: ZTextTypeEnum;
+  light?: boolean;
+  [key: string]: any;
 }
 
 const baseStyle: ZStyleProps = {};
@@ -23,29 +35,78 @@ const sizeStyleMap: Record<string, ZStyleProps> = {
   },
 };
 
+const typeStyleMap: Record<string, ZStyleProps> = {
+  primary: {
+    "text-color": COLORS.PRIMARY,
+  },
+  success: {
+    "text-color": COLORS.SUCCESS,
+  },
+  info: {
+    "text-color": COLORS.INFO,
+  },
+  danger: {
+    "text-color": COLORS.DANGER,
+  },
+  warning: {
+    "text-color": COLORS.WARNING,
+  },
+  default: {
+    "text-color": COLORS.REGULAR_TEXT,
+  },
+};
+
+const lightStyleMap: Record<string, ZStyleProps> = {
+  primary: {
+    "text-color": COLORS.PRIMARY,
+  },
+  success: {
+    "text-color": COLORS.SUCCESS,
+  },
+  info: {
+    "text-color": COLORS.INFO,
+  },
+  danger: {
+    "text-color": COLORS.DANGER,
+  },
+  warning: {
+    "text-color": COLORS.WARNING,
+  },
+  default: {
+    "text-color": COLORS.WHITE,
+  },
+};
+
 const ZText = (props: ZTextProps) => {
   const {
     children = "",
     style: propStyle = {},
     size = ZSizeEnum.Default,
+    type = ZTextTypeEnum.Default,
+    light,
+    ...restProps
   } = props;
 
   const computedStyle = useMemo(() => {
     return {
       ...baseStyle,
       ...sizeStyleMap[size],
+      ...(light ? lightStyleMap[type] : typeStyleMap[type]),
     };
-  }, [size]);
+  }, [size, type, light]);
+
   return (
     <Text
       style={{
         ...computedStyle,
         ...propStyle,
       }}
+      {...restProps}
     >
       {children}
     </Text>
   );
 };
-
-export { ZText, ZTextProps };
+export type { ZTextProps };
+export { ZTextTypeEnum };
+export default ZText;

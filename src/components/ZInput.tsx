@@ -1,12 +1,12 @@
-import { ZButton, ZIconSymbol, ZRow, ZSizeEnum, ZStyleProps } from ".";
-import { COMMON_STYLE, CONSTANTS } from "@/common_style";
+import { ZButton, ZIconSymbol, ZSizeEnum, ZStyleProps } from ".";
+import { COMMON_STYLE, CONSTANTS } from "@/styles/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
-import { Input } from "lvgljs-ui";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { EAlignType, Input, View } from "sdk-ui";
+import React, { useLayoutEffect, useMemo, useState } from "react";
 
 const mergeStyle = useMergeStyle();
 
-enum ZInputModeEnum {
+const enum ZInputModeEnum {
   TEXT = "text",
   PASSWORD = "password",
 }
@@ -25,30 +25,27 @@ interface ZInputProps {
 const style = {
   input: mergeStyle(COMMON_STYLE.noBorder),
   view: mergeStyle(
-    COMMON_STYLE.flexRow,
-    COMMON_STYLE.alignItemsCenter,
-    COMMON_STYLE.justifyContentCenter,
     COMMON_STYLE.autoWidth,
-    COMMON_STYLE.autoHeight,
     COMMON_STYLE.radius4,
     COMMON_STYLE.border1,
+    COMMON_STYLE.padding0,
   ),
 };
 
 const sizeStyleMap: Record<string, ZStyleProps> = {
   small: mergeStyle(
     COMMON_STYLE.minWidth36,
-    COMMON_STYLE.minHeight36,
+    COMMON_STYLE.height36,
     COMMON_STYLE.fontSizeSmall,
   ),
   default: mergeStyle(
     COMMON_STYLE.minWidth40,
-    COMMON_STYLE.minHeight40,
+    COMMON_STYLE.height40,
     COMMON_STYLE.fontSizeDefault,
   ),
   large: mergeStyle(
     COMMON_STYLE.minWidth48,
-    COMMON_STYLE.minHeight48,
+    COMMON_STYLE.height48,
     COMMON_STYLE.fontSizeLarge,
   ),
 };
@@ -59,50 +56,43 @@ interface ClearButtonProps {
   display?: boolean;
 }
 
-const ClearButton = React.memo<ClearButtonProps>(
-  ({ size, onClick, display = true }) => {
-    if (display) {
-      return (
-        <ZButton
-          size={size}
-          onClick={onClick}
-          icon={ZIconSymbol.Backspace}
-          round
-          text
-        ></ZButton>
-      );
-    } else {
-      return (
-        <ZButton
-          size={size}
-          icon={ZIconSymbol.Backspace}
-          round
-          text
-          disable
-          style={{ opacity: 0 }}
-        ></ZButton>
-      );
-    }
-  },
-);
+const ClearButton = React.memo<ClearButtonProps>(({ size, onClick }) => {
+  return (
+    <ZButton
+      size={size}
+      icon={ZIconSymbol.Backspace}
+      onClick={onClick}
+      round
+      text
+      align={{
+        type: EAlignType.ALIGN_RIGHT_MID,
+      }}
+    ></ZButton>
+  );
+});
 
 const ZInput = (props: ZInputProps) => {
   const {
     placeholder = "",
     mode = "text",
     size = ZSizeEnum.Default,
-    value = "",
+    value: propValue = "",
     allowClean = false,
     maxLength = 256,
     round = false,
     onChange,
   } = props;
 
-  const [input, setInput] = useState(value);
-  const inputRef = useRef();
+  const [input, setInput] = useState(propValue);
 
-  useEffect(() => {
-    if (onChange) {
+  useLayoutEffect(() => {
+    if (input !== propValue) {
+      onChange(input);
+    }
+  }, [propValue]);
+
+  useLayoutEffect(() => {
+    if (input !== propValue && onChange) {
       onChange(input);
     }
   }, [input]);
@@ -110,19 +100,17 @@ const ZInput = (props: ZInputProps) => {
   const computedInputStyle = useMemo(() => {
     return mergeStyle(
       sizeStyleMap[size],
-      round ? { "border-radius": CONSTANTS.MAX_RADIUS } : {},
+      round && { "border-radius": CONSTANTS.MAX_RADIUS },
     );
   }, [size, round, mergeStyle]);
 
   const clearInput = () => {
     setInput("");
-    // inputRef.current.focus(); // not work
   };
 
   return (
-    <ZRow style={style.view} gap={0}>
+    <View style={mergeStyle(style.view, computedInputStyle)}>
       <Input
-        // ref={inputRef}
         style={mergeStyle(style.input, computedInputStyle)}
         placeholder={placeholder}
         maxlength={maxLength}
@@ -133,15 +121,17 @@ const ZInput = (props: ZInputProps) => {
         onFocusStyle={COMMON_STYLE.noBorder}
         autoKeyBoard={true}
         mode={mode}
+        align={{
+          type: EAlignType.ALIGN_CENTER,
+        }}
       ></Input>
-      <ClearButton
-        onClick={clearInput}
-        size={size}
-        display={allowClean && input && input.length > 0}
-      />
-    </ZRow>
+      {allowClean && input && input.length > 0 ? (
+        <ClearButton onClick={clearInput} size={size} />
+      ) : null}
+    </View>
   );
 };
 
 export type { ZInputProps };
-export { ZInput, ZInputModeEnum };
+export { ZInputModeEnum };
+export default ZInput;

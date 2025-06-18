@@ -1,5 +1,5 @@
 import { ZStyleProps } from "./common";
-import { EAlignType, Mask, View } from "lvgljs-ui";
+import { EAlignType, Mask, View } from "sdk-ui";
 import React from "react";
 
 interface ZModalProps {
@@ -22,4 +22,4 @@ const ZModal = (props: ZModalProps) => {
 };
 
 export type { ZModalProps };
-export { ZModal };
+export default ZModal;
