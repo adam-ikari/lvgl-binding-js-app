@@ -1,6 +1,6 @@
-import { ProgressBar } from "sdk-ui";
+import { ZStyleProps } from "@/components";
 import React, { useEffect, useState } from "react";
-import { StyleProp } from "@/types";
+import { ProgressBar } from "sdk-ui";
 
 interface ZProcessBarProps {
   value: number;
@@ -11,8 +11,8 @@ interface ZProcessBarProps {
   backgroundColor?: string;
   animated?: boolean;
   animationDuration?: number;
-  style?: StyleProp;
-  onChange?: (value: number) => void;
+  style?: ZStyleProps;
+  [key: string]: any;
 }
 
 const ZProcessBar = ({
@@ -24,8 +24,8 @@ const ZProcessBar = ({
   backgroundColor = "#E0E0E0",
   animated = true,
   animationDuration = 300,
-  style: customStyle = {},
-  onChange,
+  style: propStyle = {},
+  ...restProps
 }: ZProcessBarProps) => {
   const [currentValue, setCurrentValue] = useState(value);
 
@@ -40,25 +40,19 @@ const ZProcessBar = ({
     }
   }, [value, animated, animationDuration]);
 
-  const progressBarStyle = {
-    height: `${height}px`,
+  const progressBarStyle: ZStyleProps = {
+    height: height,
     backgroundColor,
-    borderRadius: `${height / 2}px`,
-    ...customStyle,
-  };
-
-  const progressStyle = {
-    backgroundColor: color,
-    borderRadius: `${height / 2}px`,
+    borderRadius: height / 2,
+    ...propStyle,
   };
 
   return (
     <ProgressBar
       style={progressBarStyle}
-      progressStyle={progressStyle}
       range={[min, max]}
       value={currentValue}
-      onChange={onChange}
+      {...restProps}
     />
   );
 };

@@ -1,15 +1,15 @@
 import {
+  ZColorTypeEnum,
   ZFlexAlignItems,
   ZRow,
   ZSizeEnum,
   ZStyleProps,
   ZText,
-  ZTextTypeEnum,
 } from ".";
-import { COMMON_STYLE } from "../styles/common_style";
 import { useMergeStyle } from "../hooks/styleHooks";
-import { Checkbox } from "sdk-ui";
+import { COMMON_STYLE } from "../styles/common_style";
 import React, { useLayoutEffect, useState } from "react";
+import { Checkbox } from "sdk-ui";
 
 const mergeStyle = useMergeStyle();
 
@@ -68,7 +68,7 @@ const ZCheckbox = (props: ZCheckboxProps) => {
         disabled={disabled}
       />
       {label && (
-        <ZText type={value ? ZTextTypeEnum.Primary : ZTextTypeEnum.Default}>
+        <ZText type={value ? ZColorTypeEnum.Primary : ZColorTypeEnum.Default}>
           {label}
         </ZText>
       )}

@@ -1,15 +1,15 @@
 import {
+  ZColorTypeEnum,
   ZFlexAlignItems,
   ZRow,
   ZSizeEnum,
   ZStyleProps,
   ZText,
-  ZTextTypeEnum,
 } from ".";
-import { COMMON_STYLE } from "@/styles/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
-import { Switch } from "sdk-ui";
+import { COMMON_STYLE } from "@/styles/common_style";
 import React, { useEffect, useLayoutEffect, useState } from "react";
+import { Switch } from "sdk-ui";
 
 const mergeStyle = useMergeStyle();
 
@@ -61,7 +61,7 @@ const ZSwitch = (props: ZSwitchProps) => {
   return (
     <ZRow alignItems={ZFlexAlignItems.Center} gap={4}>
       {inactiveText && (
-        <ZText type={!value ? ZTextTypeEnum.Primary : ZTextTypeEnum.Default}>
+        <ZText type={!value ? ZColorTypeEnum.Primary : ZColorTypeEnum.Default}>
           {inactiveText}
         </ZText>
       )}

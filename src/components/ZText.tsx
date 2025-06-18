@@ -1,22 +1,13 @@
-import { ZSizeEnum, ZStyleProps } from ".";
+import { ZColorTypeEnum, ZSizeEnum, ZStyleProps } from ".";
 import { COLORS, COMMON_STYLE } from "../styles/common_style";
 import React, { useMemo } from "react";
 import { Text } from "sdk-ui";
-
-const enum ZTextTypeEnum {
-  Default = "default",
-  Primary = "primary",
-  Success = "success",
-  Info = "info",
-  Danger = "danger",
-  Warning = "warning",
-}
 
 interface ZTextProps {
   children?: string;
   style?: ZStyleProps;
   size?: ZSizeEnum;
-  type?: ZTextTypeEnum;
+  type?: ZColorTypeEnum;
   light?: boolean;
   [key: string]: any;
 }
@@ -82,7 +73,7 @@ const ZText = (props: ZTextProps) => {
     children = "",
     style: propStyle = {},
     size = ZSizeEnum.Default,
-    type = ZTextTypeEnum.Default,
+    type = ZColorTypeEnum.Default,
     light,
     ...restProps
   } = props;
@@ -108,5 +99,4 @@ const ZText = (props: ZTextProps) => {
   );
 };
 export type { ZTextProps };
-export { ZTextTypeEnum };
 export default ZText;

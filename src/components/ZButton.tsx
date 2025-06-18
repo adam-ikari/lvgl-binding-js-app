@@ -1,4 +1,4 @@
-import { ZIconSymbol, ZSizeEnum, ZStyleProps, ZText, ZTextTypeEnum } from ".";
+import { ZColorTypeEnum, ZIconSymbol, ZSizeEnum, ZStyleProps, ZText } from ".";
 import { ZIcon } from ".";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { COLORS, COMMON_STYLE } from "@/styles/common_style";
@@ -6,22 +6,11 @@ import * as _ from "radash";
 import React, { useMemo } from "react";
 import { Button, View } from "sdk-ui";
 
-const enum ZButtonTypeEnum {
-  Default = "default",
-  Primary = "primary",
-  Success = "success",
-  Info = "info",
-  Danger = "danger",
-  Warning = "warning",
-}
-
-type ZButtonType = `${ZButtonTypeEnum}`;
-
 interface ZButtonProps {
   children?: string;
   style?: ZStyleProps;
   icon?: ZIconSymbol;
-  type?: ZButtonType;
+  type?: ZColorTypeEnum;
   size?: ZSizeEnum;
   text?: boolean;
   round?: boolean;
@@ -34,7 +23,7 @@ interface ButtonContentProps {
   icon?: ZIconSymbol;
   children?: string;
   size: ZSizeEnum;
-  type: ZButtonType;
+  type: ZColorTypeEnum;
   text: boolean;
 }
 
@@ -49,17 +38,17 @@ const ButtonContent = React.memo(
             <ZIcon
               symbol={icon}
               size={size}
-              light={type !== ZButtonTypeEnum.Default}
+              light={type !== ZColorTypeEnum.Default}
             />
           )}
           {children && (
             <>
               {text ? (
-                <ZText size={size} type={type}>
+                <ZText size={size} type={type as ZColorTypeEnum}>
                   {children}
                 </ZText>
               ) : (
-                <ZText light={type !== ZButtonTypeEnum.Default}>
+                <ZText light={type !== ZColorTypeEnum.Default}>
                   {children}
                 </ZText>
               )}
@@ -179,7 +168,7 @@ const ZButton = (props: ZButtonProps) => {
     children,
     style: propStyle = {},
     icon,
-    type = ZButtonTypeEnum.Default,
+    type = ZColorTypeEnum.Default,
     size = ZSizeEnum.Default,
     text = false,
     round = false,
@@ -221,6 +210,5 @@ const ZButton = (props: ZButtonProps) => {
   );
 };
 
-export type { ZButtonProps, ZButtonType };
-export { ZButtonTypeEnum };
+export type { ZButtonProps };
 export default ZButton;

@@ -18,11 +18,7 @@ const ProcessBarScreen = () => {
 
       <ZProcessBar value={60} color="#FF5722" backgroundColor="#FFECB3" />
 
-      <ZProcessBar
-        value={progress}
-        color="#2196F3"
-        onChange={(val) => console.log("Progress:", val)}
-      />
+      <ZProcessBar value={progress} color="#2196F3" />
 
       <ZProcessBar value={80} height={16} color="#9C27B0" />
     </PageSession>

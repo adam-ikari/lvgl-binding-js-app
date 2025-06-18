@@ -1,7 +1,7 @@
 import {
   ZButton,
   ZButtonGroup,
-  ZButtonTypeEnum,
+  ZColorTypeEnum,
   ZRow,
   ZSizeEnum,
   ZSwitch,
@@ -11,16 +11,16 @@ import PageSession from "@/screens/common/PageSession";
 import React, { useState } from "react";
 
 const buttonTypeData = [
-  { text: "Default", type: ZButtonTypeEnum.Default },
-  { text: "Primary", type: ZButtonTypeEnum.Primary },
-  { text: "Success", type: ZButtonTypeEnum.Success },
-  { text: "Info", type: ZButtonTypeEnum.Info },
-  { text: "Danger", type: ZButtonTypeEnum.Danger },
-  { text: "Warning", type: ZButtonTypeEnum.Warning },
+  { text: "Default", type: ZColorTypeEnum.Default },
+  { text: "Primary", type: ZColorTypeEnum.Primary },
+  { text: "Success", type: ZColorTypeEnum.Success },
+  { text: "Info", type: ZColorTypeEnum.Info },
+  { text: "Danger", type: ZColorTypeEnum.Danger },
+  { text: "Warning", type: ZColorTypeEnum.Warning },
 ];
 
 const buttonGroupData = [
-  { text: "One", type: ZButtonTypeEnum.Primary },
+  { text: "One", type: ZColorTypeEnum.Primary },
   { text: "Two" },
   { text: "Three" },
 ];
@@ -109,17 +109,17 @@ const ButtonDemoScreen = () => {
           ))}
         </ZRow>
         <ZRow>
-          <ZButton type={ZButtonTypeEnum.Primary} icon={ZIconSymbol.Home}>
+          <ZButton type={ZColorTypeEnum.Primary} icon={ZIconSymbol.Home}>
             Home
           </ZButton>
           <ZButton icon={ZIconSymbol.Call} text>
             Call
           </ZButton>
-          <ZButton type={ZButtonTypeEnum.Danger} icon={ZIconSymbol.Trash} round>
+          <ZButton type={ZColorTypeEnum.Danger} icon={ZIconSymbol.Trash} round>
             Delete
           </ZButton>
           <ZButton
-            type={ZButtonTypeEnum.Info}
+            type={ZColorTypeEnum.Info}
             icon={ZIconSymbol.Trash}
             disable
             round

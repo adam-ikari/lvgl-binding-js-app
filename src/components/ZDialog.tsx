@@ -1,6 +1,6 @@
 import {
   ZButton,
-  ZButtonTypeEnum,
+  ZColorTypeEnum,
   ZFlexAlignItems,
   ZFlexJustifyContent,
   ZIconSymbol,
@@ -92,7 +92,7 @@ const ZDialog = (props: ZDialogProps) => {
           alignItems={ZFlexAlignItems.Center}
         >
           <ZButton onClick={onCancel}>Cancel</ZButton>
-          <ZButton type={ZButtonTypeEnum.Primary} onClick={onConfirm}>
+          <ZButton type={ZColorTypeEnum.Primary} onClick={onConfirm}>
             Confirm
           </ZButton>
         </ZRow>
