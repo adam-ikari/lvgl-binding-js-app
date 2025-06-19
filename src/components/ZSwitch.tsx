@@ -75,7 +75,7 @@ const ZSwitch = (props: ZSwitchProps) => {
         disabled={disabled}
       />
       {activeText && (
-        <ZText type={value ? ZTextTypeEnum.Primary : ZTextTypeEnum.Default}>
+        <ZText type={value ? ZColorTypeEnum.Primary : ZColorTypeEnum.Default}>
           {activeText}
         </ZText>
       )}

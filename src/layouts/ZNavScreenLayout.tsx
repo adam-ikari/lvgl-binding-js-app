@@ -13,8 +13,6 @@ import { COLORS, COMMON_STYLE } from "@/styles/common_style";
 import React, { useRef } from "react";
 import { EAlignType, View } from "sdk-ui";
 
-const mergeStyle = useMergeStyle();
-
 interface ZNavScreenLayoutProps {
   children?: React.ReactNode | React.ReactNode[];
 }
@@ -22,6 +20,7 @@ interface ZNavScreenLayoutProps {
 const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
   const { children } = props;
 
+  const mergeStyle = useMergeStyle();
   const topElementRef = useRef();
 
   return (
@@ -49,7 +48,7 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
       </ZColumn>
       <ZButton
         onClick={() => {
-          topElementRef.current && topElementRef.current.scrollIntoView();
+          (topElementRef.current as HTMLElement)?.scrollIntoView();
         }}
         align={{
           type: EAlignType.ALIGN_BOTTOM_RIGHT,

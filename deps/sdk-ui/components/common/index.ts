@@ -10,6 +10,7 @@ import {
 import { StyleProps } from "../../core/style";
 
 export type CommonProps = {
+  ref?: React.Ref<any>;
   style?: StyleProps;
   /** Align takes priority over  */
   align?: {
