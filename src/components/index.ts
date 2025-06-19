@@ -33,3 +33,4 @@ export * from "./ZCheckbox";
 export { default as ZCheckbox } from "./ZCheckbox";
 export * from "./ZImage";
 export { default as ZImage } from "./ZImage";
+export * from "./colorTypes";

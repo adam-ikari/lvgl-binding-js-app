@@ -1,7 +1,6 @@
-import { COLORS } from "@/styles/common_style";
 import {
   ZButton,
-  ZButtonTypeEnum,
+  ZColorTypeEnum,
   ZColumn,
   ZIconSymbol,
   ZRow,
@@ -9,6 +8,7 @@ import {
   ZText,
 } from "@/components";
 import { ZNavScreenLayout } from "@/layouts";
+import { COLORS } from "@/styles/common_style";
 import React, { useState } from "react";
 import { v1 as uuidv1 } from "uuid";
 
@@ -40,7 +40,7 @@ const ListDemoScreen = () => {
             <ZText>{item.text}</ZText>
             <ZButton
               icon={ZIconSymbol.Trash}
-              type={ZButtonTypeEnum.Danger}
+              type={ZColorTypeEnum.Danger}
               size={ZSizeEnum.Small}
               onClick={() => {
                 const new_todos = items.filter((todo) => todo.id !== item.id);

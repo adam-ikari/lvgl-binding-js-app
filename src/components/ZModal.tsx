@@ -1,6 +1,6 @@
 import { ZStyleProps } from "./common";
-import { EAlignType, Mask, View } from "sdk-ui";
 import React from "react";
+import { Mask } from "sdk-ui";
 
 interface ZModalProps {
   children?: React.ReactNode | React.ReactNode[];

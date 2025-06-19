@@ -26,11 +26,14 @@ const excludeReactNativeModules = {
 
 async function _build(buildDir, manifest) {
   const entries = manifest.entries;
+  const startTime = Date.now();
 
-  for (const item of entries) {
+  // Run builds in parallel
+  await Promise.all(entries.map(async (item) => {
     const entry = path.resolve(process.cwd(), item.entry);
     const outputFile = path.resolve(buildDir, `${item.name}.${item.type}.js`);
 
+    const buildStart = Date.now();
     await esbuild.build({
       entryPoints: [entry],
       bundle: true,
@@ -70,7 +73,10 @@ async function _build(buildDir, manifest) {
     if (process.env.NODE_ENV !== "development") {
       await compressFile(outputFile, outputFile);
     }
-  }
+    console.log(`Built ${item.name} in ${(Date.now() - buildStart) / 1000}s`);
+  }));
+
+  console.log(`Total build time: ${(Date.now() - startTime) / 1000}s`);
 }
 
 module.exports = {

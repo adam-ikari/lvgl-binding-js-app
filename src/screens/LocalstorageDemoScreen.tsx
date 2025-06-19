@@ -1,6 +1,6 @@
 import {
   ZButton,
-  ZButtonTypeEnum,
+  ZColorTypeEnum,
   ZInput,
   ZRow,
   ZSizeEnum,
@@ -49,23 +49,23 @@ const LocalstorageDemoScreen = () => {
 
         <ZRow style={{ gap: 8, marginBottom: 16 }}>
           <ZButton
-            type={ZButtonTypeEnum.Primary}
+            type={ZColorTypeEnum.Primary}
             onClick={() => window.localStorage.setItem(key, value)}
           >
             Save
           </ZButton>
           <ZButton
-            type={ZButtonTypeEnum.Info}
+            type={ZColorTypeEnum.Info}
             onClick={() =>
               setKV({ [key]: window.localStorage.getItem(key) || "" })
             }
           >
             Load
           </ZButton>
-          <ZButton type={ZButtonTypeEnum.Success} onClick={loadAllItems}>
+          <ZButton type={ZColorTypeEnum.Success} onClick={loadAllItems}>
             Load All
           </ZButton>
-          <ZButton type={ZButtonTypeEnum.Danger} onClick={clearAllItems}>
+          <ZButton type={ZColorTypeEnum.Danger} onClick={clearAllItems}>
             Clear All
           </ZButton>
         </ZRow>

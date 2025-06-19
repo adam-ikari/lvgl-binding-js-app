@@ -14,6 +14,7 @@ import ProcessBarScreen from "@/screens/ProcessBarScreen";
 import StateDemoScreen from "@/screens/StateDemoScreen";
 import SwitchDemoScreen from "@/screens/SwitchDemoScreen";
 import WasmDemoScreen from "@/screens/WasmDemoScreen";
+import WorkerDemoScreen from "@/screens/WorkerDemoScreen";
 
 export default [
   { name: "home", path: "/", component: HomeScreen, meta: { title: "Home" } },
@@ -94,6 +95,12 @@ export default [
     path: "/wasm",
     component: WasmDemoScreen,
     meta: { title: "WASM Demo" },
+  },
+  {
+    name: "worker",
+    path: "/worker",
+    component: WorkerDemoScreen,
+    meta: { title: "Worker Demo" },
   },
   {
     name: "localstorage",

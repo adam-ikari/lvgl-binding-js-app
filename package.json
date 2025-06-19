@@ -11,26 +11,15 @@
     "dev": "nodemon --config nodemon.json --exec 'npm run build:dev && npm run preview'"
   },
   "dependencies": {
-    "buffer": "^6.0.3",
-    "core-js": "^3.23.2",
     "dayjs": "^1.11.13",
-    "fetch-blob": "^3.2.0",
     "i18next": "^23.7.18",
-    "react-i18next": "^14.1.0",
     "radash": "^12.1.0",
     "react": "^17.0.2",
-    "react-native": "^0.78.0",
-    "react-proxy": "^2.0.8",
+    "react-i18next": "^14.1.0",
     "react-reconciler": "^0.25.1",
-    "react-router": "^6.3.0",
     "react-router-native": "^6.30.0",
     "sdk-ui": "link:deps/sdk-ui",
-    "text-encoding": "^0.7.0",
-    "urlpattern-polyfill": "^5.0.3",
-    "util": "^0.12.4",
     "uuid": "^11.1.0",
-    "web-streams-polyfill": "^3.2.1",
-    "whatwg-fetch": "^3.6.2",
     "zustand": "^5.0.5",
     "zustand-polyfills": "link:deps/zustand-polyfills"
   },
@@ -47,8 +36,7 @@
     "glob": "^10.3.15",
     "nodemon": "^3.1.10",
     "prettier": "^3.0.1",
-    "sdk-dev": "link:deps/sdk-dev",
-    "terser": "^5.39.0",
-    "webpack": "^5.99.9"
+    "sdk-cli": "link:deps/sdk-cli",
+    "terser": "^5.39.0"
   }
 }

@@ -1,7 +1,6 @@
 import { ZSizeEnum, ZStyleProps } from ".";
-import { COMMON_STYLE } from "../styles/common_style";
 import { useMergeStyle } from "../hooks/styleHooks";
-import * as _ from "radash";
+import { COMMON_STYLE } from "../styles/common_style";
 import React from "react";
 import { Image } from "sdk-ui";
 
