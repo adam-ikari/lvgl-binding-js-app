@@ -49,7 +49,7 @@ const ZNavScreenLayout = (props: ZNavScreenLayoutProps) => {
       </ZColumn>
       <ZButton
         onClick={() => {
-          topElementRef.current && topElementRef.current.scrollIntoView();
+          (topElementRef.current as HTMLElement)?.scrollIntoView();
         }}
         align={{
           type: EAlignType.ALIGN_BOTTOM_RIGHT,
