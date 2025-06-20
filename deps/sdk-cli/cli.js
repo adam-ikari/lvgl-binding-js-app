@@ -6,7 +6,7 @@ import { program } from "commander";
 import fs from "fs/promises";
 import nodemon from "nodemon";
 import ora from "ora";
-import path from "path"
+import path from "path";
 
 const buildDir = "dist";
 
@@ -58,7 +58,6 @@ program
         ignore: ["node_modules/", "dist/"],
         env: {
           TJS_HOME: "data",
-          NODE_ENV: process.env.NODE_ENV,
         },
       });
 
