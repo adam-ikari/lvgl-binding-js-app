@@ -27,12 +27,31 @@ program.command('build')
 program.command('run <script>')
   .description('运行指定脚本')
   .option('--env <env>', '设置运行环境', 'development')
+  .option('--watch', '监听文件变化并自动重启')
   .action((script, options) => {
     process.env.NODE_ENV = options.env;
     console.log(`Running ${script} in ${process.env.NODE_ENV} mode...`);
     try {
-      run(script);
-      console.log('Script executed successfully');
+      if (options.watch) {
+        const nodemon = require('nodemon');
+        nodemon({
+          script: script,
+          ext: 'js,ts,jsx,tsx,json',
+          ignore: ['node_modules/', 'dist/']
+        });
+        
+        nodemon.on('start', () => {
+          console.log('App has started with nodemon');
+        }).on('restart', (files) => {
+          console.log('App restarted due to:', files);
+        }).on('quit', () => {
+          console.log('App has quit');
+          process.exit();
+        });
+      } else {
+        run(script);
+        console.log('Script executed successfully');
+      }
     } catch (err) {
       console.error('Script execution failed:', err);
       process.exit(1);

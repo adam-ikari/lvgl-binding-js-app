@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run build:dev",
-    "build:dev": "cross-env NODE_ENV=development sdk-cli build",
-    "build:prod": "cross-env NODE_ENV=production sdk-cli build",
+    "build:dev": "sdk-cli build",
+    "build:prod": "sdk-cli build --env production",
     "preview": "cross-env TJS_HOME=data sdk-cli run main.view.js",
     "dev": "nodemon --config nodemon.json --exec 'npm run build:dev && npm run preview'"
   },

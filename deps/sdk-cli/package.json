@@ -21,6 +21,7 @@
     "commander": "^11.1.0",
     "esbuild": "^0.25.1",
     "esbuild-plugin-alias": "^0.2.1",
+    "nodemon": "^3.1.0",
     "terser": "^5.39.0"
   }
 }

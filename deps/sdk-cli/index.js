@@ -3,7 +3,7 @@ const fs = require("fs");
 const { _build } = require("./build");
 const { run } = require("./run");
 
-const buildDir = path.join("build");
+const buildDir = path.join("dist");
 
 async function build() {
   // remove build directory if it exists
@@ -15,7 +15,7 @@ async function build() {
   fs.mkdirSync(buildDir, { recursive: true });
 
   const manifest = JSON.parse(fs.readFileSync("manifest.json", "utf-8"));
-  
+
   await _build(buildDir, manifest)
     .then(() => {
       console.log("All builds completed successfully.");
@@ -27,5 +27,5 @@ async function build() {
 
 module.exports = {
   run,
-  build
+  build,
 };
