@@ -71,6 +71,9 @@ function setButtonProps(comp, newProps: ButtonProps, oldProps: ButtonProps) {
 }
 
 export class ButtonComp extends NativeButton {
+  uid: string;
+  style: any;
+  
   constructor({ uid }) {
     super({ uid });
     this.uid = uid;
@@ -79,7 +82,7 @@ export class ButtonComp extends NativeButton {
     const that = this;
     this.style = new Proxy(this, {
       get(obj, prop) {
-        if (styleGetterProp.includes(prop)) {
+        if (typeof prop === 'string' && styleGetterProp.includes(prop)) {
           return style[prop].call(that);
         }
       },
