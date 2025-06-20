@@ -6,9 +6,9 @@ import { program } from "commander";
 import fs from "fs/promises";
 import nodemon from "nodemon";
 import ora from "ora";
+import path from "path"
 
-// Config
-let verbose = false;
+const buildDir = "dist";
 
 // Helper functions
 const logSuccess = (msg) => console.log(chalk.green(`[SDK-CLI] ${msg}`));
@@ -53,7 +53,7 @@ program
     try {
       // 使用run命令启动并监听变化
       nodemon({
-        exec: `sdk-cli build && sdk-cli run main.view.js`,
+        exec: `sdk-cli build && sdk-cli run main`,
         ext: "js,ts,jsx,tsx,json",
         ignore: ["node_modules/", "dist/"],
         env: {
@@ -81,15 +81,35 @@ program
   });
 
 program
-  .command("run")
-  .description("Run specified script")
-  .action((options) => {
+  .command("run <entry>")
+  .description("Run specified entry script (main or worker1)")
+  .action(async (entry, options) => {
     process.env.NODE_ENV = options.env;
-    logInfo(`Running script...`);
+
     try {
-      run("main.view.js");
+      // Read manifest to find entry config
+      const manifestPath = path.resolve(
+        process.cwd(),
+        buildDir,
+        "manifest.json",
+      );
+      const manifestContent = await fs.readFile(manifestPath, "utf-8");
+      const manifest = JSON.parse(manifestContent);
+
+      // Find matching entry
+      const entryConfig = manifest.entries.find((e) => e.name === entry);
+      if (!entryConfig) {
+        logError(`Entry '${entry}' not found in manifest.json`);
+        process.exit(1);
+      }
+
+      // Build output filename
+      const entryFile = entryConfig.entry;
+
+      logInfo(`Running ${entryFile}...`);
+      run(entryFile);
     } catch (err) {
-      logError("Failed to run script", err);
+      logError(`Failed to run entry '${entry}'`, err);
       process.exit(1);
     }
   });

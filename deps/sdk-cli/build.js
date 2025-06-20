@@ -78,4 +78,27 @@ export async function _build(buildDir, manifest) {
   );
 
   console.log(`Total build time: ${(Date.now() - startTime) / 1000}s`);
+
+  // Update and write manifest.json to build directory
+  const fs = await import("fs");
+  const manifestPath = path.resolve(process.cwd(), "manifest.json");
+  const destPath = path.resolve(buildDir, "manifest.json");
+
+  try {
+    // Read original manifest
+    const manifestContent = await fs.promises.readFile(manifestPath, "utf-8");
+    const manifest = JSON.parse(manifestContent);
+
+    // Update entry paths to point to built files
+    manifest.entries = manifest.entries.map(entry => ({
+      ...entry,
+      entry: `${entry.name}.${entry.type}.js`
+    }));
+
+    // Write updated manifest to build directory
+    await fs.promises.writeFile(destPath, JSON.stringify(manifest, null, 2));
+    console.log("Updated manifest.json with built file paths");
+  } catch (err) {
+    console.error("Failed to update manifest.json:", err);
+  }
 }

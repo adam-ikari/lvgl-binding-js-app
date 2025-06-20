@@ -7,7 +7,7 @@
     "build": "npm run build:dev",
     "build:dev": "sdk-cli build",
     "build:prod": "sdk-cli build --env production",
-    "preview": "cross-env TJS_HOME=data sdk-cli run main.view.js",
+    "preview": "sdk-cli run main",
     "dev": "sdk-cli dev"
   },
   "dependencies": {
