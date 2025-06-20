@@ -1,9 +1,12 @@
-const path = require("path");
-const os = require("os");
-const { execSync } = require("child_process");
-const fs = require("fs");
+import path from "path";
+import os from "os";
+import { execSync } from "child_process";
+import fs from "fs";
+import { fileURLToPath } from "url";
 
 const _buildDir = "dist";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function getBinaryPath() {
   const platform = os.platform();
@@ -23,7 +26,7 @@ function getBinaryPath() {
   return binaryPath;
 }
 
-function run(scriptPath) {
+export function run(scriptPath) {
   const binaryPath = getBinaryPath();
   const buildDir = path.join(process.cwd(), _buildDir);
   const fullPath = path.join(buildDir, scriptPath);
@@ -44,7 +47,4 @@ function run(scriptPath) {
   }
 }
 
-module.exports = {
-  run,
-  getBinaryPath,
-};
+export { getBinaryPath };

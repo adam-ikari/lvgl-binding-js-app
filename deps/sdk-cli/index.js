@@ -1,11 +1,11 @@
-const path = require("path");
-const fs = require("fs");
-const { _build } = require("./build");
-const { run } = require("./run");
+import path from "path";
+import fs from "fs";
+import { _build } from "./build.js";
+import { run } from "./run.js";
 
 const buildDir = path.join("dist");
 
-async function build() {
+export async function build() {
   // remove build directory if it exists
   if (fs.existsSync(buildDir)) {
     fs.rmSync(buildDir, { recursive: true, force: true });
@@ -25,7 +25,4 @@ async function build() {
     });
 }
 
-module.exports = {
-  run,
-  build,
-};
+export { run };

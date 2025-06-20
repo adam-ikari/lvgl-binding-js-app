@@ -1,7 +1,7 @@
-const path = require("path");
-const fs = require("fs");
+import path from "path";
+import fs from "fs";
 
-const resourceExts = [
+export const resourceExts = [
   ".wasm",
   ".png",
   ".jpg",
@@ -20,7 +20,7 @@ const resourceExts = [
   ".webm"
 ];
 
-const resourcePlugin = {
+export const resourcePlugin = {
   name: "resource-copy-plugin",
   setup(build) {
     build.onLoad(
@@ -55,9 +55,4 @@ const resourcePlugin = {
       }
     });
   }
-};
-
-module.exports = {
-  resourcePlugin,
-  resourceExts
 };
