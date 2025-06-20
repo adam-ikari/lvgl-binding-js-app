@@ -1,7 +1,7 @@
-import path from "path";
-import os from "os";
 import { execSync } from "child_process";
 import fs from "fs";
+import os from "os";
+import path from "path";
 import { fileURLToPath } from "url";
 
 const _buildDir = "dist";

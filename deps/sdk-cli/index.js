@@ -1,7 +1,7 @@
-import path from "path";
-import fs from "fs";
 import { _build } from "./build.js";
 import { run } from "./run.js";
+import fs from "fs";
+import path from "path";
 
 const buildDir = path.join("dist");
 

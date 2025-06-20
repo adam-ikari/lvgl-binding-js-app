@@ -1,5 +1,5 @@
-import path from "path";
 import fs from "fs";
+import path from "path";
 
 export const resourceExts = [
   ".wasm",
@@ -17,7 +17,7 @@ export const resourceExts = [
   ".wav",
   ".ogg",
   ".mp4",
-  ".webm"
+  ".webm",
 ];
 
 export const resourcePlugin = {
@@ -31,21 +31,23 @@ export const resourcePlugin = {
           loader: "file",
           contents: fs.readFileSync(args.path),
         };
-      }
+      },
     );
 
     build.onEnd(async (result) => {
       if (result.metafile) {
         for (const [outputPath, fileInfo] of Object.entries(
-          result.metafile.outputs
+          result.metafile.outputs,
         )) {
           const ext = path.extname(outputPath);
           if (resourceExts.includes(ext)) {
             const srcPath = path.resolve(outputPath);
-            const baseDir = build.initialOptions.outdir || path.dirname(build.initialOptions.outfile);
+            const baseDir =
+              build.initialOptions.outdir ||
+              path.dirname(build.initialOptions.outfile);
             const destPath = path.join(
               baseDir,
-              path.relative(baseDir, outputPath)
+              path.relative(baseDir, outputPath),
             );
             fs.mkdirSync(path.dirname(destPath), { recursive: true });
             fs.copyFileSync(srcPath, destPath);
@@ -54,5 +56,5 @@ export const resourcePlugin = {
         }
       }
     });
-  }
+  },
 };
