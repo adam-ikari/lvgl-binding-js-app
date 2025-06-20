@@ -35,7 +35,7 @@ function setSwitchProps(comp, newProps: SwitchProps, oldProps: SwitchProps) {
     },
     checked(val) {
       if (isNaN(val)) return;
-      if (val == oldProps.value) return;
+      if (val == oldProps.checked) return;
       comp.setChecked(val);
     },
     disabled(val) {
@@ -59,6 +59,9 @@ function setSwitchProps(comp, newProps: SwitchProps, oldProps: SwitchProps) {
 }
 
 export class SwitchComp extends NativeComp {
+  uid: string;
+  style: any;
+  
   constructor({ uid }) {
     super({ uid });
     this.uid = uid;
@@ -67,17 +70,17 @@ export class SwitchComp extends NativeComp {
     const that = this;
     this.style = new Proxy(this, {
       get(obj, prop) {
-        if (styleGetterProp.includes(prop)) {
+        if (typeof prop === 'string' && styleGetterProp.includes(prop)) {
           return style[prop].call(that);
         }
       },
     });
   }
-  setProps(newProps, oldProps) {
+  setProps(newProps: SwitchProps, oldProps: SwitchProps) {
     setSwitchProps(this, newProps, oldProps);
   }
   insertBefore(child, beforeChild) {
-    this.insertChildBefore(child, beforeChild);
+    super.insertBefore(child, beforeChild);
   }
   appendInitialChild(child) {
     this.appendChild(child);
