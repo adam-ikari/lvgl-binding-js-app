@@ -34,19 +34,19 @@ const CardDemoScreen = () => {
           content={<ZText>This is card content</ZText>}
           footer={<ZText size={ZSizeEnum.Small}>Footer</ZText>}
         ></ZCard>
-                <ZCard
+        <ZCard
           cover={<ZImage src={imgsrc} round={false} />}
           header={<ZText size={ZSizeEnum.Large}>Title</ZText>}
           content={<ZText>This is card content</ZText>}
           footer={<ZText size={ZSizeEnum.Small}>Footer</ZText>}
         ></ZCard>
-                <ZCard
+        <ZCard
           cover={<ZImage src={imgsrc} round={false} />}
           header={<ZText size={ZSizeEnum.Large}>Title</ZText>}
           content={<ZText>This is card content</ZText>}
           footer={<ZText size={ZSizeEnum.Small}>Footer</ZText>}
         ></ZCard>
-                <ZCard
+        <ZCard
           cover={<ZImage src={imgsrc} round={false} />}
           header={<ZText size={ZSizeEnum.Large}>Title</ZText>}
           content={<ZText>This is card content</ZText>}
