@@ -5,14 +5,25 @@ import React from "react";
 
 // 类型定义
 interface ZCardProps {
+  cover?: React.ReactNode;
   header?: React.ReactNode;
-  children?: React.ReactNode;
+  content?: React.ReactNode;
   footer?: React.ReactNode;
   style?: ZStyleProps;
   [key: string]: any;
 }
 
+const ZCardCover = (props: { children?: React.ReactNode }) => {
+  const { children } = props;
+  return <ZRow>{children}</ZRow>;
+};
+
 const ZCardHeader = (props: { children?: React.ReactNode }) => {
+  const { children } = props;
+  return <ZRow>{children}</ZRow>;
+};
+
+const ZCardContent = (props: { children?: React.ReactNode }) => {
   const { children } = props;
   return <ZRow>{children}</ZRow>;
 };
@@ -40,19 +51,23 @@ const ZCard = (props: ZCardProps) => {
   );
 
   const {
+    cover,
     header,
     children,
     footer,
+    content,
     style: propStyle = {},
     ...restProps
   } = props;
 
   return (
     <ZColumn style={mergeStyle(baseStyle, propStyle)} {...restProps}>
+      {/* cover */}
+      {cover && <ZCardCover>{cover}</ZCardCover>}
       {/* header */}
       {header && <ZCardHeader>{header}</ZCardHeader>}
       {/* content */}
-      {children}
+      {content && <ZCardContent>{content}</ZCardContent>}
       {/* footer */}
       {footer && <ZCardFooter>{footer}</ZCardFooter>}
     </ZColumn>

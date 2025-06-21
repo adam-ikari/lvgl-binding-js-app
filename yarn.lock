@@ -902,13 +902,19 @@ scheduler@^0.19.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-"sdk-cli@link:deps/sdk-cli":
-  version "0.0.0"
-  uid ""
+"sdk-cli@file:deps/sdk-cli":
+  version "1.0.0"
+  dependencies:
+    chalk "^4.1.2"
+    commander "^12.1.0"
+    esbuild "^0.25.1"
+    esbuild-plugin-alias "^0.2.1"
+    nodemon "^3.1.0"
+    ora "^6.3.1"
+    terser "^5.39.0"
 
-"sdk-ui@link:deps/sdk-ui":
-  version "0.0.0"
-  uid ""
+"sdk-ui@file:deps/sdk-ui":
+  version "0.0.1"
 
 semver@^7.5.3:
   version "7.7.2"
@@ -1053,9 +1059,8 @@ which@^2.0.1:
   dependencies:
     isexe "^2.0.0"
 
-"zustand-polyfills@link:deps/zustand-polyfills":
+"zustand-polyfills@file:deps/zustand-polyfills":
   version "0.0.0"
-  uid ""
 
 zustand@^5.0.5:
   version "5.0.5"

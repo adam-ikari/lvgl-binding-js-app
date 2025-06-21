@@ -18,10 +18,10 @@
     "react-i18next": "^14.1.0",
     "react-reconciler": "^0.25.1",
     "react-router-native": "^6.30.0",
-    "sdk-ui": "link:deps/sdk-ui",
+    "sdk-ui": "file:deps/sdk-ui",
     "uuid": "^11.1.0",
     "zustand": "^5.0.5",
-    "zustand-polyfills": "link:deps/zustand-polyfills"
+    "zustand-polyfills": "file:deps/zustand-polyfills"
   },
   "author": "",
   "license": "MIT",
@@ -32,6 +32,6 @@
     "@types/react-reconciler": "^0.18.0",
     "cross-env": "^7.0.3",
     "prettier": "^3.0.1",
-    "sdk-cli": "link:deps/sdk-cli"
+    "sdk-cli": "file:deps/sdk-cli"
   }
 }

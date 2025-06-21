@@ -10,8 +10,8 @@ const PageSession = ({ children, title }) => {
     <ZCard
       style={mergeStyle(COMMON_STYLE.fullWidth)}
       header={<ZText size={ZSizeEnum.Large}>{title}</ZText>}
+      content={children}
     >
-      {children}
     </ZCard>
   );
 };
