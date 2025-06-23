@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { build } from "./index.js";
+import { build } from "./build.js";
 import { run } from "./run.js";
 import chalk from "chalk";
 import { program } from "commander";
