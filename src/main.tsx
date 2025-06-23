@@ -24,7 +24,14 @@ interface ZRouterProps {
 const ZRouter = (props: ZRouterProps) => {
   const { initialEntries = ["/"], initialIndex = 0, children = {} } = props;
   return (
-    <MemoryRouter initialEntries={initialEntries} initialIndex={initialIndex}>
+    <MemoryRouter
+      initialEntries={initialEntries}
+      initialIndex={initialIndex}
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       {children}
     </MemoryRouter>
   );
