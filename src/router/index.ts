@@ -15,8 +15,20 @@ import StateDemoScreen from "@/screens/StateDemoScreen";
 import SwitchDemoScreen from "@/screens/SwitchDemoScreen";
 import WasmDemoScreen from "@/screens/WasmDemoScreen";
 import WorkerDemoScreen from "@/screens/WorkerDemoScreen";
+import React from "react";
 
-export default [
+interface RouterMeta {
+  title?: string;
+}
+
+interface RouterItem {
+  name?: string;
+  path: string;
+  component: React.ReactNode;
+  meta?: RouterMeta;
+}
+
+const router: RouterItem[] = [
   { name: "home", path: "/", component: HomeScreen, meta: { title: "Home" } },
   {
     name: "button",
@@ -115,3 +127,5 @@ export default [
     meta: { title: "Image Demo" },
   },
 ];
+
+export default router;

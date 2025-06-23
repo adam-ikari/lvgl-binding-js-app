@@ -9,9 +9,11 @@ interface UseTimeProps {
 const useTime = (props: UseTimeProps) => {
   const { format, interval = 1000 } = props;
 
-  const getTime = format ? () => dayjs().format(format) : () => dayjs();
+  const getTime = format
+    ? () => dayjs().format(format)
+    : () => dayjs().toString();
 
-  const [time, setTime] = useState(getTime());
+  const [time, setTime] = useState<string>(getTime());
 
   useEffect(() => {
     const timer = setInterval(() => {

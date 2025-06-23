@@ -111,7 +111,7 @@ const ActionAera = () => {
 const ZNavHeader = () => {
   const location = useLocation();
   const [title, setTitle] = useState("");
-  const [isHome, setIsHome] = useState(checkHome(location.pathname));
+  const [_, setIsHome] = useState(checkHome(location.pathname));
 
   useLayoutEffect(() => {
     setIsHome(checkHome(location.pathname));
