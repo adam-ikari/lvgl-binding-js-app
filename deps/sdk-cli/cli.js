@@ -54,8 +54,8 @@ program
       // 使用run命令启动并监听变化
       nodemon({
         exec: `sdk-cli build && sdk-cli run main`,
-        ext: "js,ts,jsx,tsx,json",
-        ignore: ["node_modules/", "dist/"],
+        ext: "js,ts,jsx,tsx,json,jpg,jpeg,png,bmp",
+        ignore: ["node_modules/", "dist/", "deps/"],
         env: {
           TJS_HOME: "data",
         },

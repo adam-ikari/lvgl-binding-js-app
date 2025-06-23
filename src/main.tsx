@@ -15,28 +15,50 @@ function init() {
   changeLanguage(useSettingsStore.getState().language);
 }
 
-const { window: windowDimensions } = Dimensions;
+interface ZRouterProps {
+  initialEntries?: string[];
+  initialIndex?: number;
+  children?: React.ReactNode | React.ReactNode[];
+}
 
-const App = () => {
+const ZRouter = (props: ZRouterProps) => {
+  const { initialEntries = ["/"], initialIndex = 0, children = {} } = props;
   return (
-    <MemoryRouter initialEntries={["/"]} initialIndex={0}>
-      <ZNavScreenLayout>
-        <Routes>
-          {routerData.map(({ name, path, component }) => (
-            <Route
-              id={name}
-              key={name}
-              path={path}
-              element={React.createElement(memo(component))}
-            />
-          ))}
-        </Routes>
-      </ZNavScreenLayout>
+    <MemoryRouter initialEntries={initialEntries} initialIndex={initialIndex}>
+      {children}
     </MemoryRouter>
   );
 };
 
+const ZRoutes = (props) => {
+  const { routerData = [] } = props;
+  return (
+    <Routes>
+      {routerData.map(({ name, path, component }) => (
+        <Route
+          id={name}
+          key={name}
+          path={path}
+          element={React.createElement(memo(component))}
+        />
+      ))}
+    </Routes>
+  );
+};
+
+const App = () => {
+  return (
+    <ZRouter initialEntries={["/"]} initialIndex={0}>
+      {" "}
+      <ZNavScreenLayout>
+        <ZRoutes routerData={routerData}></ZRoutes>
+      </ZNavScreenLayout>
+    </ZRouter>
+  );
+};
+
 const onRender = (id, phase, actualDuration) => {
+  const { window: windowDimensions } = Dimensions;
   console.log(
     `${id} 组件 ${phase} 阶段耗时：${actualDuration}ms 分辨率：${windowDimensions.width}x${windowDimensions.height}`,
   );
