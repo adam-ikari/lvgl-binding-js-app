@@ -7,8 +7,7 @@ import fs from "fs/promises";
 import nodemon from "nodemon";
 import ora from "ora";
 import path from "path";
-
-const buildDir = "dist";
+import { buildDir } from "./config.js"
 
 // Helper functions
 const logSuccess = (msg) => console.log(chalk.green(`[SDK-CLI] ${msg}`));
