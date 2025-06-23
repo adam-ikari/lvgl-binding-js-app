@@ -3,8 +3,7 @@ import fs from "fs";
 import os from "os";
 import path from "path";
 import { fileURLToPath } from "url";
-
-const _buildDir = "dist";
+import { buildDir } from "./config.js"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -28,12 +27,11 @@ function getBinaryPath() {
 
 export function run(scriptPath) {
   const binaryPath = getBinaryPath();
-  const buildDir = path.join(process.cwd(), _buildDir);
-  const fullPath = path.join(buildDir, scriptPath);
+  const fullPath = path.join(process.cwd(), buildDir, scriptPath);
 
   if (!fs.existsSync(fullPath)) {
     throw new Error(
-      `Could not load '${scriptPath}' - file not found in ${buildDir}`,
+      `Could not load '${scriptPath}' - file not found in ${fullPath}`,
     );
   }
 
