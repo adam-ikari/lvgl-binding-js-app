@@ -27,7 +27,7 @@ const CardDemoScreen = () => {
           Card with Cover, Header, Content and Footer
         </ZText>
       </ZRow>
-      <ZRow style={rowStyle}>
+      <ZRow style={rowStyle} gap={16}>
         <ZCard
           cover={<ZImage src={imgsrc} round={false} />}
           header={<ZText size={ZSizeEnum.Large}>Title</ZText>}

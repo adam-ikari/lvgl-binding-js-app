@@ -1,11 +1,4 @@
-import {
-  ZColorTypeEnum,
-  ZFlexAlignItems,
-  ZRow,
-  ZSizeEnum,
-  ZStyleProps,
-  ZText,
-} from ".";
+import { ZSizeEnum, ZStyleProps } from ".";
 import { useMergeStyle } from "../hooks/styleHooks";
 import { COMMON_STYLE } from "../styles/common_style";
 import React, { useLayoutEffect, useState } from "react";
@@ -18,15 +11,15 @@ interface ZCheckboxProps {
   value?: boolean;
   size?: ZSizeEnum;
   onChange?: (value: boolean) => void;
-  label?: string;
+  text?: string;
   disabled?: boolean;
   [key: string]: any; // Allow other props to be passed to the Checkbox component
 }
 
 const sizeStyleMap: Record<string, ZStyleProps> = {
-  small: mergeStyle(COMMON_STYLE.width48, COMMON_STYLE.height24),
-  default: mergeStyle(COMMON_STYLE.width56, COMMON_STYLE.height28),
-  large: mergeStyle(COMMON_STYLE.width80, COMMON_STYLE.height40),
+  small: mergeStyle(COMMON_STYLE.height24),
+  default: mergeStyle(COMMON_STYLE.height28),
+  large: mergeStyle(COMMON_STYLE.height40),
 };
 
 const ZCheckbox = (props: ZCheckboxProps) => {
@@ -35,7 +28,7 @@ const ZCheckbox = (props: ZCheckboxProps) => {
     value: propValue = false,
     onChange,
     size = ZSizeEnum.Default,
-    label,
+    text = "",
     disabled = false,
     ...restProps
   } = props;
@@ -57,22 +50,16 @@ const ZCheckbox = (props: ZCheckboxProps) => {
   }, [value]);
 
   return (
-    <ZRow alignItems={ZFlexAlignItems.Center} gap={4}>
-      <Checkbox
-        checked={value}
-        style={mergeStyle(sizeStyleMap[size], propStyle)}
-        {...restProps}
-        onChange={() => {
-          setValue(!value);
-        }}
-        disabled={disabled}
-      />
-      {label && (
-        <ZText type={value ? ZColorTypeEnum.Primary : ZColorTypeEnum.Default}>
-          {label}
-        </ZText>
-      )}
-    </ZRow>
+    <Checkbox
+      checked={value}
+      style={mergeStyle(sizeStyleMap[size], propStyle)}
+      {...restProps}
+      onChange={() => {
+        setValue(!value);
+      }}
+      disabled={disabled}
+      text={text}
+    />
   );
 };
 

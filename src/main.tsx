@@ -2,7 +2,7 @@ import { changeLanguage } from "@/i18n";
 import { ZNavScreenLayout } from "@/layouts";
 import routerData from "@/router";
 import { useSettingsStore } from "@/stores/useSettingsStore";
-import React, { Profiler } from "react";
+import React, { Profiler, memo } from "react";
 import { MemoryRouter, Route, Routes } from "react-router-native";
 import { Dimensions, Render } from "sdk-ui";
 import "zustand-polyfills";
@@ -27,7 +27,7 @@ const App = () => {
               id={name}
               key={name}
               path={path}
-              element={React.createElement(component)}
+              element={React.createElement(memo(component))}
             />
           ))}
         </Routes>

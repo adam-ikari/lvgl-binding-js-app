@@ -1,6 +1,6 @@
-import { COMMON_STYLE } from "@/styles/common_style";
-import { ZCard, ZSizeEnum, ZText } from "@/components";
+import { ZCard, ZColumn, ZSizeEnum, ZText } from "@/components";
 import { useMergeStyle } from "@/hooks/styleHooks";
+import { COMMON_STYLE } from "@/styles/common_style";
 import React from "react";
 
 const PageSession = ({ children, title }) => {
@@ -10,9 +10,8 @@ const PageSession = ({ children, title }) => {
     <ZCard
       style={mergeStyle(COMMON_STYLE.fullWidth)}
       header={<ZText size={ZSizeEnum.Large}>{title}</ZText>}
-      content={children}
-    >
-    </ZCard>
+      content={<ZColumn>{children}</ZColumn>}
+    ></ZCard>
   );
 };
 
