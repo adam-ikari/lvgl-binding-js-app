@@ -24,7 +24,7 @@ interface RouterMeta {
 interface RouterItem {
   name?: string;
   path: string;
-  component: React.ReactNode;
+  component: React.FunctionComponent;
   meta?: RouterMeta;
 }
 

@@ -18,7 +18,15 @@ const HEIGHT = 40;
 
 const checkHome = (path) => path === "/";
 
-const HomeButton = () => {
+const getMetaData = (location) => {
+  const route = routerData.find((item) => item.path === location.pathname);
+  if (route && route.meta) {
+    return route.meta;
+  }
+  return {};
+};
+
+const HomeButton = React.memo(() => {
   const navigate = useNavigate();
   return (
     <ZButton
@@ -32,7 +40,7 @@ const HomeButton = () => {
       round
     />
   );
-};
+});
 
 const BackButton = React.memo(() => {
   const navigate = useNavigate();
@@ -50,15 +58,7 @@ const BackButton = React.memo(() => {
   );
 });
 
-const getMetaData = (location) => {
-  const route = routerData.find((item) => item.path === location.pathname);
-  if (route && route.meta) {
-    return route.meta;
-  }
-  return {};
-};
-
-const NotificationAera = () => {
+const NotificationAera = React.memo(() => {
   return (
     <ZRow
       height={ZHeightEnum.Full}
@@ -72,7 +72,7 @@ const NotificationAera = () => {
       <ZIcon symbol={ZIconSymbol.Envelope}></ZIcon>
     </ZRow>
   );
-};
+});
 
 const TimeAera = () => {
   const time = useTime({ format: "YYYY-MM-DD HH:mm" });
@@ -94,6 +94,7 @@ const ActionAera = () => {
   useLayoutEffect(() => {
     setIsHome(checkHome(location.pathname));
   }, [location]);
+
   return (
     <ZRow
       height={ZHeightEnum.Full}
