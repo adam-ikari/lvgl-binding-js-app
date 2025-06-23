@@ -43,10 +43,13 @@ const DisableButtonSection = () => {
 
   return (
     <PageSession title="Disable Button">
-      <ZRow gap={8}>
-        <ZRow gap={8}>{buttons}</ZRow>
-        <ZSwitch value={disable} onChange={handleSwitchChange} />
-      </ZRow>
+      <ZSwitch
+        value={disable}
+        onChange={handleSwitchChange}
+        activeText="disabled"
+        inactiveText="enabled"
+      />
+      <ZRow gap={8}>{buttons}</ZRow>
     </PageSession>
   );
 };
