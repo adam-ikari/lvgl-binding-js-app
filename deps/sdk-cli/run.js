@@ -44,5 +44,3 @@ export function run(scriptPath) {
     throw new Error(`Failed to execute ${scriptPath}: ${err.message}`);
   }
 }
-
-export { getBinaryPath };
