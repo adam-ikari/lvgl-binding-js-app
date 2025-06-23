@@ -67,7 +67,7 @@ program
         })
         .on("restart", (files) => {
           logInfo(`Rebuilding due to changes in: ${files.join(", ")}`);
-          require("./index").build().catch(console.error);
+          build().catch(console.error);
         })
         .on("quit", () => {
           logWarning("Development server stopped");
