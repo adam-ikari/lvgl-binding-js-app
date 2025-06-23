@@ -7,7 +7,7 @@ import fs from "fs/promises";
 import nodemon from "nodemon";
 import ora from "ora";
 import path from "path";
-import { buildDir } from "./config.js"
+import { buildDir, nodemonConfig } from "./config.js"
 
 // Helper functions
 const logSuccess = (msg) => console.log(chalk.green(`[SDK-CLI] ${msg}`));
@@ -53,23 +53,19 @@ program
       // 使用run命令启动并监听变化
       nodemon({
         exec: `sdk-cli build && sdk-cli run main`,
-        ext: "js,ts,jsx,tsx,json,jpg,jpeg,png,bmp",
-        ignore: ["node_modules/", "dist/", "deps/"],
-        env: {
-          TJS_HOME: "data",
-        },
+        ...nodemonConfig
       });
 
       nodemon
         .on("start", () => {
-          logSuccess("Development server started");
+          logSuccess("app started");
         })
         .on("restart", (files) => {
           logInfo(`Rebuilding due to changes in: ${files.join(", ")}`);
           build().catch(console.error);
         })
         .on("quit", () => {
-          logWarning("Development server stopped");
+          logWarning("app stopped");
           process.exit();
         });
     } catch (err) {

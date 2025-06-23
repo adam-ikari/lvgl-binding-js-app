@@ -85,3 +85,11 @@ export const compressOptions = {
   ecma: 2020, // 指定解析的ECMAScript版本
 };
 
+export const nodemonConfig = {
+    ext: "js,ts,jsx,tsx,json,jpg,jpeg,png,bmp",
+    ignore: ["node_modules/", "dist/", "deps/"],
+    env: {
+        TJS_HOME: "data",
+    },
+}
+
