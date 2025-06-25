@@ -211,6 +211,7 @@ const ZButton = (props: ZButtonProps) => {
         baseStyle,
         COMMON_STYLE.noBorder,
         COMMON_STYLE.padding0,
+        round && roundStyle,
       )}
     >
       <Component
