@@ -1,18 +1,18 @@
-const enum ZWidthEnum {
+/**
+ * UI 组件尺寸类型
+ */
+
+export enum ZWidthEnum {
   Auto = "auto",
   Full = "full",
 }
 
-type ZWidthType = `${ZWidthEnum}` | number;
-
-const enum ZHeightEnum {
+export enum ZHeightEnum {
   Auto = "auto",
   Full = "full",
 }
 
-type ZHeightType = `${ZHeightEnum}` | number;
-
-const enum ZSizeEnum {
+export enum ZSizeEnum {
   Small = "small",
   Default = "default",
   Large = "large",
@@ -20,7 +20,11 @@ const enum ZSizeEnum {
 
 type ZSizeType = `${ZSizeEnum}` | number;
 
-const enum ZIconSymbol {
+/**
+ * 图标符号类型
+ */
+
+export enum ZIconSymbol {
   Audio = "\uF001",
   Video = "\uF008",
   List = "\uF00B",
@@ -83,8 +87,6 @@ const enum ZIconSymbol {
   NewLine = "\uF8A2",
 }
 
-type ZIconSymbolType = `${ZIconSymbol}`;
+export type ZIconSymbolType = `${ZIconSymbol}`;
 
-export type { ZHeightType, ZWidthType, ZSizeType, ZIconSymbolType };
 export type { StyleProps as ZStyleProps } from "sdk/ui/core/style";
-export { ZWidthEnum, ZHeightEnum, ZSizeEnum, ZIconSymbol };
