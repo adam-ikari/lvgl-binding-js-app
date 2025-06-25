@@ -8,7 +8,7 @@ interface ZPaginationProps {
   size?: ZSizeEnum;
 }
 
-const ZPagination: React.FC<ZPaginationProps> = (props) => {
+const ZPagination = (props) => {
   const { current, total, onChange, size = ZSizeEnum.Default } = props;
 
   const handlePageChange = (page: number) => {
@@ -17,7 +17,7 @@ const ZPagination: React.FC<ZPaginationProps> = (props) => {
     onChange?.(page);
   };
 
-  const renderPageItems = (): React.ReactNode[] => {
+  const renderPageItems = () => {
     const items: React.ReactElement[] = [];
     const maxVisible = 5;
     const halfVisible = Math.floor(maxVisible / 2);
@@ -43,7 +43,7 @@ const ZPagination: React.FC<ZPaginationProps> = (props) => {
     for (let i = start; i <= end; i++) {
       items.push(
         <ZButton
-          key={`${i}`}
+          key={`${i - start + 1}`}
           size={size}
           onClick={() => handlePageChange(i)}
           type={i === current ? ZColorTypeEnum.Primary : ZColorTypeEnum.Default}
@@ -53,28 +53,30 @@ const ZPagination: React.FC<ZPaginationProps> = (props) => {
       );
     }
 
-    return [
+    return <ZRow>{items}</ZRow>;
+  };
+
+  return (
+    <ZRow>
       <ZButton
-        key={`prev`}
+        key={"prev"}
         size={size}
         onClick={() => handlePageChange(current - 1)}
         disable={current === 1}
       >
         prev
-      </ZButton>,
-      ...items,
+      </ZButton>
+      {renderPageItems()}
       <ZButton
-        key={`next`}
+        key={"next"}
         size={size}
         onClick={() => handlePageChange(current + 1)}
         disable={current === total}
       >
         next
-      </ZButton>,
-    ];
-  };
-
-  return <ZRow>{renderPageItems()}</ZRow>;
+      </ZButton>
+    </ZRow>
+  );
 };
 
 export type { ZPaginationProps };

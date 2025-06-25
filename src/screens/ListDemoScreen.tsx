@@ -7,10 +7,9 @@ import {
   ZSizeEnum,
   ZText,
 } from "@/components";
-import { ZNavScreenLayout } from "@/layouts";
 import { COLORS } from "@/styles/common_style";
 import React, { useState } from "react";
-import { v1 as uuidv1 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 const style = {
   BackgroundStyle: {
@@ -21,7 +20,7 @@ const style = {
 function initItems() {
   const items = [];
   for (let i = 0; i < 10; i++) {
-    const uuid = uuidv1();
+    const uuid = uuidv4();
     items.push({
       id: uuid,
       text: uuid,
@@ -66,7 +65,7 @@ const ListDemoScreen = () => {
         <ZButton
           icon={ZIconSymbol.Plus}
           onClick={() => {
-            const uuid = uuidv1();
+            const uuid = uuidv4();
             const new_todo = [
               ...items,
               {
