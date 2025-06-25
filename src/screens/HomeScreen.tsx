@@ -32,7 +32,14 @@ const HomeScreen = () => {
       text: "Feedback Widgets",
       children: [{ text: "Dialog Demo", path: "/dialog" }],
     },
-    { text: "List Render", children: [{ text: "List Demo", path: "/list" }] },
+    {
+      text: "Page Render",
+      children: [
+        { text: "List Demo", path: "/list" },
+        { text: "Pagination Demo", path: "/pagination" },
+      ],
+    },
+
     {
       text: "State",
       children: [

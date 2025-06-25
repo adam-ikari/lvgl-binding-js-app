@@ -10,6 +10,7 @@ import ImageDemoScreen from "@/screens/ImageDemoScreen";
 import InputDemoScreen from "@/screens/InputDemoScreen";
 import ListDemoScreen from "@/screens/ListDemoScreen";
 import LocalstorageDemoScreen from "@/screens/LocalstorageDemoScreen";
+import PaginationDemoScreen from "@/screens/PaginationDemoScreen";
 import ProcessBarScreen from "@/screens/ProcessBarScreen";
 import StateDemoScreen from "@/screens/StateDemoScreen";
 import SwitchDemoScreen from "@/screens/SwitchDemoScreen";
@@ -125,6 +126,11 @@ const router: RouterItem[] = [
     path: "/image",
     component: ImageDemoScreen,
     meta: { title: "Image Demo" },
+  },
+  {
+    path: "/pagination",
+    component: PaginationDemoScreen,
+    meta: { title: "Pagination Demo" },
   },
 ];
 
