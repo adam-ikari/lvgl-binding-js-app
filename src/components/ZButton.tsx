@@ -1,4 +1,11 @@
-import { ZColorTypeEnum, ZIconSymbol, ZSizeEnum, ZStyleProps, ZText } from ".";
+import {
+  ZColorTypeEnum,
+  ZIconSymbol,
+  ZRow,
+  ZSizeEnum,
+  ZStyleProps,
+  ZText,
+} from ".";
 import { ZIcon } from ".";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { COLORS, COMMON_STYLE } from "@/styles/common_style";
@@ -198,15 +205,19 @@ const ZButton = (props: ZButtonProps) => {
   const Component = disable ? View : Button;
 
   return (
-    <Component
-      style={mergeStyle(baseStyle, computedStyle, propStyle)}
-      onClick={handleClick}
+    <View
       {...restProps}
+      style={mergeStyle(baseStyle, COMMON_STYLE.noBorder, { padding: 0 })}
     >
-      <ButtonContent icon={icon} size={size} type={type} text={text}>
-        {children}
-      </ButtonContent>
-    </Component>
+      <Component
+        onClick={handleClick}
+        style={mergeStyle(baseStyle, computedStyle, propStyle)}
+      >
+        <ButtonContent icon={icon} size={size} type={type} text={text}>
+          {children}
+        </ButtonContent>
+      </Component>
+    </View>
   );
 };
 
