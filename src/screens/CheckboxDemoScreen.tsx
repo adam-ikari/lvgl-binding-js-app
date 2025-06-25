@@ -1,7 +1,7 @@
 import PageSession from "./common/PageSession";
 import { ZCheckbox, ZRow } from "@/components";
 import { ZFlexAlignItems } from "@/components/ZFlexContainer";
-import React, { useState } from "react";
+import React from "react";
 
 const CheckboxDemoScreen = () => {
   return (
