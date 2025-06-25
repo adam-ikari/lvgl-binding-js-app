@@ -53,7 +53,7 @@ const ZPagination = (props) => {
       );
     }
 
-    return <ZRow>{items}</ZRow>;
+    return <>{items}</>;
   };
 
   return (
