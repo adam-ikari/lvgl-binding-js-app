@@ -207,7 +207,11 @@ const ZButton = (props: ZButtonProps) => {
   return (
     <View
       {...restProps}
-      style={mergeStyle(baseStyle, COMMON_STYLE.noBorder, { padding: 0 })}
+      style={mergeStyle(
+        baseStyle,
+        COMMON_STYLE.noBorder,
+        COMMON_STYLE.padding0,
+      )}
     >
       <Component
         onClick={handleClick}
