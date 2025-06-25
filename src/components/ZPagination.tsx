@@ -20,12 +20,23 @@ const ZPagination: React.FC<ZPaginationProps> = (props) => {
   const renderPageItems = (): React.ReactNode[] => {
     const items: React.ReactElement[] = [];
     const maxVisible = 5;
+    const halfVisible = Math.floor(maxVisible / 2);
 
-    let start = Math.max(1, current - 2);
+    let start = Math.max(1, current - halfVisible);
     let end = Math.min(total, start + maxVisible - 1);
 
+    // 调整起始页码确保显示足够数量的页码
     if (end - start + 1 < maxVisible) {
       start = Math.max(1, end - maxVisible + 1);
+    }
+
+    // 确保当前页码在中间位置
+    if (current > halfVisible && current < total - halfVisible) {
+      start = current - halfVisible;
+      end = current + halfVisible;
+    } else if (current >= total - halfVisible) {
+      start = Math.max(1, total - maxVisible + 1);
+      end = total;
     }
 
     // 页码按钮
@@ -42,30 +53,28 @@ const ZPagination: React.FC<ZPaginationProps> = (props) => {
       );
     }
 
-    return (
-      <ZRow>
-        <ZButton
-          key="prev"
-          size={size}
-          onClick={() => handlePageChange(current - 1)}
-          disable={current === 1}
-        >
-          prev
-        </ZButton>
-        <ZRow>{items}</ZRow>
-        <ZButton
-          key="next"
-          size={size}
-          onClick={() => handlePageChange(current + 1)}
-          disable={current === total}
-        >
-          next
-        </ZButton>
-      </ZRow>
-    );
+    return [
+      <ZButton
+        key={`prev`}
+        size={size}
+        onClick={() => handlePageChange(current - 1)}
+        disable={current === 1}
+      >
+        prev
+      </ZButton>,
+      ...items,
+      <ZButton
+        key={`next`}
+        size={size}
+        onClick={() => handlePageChange(current + 1)}
+        disable={current === total}
+      >
+        next
+      </ZButton>,
+    ];
   };
 
-  return <ZColumn>{renderPageItems() as React.ReactNode}</ZColumn>;
+  return <ZRow>{renderPageItems()}</ZRow>;
 };
 
 export type { ZPaginationProps };

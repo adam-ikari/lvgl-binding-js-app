@@ -128,6 +128,7 @@ const router: RouterItem[] = [
     meta: { title: "Image Demo" },
   },
   {
+    name: "pagination",
     path: "/pagination",
     component: PaginationDemoScreen,
     meta: { title: "Pagination Demo" },
