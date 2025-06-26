@@ -10,8 +10,10 @@ import { ZIcon } from ".";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import { COLORS, COMMON_STYLE } from "@/styles/common_style";
 import * as _ from "radash";
-import React, { useMemo } from "react";
+import React, { Children, useMemo } from "react";
 import { Button, View } from "sdk-ui";
+
+const mergeStyle = useMergeStyle();
 
 interface ZButtonProps {
   children?: string;
@@ -26,6 +28,12 @@ interface ZButtonProps {
   [key: string]: any;
 }
 
+interface ZButtonContainerProps {
+  children: React.ReactNode;
+  round?: boolean;
+  [key: string]: any;
+}
+
 interface ButtonContentProps {
   icon?: ZIconSymbol;
   children?: string;
@@ -33,6 +41,124 @@ interface ButtonContentProps {
   type: ZColorTypeEnum;
   text: boolean;
 }
+
+const baseStyle: ZStyleProps = mergeStyle(
+  COMMON_STYLE.flexRow,
+  COMMON_STYLE.alignItemsCenter,
+  COMMON_STYLE.justifyContentCenter,
+  COMMON_STYLE.autoWidth,
+  COMMON_STYLE.autoHeight,
+  COMMON_STYLE.radius4,
+  COMMON_STYLE.paddingVertical0,
+  {
+    "border-color": COLORS.BORDER,
+    "shadow-width": 0,
+  },
+);
+
+const normalStyleMap: Record<string, ZStyleProps> = {
+  primary: mergeStyle(COMMON_STYLE.border1, {
+    "background-color": COLORS.PRIMARY,
+    "text-color": COLORS.WHITE,
+  }),
+  success: mergeStyle(COMMON_STYLE.border1, {
+    "background-color": COLORS.SUCCESS,
+    "text-color": COLORS.WHITE,
+  }),
+  info: mergeStyle(COMMON_STYLE.border1, {
+    ...COMMON_STYLE.border1,
+    "background-color": COLORS.INFO,
+    "text-color": COLORS.WHITE,
+  }),
+  danger: mergeStyle(COMMON_STYLE.border1, {
+    "background-color": COLORS.DANGER,
+    "text-color": COLORS.WHITE,
+  }),
+  warning: mergeStyle(COMMON_STYLE.border1, {
+    "background-color": COLORS.WARNING,
+    "text-color": COLORS.WHITE,
+  }),
+  default: mergeStyle(COMMON_STYLE.border1, {
+    ...COMMON_STYLE.border1,
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.REGULAR_TEXT,
+  }),
+};
+
+const textStyleMap: Record<string, ZStyleProps> = {
+  primary: mergeStyle(COMMON_STYLE.noBorder, {
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.PRIMARY,
+  }),
+  success: mergeStyle(COMMON_STYLE.noBorder, {
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.SUCCESS,
+  }),
+  info: mergeStyle(COMMON_STYLE.noBorder, {
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.INFO,
+  }),
+  danger: mergeStyle(COMMON_STYLE.noBorder, {
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.DANGER,
+  }),
+  warning: mergeStyle(COMMON_STYLE.noBorder, {
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.WARNING,
+  }),
+  default: mergeStyle(COMMON_STYLE.noBorder, {
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.REGULAR_TEXT,
+  }),
+};
+
+const disabledStyle: ZStyleProps = {
+  opacity: 0.6,
+};
+
+const roundStyle: ZStyleProps = COMMON_STYLE.radiusMax;
+
+const noChildStyle: ZStyleProps = {
+  padding: 0,
+};
+
+const sizeStyleMap: Record<string, ZStyleProps> = {
+  small: mergeStyle(
+    COMMON_STYLE.minWidth32,
+    COMMON_STYLE.height32,
+    COMMON_STYLE.fontSizeSmall,
+    COMMON_STYLE.paddingHorizontal4,
+  ),
+  default: mergeStyle(
+    COMMON_STYLE.minWidth36,
+    COMMON_STYLE.height36,
+    COMMON_STYLE.fontSizeDefault,
+    COMMON_STYLE.paddingHorizontal8,
+  ),
+  large: mergeStyle(
+    COMMON_STYLE.minWidth48,
+    COMMON_STYLE.height48,
+    COMMON_STYLE.fontSizeLarge,
+    COMMON_STYLE.paddingHorizontal16,
+  ),
+};
+
+const ButtonContainer = React.memo((props: ZButtonContainerProps) => {
+  const { children, round, ...restProps } = props;
+  return (
+    <View
+      {...restProps}
+      style={mergeStyle(
+        baseStyle,
+        COMMON_STYLE.noBorder,
+        COMMON_STYLE.padding0,
+        round && roundStyle,
+      )}
+    >
+      {children}
+    </View>
+  );
+});
 
 const ButtonContent = React.memo(
   ({ icon, children, size, type, text }: ButtonContentProps) => {
@@ -68,109 +194,6 @@ const ButtonContent = React.memo(
 );
 
 const ZButton = (props: ZButtonProps) => {
-  const mergeStyle = useMergeStyle();
-
-  const baseStyle: ZStyleProps = mergeStyle(
-    COMMON_STYLE.flexRow,
-    COMMON_STYLE.alignItemsCenter,
-    COMMON_STYLE.justifyContentCenter,
-    COMMON_STYLE.autoWidth,
-    COMMON_STYLE.autoHeight,
-    COMMON_STYLE.radius4,
-    COMMON_STYLE.paddingVertical0,
-    {
-      "border-color": COLORS.BORDER,
-      "shadow-width": 0,
-    },
-  );
-
-  const normalStyleMap: Record<string, ZStyleProps> = {
-    primary: mergeStyle(COMMON_STYLE.border1, {
-      "background-color": COLORS.PRIMARY,
-      "text-color": COLORS.WHITE,
-    }),
-    success: mergeStyle(COMMON_STYLE.border1, {
-      "background-color": COLORS.SUCCESS,
-      "text-color": COLORS.WHITE,
-    }),
-    info: mergeStyle(COMMON_STYLE.border1, {
-      ...COMMON_STYLE.border1,
-      "background-color": COLORS.INFO,
-      "text-color": COLORS.WHITE,
-    }),
-    danger: mergeStyle(COMMON_STYLE.border1, {
-      "background-color": COLORS.DANGER,
-      "text-color": COLORS.WHITE,
-    }),
-    warning: mergeStyle(COMMON_STYLE.border1, {
-      "background-color": COLORS.WARNING,
-      "text-color": COLORS.WHITE,
-    }),
-    default: mergeStyle(COMMON_STYLE.border1, {
-      ...COMMON_STYLE.border1,
-      "background-color": COLORS.WHITE,
-      "text-color": COLORS.REGULAR_TEXT,
-    }),
-  };
-
-  const textStyleMap: Record<string, ZStyleProps> = {
-    primary: mergeStyle(COMMON_STYLE.noBorder, {
-      "background-color": COLORS.WHITE,
-      "text-color": COLORS.PRIMARY,
-    }),
-    success: mergeStyle(COMMON_STYLE.noBorder, {
-      "background-color": COLORS.WHITE,
-      "text-color": COLORS.SUCCESS,
-    }),
-    info: mergeStyle(COMMON_STYLE.noBorder, {
-      "background-color": COLORS.WHITE,
-      "text-color": COLORS.INFO,
-    }),
-    danger: mergeStyle(COMMON_STYLE.noBorder, {
-      "background-color": COLORS.WHITE,
-      "text-color": COLORS.DANGER,
-    }),
-    warning: mergeStyle(COMMON_STYLE.noBorder, {
-      "background-color": COLORS.WHITE,
-      "text-color": COLORS.WARNING,
-    }),
-    default: mergeStyle(COMMON_STYLE.noBorder, {
-      "background-color": COLORS.WHITE,
-      "text-color": COLORS.REGULAR_TEXT,
-    }),
-  };
-
-  const disabledStyle: ZStyleProps = {
-    opacity: 0.6,
-  };
-
-  const sizeStyleMap: Record<string, ZStyleProps> = {
-    small: mergeStyle(
-      COMMON_STYLE.minWidth32,
-      COMMON_STYLE.height32,
-      COMMON_STYLE.fontSizeSmall,
-      COMMON_STYLE.paddingHorizontal4,
-    ),
-    default: mergeStyle(
-      COMMON_STYLE.minWidth36,
-      COMMON_STYLE.height36,
-      COMMON_STYLE.fontSizeDefault,
-      COMMON_STYLE.paddingHorizontal8,
-    ),
-    large: mergeStyle(
-      COMMON_STYLE.minWidth48,
-      COMMON_STYLE.height48,
-      COMMON_STYLE.fontSizeLarge,
-      COMMON_STYLE.paddingHorizontal16,
-    ),
-  };
-
-  const roundStyle: ZStyleProps = COMMON_STYLE.radiusMax;
-
-  const noChildStyle: ZStyleProps = {
-    padding: 0,
-  };
-
   const {
     children,
     style: propStyle = {},
@@ -202,27 +225,19 @@ const ZButton = (props: ZButtonProps) => {
     [type, size, text, round, disable, children],
   );
 
-  const Component = disable ? View : Button;
+  const ButtonBackground = disable ? View : Button;
 
   return (
-    <View
-      {...restProps}
-      style={mergeStyle(
-        baseStyle,
-        COMMON_STYLE.noBorder,
-        COMMON_STYLE.padding0,
-        round && roundStyle,
-      )}
-    >
-      <Component
+    <ButtonContainer round={round} {...restProps}>
+      <ButtonBackground
         onClick={handleClick}
         style={mergeStyle(baseStyle, computedStyle, propStyle)}
       >
         <ButtonContent icon={icon} size={size} type={type} text={text}>
           {children}
         </ButtonContent>
-      </Component>
-    </View>
+      </ButtonBackground>
+    </ButtonContainer>
   );
 };
 
