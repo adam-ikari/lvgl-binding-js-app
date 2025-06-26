@@ -30,7 +30,7 @@ program
     process.env.NODE_ENV = options.env;
     logInfo(`Starting ${process.env.NODE_ENV} build...`);
     try {
-      build();
+      (async ()=>{await build()})();
       logSuccess("Build completed successfully");
     } catch (err) {
       logError("Build failed", err);
