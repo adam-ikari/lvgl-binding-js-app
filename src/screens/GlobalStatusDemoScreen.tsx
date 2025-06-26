@@ -38,16 +38,12 @@ const GlobalStatusDemoScreen = () => {
         </ZRow>
       </PageSession>
       <PageSession title="Persist Status">
-        <ZRow width={ZWidthEnum.Full}>
-          <ZRow style={{ "flex-grow": 1 }}>
-            <ZText>{`Theme: ${theme}`}</ZText>
-          </ZRow>
+        <ZRow>
+          <ZText>{`Theme: ${theme}`}</ZText>
           <ZSwitch value={theme === "dark"} onChange={() => toggleTheme()} />
         </ZRow>
-        <ZRow width={ZWidthEnum.Full}>
-          <ZRow style={{ "flex-grow": 1 }}>
-            <ZText>{`Language: ${language}`}</ZText>
-          </ZRow>
+        <ZRow>
+          <ZText>{`Language: ${language}`}</ZText>
           <ZDropdown
             options={languageOptions}
             value={language}

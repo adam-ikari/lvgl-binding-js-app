@@ -124,23 +124,6 @@ program
     }
   });
 
-// Test command
-program
-  .command("test")
-  .description("Run tests")
-  .action(async () => {
-    const spinner = ora("Running tests").start();
-    try {
-      // Add actual test runner logic here
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      spinner.succeed("Tests passed");
-    } catch (err) {
-      spinner.fail("Tests failed");
-      logError("Test failed", err);
-      process.exit(1);
-    }
-  });
-
 program.parse(process.argv);
 
 // Handle verbose flag

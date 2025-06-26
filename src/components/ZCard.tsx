@@ -1,4 +1,4 @@
-import { ZColumn, ZRow, ZStyleProps } from ".";
+import { ZColumn, ZRow, ZStyleProps, ZWidthEnum } from ".";
 import { COLORS, COMMON_STYLE } from "../styles/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import React from "react";
@@ -15,22 +15,22 @@ interface ZCardProps {
 
 const ZCardCover = (props: { children?: React.ReactNode }) => {
   const { children } = props;
-  return <ZRow>{children}</ZRow>;
+  return <>{children}</>;
 };
 
 const ZCardHeader = (props: { children?: React.ReactNode }) => {
   const { children } = props;
-  return <ZRow>{children}</ZRow>;
+  return <>{children}</>;
 };
 
 const ZCardContent = (props: { children?: React.ReactNode }) => {
   const { children } = props;
-  return <ZRow>{children}</ZRow>;
+  return <>{children}</>;
 };
 
 const ZCardFooter = (props: { children?: React.ReactNode }) => {
   const { children } = props;
-  return <ZRow>{children}</ZRow>;
+  return <>{children}</>;
 };
 
 const ZCard = (props: ZCardProps) => {

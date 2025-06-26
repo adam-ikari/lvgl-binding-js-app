@@ -89,7 +89,7 @@ export const nodemonConfig = {
     ext: "js,ts,jsx,tsx,json,jpg,jpeg,png,bmp",
     ignore: ["node_modules/", "dist/", "deps/"],
     env: {
-        TJS_HOME: "data",
+        TJS_HOME: path.resolve(process.cwd(), "app_data"),
     },
 }
 

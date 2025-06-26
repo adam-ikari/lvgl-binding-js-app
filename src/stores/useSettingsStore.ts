@@ -4,7 +4,7 @@ import { PersistOptions, persist } from "zustand/middleware";
 
 const defaultSettings: Settings = {
   theme: "light", // default theme
-  language: "system", // default language
+  language: "zh", // default language
 };
 
 interface Settings {
