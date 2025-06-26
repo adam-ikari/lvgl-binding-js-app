@@ -2,22 +2,29 @@ import { changeLanguage } from "@/i18n";
 import { create } from "zustand";
 import { PersistOptions, persist } from "zustand/middleware";
 
-interface SettingsState {
+const defaultSettings: Settings = {
+  theme: "light", // default theme
+  language: "system", // default language
+};
+
+interface Settings {
   theme: string; // e.g., "light" or "dark"
+  language: string; // e.g., "system:,"en", "zh", etc.
+}
+
+interface SettingsState extends Settings {
   toggleTheme: () => void; // Method to toggle theme
-  language: string; // language setting
   setLanguage: (language: string) => void; // Method to set language
 }
 
 const useSettingsStore = create(
   persist<SettingsState>(
     (set) => ({
-      theme: "light", // default theme
+      ...defaultSettings,
       toggleTheme: () =>
         set((state) => ({
           theme: state.theme === "light" ? "dark" : "light",
         })),
-      language: "system", // default language
       setLanguage: (language: string) => {
         set({ language });
         changeLanguage(language);
