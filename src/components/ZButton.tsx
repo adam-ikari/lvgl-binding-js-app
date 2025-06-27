@@ -8,28 +8,6 @@ import { Button, View } from "sdk-ui";
 
 const mergeStyle = useMergeStyle();
 
-interface ZButtonProps {
-  /** 按钮文本内容 */
-  children?: string;
-  /** 自定义样式 */
-  style?: ZStyleProps;
-  /** 图标类型 */
-  icon?: ZIconSymbol;
-  /** 按钮类型 */
-  type?: ZColorTypeEnum;
-  /** 按钮尺寸 */
-  size?: ZSizeEnum;
-  /** 是否为文本按钮 */
-  text?: boolean;
-  /** 是否为圆形按钮 */
-  round?: boolean;
-  /** 是否禁用 */
-  disable?: boolean;
-  /** 点击事件回调 */
-  onClick?: () => void;
-  [key: string]: any;
-}
-
 const normalStyleMap: Record<string, ZStyleProps> = {
   primary: { "background-color": COLORS.PRIMARY, "text-color": COLORS.WHITE },
   success: { "background-color": COLORS.SUCCESS, "text-color": COLORS.WHITE },
