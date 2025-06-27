@@ -4,6 +4,7 @@ import alias from "esbuild-plugin-alias";
 import path from "path";
 
 export const buildDir = "dist";
+export const appDataDir = "app_data";
 
 export const esbuildConfig = {
   bundle: true,
@@ -86,10 +87,9 @@ export const compressOptions = {
 };
 
 export const nodemonConfig = {
-    ext: "js,ts,jsx,tsx,json,jpg,jpeg,png,bmp",
-    ignore: ["node_modules/", "dist/", "deps/"],
-    env: {
-        TJS_HOME: path.resolve(process.cwd(), "app_data"),
-    },
-}
-
+  ext: "js,ts,jsx,tsx,json,jpg,jpeg,png,bmp",
+  ignore: ["node_modules/", "dist/", "deps/"],
+  env: {
+    TJS_HOME: path.resolve(process.cwd(), appDataDir),
+  },
+};

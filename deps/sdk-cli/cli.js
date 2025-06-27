@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { build } from "./build.js";
+import { appDataDir, buildDir, nodemonConfig } from "./config.js";
 import { run } from "./run.js";
 import chalk from "chalk";
 import { program } from "commander";
@@ -7,7 +8,7 @@ import fs from "fs/promises";
 import nodemon from "nodemon";
 import ora from "ora";
 import path from "path";
-import { buildDir, nodemonConfig } from "./config.js"
+import { fileURLToPath } from "url";
 
 // Helper functions
 const logSuccess = (msg) => console.log(chalk.green(`[SDK-CLI] ${msg}`));
@@ -30,7 +31,9 @@ program
     process.env.NODE_ENV = options.env;
     logInfo(`Starting ${process.env.NODE_ENV} build...`);
     try {
-      (async ()=>{await build()})();
+      (async () => {
+        await build();
+      })();
       logSuccess("Build completed successfully");
     } catch (err) {
       logError("Build failed", err);
@@ -53,7 +56,7 @@ program
       // 使用run命令启动并监听变化
       nodemon({
         exec: `sdk-cli build && sdk-cli run main`,
-        ...nodemonConfig
+        ...nodemonConfig,
       });
 
       nodemon
@@ -120,6 +123,24 @@ program
     } catch (err) {
       spinner.fail("Failed to clean build artifacts");
       logError("Clean failed", err);
+      process.exit(1);
+    }
+  });
+
+// Reset LocalStorage
+program
+  .command("reset_localstorage")
+  .description("Reset LocalStorage")
+  .action(async () => {
+    const spinner = ora("Resetting LocalStorage").start();
+    try {
+      const path_ = path.resolve(process.cwd(), appDataDir, "localStorage.db");
+      console.log(`Resetting LocalStorage at: ${path_}`);
+      await fs.rm(path_, { force: true });
+      spinner.succeed(`LocalStorage reset successfully at ${path_}`);
+    } catch (err) {
+      spinner.fail("Failed to reset LocalStorage");
+      logError("Reset failed", err);
       process.exit(1);
     }
   });
