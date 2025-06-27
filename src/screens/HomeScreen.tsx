@@ -1,4 +1,4 @@
-import { ZButton, ZRow } from "@/components";
+import { ZButton, ZRow, ZWidthEnum } from "@/components";
 import PageSession from "@/screens/common/PageSession";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -17,6 +17,7 @@ const HomeScreen = () => {
         { text: "Card Demo", path: "/card" },
         { text: "Progress Bar Demo", path: "/process-bar" },
         { text: "Image Demo", path: "/image" },
+        { text: "Pagination Demo", path: "/pagination" },
       ],
     },
     {
@@ -33,11 +34,8 @@ const HomeScreen = () => {
       children: [{ text: "Dialog Demo", path: "/dialog" }],
     },
     {
-      text: "Page Render",
-      children: [
-        { text: "List Demo", path: "/list" },
-        { text: "Pagination Demo", path: "/pagination" },
-      ],
+      text: "List Render",
+      children: [{ text: "List Demo", path: "/list" }],
     },
 
     {
@@ -61,7 +59,7 @@ const HomeScreen = () => {
     <>
       {indexData.map((category, index) => (
         <PageSession key={index} title={category.text}>
-          <ZRow wrap>
+          <ZRow wrap width={ZWidthEnum.Full}>
             {category.children.map((item, index) => (
               <ZButton key={index} onClick={() => navigate(item.path)}>
                 {item.text}

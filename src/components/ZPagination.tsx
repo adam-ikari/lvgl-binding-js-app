@@ -6,10 +6,19 @@ interface ZPaginationProps {
   total: number;
   onChange?: (page: number) => void;
   size?: ZSizeEnum;
+  prevText?: string;
+  nextText?: string;
 }
 
 const ZPagination = (props) => {
-  const { current, total, onChange, size = ZSizeEnum.Default } = props;
+  const {
+    current,
+    total,
+    onChange,
+    size = ZSizeEnum.Default,
+    prevText = "prev",
+    nextText = "next",
+  } = props;
 
   const handlePageChange = (page: number) => {
     if (page < 1) page = 1;
@@ -64,7 +73,7 @@ const ZPagination = (props) => {
         onClick={() => handlePageChange(current - 1)}
         disable={current === 1}
       >
-        prev
+        {prevText}
       </ZButton>
       {renderPageItems()}
       <ZButton
@@ -73,7 +82,7 @@ const ZPagination = (props) => {
         onClick={() => handlePageChange(current + 1)}
         disable={current === total}
       >
-        next
+        {nextText}
       </ZButton>
     </ZRow>
   );

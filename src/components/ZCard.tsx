@@ -13,6 +13,23 @@ interface ZCardProps {
   [key: string]: any;
 }
 
+const mergeStyle = useMergeStyle();
+
+const baseStyle: ZStyleProps = mergeStyle(
+  COMMON_STYLE.noBorder,
+  COMMON_STYLE.autoWidth,
+  COMMON_STYLE.autoHeight,
+  COMMON_STYLE.padding20,
+  COMMON_STYLE.radius4,
+  {
+    "shadow-color": COLORS.GREY_DARK,
+    "shadow-offset-x": 0,
+    "shadow-offset-y": 0,
+    "shadow-opacity": 50,
+    "shadow-width": 24,
+  },
+);
+
 const ZCardCover = (props: { children?: React.ReactNode }) => {
   const { children } = props;
   return <>{children}</>;
@@ -34,22 +51,6 @@ const ZCardFooter = (props: { children?: React.ReactNode }) => {
 };
 
 const ZCard = (props: ZCardProps) => {
-  const mergeStyle = useMergeStyle();
-  const baseStyle: ZStyleProps = mergeStyle(
-    COMMON_STYLE.noBorder,
-    COMMON_STYLE.autoWidth,
-    COMMON_STYLE.autoHeight,
-    COMMON_STYLE.padding20,
-    COMMON_STYLE.radius4,
-    {
-      "shadow-color": COLORS.GREY_DARK,
-      "shadow-offset-x": 0,
-      "shadow-offset-y": 0,
-      "shadow-opacity": 50,
-      "shadow-width": 24,
-    },
-  );
-
   const {
     cover,
     header,
