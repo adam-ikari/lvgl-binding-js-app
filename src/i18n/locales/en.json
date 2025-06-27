@@ -1,3 +1,49 @@
 {
-  "BASIC_WIDGETS": "Basic Widgets"
+  "BASIC_WIDGETS": "Basic Widgets",
+  "PAGINATION": {
+    "BASIC": "Basic",
+    "CUSTOM_MAX_VISIBLE": "Custom Max Visible",
+    "CURRENT_PAGE": "Current Page",
+    "TOTAL_PAGES": "Total Pages",
+    "MAX_VISIBLE": "Max Visible"
+  },
+  "BUTTON": {
+    "DISABLE": "Disable Button",
+    "TYPES": {
+      "DEFAULT": "Default",
+      "PRIMARY": "Primary",
+      "SUCCESS": "Success",
+      "INFO": "Info",
+      "DANGER": "Danger",
+      "WARNING": "Warning"
+    },
+    "STATES": {
+      "DISABLED": "disabled",
+      "ENABLED": "enabled"
+    },
+    "GROUP": {
+      "ONE": "one",
+      "TWO": "two",
+      "THREE": "three"
+    }
+  },
+  "CARD": {
+    "BASIC": "Basic Card",
+    "FULL": "Card with Cover, Header, Content and Footer",
+    "TITLE": "Title",
+    "CONTENT": "This is card content",
+    "FOOTER": "Footer"
+  },
+  "GLOBAL_STATUS": {
+    "TITLE": "Global Status",
+    "PERSIST_TITLE": "Persist Status",
+    "COUNTER": "counter",
+    "THEME": "Theme",
+    "LANGUAGE": "Language"
+  },
+  "BUTTON": {
+    "DEC": "dec",
+    "INC": "inc",
+    "RESET": "reset"
+  }
 }

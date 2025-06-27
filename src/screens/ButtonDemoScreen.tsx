@@ -9,52 +9,55 @@ import {
 import { ZIconSymbol } from "@/components";
 import PageSession from "@/screens/common/PageSession";
 import React, { useCallback, useMemo, useState } from "react";
-
-const buttonTypeData = [
-  { text: "Default", type: ZColorTypeEnum.Default },
-  { text: "Primary", type: ZColorTypeEnum.Primary },
-  { text: "Success", type: ZColorTypeEnum.Success },
-  { text: "Info", type: ZColorTypeEnum.Info },
-  { text: "Danger", type: ZColorTypeEnum.Danger },
-  { text: "Warning", type: ZColorTypeEnum.Warning },
-];
-
-const buttonGroupData = [
-  { text: "One", type: ZColorTypeEnum.Primary },
-  { text: "Two" },
-  { text: "Three" },
-];
-
-const DisableButtonSection = () => {
-  const [disable, setDisable] = useState(false);
-  const handleSwitchChange = useCallback((value: boolean) => {
-    setDisable(value);
-  }, []);
-
-  const buttons = useMemo(
-    () =>
-      buttonTypeData.map((item) => (
-        <ZButton key={item.text} type={item.type} disable={disable}>
-          {item.text}
-        </ZButton>
-      )),
-    [disable],
-  );
-
-  return (
-    <PageSession title="Disable Button">
-      <ZSwitch
-        value={disable}
-        onChange={handleSwitchChange}
-        activeText="disabled"
-        inactiveText="enabled"
-      />
-      <ZRow gap={8}>{buttons}</ZRow>
-    </PageSession>
-  );
-};
+import { useTranslation } from "react-i18next";
 
 const ButtonDemoScreen = () => {
+  const { t } = useTranslation();
+
+  const buttonTypeData = [
+    { text: t("BUTTON.TYPES.DEFAULT"), type: ZColorTypeEnum.Default },
+    { text: t("BUTTON.TYPES.PRIMARY"), type: ZColorTypeEnum.Primary },
+    { text: t("BUTTON.TYPES.SUCCESS"), type: ZColorTypeEnum.Success },
+    { text: t("BUTTON.TYPES.INFO"), type: ZColorTypeEnum.Info },
+    { text: t("BUTTON.TYPES.DANGER"), type: ZColorTypeEnum.Danger },
+    { text: t("BUTTON.TYPES.WARNING"), type: ZColorTypeEnum.Warning },
+  ];
+
+  const buttonGroupData = [
+    { text: t("BUTTON.GROUP.ONE"), type: ZColorTypeEnum.Primary },
+    { text: t("BUTTON.GROUP.TWO") },
+    { text: t("BUTTON.GROUP.THREE") },
+  ];
+
+  const DisableButtonSection = () => {
+    const [disable, setDisable] = useState(false);
+    const handleSwitchChange = useCallback((value: boolean) => {
+      setDisable(value);
+    }, []);
+
+    const buttons = useMemo(
+      () =>
+        buttonTypeData.map((item) => (
+          <ZButton key={item.text} type={item.type} disable={disable}>
+            {item.text}
+          </ZButton>
+        )),
+      [disable],
+    );
+
+    return (
+      <PageSession title={t("BUTTON.DISABLE")}>
+        <ZSwitch
+          value={disable}
+          onChange={handleSwitchChange}
+          activeText={t("BUTTON.STATES.DISABLED")}
+          inactiveText={t("BUTTON.STATES.ENABLED")}
+        />
+        <ZRow gap={8}>{buttons}</ZRow>
+      </PageSession>
+    );
+  };
+
   return (
     <>
       <PageSession title="type">

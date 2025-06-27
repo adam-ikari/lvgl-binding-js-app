@@ -11,6 +11,7 @@ import PageSession from "@/screens/common/PageSession";
 import { useCounterStore } from "@/stores/useCounterStore";
 import { useSettingsStore } from "@/stores/useSettingsStore";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const languageOptions = [
   { label: "system", value: "system" },
@@ -19,31 +20,32 @@ const languageOptions = [
 ];
 
 const GlobalStatusDemoScreen = () => {
+  const { t } = useTranslation();
   const { count, inc, dec, reset } = useCounterStore();
   const { theme, toggleTheme, language, setLanguage } = useSettingsStore();
   return (
     <>
-      <PageSession title="Global Status">
-        <ZText>{`counter: ${count}`}</ZText>
+      <PageSession title={t("GLOBAL_STATUS.TITLE")}>
+        <ZText>{`${t("GLOBAL_STATUS.COUNTER")}: ${count}`}</ZText>
         <ZRow>
           <ZButton icon={ZIconSymbol.Minus} onClick={() => dec()}>
-            dec
+            {t("BUTTON.DEC")}
           </ZButton>
           <ZButton icon={ZIconSymbol.Plus} onClick={() => inc()}>
-            inc
+            {t("BUTTON.INC")}
           </ZButton>
           <ZButton icon={ZIconSymbol.Refresh} onClick={() => reset()}>
-            reset
+            {t("BUTTON.RESET")}
           </ZButton>
         </ZRow>
       </PageSession>
-      <PageSession title="Persist Status">
+      <PageSession title={t("GLOBAL_STATUS.PERSIST_TITLE")}>
         <ZRow>
-          <ZText>{`Theme: ${theme}`}</ZText>
+          <ZText>{`${t("GLOBAL_STATUS.THEME")}: ${theme}`}</ZText>
           <ZSwitch value={theme === "dark"} onChange={() => toggleTheme()} />
         </ZRow>
         <ZRow>
-          <ZText>{`Language: ${language}`}</ZText>
+          <ZText>{`${t("GLOBAL_STATUS.LANGUAGE")}: ${language}`}</ZText>
           <ZDropdown
             options={languageOptions}
             value={language}

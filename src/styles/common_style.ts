@@ -268,6 +268,12 @@ const COMMON_STYLE: Record<string, ZStyleProps> = {
     "padding-top": 16,
     "padding-bottom": 16,
   },
+  cardHover: {
+    "transition": "all 0.3s ease",
+    "transform": "translateY(-2px)",
+    "shadow-opacity": 80,
+    "shadow-width": 32,
+  },
   fontSizeSmall: {
     "font-size": 12,
   },

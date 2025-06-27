@@ -1,3 +1,44 @@
 {
-  "BASIC_WIDGETS": "基础组件"
+  "BASIC_WIDGETS": "基础组件",
+  "PAGINATION": {
+    "BASIC": "基础分页",
+    "CUSTOM_MAX_VISIBLE": "自定义最大可见数",
+    "CURRENT_PAGE": "当前页",
+    "TOTAL_PAGES": "总页数",
+    "MAX_VISIBLE": "最大可见数"
+  },
+  "BUTTON": {
+    "DISABLE": "禁用按钮",
+    "TYPES": {
+      "DEFAULT": "默认",
+      "PRIMARY": "主要",
+      "SUCCESS": "成功",
+      "INFO": "信息",
+      "DANGER": "危险",
+      "WARNING": "警告"
+    },
+    "STATES": {
+      "DISABLED": "禁用",
+      "ENABLED": "启用"
+    }
+  },
+  "CARD": {
+    "BASIC": "基础卡片",
+    "FULL": "完整卡片(封面/标题/内容/页脚)",
+    "TITLE": "标题",
+    "CONTENT": "卡片内容",
+    "FOOTER": "页脚"
+  },
+  "GLOBAL_STATUS": {
+    "TITLE": "全局状态",
+    "PERSIST_TITLE": "持久化状态",
+    "COUNTER": "计数器",
+    "THEME": "主题",
+    "LANGUAGE": "语言"
+  },
+  "BUTTON": {
+    "DEC": "减少",
+    "INC": "增加",
+    "RESET": "重置"
+  }
 }
