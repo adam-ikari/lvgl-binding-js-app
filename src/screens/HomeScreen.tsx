@@ -21,36 +21,36 @@ const HomeScreen = () => {
       ],
     },
     {
-      text: "Form Widgets",
+      text: t("FORM_WIDGETS"),
       children: [
-        { text: "Input Demo", path: "/input" },
-        { text: "Switch Demo", path: "/switch" },
-        { text: "Checkbox Demo", path: "/checkbox" },
-        { text: "Dropdown Demo", path: "/dropdown" },
+        { text: t("INPUT_DEMO"), path: "/input" },
+        { text: t("SWITCH_DEMO"), path: "/switch" },
+        { text: t("CHECKBOX_DEMO"), path: "/checkbox" },
+        { text: t("DROPDOWN_DEMO"), path: "/dropdown" },
       ],
     },
     {
-      text: "Feedback Widgets",
-      children: [{ text: "Dialog Demo", path: "/dialog" }],
+      text: t("FEEDBACK_WIDGETS"),
+      children: [{ text: t("DIALOG_DEMO"), path: "/dialog" }],
     },
     {
-      text: "List Render",
-      children: [{ text: "List Demo", path: "/list" }],
+      text: t("LIST_RENDER"),
+      children: [{ text: t("LIST_DEMO"), path: "/list" }],
     },
 
     {
-      text: "State",
+      text: t("STATE"),
       children: [
-        { text: "State Demo", path: "/state" },
-        { text: "Global State Demo", path: "/global_state" },
+        { text: t("STATE_DEMO"), path: "/state" },
+        { text: t("GLOBAL_STATE_DEMO"), path: "/global_state" },
       ],
     },
     {
-      text: "Web API",
+      text: t("WEB_API"),
       children: [
-        { text: "WASM Demo", path: "/wasm" },
-        { text: "Worker Demo", path: "/worker" },
-        { text: "LocalStorage Demo", path: "/localstorage" },
+        { text: t("WASM_DEMO"), path: "/wasm" },
+        { text: t("WORKER_DEMO"), path: "/worker" },
+        { text: t("LOCALSTORAGE_DEMO"), path: "/localstorage" },
       ],
     },
   ];

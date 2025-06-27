@@ -39,11 +39,25 @@
     "PERSIST_TITLE": "Persist Status",
     "COUNTER": "counter",
     "THEME": "Theme",
-    "LANGUAGE": "Language"
-  },
-  "BUTTON": {
+    "LANGUAGE": "Language",
     "DEC": "dec",
     "INC": "inc",
     "RESET": "reset"
-  }
+  },
+  "FORM_WIDGETS": "Form Widgets",
+  "FEEDBACK_WIDGETS": "Feedback Widgets",
+  "LIST_RENDER": "List Render",
+  "STATE": "State",
+  "WEB_API": "Web API",
+  "INPUT_DEMO": "Input Demo",
+  "SWITCH_DEMO": "Switch Demo",
+  "CHECKBOX_DEMO": "Checkbox Demo",
+  "DROPDOWN_DEMO": "Dropdown Demo",
+  "DIALOG_DEMO": "Dialog Demo",
+  "LIST_DEMO": "List Demo",
+  "STATE_DEMO": "State Demo",
+  "GLOBAL_STATE_DEMO": "Global State Demo",
+  "WASM_DEMO": "WASM Demo",
+  "WORKER_DEMO": "Worker Demo",
+  "LOCALSTORAGE_DEMO": "LocalStorage Demo"
 }

@@ -20,6 +20,11 @@
     "STATES": {
       "DISABLED": "禁用",
       "ENABLED": "启用"
+    },
+    "GROUP": {
+      "ONE": "一",
+      "TWO": "二",
+      "THREE": "三"
     }
   },
   "CARD": {
@@ -34,11 +39,25 @@
     "PERSIST_TITLE": "持久化状态",
     "COUNTER": "计数器",
     "THEME": "主题",
-    "LANGUAGE": "语言"
-  },
-  "BUTTON": {
+    "LANGUAGE": "语言",
     "DEC": "减少",
     "INC": "增加",
     "RESET": "重置"
-  }
+  },
+  "FORM_WIDGETS": "表单组件",
+  "FEEDBACK_WIDGETS": "反馈组件",
+  "LIST_RENDER": "列表渲染",
+  "STATE": "状态管理",
+  "WEB_API": "Web API",
+  "INPUT_DEMO": "输入框示例",
+  "SWITCH_DEMO": "开关示例",
+  "CHECKBOX_DEMO": "复选框示例",
+  "DROPDOWN_DEMO": "下拉菜单示例",
+  "DIALOG_DEMO": "对话框示例",
+  "LIST_DEMO": "列表示例",
+  "STATE_DEMO": "状态示例",
+  "GLOBAL_STATE_DEMO": "全局状态示例",
+  "WASM_DEMO": "WASM示例",
+  "WORKER_DEMO": "Worker示例",
+  "LOCALSTORAGE_DEMO": "本地存储示例"
 }

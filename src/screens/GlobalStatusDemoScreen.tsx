@@ -29,13 +29,13 @@ const GlobalStatusDemoScreen = () => {
         <ZText>{`${t("GLOBAL_STATUS.COUNTER")}: ${count}`}</ZText>
         <ZRow>
           <ZButton icon={ZIconSymbol.Minus} onClick={() => dec()}>
-            {t("BUTTON.DEC")}
+            {t("GLOBAL_STATUS.DEC")}
           </ZButton>
           <ZButton icon={ZIconSymbol.Plus} onClick={() => inc()}>
-            {t("BUTTON.INC")}
+            {t("GLOBAL_STATUS.INC")}
           </ZButton>
           <ZButton icon={ZIconSymbol.Refresh} onClick={() => reset()}>
-            {t("BUTTON.RESET")}
+            {t("GLOBAL_STATUS.RESET")}
           </ZButton>
         </ZRow>
       </PageSession>
