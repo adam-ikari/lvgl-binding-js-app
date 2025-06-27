@@ -20,17 +20,18 @@ const BaseSession = React.memo(() => {
 
 const CumstomMaxVisibleSession = React.memo(() => {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 10;
-  const maxVisible = 8;
+  const totalPages = 50;
+  const maxVisible = 10;
   return (
     <PageSession title="Cumstom Max Visible">
       <ZText>{`currentPage: ${currentPage}`}</ZText>
       <ZText>{`totalPages: ${totalPages}`}</ZText>
       <ZText>{`cumstom max visible: ${maxVisible}`}</ZText>
       <ZPagination
+        style={{ width: "100%" }} // 如果页码过多，可以设置宽度，防止溢出
         current={currentPage}
         total={totalPages}
-        maxVisible={8}
+        maxVisible={maxVisible}
         onChange={setCurrentPage}
       />
     </PageSession>

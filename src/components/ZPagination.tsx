@@ -4,7 +4,7 @@ import React from "react";
 interface ZPaginationProps {
   current: number;
   total: number;
-  maxVisible: number;
+  maxVisible?: number;
   onChange?: (page: number) => void;
   size?: ZSizeEnum;
   prevText?: string;
@@ -20,6 +20,8 @@ const ZPagination = (props) => {
     size = ZSizeEnum.Default,
     prevText = "prev",
     nextText = "next",
+    style: propsStyle,
+    ...restProps
   } = props;
 
   const handlePageChange = (page: number) => {
@@ -71,7 +73,7 @@ const ZPagination = (props) => {
   };
 
   return (
-    <ZRow>
+    <ZRow wrap {...restProps} style={propsStyle}>
       <ZButton
         key={"prev"}
         size={size}

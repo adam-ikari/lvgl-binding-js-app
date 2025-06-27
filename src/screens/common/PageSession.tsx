@@ -12,7 +12,11 @@ const PageSession = (props) => {
       {...restProps}
       style={mergeStyle(COMMON_STYLE.fullWidth, propsStyle)}
       header={<ZText size={ZSizeEnum.Large}>{title}</ZText>}
-      content={<ZColumn width={ZWidthEnum.Full}>{children}</ZColumn>}
+      content={
+        <ZColumn width={ZWidthEnum.Full} style={COMMON_STYLE.fullWidth}>
+          {children}
+        </ZColumn>
+      }
     ></ZCard>
   );
 };
