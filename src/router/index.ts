@@ -14,6 +14,7 @@ import PaginationDemoScreen from "@/screens/PaginationDemoScreen";
 import ProcessBarScreen from "@/screens/ProcessBarScreen";
 import StateDemoScreen from "@/screens/StateDemoScreen";
 import SwitchDemoScreen from "@/screens/SwitchDemoScreen";
+import TextAreaDemoScreen from "@/screens/TextAreaDemoScreen";
 import WasmDemoScreen from "@/screens/WasmDemoScreen";
 import WorkerDemoScreen from "@/screens/WorkerDemoScreen";
 import React from "react";
@@ -132,6 +133,12 @@ const router: RouterItem[] = [
     path: "/pagination",
     component: PaginationDemoScreen,
     meta: { title: "Pagination Demo" },
+  },
+  {
+    name: "TextArea",
+    path: "/textarea",
+    component: TextAreaDemoScreen,
+    meta: { title: "TextArea Demo" },
   },
 ];
 

@@ -27,6 +27,7 @@ const HomeScreen = () => {
         { text: t("SWITCH_DEMO"), path: "/switch" },
         { text: t("CHECKBOX_DEMO"), path: "/checkbox" },
         { text: t("DROPDOWN_DEMO"), path: "/dropdown" },
+        { text: t("TEXTAREA_DEMO"), path: "/textarea" },
       ],
     },
     {
