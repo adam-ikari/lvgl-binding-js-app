@@ -4,6 +4,7 @@ import React from "react";
 interface ZPaginationProps {
   current: number;
   total: number;
+  maxVisible: number;
   onChange?: (page: number) => void;
   size?: ZSizeEnum;
   prevText?: string;
@@ -14,6 +15,7 @@ const ZPagination = (props) => {
   const {
     current,
     total,
+    maxVisible = 5,
     onChange,
     size = ZSizeEnum.Default,
     prevText = "prev",
@@ -26,26 +28,29 @@ const ZPagination = (props) => {
     onChange?.(page);
   };
 
-  const renderPageItems = () => {
-    const items: React.ReactElement[] = [];
-    const maxVisible = 5;
-    const halfVisible = Math.floor(maxVisible / 2);
+  const renderPageItems = (maxVisible: number) => {
+    const items = [];
+    let start = 1;
+    let end = total;
 
-    let start = Math.max(1, current - halfVisible);
-    let end = Math.min(total, start + maxVisible - 1);
+    if (total > maxVisible) {
+      // 计算左右两侧应显示的页码数
+      const leftCount = Math.floor((maxVisible - 1) / 2);
+      const rightCount = Math.ceil((maxVisible - 1) / 2);
 
-    // 调整起始页码确保显示足够数量的页码
-    if (end - start + 1 < maxVisible) {
-      start = Math.max(1, end - maxVisible + 1);
-    }
-
-    // 确保当前页码在中间位置
-    if (current > halfVisible && current < total - halfVisible) {
-      start = current - halfVisible;
-      end = current + halfVisible;
-    } else if (current >= total - halfVisible) {
-      start = Math.max(1, total - maxVisible + 1);
-      end = total;
+      if (current <= leftCount + 1) {
+        // 靠近左侧边界
+        start = 1;
+        end = maxVisible;
+      } else if (current >= total - rightCount) {
+        // 靠近右侧边界
+        start = total - maxVisible + 1;
+        end = total;
+      } else {
+        // 中间位置
+        start = current - leftCount;
+        end = current + rightCount;
+      }
     }
 
     // 页码按钮
@@ -75,7 +80,7 @@ const ZPagination = (props) => {
       >
         {prevText}
       </ZButton>
-      {renderPageItems()}
+      {renderPageItems(maxVisible)}
       <ZButton
         key={"next"}
         size={size}
