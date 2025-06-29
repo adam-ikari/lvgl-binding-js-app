@@ -31,6 +31,7 @@
     "@txikijs/types": "^24.6.0",
     "@types/react": "^16.3.1",
     "@types/react-reconciler": "^0.18.0",
+    "chalk": "^5.4.1",
     "cross-env": "^7.0.3",
     "prettier": "^3.0.1",
     "sdk-cli": "file:deps/sdk-cli"
