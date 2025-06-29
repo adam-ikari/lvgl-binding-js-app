@@ -1,4 +1,4 @@
-import { ZColumn, ZRow, ZStyleProps } from ".";
+import { ZColumn, ZRow, ZStyleProps, ZWidthEnum } from ".";
 import { COLORS, COMMON_STYLE } from "../styles/common_style";
 import { useMergeStyle } from "@/hooks/styleHooks";
 import React from "react";
@@ -13,43 +13,44 @@ interface ZCardProps {
   [key: string]: any;
 }
 
+const mergeStyle = useMergeStyle();
+
+const baseStyle: ZStyleProps = mergeStyle(
+  COMMON_STYLE.noBorder,
+  COMMON_STYLE.autoWidth,
+  COMMON_STYLE.autoHeight,
+  COMMON_STYLE.padding20,
+  COMMON_STYLE.radius4,
+  {
+    "shadow-color": COLORS.GREY_DARK,
+    "shadow-offset-x": 0,
+    "shadow-offset-y": 0,
+    "shadow-opacity": 50,
+    "shadow-width": 24,
+  },
+);
+
 const ZCardCover = (props: { children?: React.ReactNode }) => {
   const { children } = props;
-  return <ZRow>{children}</ZRow>;
+  return <>{children}</>;
 };
 
 const ZCardHeader = (props: { children?: React.ReactNode }) => {
   const { children } = props;
-  return <ZRow>{children}</ZRow>;
+  return <>{children}</>;
 };
 
 const ZCardContent = (props: { children?: React.ReactNode }) => {
   const { children } = props;
-  return <ZRow>{children}</ZRow>;
+  return <>{children}</>;
 };
 
 const ZCardFooter = (props: { children?: React.ReactNode }) => {
   const { children } = props;
-  return <ZRow>{children}</ZRow>;
+  return <>{children}</>;
 };
 
 const ZCard = (props: ZCardProps) => {
-  const mergeStyle = useMergeStyle();
-  const baseStyle: ZStyleProps = mergeStyle(
-    COMMON_STYLE.noBorder,
-    COMMON_STYLE.autoWidth,
-    COMMON_STYLE.autoHeight,
-    COMMON_STYLE.padding20,
-    COMMON_STYLE.radius4,
-    {
-      "shadow-color": COLORS.GREY_DARK,
-      "shadow-offset-x": 0,
-      "shadow-offset-y": 0,
-      "shadow-opacity": 50,
-      "shadow-width": 24,
-    },
-  );
-
   const {
     cover,
     header,

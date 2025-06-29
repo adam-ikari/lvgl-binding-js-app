@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { build } from "./index.js";
+import { build } from "./build.js";
+import { appDataDir, buildDir, nodemonConfig } from "./config.js";
 import { run } from "./run.js";
 import chalk from "chalk";
 import { program } from "commander";
@@ -7,8 +8,7 @@ import fs from "fs/promises";
 import nodemon from "nodemon";
 import ora from "ora";
 import path from "path";
-
-const buildDir = "dist";
+import { fileURLToPath } from "url";
 
 // Helper functions
 const logSuccess = (msg) => console.log(chalk.green(`[SDK-CLI] ${msg}`));
@@ -31,7 +31,9 @@ program
     process.env.NODE_ENV = options.env;
     logInfo(`Starting ${process.env.NODE_ENV} build...`);
     try {
-      build();
+      (async () => {
+        await build();
+      })();
       logSuccess("Build completed successfully");
     } catch (err) {
       logError("Build failed", err);
@@ -54,23 +56,19 @@ program
       // 使用run命令启动并监听变化
       nodemon({
         exec: `sdk-cli build && sdk-cli run main`,
-        ext: "js,ts,jsx,tsx,json",
-        ignore: ["node_modules/", "dist/"],
-        env: {
-          TJS_HOME: "data",
-        },
+        ...nodemonConfig,
       });
 
       nodemon
         .on("start", () => {
-          logSuccess("Development server started");
+          logSuccess("app started");
         })
         .on("restart", (files) => {
           logInfo(`Rebuilding due to changes in: ${files.join(", ")}`);
-          require("./index").build().catch(console.error);
+          build().catch(console.error);
         })
         .on("quit", () => {
-          logWarning("Development server stopped");
+          logWarning("app stopped");
           process.exit();
         });
     } catch (err) {
@@ -129,19 +127,20 @@ program
     }
   });
 
-// Test command
+// Reset LocalStorage
 program
-  .command("test")
-  .description("Run tests")
+  .command("reset_localstorage")
+  .description("Reset LocalStorage")
   .action(async () => {
-    const spinner = ora("Running tests").start();
+    const spinner = ora("Resetting LocalStorage").start();
     try {
-      // Add actual test runner logic here
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      spinner.succeed("Tests passed");
+      const path_ = path.resolve(process.cwd(), appDataDir, "localStorage.db");
+      console.log(`Resetting LocalStorage at: ${path_}`);
+      await fs.rm(path_, { force: true });
+      spinner.succeed(`LocalStorage reset successfully at ${path_}`);
     } catch (err) {
-      spinner.fail("Tests failed");
-      logError("Test failed", err);
+      spinner.fail("Failed to reset LocalStorage");
+      logError("Reset failed", err);
       process.exit(1);
     }
   });

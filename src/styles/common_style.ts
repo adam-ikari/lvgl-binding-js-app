@@ -1,12 +1,11 @@
-import { StyleProps } from "sdk/ui/core/style";
-import { ColorType } from "sdk/ui/core/style/color";
+import { ZStyleProps } from "@/components";
 
 const CONSTANTS = {
   MIN_HEIGHT_32: 32,
   MAX_RADIUS: 0x7fff,
 };
 
-const COLORS: Record<string, ColorType> = {
+const COLORS: Record<string, string> = {
   // 主题色
   PRIMARY: "#409EFF", // 主品牌色
   SUCCESS: "#67C23A", // 成功状态
@@ -47,7 +46,7 @@ const COLORS: Record<string, ColorType> = {
   GREY_DARK: "#DCDCDC", // 深灰
 };
 
-const COMMON_STYLE: Record<string, StyleProps> = {
+const COMMON_STYLE: Record<string, ZStyleProps> = {
   flexRow: {
     display: "flex",
     "flex-direction": "row",
@@ -268,6 +267,12 @@ const COMMON_STYLE: Record<string, StyleProps> = {
   paddingVertical16: {
     "padding-top": 16,
     "padding-bottom": 16,
+  },
+  cardHover: {
+    "transition": "all 0.3s ease",
+    "transform": "translateY(-2px)",
+    "shadow-opacity": 80,
+    "shadow-width": 32,
   },
   fontSizeSmall: {
     "font-size": 12,

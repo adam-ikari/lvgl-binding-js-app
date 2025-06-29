@@ -8,7 +8,8 @@
     "build:dev": "sdk-cli build",
     "build:prod": "sdk-cli build --env production",
     "preview": "sdk-cli run main",
-    "dev": "sdk-cli dev"
+    "dev": "sdk-cli dev",
+    "tools:reset_localstorage": "sdk-cli reset_localstorage"
   },
   "dependencies": {
     "dayjs": "^1.11.13",

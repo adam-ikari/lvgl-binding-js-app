@@ -2,7 +2,7 @@ import { changeLanguage } from "@/i18n";
 import { ZNavScreenLayout } from "@/layouts";
 import routerData from "@/router";
 import { useSettingsStore } from "@/stores/useSettingsStore";
-import React, { Profiler } from "react";
+import React, { Profiler, memo } from "react";
 import { MemoryRouter, Route, Routes } from "react-router-native";
 import { Dimensions, Render } from "sdk-ui";
 import "zustand-polyfills";
@@ -15,28 +15,57 @@ function init() {
   changeLanguage(useSettingsStore.getState().language);
 }
 
-const { window: windowDimensions } = Dimensions;
+interface ZRouterProps {
+  initialEntries?: string[];
+  initialIndex?: number;
+  children?: React.ReactNode | React.ReactNode[];
+}
 
-const App = () => {
+const ZRouter = (props: ZRouterProps) => {
+  const { initialEntries = ["/"], initialIndex = 0, children = {} } = props;
   return (
-    <MemoryRouter initialEntries={["/"]} initialIndex={0}>
-      <ZNavScreenLayout>
-        <Routes>
-          {routerData.map(({ name, path, component }) => (
-            <Route
-              id={name}
-              key={name}
-              path={path}
-              element={React.createElement(component)}
-            />
-          ))}
-        </Routes>
-      </ZNavScreenLayout>
+    <MemoryRouter
+      initialEntries={initialEntries}
+      initialIndex={initialIndex}
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
+      {children}
     </MemoryRouter>
   );
 };
 
+const ZRoutes = (props) => {
+  const { routerData = [] } = props;
+  return (
+    <Routes>
+      {routerData.map(({ name, path, component }) => (
+        <Route
+          id={name}
+          key={name}
+          path={path}
+          element={React.createElement(memo(component))}
+        />
+      ))}
+    </Routes>
+  );
+};
+
+const App = () => {
+  return (
+    <ZRouter initialEntries={["/"]} initialIndex={0}>
+      {" "}
+      <ZNavScreenLayout>
+        <ZRoutes routerData={routerData}></ZRoutes>
+      </ZNavScreenLayout>
+    </ZRouter>
+  );
+};
+
 const onRender = (id, phase, actualDuration) => {
+  const { window: windowDimensions } = Dimensions;
   console.log(
     `${id} 组件 ${phase} 阶段耗时：${actualDuration}ms 分辨率：${windowDimensions.width}x${windowDimensions.height}`,
   );

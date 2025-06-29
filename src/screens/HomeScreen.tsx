@@ -1,4 +1,4 @@
-import { ZButton, ZRow } from "@/components";
+import { ZButton, ZRow, ZWidthEnum } from "@/components";
 import PageSession from "@/screens/common/PageSession";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -17,35 +17,41 @@ const HomeScreen = () => {
         { text: "Card Demo", path: "/card" },
         { text: "Progress Bar Demo", path: "/process-bar" },
         { text: "Image Demo", path: "/image" },
+        { text: "Pagination Demo", path: "/pagination" },
       ],
     },
     {
-      text: "Form Widgets",
+      text: t("FORM_WIDGETS"),
       children: [
-        { text: "Input Demo", path: "/input" },
-        { text: "Switch Demo", path: "/switch" },
-        { text: "Checkbox Demo", path: "/checkbox" },
-        { text: "Dropdown Demo", path: "/dropdown" },
+        { text: t("INPUT_DEMO"), path: "/input" },
+        { text: t("SWITCH_DEMO"), path: "/switch" },
+        { text: t("CHECKBOX_DEMO"), path: "/checkbox" },
+        { text: t("DROPDOWN_DEMO"), path: "/dropdown" },
+        { text: t("TEXTAREA_DEMO"), path: "/textarea" },
       ],
     },
     {
-      text: "Feedback Widgets",
-      children: [{ text: "Dialog Demo", path: "/dialog" }],
+      text: t("FEEDBACK_WIDGETS"),
+      children: [{ text: t("DIALOG_DEMO"), path: "/dialog" }],
     },
-    { text: "List Render", children: [{ text: "List Demo", path: "/list" }] },
     {
-      text: "State",
+      text: t("LIST_RENDER"),
+      children: [{ text: t("LIST_DEMO"), path: "/list" }],
+    },
+
+    {
+      text: t("STATE"),
       children: [
-        { text: "State Demo", path: "/state" },
-        { text: "Global State Demo", path: "/global_state" },
+        { text: t("STATE_DEMO"), path: "/state" },
+        { text: t("GLOBAL_STATE_DEMO"), path: "/global_state" },
       ],
     },
     {
-      text: "Web API",
+      text: t("WEB_API"),
       children: [
-        { text: "WASM Demo", path: "/wasm" },
-        { text: "Worker Demo", path: "/worker" },
-        { text: "LocalStorage Demo", path: "/localstorage" },
+        { text: t("WASM_DEMO"), path: "/wasm" },
+        { text: t("WORKER_DEMO"), path: "/worker" },
+        { text: t("LOCALSTORAGE_DEMO"), path: "/localstorage" },
       ],
     },
   ];
@@ -54,7 +60,7 @@ const HomeScreen = () => {
     <>
       {indexData.map((category, index) => (
         <PageSession key={index} title={category.text}>
-          <ZRow wrap>
+          <ZRow wrap width={ZWidthEnum.Full}>
             {category.children.map((item, index) => (
               <ZButton key={index} onClick={() => navigate(item.path)}>
                 {item.text}

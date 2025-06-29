@@ -2,6 +2,7 @@ import imgsrc from "@/assets/avatar.png";
 import { ZCard, ZImage, ZRow, ZSizeEnum, ZText } from "@/components";
 import { COLORS } from "@/styles/common_style";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const style = {
   background: {
@@ -14,25 +15,27 @@ const rowStyle = {
 };
 
 const CardDemoScreen = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <ZRow style={rowStyle}>
-        <ZText size={ZSizeEnum.Large}>Basic Card</ZText>
+        <ZText size={ZSizeEnum.Large}>{t("CARD.BASIC")}</ZText>
       </ZRow>
       <ZRow style={rowStyle}>
-        <ZCard content={<ZText>This is card content</ZText>}></ZCard>
+        <ZCard content={<ZText>{t("CARD.CONTENT")}</ZText>}></ZCard>
       </ZRow>
       <ZRow style={rowStyle}>
         <ZText size={ZSizeEnum.Large}>
-          Card with Cover, Header, Content and Footer
+          {t("CARD.FULL")}
         </ZText>
       </ZRow>
-      <ZRow style={rowStyle}>
+      <ZRow style={rowStyle} gap={16}>
         <ZCard
           cover={<ZImage src={imgsrc} round={false} />}
-          header={<ZText size={ZSizeEnum.Large}>Title</ZText>}
-          content={<ZText>This is card content</ZText>}
-          footer={<ZText size={ZSizeEnum.Small}>Footer</ZText>}
+          header={<ZText size={ZSizeEnum.Large}>{t("CARD.TITLE")}</ZText>}
+          content={<ZText>{t("CARD.CONTENT")}</ZText>}
+          footer={<ZText size={ZSizeEnum.Small}>{t("CARD.FOOTER")}</ZText>}
         ></ZCard>
         <ZCard
           cover={<ZImage src={imgsrc} round={false} />}

@@ -13,19 +13,15 @@ const DialogDemoScreen = () => {
         <ZDialog
           title="Dialog"
           onMaskClick={() => {
-            console.log("onMaskClick");
             toggleVisibale();
           }}
           onClose={() => {
-            console.log("onClose");
             toggleVisibale();
           }}
           onCancel={() => {
-            console.log("onCancel");
             toggleVisibale();
           }}
           onConfirm={() => {
-            console.log("onConfirm");
             toggleVisibale();
           }}
         >

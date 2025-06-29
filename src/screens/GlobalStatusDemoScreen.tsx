@@ -11,6 +11,7 @@ import PageSession from "@/screens/common/PageSession";
 import { useCounterStore } from "@/stores/useCounterStore";
 import { useSettingsStore } from "@/stores/useSettingsStore";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const languageOptions = [
   { label: "system", value: "system" },
@@ -19,35 +20,32 @@ const languageOptions = [
 ];
 
 const GlobalStatusDemoScreen = () => {
+  const { t } = useTranslation();
   const { count, inc, dec, reset } = useCounterStore();
   const { theme, toggleTheme, language, setLanguage } = useSettingsStore();
   return (
     <>
-      <PageSession title="Global Status">
-        <ZText>{`counter: ${count}`}</ZText>
+      <PageSession title={t("GLOBAL_STATUS.TITLE")}>
+        <ZText>{`${t("GLOBAL_STATUS.COUNTER")}: ${count}`}</ZText>
         <ZRow>
           <ZButton icon={ZIconSymbol.Minus} onClick={() => dec()}>
-            dec
+            {t("GLOBAL_STATUS.DEC")}
           </ZButton>
           <ZButton icon={ZIconSymbol.Plus} onClick={() => inc()}>
-            inc
+            {t("GLOBAL_STATUS.INC")}
           </ZButton>
           <ZButton icon={ZIconSymbol.Refresh} onClick={() => reset()}>
-            reset
+            {t("GLOBAL_STATUS.RESET")}
           </ZButton>
         </ZRow>
       </PageSession>
-      <PageSession title="Persist Status">
-        <ZRow width={ZWidthEnum.Full}>
-          <ZRow style={{ "flex-grow": 1 }}>
-            <ZText>{`Theme: ${theme}`}</ZText>
-          </ZRow>
+      <PageSession title={t("GLOBAL_STATUS.PERSIST_TITLE")}>
+        <ZRow>
+          <ZText>{`${t("GLOBAL_STATUS.THEME")}: ${theme}`}</ZText>
           <ZSwitch value={theme === "dark"} onChange={() => toggleTheme()} />
         </ZRow>
-        <ZRow width={ZWidthEnum.Full}>
-          <ZRow style={{ "flex-grow": 1 }}>
-            <ZText>{`Language: ${language}`}</ZText>
-          </ZRow>
+        <ZRow>
+          <ZText>{`${t("GLOBAL_STATUS.LANGUAGE")}: ${language}`}</ZText>
           <ZDropdown
             options={languageOptions}
             value={language}
